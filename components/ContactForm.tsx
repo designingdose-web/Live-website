@@ -92,6 +92,7 @@ const ContactForm: React.FC = () => {
            <div className="flex items-center">
               <CountryCodeDropdown
                 value={country.code}
+                countryName={country.name}
                 onChange={handleCountryChange}
               />
               <input 
