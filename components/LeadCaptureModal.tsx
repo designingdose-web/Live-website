@@ -101,6 +101,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
                <div className="flex items-center">
                  <CountryCodeDropdown
                     value={country.code}
+                    countryName={country.name}
                     onChange={handleCountryChange}
                     heightClass="h-[50px]"
                  />
