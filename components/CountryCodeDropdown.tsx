@@ -3,17 +3,21 @@ import { countries, Country } from '../data/countries';
 
 interface CountryCodeDropdownProps {
   value: string;
+  countryName: string;
   onChange: (value: string, countryName: string) => void;
   heightClass?: string;
 }
 
-const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, onChange, heightClass = 'h-[46px]' }) => {
+const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, countryName, onChange, heightClass = 'h-[46px]' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  const selectedCountry = countries.find(c => c.dial_code === value) || countries.find(c => c.name === 'Ireland');
+  // Improved logic: Find by name & dial code first, then fallback to just dial code.
+  const selectedCountry = countries.find(c => c.dial_code === value && c.name === countryName) 
+                          || countries.find(c => c.dial_code === value) 
+                          || countries.find(c => c.name === 'Ireland');
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -57,11 +61,11 @@ const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, onChan
         aria-expanded={isOpen}
       >
         <span className="truncate">{selectedCountry?.flag} {selectedCountry?.dial_code}</span>
-        <svg className="w-4 h-4 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+        <svg className={`w-4 h-4 ml-2 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
       </button>
 
       {isOpen && (
-        <div className="absolute z-20 mt-1 w-72 bg-brand-secondary rounded-md shadow-lg max-h-60 overflow-hidden flex flex-col animate-dropdown-enter">
+        <div className="absolute z-[110] bottom-full mb-1 w-72 bg-brand-secondary rounded-md shadow-lg max-h-60 overflow-hidden flex flex-col animate-dropdown-enter-up border border-gray-600">
           <div className="p-2">
             <input
               ref={searchInputRef}
