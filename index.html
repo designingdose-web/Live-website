@@ -13,6 +13,23 @@
         background-color: #0D1117;
         color: #E6EDF3;
       }
+
+      /* Failsafe for form input styling */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      textarea {
+        background-color: #0D1117 !important;
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important; /* Ensure text color is applied on WebKit */
+        caret-color: #FFFFFF !important;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #8D96A0 !important; /* brand-muted color */
+        opacity: 1; /* Firefox needs this */
+      }
+
       /* For scroll-triggered animations */
       .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
       .slide-in-up { transform: translateY(30px); }
