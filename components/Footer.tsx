@@ -19,14 +19,14 @@ const Footer: React.FC = () => {
                 <div>
                     <h5 className="font-bold text-gray-400">Ireland Office</h5>
                     <p className="mt-1">77 Camden Street Lower,Saint Kevin’s, Dublin, D02 XE80, Ireland</p>
-                    <a href="tel:+35312548762" className="mt-1 block hover:text-white transition-colors">PHONE: +35312548762</a>
-                    <a href="mailto:info@designingtools.com" className="mt-1 block hover:text-white transition-colors">EMAIL: info@designingtools.com</a>
+                    <a href="tel:+35312548762" className="mt-1 block hover:text-white transition-colors">PHONE: +353 1 254 8762</a>
+                    <a href="mailto:info@designingdose.com" className="mt-1 block hover:text-white transition-colors">EMAIL: info@designingdose.com</a>
                 </div>
                  <div>
                     <h5 className="font-bold text-gray-400">United States Office</h5>
                     <p className="mt-1">Herkimer Street. Brooklyn, NY 11213, United States</p>
                     <a href="tel:+19295636983" className="mt-1 block hover:text-white transition-colors">PHONE: (929) 563-6983</a>
-                     <a href="mailto:info@designingtools.com" className="mt-1 block hover:text-white transition-colors">EMAIL: info@designingtools.com</a>
+                     <a href="mailto:info@designingdose.com" className="mt-1 block hover:text-white transition-colors">EMAIL: info@designingdose.com</a>
                 </div>
             </div>
           </div>

@@ -27,7 +27,7 @@ const PrivacyPolicyPage: React.FC = () => {
           <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
           
           <h2 className="text-2xl font-bold text-white">Contact Us</h2>
-          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@designingtools.com" className="text-brand-accent hover:underline">info@designingtools.com</a>.</p>
+          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@designingdose.com" className="text-brand-accent hover:underline">info@designingdose.com</a>.</p>
         </div>
       </div>
     </div>

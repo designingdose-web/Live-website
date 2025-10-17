@@ -26,7 +26,7 @@ const RefundPolicyPage: React.FC = () => {
           <p>Refund requests will be evaluated on a case-by-case basis. A deposit for a project is non-refundable as it covers the initial costs and resources allocated to your project.</p>
           
           <h2 className="text-2xl font-bold text-white">Contact Us</h2>
-          <p>If you have any questions about our Refunds Policy, please contact us at <a href="mailto:info@designingtools.com" className="text-brand-accent hover:underline">info@designingtools.com</a>.</p>
+          <p>If you have any questions about our Refunds Policy, please contact us at <a href="mailto:info@designingdose.com" className="text-brand-accent hover:underline">info@designingdose.com</a>.</p>
         </div>
       </div>
     </div>

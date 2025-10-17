@@ -25,15 +25,15 @@ const ContactPage: React.FC = () => {
               <div>
                 <h3 className="font-semibold text-white text-lg mb-2">Ireland Office</h3>
                 <p className="flex items-start"><span className="mr-2 mt-1">📍</span> 77 Camden Street Lower,Saint Kevin’s, Dublin, D02 XE80, Ireland</p>
-                <a href="tel:+35312548762" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">📞</span> PHONE: +35312548762</a>
+                <a href="tel:+35312548762" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">📞</span> PHONE: +353 1 254 8762</a>
                 <a href="https://wa.me/35312548762" target="_blank" rel="noopener noreferrer" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">💬</span> WhatsApp</a>
-                <a href="mailto:info@designingtools.com" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">✉️</span> EMAIL: info@designingtools.com</a>
+                <a href="mailto:info@designingdose.com" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">✉️</span> EMAIL: info@designingdose.com</a>
               </div>
                <div>
                 <h3 className="font-semibold text-white text-lg mb-2">United States Office</h3>
                 <p className="flex items-start"><span className="mr-2 mt-1">📍</span> Herkimer Street. Brooklyn, NY 11213, United States</p>
                 <a href="tel:+19295636983" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">📞</span> PHONE: (929) 563-6983</a>
-                <a href="mailto:info@designingtools.com" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">✉️</span> EMAIL: info@designingtools.com</a>
+                <a href="mailto:info@designingdose.com" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">✉️</span> EMAIL: info@designingdose.com</a>
               </div>
             </div>
           </div>

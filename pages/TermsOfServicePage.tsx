@@ -25,7 +25,7 @@ const TermsOfServicePage: React.FC = () => {
           <p>Any claim related to Designing Dose's Website shall be governed by the laws of our country without regards to its conflict of law provisions.</p>
           
           <h2 className="text-2xl font-bold text-white">Contact Us</h2>
-          <p>If you have any questions about these Terms, please contact us at <a href="mailto:info@designingtools.com" className="text-brand-accent hover:underline">info@designingtools.com</a>.</p>
+          <p>If you have any questions about these Terms, please contact us at <a href="mailto:info@designingdose.com" className="text-brand-accent hover:underline">info@designingdose.com</a>.</p>
         </div>
       </div>
     </div>
