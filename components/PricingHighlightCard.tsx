@@ -1,3 +1,4 @@
+
 import React from 'react';
 import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
@@ -33,12 +34,15 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
         </p>
       </div>
       <ul className="mt-8 space-y-4 text-brand-muted flex-grow">
-        {featuresToShow.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <CheckIcon />
-            <span className="ml-3">{feature}</span>
-          </li>
-        ))}
+        {featuresToShow.map((featureItem, index) => {
+          const featureText = typeof featureItem === 'string' ? featureItem : featureItem.feature;
+          return (
+            <li key={index} className="flex items-start">
+              <CheckIcon />
+              <span className="ml-3">{featureText}</span>
+            </li>
+          )
+        })}
          {remainingFeatures > 0 && (
             <li className="flex items-start text-brand-accent-middle font-semibold">
                  <span className="ml-8">+ {remainingFeatures} more features</span>

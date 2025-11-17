@@ -1,7 +1,9 @@
+
 import React from 'react';
 import type { ServiceCategory } from '../types';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
+import FaqSection from '../components/FaqSection';
 
 
 const GenericServicePage: React.FC<{ service: ServiceCategory }> = ({ service }) => {
@@ -27,6 +29,10 @@ const GenericServicePage: React.FC<{ service: ServiceCategory }> = ({ service })
               </div>
           ))}
         </div>
+        
+        {service.faqs && service.faqs.length > 0 && (
+          <FaqSection faqs={service.faqs} />
+        )}
       </div>
     </div>
   );

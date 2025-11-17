@@ -1,8 +1,10 @@
+
 import React, { useState } from 'react';
 import { servicesData } from '../data/servicesData';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import type { Plan } from '../types';
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
+import FaqSection from '../components/FaqSection';
 
 const WebsitePricingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -50,6 +52,10 @@ const WebsitePricingPage: React.FC = () => {
             )
           })}
         </div>
+
+        {websiteService.faqs && websiteService.faqs.length > 0 && (
+          <FaqSection faqs={websiteService.faqs} />
+        )}
       </div>
     </div>
   );

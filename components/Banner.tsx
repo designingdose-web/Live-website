@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ const slides: Slide[] = [
   },
   {
     type: 'image',
-    source: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop',
+    source: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
     tagline: 'Fuel Your Growth Engine.',
     subTagline: 'Drive traffic, generate leads, and dominate your market with our data-driven SEO and marketing strategies.',
   },
@@ -81,15 +82,29 @@ const Banner: React.FC = () => {
           )}
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
           <div className="absolute inset-0 flex items-center justify-center text-center">
-            <div className={`container mx-auto px-6 transition-all duration-1000 ease-out ${index === currentIndex ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 animate-fade-in-up" style={{textShadow: '2px 2px 8px rgba(0,0,0,0.7)'}}>
+            <div className="container mx-auto px-6">
+              <h1
+                className={`text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 transition-all duration-700 ease-out ${
+                  index === currentIndex ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-10'
+                }`}
+                style={{textShadow: '2px 2px 8px rgba(0,0,0,0.7)'}}
+              >
                 {slide.tagline}
               </h1>
-              <p className="text-lg md:text-2xl text-brand-light max-w-3xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.3s', textShadow: '1px 1px 4px rgba(0,0,0,0.7)' }}>
+              <p
+                className={`text-lg md:text-2xl text-brand-light max-w-3xl mx-auto mb-8 transition-all duration-700 ease-out ${
+                  index === currentIndex ? 'opacity-100 translate-y-0 delay-400' : 'opacity-0 translate-y-10'
+                }`}
+                style={{textShadow: '1px 1px 4px rgba(0,0,0,0.7)'}}
+              >
                 {slide.subTagline}
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                 <button onClick={openModal} className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto">
+              <div
+                className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 ease-out ${
+                  index === currentIndex ? 'opacity-100 translate-y-0 delay-600' : 'opacity-0 translate-y-10'
+                }`}
+              >
+                 <button onClick={openModal} className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg w-full sm:w-auto transform transition-all duration-300 hover:scale-105 hover:opacity-90 hover:shadow-xl">
                     Get a Quote
                   </button>
                   <Link to="/services/website-packages" className="bg-brand-secondary/80 border-2 border-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-brand-secondary transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto">

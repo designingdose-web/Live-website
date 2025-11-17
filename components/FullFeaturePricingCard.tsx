@@ -1,14 +1,24 @@
+
 import React from 'react';
 import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import Tooltip from './Tooltip';
 
 const CheckIcon: React.FC = () => (
     <svg className="w-5 h-5 text-brand-accent-end flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
 
+const InfoIcon: React.FC = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-brand-muted inline-block ml-2 opacity-50" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.083.082.38-.29.287-.082.38.29.287.082.38.29.287.082.38-.29.287-.082.38.29.287.082.38.29.287l.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.083.082.38-.29.287-.082.38zM8 4.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+  </svg>
+);
+
+
 const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
-  const cardRef = useScrollAnimation('slide-in-up');
+  const cardRef = useScrollAnimation('fade-in');
   
   const cardClasses = plan.isPopular
     ? 'border-brand-accent-middle scale-105 shadow-2xl shadow-brand-accent-middle/20'
@@ -29,12 +39,25 @@ const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
         </p>
       </div>
       <ul className="mt-8 space-y-4 text-brand-muted flex-grow">
-        {plan.features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <CheckIcon />
-            <span className="ml-3">{feature}</span>
-          </li>
-        ))}
+        {plan.features.map((item, index) => {
+            const hasTooltip = typeof item !== 'string';
+            const featureText = hasTooltip ? item.feature : item;
+            const tooltipText = hasTooltip ? item.tooltip : '';
+
+            return (
+                 <li key={index} className="flex items-start">
+                    <CheckIcon />
+                    <span className="ml-3">
+                        {featureText}
+                        {hasTooltip && (
+                            <Tooltip text={tooltipText}>
+                                <InfoIcon />
+                            </Tooltip>
+                        )}
+                    </span>
+                </li>
+            )
+        })}
       </ul>
       {plan.note && <p className="text-xs text-center text-brand-muted mt-4">{plan.note}</p>}
       <Link to="/contact" state={{ subject: `Inquiry about: ${plan.name} package` }} className="block w-full text-center mt-8 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105">
