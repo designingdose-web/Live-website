@@ -31,12 +31,17 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
         </p>
       </div>
       <ul className="mt-8 space-y-4 text-brand-muted flex-grow">
-        {plan.features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <CheckIcon />
-            <span className="ml-3">{feature}</span>
-          </li>
-        ))}
+        {plan.features.map((feature, index) => {
+          // Fix: Handle feature object by extracting the text property.
+          // An object cannot be rendered as a React node directly.
+          const featureText = typeof feature === 'string' ? feature : feature.feature;
+          return (
+            <li key={index} className="flex items-start">
+              <CheckIcon />
+              <span className="ml-3">{featureText}</span>
+            </li>
+          );
+        })}
       </ul>
       {plan.note && <p className="text-xs text-center text-brand-muted mt-4">{plan.note}</p>}
       <Link to="/contact" state={{ subject: `Inquiry about: ${plan.name} package` }} className="block w-full text-center mt-8 bg-brand-accent text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105">

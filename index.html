@@ -6,12 +6,24 @@
     <title>Designing Dose - Web & Digital Solutions</title>
     <meta name="description" content="A professional, modern website for Designing Dose, showcasing their comprehensive digital services including web development, e-commerce solutions, SEO, social media marketing, and more. Features an interactive interface with detailed pricing plans." />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link 
+      rel="preload" 
+      as="image" 
+      href="https://images.unsplash.com/photo-1534665482403-a909d0d97c67?q=80&w=1280&auto=format&fit=crop"
+      imagesrcset="https://images.unsplash.com/photo-1534665482403-a909d0d97c67?q=80&w=640&auto=format&fit=crop 640w, https://images.unsplash.com/photo-1534665482403-a909d0d97c67?q=80&w=768&auto=format&fit=crop 768w, https://images.unsplash.com/photo-1534665482403-a909d0d97c67?q=80&w=1024&auto=format&fit=crop 1024w, https://images.unsplash.com/photo-1534665482403-a909d0d97c67?q=80&w=1280&auto=format&fit=crop 1280w, https://images.unsplash.com/photo-1534665482403-a909d0d97c67?q=80&w=1920&auto=format&fit=crop 1920w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    >
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       /* Failsafe to ensure dark background and light text are applied */
       html, body {
         background-color: #0D1117;
         color: #E6EDF3;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       /* Failsafe for form input styling */

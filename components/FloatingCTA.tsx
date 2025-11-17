@@ -34,7 +34,7 @@ const FloatingCTA: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={button.label}
-          className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 transition-all transform hover:scale-110"
+          className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 transition-all transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary focus-visible:ring-brand-accent-end"
         >
           {button.icon}
         </a>

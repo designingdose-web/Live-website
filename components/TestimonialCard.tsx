@@ -63,31 +63,29 @@ const TestimonialsSection: React.FC = () => {
                         const isRight = offset === 1;
 
                         let opacity = 0;
-                        let transform = 'scale(1)';
+                        let transform = 'scale(0.8)';
                         let zIndex = 0;
                         
                         // On mobile and tablets, only show the center card.
                         if (isMobileOrTablet) {
                             if (isCenter) {
                                 opacity = 1;
-                                transform = 'translateX(-50%)';
+                                transform = 'translateX(-50%) scale(1)';
                                 zIndex = 20;
                             }
                         } else {
                            // On desktop, show three cards.
                            if (isCenter) {
                                 opacity = 1;
-                                transform = 'translateX(calc(-50% - 3%))'; // Shift entire carousel left
+                                transform = 'translateX(-50%) scale(1)';
                                 zIndex = 20;
                             } else if (isRight) {
                                 opacity = 0.4;
-                                // Position right card with less overlap
-                                transform = 'translateX(calc(-50% - 3% + 450px))'; 
+                                transform = 'translateX(calc(-50% + 35vw)) scale(0.9)';
                                 zIndex = 10;
                             } else if (isLeft) {
                                  opacity = 0.4;
-                                 // Position left card with less overlap
-                                transform = 'translateX(calc(-50% - 3% - 450px))';
+                                transform = 'translateX(calc(-50% - 35vw)) scale(0.9)';
                                 zIndex = 10;
                             }
                         }

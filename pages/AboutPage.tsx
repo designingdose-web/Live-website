@@ -8,6 +8,11 @@ const AboutPage: React.FC = () => {
     const visionRef = useScrollAnimation('slide-in-right');
     const imageRef = useScrollAnimation('fade-in');
 
+    const imageUrl = "https://images.unsplash.com/photo-1552664730-d307ca884978";
+    const imageSrcSet = [640, 768, 1024, 1280]
+        .map(w => `${imageUrl}?q=80&w=${w}&auto=format&fit=crop ${w}w`)
+        .join(', ');
+
   return (
     <div className="bg-brand-primary text-white overflow-x-hidden">
       {/* Hero Section */}
@@ -38,7 +43,15 @@ const AboutPage: React.FC = () => {
                 </div>
             </div>
              <div ref={imageRef} className="order-1 lg:order-2 animate-on-scroll" style={{transitionDelay: '300ms'}}>
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Strategy session" className="rounded-lg shadow-2xl object-cover w-full h-full" />
+                <img 
+                    src={`${imageUrl}?q=80&w=1024&auto=format&fit=crop`} 
+                    srcSet={imageSrcSet}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    alt="Strategy session" 
+                    className="rounded-lg shadow-2xl object-cover w-full h-full"
+                    loading="lazy"
+                    decoding="async"
+                />
             </div>
         </div>
       </div>

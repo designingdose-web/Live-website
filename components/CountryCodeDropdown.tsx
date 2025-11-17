@@ -65,7 +65,7 @@ const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, countr
       </button>
 
       {isOpen && (
-        <div className="absolute z-[110] bottom-full mb-1 w-72 bg-brand-secondary rounded-md shadow-lg max-h-60 overflow-hidden flex flex-col animate-dropdown-enter-up border border-gray-600">
+        <div className="absolute z-[110] bottom-full mb-1 w-72 bg-brand-secondary/95 backdrop-blur-sm rounded-md shadow-lg max-h-60 overflow-hidden flex flex-col animate-dropdown-enter-up border border-gray-600">
           <div className="p-2">
             <input
               ref={searchInputRef}

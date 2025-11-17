@@ -6,6 +6,7 @@ export interface Plan {
   features: (string | { feature: string; tooltip: string })[];
   isPopular?: boolean;
   note?: string;
+  comparisonFeatures?: { [key: string]: string | boolean };
 }
 
 export interface ServiceTab {
