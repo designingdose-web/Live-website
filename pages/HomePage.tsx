@@ -9,6 +9,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import PricingHighlightCard from '../components/PricingHighlightCard';
 import StatsSection from '../components/StatsSection';
 import TrustBadges from '../components/TrustBadges';
+import TechStackSlider from '../components/TechStackSlider';
 
 const PricingHighlight: React.FC = () => {
   const websitePlans = servicesData
@@ -164,6 +165,7 @@ const HomePage: React.FC = () => {
       <PricingHighlight />
       <ProcessSection />
       <TestimonialsSection />
+      <TechStackSlider />
     </>
   );
 };

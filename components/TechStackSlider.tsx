@@ -1,173 +1,129 @@
 
 import React from 'react';
-import Banner from '../components/Banner';
-import TestimonialsSection from '../components/TestimonialCard';
-import ProcessSection from '../components/ProcessSection';
-import { servicesData } from '../data/servicesData';
-import { Link } from 'react-router-dom';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import PricingHighlightCard from '../components/PricingHighlightCard';
-import StatsSection from '../components/StatsSection';
-import TrustBadges from '../components/TrustBadges';
-import TechStackSlider from '../components/TechStackSlider';
 
-const PricingHighlight: React.FC = () => {
-  const websitePlans = servicesData
-    .find(s => s.id === 'website')?.tabs?.find(t => t.tabName === 'Informative')?.plans.slice(0, 4);
-
-  const sectionRef = useScrollAnimation('slide-in-up');
-  const headerRef = useScrollAnimation('slide-in-up');
-
-  return (
-    <section ref={sectionRef} className="py-20 bg-brand-secondary animate-on-scroll">
-      <div className="container mx-auto px-6">
-        <div ref={headerRef} className="text-center mb-12 animate-on-scroll">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white">Launch Your <span className="gradient-text">Digital Presence</span></h2>
-          <p className="mt-4 text-lg text-brand-muted">Solutions designed to deliver maximum impact and value.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center items-stretch">
-          {websitePlans?.map((plan, index) => {
-            const cardRef = useScrollAnimation('slide-in-up');
-            return (
-              plan && <div ref={cardRef} key={index} className="animate-on-scroll" style={{ transitionDelay: `${index * 150}ms`}}><PricingHighlightCard plan={plan} /></div>
-            )
-          })}
-        </div>
-         <div className="text-center mt-16">
-            <Link to="/services/website-packages" className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105">
-              View All Website Packages
-            </Link>
-          </div>
-      </div>
-    </section>
-  );
+// Simple SVG icons for the requested platforms
+const icons = {
+  shopify: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+      <path d="M23.6 8.6l-3.3-5.8c-.2-.3-.5-.4-.8-.4H4.5c-.3 0-.6.2-.8.5L.4 8.6c-.2.4-.2.8 0 1.2l11 13.6c.2.2.5.4.8.4.3 0 .6-.1.8-.4l10.6-13c.2-.4.2-.8 0-1.2zM12 21.4L2.6 9.8l2.8-4.8h13.2l2.8 4.8L12 21.4z"/>
+      <path d="M16.5 11.5c-1.5 0-2.8.8-3.5 2-1.2-1.8-3.8-1.8-5 0-.7-1.2-2-2-3.5-2-2.2 0-4 1.8-4 4s1.8 4 4 4c1.5 0 2.8-.8 3.5-2 1.2 1.8 3.8 1.8 5 0 .7 1.2 2 2 3.5 2 2.2 0 4-1.8 4-4s-1.8-4-4-4z" fillOpacity="0.5"/>
+    </svg>
+  ),
+  wordpress: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+      <path d="M12.043 1C5.95 1 1 5.943 1 12.03C1 18.116 5.95 23.06 12.043 23.06C18.123 23.06 23.073 18.116 23.073 12.03C23.073 5.943 18.123 1 12.043 1ZM2.24 11.937C2.24 8.207 4.28 4.927 7.38 3.214L4.626 11.53L2.24 11.937ZM12.043 21.807C9.773 21.807 7.706 21.15 5.99 20.023L8.95 11.19L10.646 16.36L12.043 21.807ZM10.15 10.343L8.423 5.323C9.556 4.73 10.856 4.396 12.233 4.396C14.36 4.396 16.293 5.143 17.836 6.383L14.48 16.316L12.203 9.563L12.866 9.45L11.486 5.323L10.15 10.343ZM14.263 20.536L12.616 15.63L16.453 5.863C19.226 7.343 21.11 10.19 21.39 13.517L14.263 20.536Z"/>
+    </svg>
+  ),
+  squarespace: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+      <path d="M12.2 1.6C11.7 1.4 10.9 1 9.8 1 5 1 2.8 4.5 2.8 8.4c0 3.5 2 5.8 4.7 6.6l4.5 1.4c.6.2.7.4.7.8 0 .6-.7 1-1.8 1-1.4 0-2.4-.6-2.9-.9l-.8 3c.5.3 1.9 1.2 3.9 1.2 4.5 0 7.5-3.2 7.5-7.5 0-3.4-2.3-5.8-5.2-6.7l-4-1.2c-.6-.2-.7-.5-.7-.8 0-.5.7-.8 1.6-.8 1.2 0 2.1.5 2.5.7l.9-3.6z"/>
+      <path d="M21.3 8.4c-.5-.3-1.9-1.2-3.9-1.2-4.5 0-7.5 3.2-7.5 7.5 0 3.4 2.3 5.8 5.2 6.7l4 1.2c.6.2.7.5.7.8 0 .5-.7.8-1.6.8-1.2 0-2.1-.5-2.5-.7l-1 3.6c.5.2 1.3.6 2.4.6 4.8 0 7-3.5 7-7.4 0-3.5-2-5.8-4.7-6.6l-4.5-1.4c-.6-.2-.7-.4-.7-.8 0-.6.7-1 1.8-1 1.4 0 2.4.6 2.9.9l.9-3z" opacity="0.5"/>
+    </svg>
+  ),
+  wix: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+      <path d="M8.4 16.9L5.7 6.5h-2l-3.6 14h2.4l2.2-9.6 2.6 9.6h2l2.6-9.6 2.1 9.6h2.3l-3.5-14h-2l-2.7 10.4zM17.5 6.5h2.3v14h-2.3zM18.6 2.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5zM23.6 13.5l-1.8-1.9-1.5 1.5 1.8 1.9-1.9 1.9 1.5 1.5 1.9-1.9 1.8 1.9 1.5-1.5-1.8-1.9 1.8-1.8-1.5-1.5z"/>
+    </svg>
+  ),
+  webflow: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+      <path d="M8.9 18.5L6 8h4.5l1.8 7.5L14 8h4.4l-4.6 14.2c-.6 1.8-1.9 2-2.6 1.9-.9 0-1.8-.7-2.3-2.2L8.9 18.5zM5.3 18.6C4.4 15.3 3.3 11.3 3 8H.4c.4 4.5 1.8 9.5 3.6 12.8.6.9 1.4 1.1 2 1.2.6 0 1.1-.2 1.4-.5-.7-.7-1.6-1.8-2.1-2.9zM21 8l-2.4 8.6c-.4 1.5-.7 2.3-1.4 2.9.4.3 1.1.5 1.8.5.7 0 1.4-.2 2-.7 1.1-1.1 2.2-5.1 2.6-11.3H21z"/>
+    </svg>
+  ),
+  flutter: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+      <path d="M14.3 2.3L5 11.6 2.7 9.3 12 0h2.3zM14.3 21.7L9.1 16.5 11.6 14l8 8h-5.3zM16.8 14l-2.5 2.5L19 21.3h2.7L16.8 14z" opacity="0.6"/>
+      <path d="M11.6 14l2.7-2.7L24 20.9V24L11.6 14z"/>
+      <path d="M14.3 2.3l9.6 9.6v2.8L12 2.8V0h2.3z" opacity="0.6"/>
+    </svg>
+  ),
+  android: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+       <path d="M17.6 2.8L19.2.5C19.3.3 19.2 0 19 0c-.1 0-.3.1-.4.2l-1.6 2.3C15.6 1.8 13.9 1.5 12 1.5c-1.9 0-3.6.3-5 .9L5.4.2C5.3.1 5.2 0 5 0c-.3 0-.4.3-.3.5l1.6 2.3C2.7 4.9.5 8.6.5 13h23c0-4.4-2.2-8.1-5.9-10.2zM6.5 8c-.8 0-1.5-.7-1.5-1.5S5.7 5 6.5 5s1.5.7 1.5 1.5S7.3 8 6.5 8zm11 0c-.8 0-1.5-.7-1.5-1.5S16.7 5 17.5 5s1.5.7 1.5 1.5S18.3 8 17.5 8zM.5 14.5h5v9h-5zM18.5 14.5h5v9h-5zM7 14.5h10v9H7z"/>
+    </svg>
+  ),
+  apple: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+      <path d="M17.1 17.8c-.9 1.2-1.8 2.4-3.2 2.4-1.4 0-1.8-.8-3.4-.8-1.6 0-2.1.8-3.3.8-1.3 0-2.7-1.3-3.7-2.7-1.9-2.7-1.6-7.8 1.9-7.8 1.5 0 2.6 1 3.4 1 .8 0 2.3-1.2 3.9-1.2 1.3 0 2.3.9 3 1.1-2.7 1.6-2.2 5.6.5 6.7-.2.8-.4 1.5-.9 2.3-.1.3-.1.3-.2.2zM15 6.9c.7-1 1.2-2.3 1.1-3.6-1.1.1-2.5.8-3.3 1.7-.7.9-1.3 2.2-1.1 3.5 1.2.1 2.6-.7 3.3-1.6z"/>
+    </svg>
+  ),
+  react: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+       <circle cx="12" cy="12" r="2"/>
+       <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(0 12 12)" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+       <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+       <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+    </svg>
+  ),
+  woocommerce: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12">
+       <path d="M20.6 2.5c-6.3 0-11.6 4.1-12.2 10.5 1.3-1.1 3-1.8 4.8-1.8 4.1 0 7.5 3.4 7.5 7.5 0 1.6-.5 3.1-1.3 4.3 5.8-1.8 9.2-8.4 7.4-14.3C25.6 5.4 23.3 2.5 20.6 2.5zM10.6 14c-2 0-3.8.8-5.1 2.1l2.5 3.9 3.1-2.8 2.6 2.8 2-3.9c-.1-.2-.2-.3-.4-.4-1.2-1.1-2.9-1.7-4.7-1.7zM3.2 2.5C1 4 -.1 6.6.3 9.2c.4 2.6 2.3 4.7 4.8 5.5 0 0 1.7-1.5 1.7-1.5-1.8-.6-3.1-2.1-3.4-4-.3-1.9.8-3.8 2.6-4.6 1.8-.8 3.9-.1 4.9 1.6l1.4-1.2C10.9 3 9.1 1.9 7.1 1.9c-1.4 0-2.7.2-3.9.6z"/>
+    </svg>
+  )
 };
 
-const WhyChooseUs: React.FC = () => {
-  const sectionRef = useScrollAnimation('slide-in-up');
-  const headerRef = useScrollAnimation('slide-in-up');
+const brands = [
+  { name: 'Shopify', icon: icons.shopify },
+  { name: 'WordPress', icon: icons.wordpress },
+  { name: 'Squarespace', icon: icons.squarespace },
+  { name: 'Wix', icon: icons.wix },
+  { name: 'Webflow', icon: icons.webflow },
+  { name: 'Flutter', icon: icons.flutter },
+  { name: 'React Native', icon: icons.react },
+  { name: 'iOS', icon: icons.apple },
+  { name: 'Android', icon: icons.android },
+  { name: 'WooCommerce', icon: icons.woocommerce },
+];
 
-  const features = [
-    { 
-      icon: (
-        <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gradResult" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#22D3EE" />
-              <stop offset="100%" stopColor="#8B5CF6" />
-            </linearGradient>
-             <filter id="glowResult" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2" result="blur"/>
-                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-            </filter>
-          </defs>
-          {/* Chart Bars - Removed white trend line */}
-          <rect x="4" y="12" width="4" height="8" rx="1" fill="url(#gradResult)" fillOpacity="0.2" stroke="url(#gradResult)" strokeWidth="1.5"/>
-          <rect x="10" y="8" width="4" height="12" rx="1" fill="url(#gradResult)" fillOpacity="0.4" stroke="url(#gradResult)" strokeWidth="1.5"/>
-          <rect x="16" y="4" width="4" height="16" rx="1" fill="url(#gradResult)" fillOpacity="0.6" stroke="url(#gradResult)" strokeWidth="1.5"/>
-        </svg>
-      ),
-      title: 'Result-Driven', 
-      description: 'Our strategies are tailored to meet your specific business goals and deliver measurable results.' 
-    },
-    { 
-      icon: (
-        <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gradIdea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#EC4899" />
-              <stop offset="100%" stopColor="#8B5CF6" />
-            </linearGradient>
-             <filter id="glowIdea" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="1.5" result="blur"/>
-                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-            </filter>
-          </defs>
-          {/* Tech Nodes */}
-          <circle cx="12" cy="12" r="3" fill="url(#gradIdea)" fillOpacity="0.3" stroke="url(#gradIdea)" strokeWidth="1.5" />
-          <path d="M12 9V4M12 15V20M15 12H20M9 12H4" stroke="url(#gradIdea)" strokeWidth="1.5" strokeLinecap="round"/>
-          <circle cx="12" cy="4" r="1.5" fill="#fff" filter="url(#glowIdea)"/>
-          <circle cx="12" cy="20" r="1.5" fill="#fff" filter="url(#glowIdea)"/>
-          <circle cx="20" cy="12" r="1.5" fill="#fff" filter="url(#glowIdea)"/>
-          <circle cx="4" cy="12" r="1.5" fill="#fff" filter="url(#glowIdea)"/>
-          
-          {/* Hexagon Frame */}
-          <path d="M12 2L20.6603 7V17L12 22L3.33975 17V7L12 2Z" stroke="url(#gradIdea)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5"/>
-        </svg>
-      ),
-      title: 'Innovative Solutions', 
-      description: 'We stay ahead of the curve, using the latest technologies and trends to keep you competitive.' 
-    },
-    { 
-      icon: (
-         <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gradSupport" x1="1" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#22D3EE" />
-              <stop offset="100%" stopColor="#3B82F6" />
-            </linearGradient>
-             <filter id="glowSupport" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2" result="blur"/>
-                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-            </filter>
-          </defs>
-          {/* Hands holding */}
-          <path d="M7 19C5 19 3 17 3 14.5C3 12 5.5 10 7.5 12L12 16.5L16.5 12C18.5 10 21 12 21 14.5C21 17 19 19 17 19" stroke="url(#gradSupport)" strokeWidth="2" strokeLinecap="round"/>
-          
-          {/* Floating Heart/Core */}
-          <path d="M12 8L10.8 6.8C10.1 6.1 9.2 6.1 8.5 6.8C7.8 7.5 7.8 8.4 8.5 9.1L12 12.6L15.5 9.1C16.2 8.4 16.2 7.5 15.5 6.8C14.8 6.1 13.9 6.1 13.2 6.8L12 8Z" fill="#fff" filter="url(#glowSupport)"/>
-          <path d="M12 12.6L15.5 9.1" stroke="white" strokeWidth="0.5"/>
-          
-          {/* Connection Arc */}
-          <path d="M4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12" stroke="url(#gradSupport)" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="2 2" opacity="0.6"/>
-        </svg>
-      ),
-      title: 'Dedicated Support', 
-      description: 'Your success is our priority. Our team provides ongoing support to ensure your digital presence thrives.' 
-    },
-  ];
-
+const TechStackSlider: React.FC = () => {
   return (
-    <section ref={sectionRef} className="py-20 bg-brand-primary animate-on-scroll">
-      <div className="container mx-auto px-6">
-        <div ref={headerRef} className="text-center mb-12 animate-on-scroll">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white">Why Choose <span className="gradient-text">Designing Dose</span>?</h2>
-          <p className="mt-4 text-lg text-brand-muted">We're more than a service provider; we're your partner in growth.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
-             const cardRef = useScrollAnimation('fade-in');
-             const iconRef = useScrollAnimation('fade-in');
-             const titleRef = useScrollAnimation('slide-in-up');
-             const descRef = useScrollAnimation('slide-in-up');
-             return (
-              <div ref={cardRef} key={index} className="bg-brand-secondary p-8 rounded-lg text-center animate-on-scroll border border-transparent hover:border-brand-accent-start transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-accent-start/20" style={{ transitionDelay: `${index * 150}ms`}}>
-                <div ref={iconRef} className="flex justify-center mb-6 animate-on-scroll transform transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${index * 150 + 150}ms`}}>{feature.icon}</div>
-                <h3 ref={titleRef} className="text-xl font-bold text-white mb-2 animate-on-scroll" style={{ transitionDelay: `${index * 150 + 250}ms`}}>{feature.title}</h3>
-                <p ref={descRef} className="text-brand-muted animate-on-scroll" style={{ transitionDelay: `${index * 150 + 350}ms`}}>{feature.description}</p>
+    <div className="py-16 bg-brand-secondary border-t border-brand-primary overflow-hidden relative">
+       {/* Fade Overlay for seamless look */}
+       <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-brand-secondary to-transparent z-10 pointer-events-none"></div>
+       <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-brand-secondary to-transparent z-10 pointer-events-none"></div>
+
+       <div className="container mx-auto px-6 mb-8 text-center">
+          <p className="text-brand-muted uppercase tracking-widest text-sm font-bold">Powered By Industry-Leading Technologies</p>
+       </div>
+
+      <div className="flex w-full overflow-hidden">
+        {/* Inner container for scrolling */}
+        <div className="flex animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
+          {/* First set of brands */}
+          {brands.map((brand, index) => (
+            <div key={`brand-${index}`} className="flex flex-col items-center justify-center mx-12 group min-w-[100px]">
+              <div className="text-brand-muted group-hover:text-white transition-colors duration-300 transform group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.4)]">
+                {brand.icon}
               </div>
-            )
-          })}
+              <span className="mt-3 text-xs font-medium text-brand-muted group-hover:text-brand-accent-middle transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300">
+                {brand.name}
+              </span>
+            </div>
+          ))}
+          
+          {/* Duplicate set for seamless loop */}
+          {brands.map((brand, index) => (
+            <div key={`brand-dup-${index}`} className="flex flex-col items-center justify-center mx-12 group min-w-[100px]">
+              <div className="text-brand-muted group-hover:text-white transition-colors duration-300 transform group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.4)]">
+                {brand.icon}
+              </div>
+              <span className="mt-3 text-xs font-medium text-brand-muted group-hover:text-brand-accent-middle transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300">
+                {brand.name}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
-  );
-}
 
-
-const HomePage: React.FC = () => {
-  return (
-    <>
-      <Banner />
-      <TrustBadges />
-      <WhyChooseUs />
-      <StatsSection />
-      <PricingHighlight />
-      <ProcessSection />
-      <TestimonialsSection />
-      <TechStackSlider />
-    </>
+      {/* Inline style for the keyframe since we can't easily modify global CSS files in this context without overwriting them entirely */}
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
   );
 };
 
-export default HomePage;
+export default TechStackSlider;
