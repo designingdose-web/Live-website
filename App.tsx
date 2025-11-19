@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
@@ -16,6 +17,7 @@ import RefundPolicyPage from './pages/RefundPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import FloatingCTA from './components/FloatingCTA';
 import LeadCaptureModal from './components/LeadCaptureModal';
+import ScrollToTop from './components/ScrollToTop';
 
 const ScrollManager = () => {
   const { pathname, hash } = useLocation();
@@ -90,6 +92,7 @@ const App: React.FC = () => {
         </main>
         <Footer />
         <FloatingCTA />
+        <ScrollToTop />
         <LeadCaptureModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     </HashRouter>

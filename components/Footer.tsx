@@ -1,6 +1,13 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+
+const Star = ({ className, fill = "currentColor" }: { className?: string; fill?: string }) => (
+  <svg viewBox="0 0 24 24" fill={fill} className={className}>
+    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+  </svg>
+);
 
 const Footer: React.FC = () => {
   return (
@@ -12,6 +19,23 @@ const Footer: React.FC = () => {
             <p className="mt-4 text-sm max-w-sm">
               Designing Dose is a growth-focused digital marketing agency. We help businesses scale their revenue with our expertise in SEO, Web Development, and Social Media Marketing.
             </p>
+            
+             {/* Trustpilot Mini Badge */}
+            <a href="https://www.trustpilot.com/review/designingdose.com" target="_blank" rel="noopener noreferrer" className="mt-6 flex items-center gap-3 bg-brand-primary/50 p-3 rounded-lg border border-gray-700/50 w-fit hover:border-brand-accent-start/30 transition-colors group">
+                <div className="bg-[#00b67a] p-1.5 rounded-md">
+                    <Star className="w-5 h-5 text-white" fill="white" />
+                </div>
+                <div>
+                    <div className="flex items-center gap-2">
+                        <p className="text-white font-bold text-sm leading-tight group-hover:text-[#00b67a] transition-colors">Trustpilot</p>
+                        <div className="flex gap-0.5">
+                            {[1, 2, 3, 4].map((i) => <div key={i} className="w-1.5 h-1.5 bg-[#00b67a] rounded-full"></div>)}
+                            <div className="w-1.5 h-1.5 bg-[#00b67a]/30 rounded-full"></div>
+                        </div>
+                    </div>
+                    <p className="text-xs text-brand-muted mt-0.5">Rated <span className="text-white font-semibold">4.2</span>/5</p>
+                </div>
+            </a>
           </div>
           <div className="md:col-span-2">
             <h4 className="font-semibold text-white tracking-wider uppercase">Contact Us</h4>

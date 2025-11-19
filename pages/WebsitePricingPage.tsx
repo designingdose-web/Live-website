@@ -13,7 +13,22 @@ const WebsitePricingPage: React.FC = () => {
 
   const headerRef = useScrollAnimation('slide-in-up');
   const tabsRef = useScrollAnimation('slide-in-up');
+  const anchorNavRef = useScrollAnimation('slide-in-up');
   const gridRef = useRef<HTMLDivElement>(null);
+
+  const scrollToPlan = (planName: string) => {
+    const element = document.getElementById(planName);
+    if (element) {
+       const headerOffset = 100;
+       const elementPosition = element.getBoundingClientRect().top;
+       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+   
+       window.scrollTo({
+         top: offsetPosition,
+         behavior: "smooth"
+       });
+    }
+  };
 
   useEffect(() => {
     if (!gridRef.current) return;
@@ -68,7 +83,7 @@ const WebsitePricingPage: React.FC = () => {
             <p className="mt-4 text-lg max-w-3xl mx-auto text-brand-muted">{websiteService.description}</p>
           </div>
 
-          <div ref={tabsRef} className="flex flex-col items-center mb-12 animate-on-scroll" style={{ transitionDelay: '200ms'}}>
+          <div ref={tabsRef} className="flex flex-col items-center mb-8 relative z-20 animate-on-scroll" style={{ transitionDelay: '200ms'}}>
             <div className="bg-brand-secondary p-2 rounded-lg flex space-x-2">
               {websiteService.tabs.map((tab, index) => (
                 <button
@@ -84,15 +99,34 @@ const WebsitePricingPage: React.FC = () => {
                 </button>
               ))}
             </div>
+          </div>
+          
+           {/* Plan Anchor Navigation Bar */}
+           {activePlans.length > 0 && (
+             <div ref={anchorNavRef} className="flex flex-wrap justify-center gap-3 mb-8 animate-on-scroll" style={{ transitionDelay: '300ms' }}>
+                <span className="w-full text-center text-xs text-brand-muted uppercase tracking-widest mb-1 font-semibold">Available Plans</span>
+                {activePlans.map((plan) => (
+                  <button
+                    key={plan.name}
+                    onClick={() => scrollToPlan(plan.name)}
+                    className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-brand-secondary bg-brand-secondary/50 text-brand-muted hover:bg-brand-secondary hover:text-white hover:border-brand-accent-middle hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-accent-middle"
+                  >
+                    {plan.name}
+                  </button>
+                ))}
+             </div>
+          )}
+
+          <div className="flex justify-center mb-12 relative z-20">
              <button
                 onClick={() => setIsCompareModalOpen(true)}
-                className="mt-6 bg-transparent border-2 border-brand-accent-end text-brand-accent-end font-bold py-2 px-6 rounded-full text-base hover:bg-brand-accent-end hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="bg-transparent border-2 border-brand-accent-end text-brand-accent-end font-bold py-2 px-6 rounded-full text-base hover:bg-brand-accent-end hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
                 Compare {activeCategoryTitle} Plans
             </button>
           </div>
 
-          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10 mt-8">
             {activePlans.map((plan, index) => {
                return (
                 <div 

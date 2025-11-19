@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import ProcessSection from '../components/ProcessSection';
+import TrustBadges from '../components/TrustBadges';
 
 const AboutPage: React.FC = () => {
     const heroRef = useScrollAnimation('slide-in-up');
@@ -24,6 +26,8 @@ const AboutPage: React.FC = () => {
           </p>
         </div>
       </div>
+
+      <TrustBadges className="bg-brand-primary/50" />
 
       {/* Mission & Vision */}
       <div className="py-20">

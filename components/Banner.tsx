@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,21 +12,21 @@ interface Slide {
 const slides: Slide[] = [
    {
     type: 'image',
-    source: 'https://images.unsplash.com/photo-1534665482403-a909d0d97c67',
-    tagline: 'Your Vision, Amplified.',
-    subTagline: 'We build bespoke websites that captivate your audience and convert clicks into customers.',
+    source: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e',
+    tagline: "We Don't Just Build Websites. We Build Empires.",
+    subTagline: 'Immersive design, flawless code, and a user experience that turns visitors into obsessed fans.',
   },
   {
     type: 'image',
-    source: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
-    tagline: 'Fuel Your Growth Engine.',
-    subTagline: 'Drive traffic, generate leads, and dominate your market with our data-driven SEO and marketing strategies.',
+    source: 'https://images.unsplash.com/photo-1639322537228-f710d846310a',
+    tagline: 'Invisibility is Not an Option.',
+    subTagline: 'Climb the rankings and claim your throne. We turn search engines into your most powerful growth engine.',
   },
   {
     type: 'image',
-    source: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
-    tagline: 'Strategic Solutions, Tangible Results.',
-    subTagline: 'We align with your goals to deliver custom digital strategies that drive growth and maximize your ROI.',
+    source: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853',
+    tagline: 'Stop the Scroll. Start the Conversation.',
+    subTagline: "From viral visuals to strategic storytelling, we amplify your brand's voice in a noisy digital world.",
   },
 ];
 

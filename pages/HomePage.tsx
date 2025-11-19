@@ -7,6 +7,8 @@ import { servicesData } from '../data/servicesData';
 import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import PricingHighlightCard from '../components/PricingHighlightCard';
+import StatsSection from '../components/StatsSection';
+import TrustBadges from '../components/TrustBadges';
 
 const PricingHighlight: React.FC = () => {
   const websitePlans = servicesData
@@ -45,9 +47,83 @@ const WhyChooseUs: React.FC = () => {
   const headerRef = useScrollAnimation('slide-in-up');
 
   const features = [
-    { icon: '🎯', title: 'Result-Driven', description: 'Our strategies are tailored to meet your specific business goals and deliver measurable results.' },
-    { icon: '💡', title: 'Innovative Solutions', description: 'We stay ahead of the curve, using the latest technologies and trends to keep you competitive.' },
-    { icon: '🤝', title: 'Dedicated Support', description: 'Your success is our priority. Our team provides ongoing support to ensure your digital presence thrives.' },
+    { 
+      icon: (
+        <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradResult" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#22D3EE" />
+              <stop offset="100%" stopColor="#8B5CF6" />
+            </linearGradient>
+             <filter id="glowResult" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          {/* Chart Bars - Removed white trend line */}
+          <rect x="4" y="12" width="4" height="8" rx="1" fill="url(#gradResult)" fillOpacity="0.2" stroke="url(#gradResult)" strokeWidth="1.5"/>
+          <rect x="10" y="8" width="4" height="12" rx="1" fill="url(#gradResult)" fillOpacity="0.4" stroke="url(#gradResult)" strokeWidth="1.5"/>
+          <rect x="16" y="4" width="4" height="16" rx="1" fill="url(#gradResult)" fillOpacity="0.6" stroke="url(#gradResult)" strokeWidth="1.5"/>
+        </svg>
+      ),
+      title: 'Result-Driven', 
+      description: 'Our strategies are tailored to meet your specific business goals and deliver measurable results.' 
+    },
+    { 
+      icon: (
+        <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradIdea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#EC4899" />
+              <stop offset="100%" stopColor="#8B5CF6" />
+            </linearGradient>
+             <filter id="glowIdea" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          {/* Tech Nodes */}
+          <circle cx="12" cy="12" r="3" fill="url(#gradIdea)" fillOpacity="0.3" stroke="url(#gradIdea)" strokeWidth="1.5" />
+          <path d="M12 9V4M12 15V20M15 12H20M9 12H4" stroke="url(#gradIdea)" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="12" cy="4" r="1.5" fill="#fff" filter="url(#glowIdea)"/>
+          <circle cx="12" cy="20" r="1.5" fill="#fff" filter="url(#glowIdea)"/>
+          <circle cx="20" cy="12" r="1.5" fill="#fff" filter="url(#glowIdea)"/>
+          <circle cx="4" cy="12" r="1.5" fill="#fff" filter="url(#glowIdea)"/>
+          
+          {/* Hexagon Frame */}
+          <path d="M12 2L20.6603 7V17L12 22L3.33975 17V7L12 2Z" stroke="url(#gradIdea)" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5"/>
+        </svg>
+      ),
+      title: 'Innovative Solutions', 
+      description: 'We stay ahead of the curve, using the latest technologies and trends to keep you competitive.' 
+    },
+    { 
+      icon: (
+         <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradSupport" x1="1" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#22D3EE" />
+              <stop offset="100%" stopColor="#3B82F6" />
+            </linearGradient>
+             <filter id="glowSupport" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          {/* Hands holding */}
+          <path d="M7 19C5 19 3 17 3 14.5C3 12 5.5 10 7.5 12L12 16.5L16.5 12C18.5 10 21 12 21 14.5C21 17 19 19 17 19" stroke="url(#gradSupport)" strokeWidth="2" strokeLinecap="round"/>
+          
+          {/* Floating Heart/Core */}
+          <path d="M12 8L10.8 6.8C10.1 6.1 9.2 6.1 8.5 6.8C7.8 7.5 7.8 8.4 8.5 9.1L12 12.6L15.5 9.1C16.2 8.4 16.2 7.5 15.5 6.8C14.8 6.1 13.9 6.1 13.2 6.8L12 8Z" fill="#fff" filter="url(#glowSupport)"/>
+          <path d="M12 12.6L15.5 9.1" stroke="white" strokeWidth="0.5"/>
+          
+          {/* Connection Arc */}
+          <path d="M4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12" stroke="url(#gradSupport)" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="2 2" opacity="0.6"/>
+        </svg>
+      ),
+      title: 'Dedicated Support', 
+      description: 'Your success is our priority. Our team provides ongoing support to ensure your digital presence thrives.' 
+    },
   ];
 
   return (
@@ -64,8 +140,8 @@ const WhyChooseUs: React.FC = () => {
              const titleRef = useScrollAnimation('slide-in-up');
              const descRef = useScrollAnimation('slide-in-up');
              return (
-              <div ref={cardRef} key={index} className="bg-brand-secondary p-8 rounded-lg text-center animate-on-scroll border border-transparent hover:border-brand-accent-start transition-all duration-300" style={{ transitionDelay: `${index * 150}ms`}}>
-                <div ref={iconRef} className="text-4xl mb-4 animate-on-scroll" style={{ transitionDelay: `${index * 150 + 150}ms`}}>{feature.icon}</div>
+              <div ref={cardRef} key={index} className="bg-brand-secondary p-8 rounded-lg text-center animate-on-scroll border border-transparent hover:border-brand-accent-start transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-accent-start/20" style={{ transitionDelay: `${index * 150}ms`}}>
+                <div ref={iconRef} className="flex justify-center mb-6 animate-on-scroll transform transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${index * 150 + 150}ms`}}>{feature.icon}</div>
                 <h3 ref={titleRef} className="text-xl font-bold text-white mb-2 animate-on-scroll" style={{ transitionDelay: `${index * 150 + 250}ms`}}>{feature.title}</h3>
                 <p ref={descRef} className="text-brand-muted animate-on-scroll" style={{ transitionDelay: `${index * 150 + 350}ms`}}>{feature.description}</p>
               </div>
@@ -82,7 +158,9 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Banner />
+      <TrustBadges />
       <WhyChooseUs />
+      <StatsSection />
       <PricingHighlight />
       <ProcessSection />
       <TestimonialsSection />

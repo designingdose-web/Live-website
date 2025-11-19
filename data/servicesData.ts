@@ -1,89 +1,72 @@
+
 import type { ServiceCategory } from '../types';
 
 export const testimonials = [
   {
-    heading: "Exceptional service and communication!",
-    review: "The Designing Dose team was amazing. They were patient and attentive, making sure the website was exactly what I wanted. I've received numerous compliments on the design and functionality. Highly recommend their services to everyone.",
-    name: "Amber Moreland",
-    title: "Founder, Amber's Creations"
-  },
-  {
-    heading: "Transformed our online presence",
-    review: "Our old website was outdated and didn't reflect our brand. Designing Dose gave us a fresh, modern look that has significantly boosted our online engagement. The process was smooth and professional from start to finish.",
-    name: "John M.",
-    title: "Marketing Director, JM Solutions"
-  },
-  {
-    heading: "A pleasure to work with.",
-    review: "I can't say enough good things about my experience. The team is not only talented but also incredibly easy to work with. They listened to my vision and brought it to life, exceeding all my expectations.",
-    name: "Aiden Moon",
-    title: "CEO, Moonshot Innovations"
-  },
-  {
-    heading: "Professional, efficient, and creative.",
-    review: "From the initial consultation to the final launch, the team at Designing Dose was top-notch. They delivered a high-quality website on time and on budget. Their creativity and attention to detail are second to none.",
-    name: "Hasnain Ali",
-    title: "Owner, Ali's Fine Goods"
-  },
-  {
-    heading: "The results speak for themselves.",
-    review: "Our organic traffic has increased by over 200% since we partnered with Designing Dose for our SEO. Their team is knowledgeable, proactive, and provides clear, actionable reports. It's been a fantastic investment.",
-    name: "Samantha Riley",
-    title: "E-commerce Manager, VertaStore"
-  },
-  {
-    heading: "A truly collaborative partner.",
-    review: "They took the time to understand our niche market and developed a social media strategy that resonated with our audience. Engagement is up, and we're seeing real community growth. They feel like an extension of our own team.",
-    name: "David Chen",
-    title: "Co-founder, Artisan Roast Co."
-  },
-  {
-    heading: "Our new logo is perfect!",
-    review: "The branding process was incredibly thorough. They presented several amazing concepts, and the final logo perfectly captures our company's essence. It's modern, memorable, and we're proud to show it off.",
-    name: "Maria Garcia",
-    title: "Owner, Bloom & Petal Florist"
-  },
-  {
-    heading: "An absolute game-changer for our business.",
-    review: "We had a complex idea for a mobile app, and Designing Dose executed it flawlessly. The UI is intuitive, and the performance is solid. They turned our vision into a tangible product that our users love.",
-    name: "Tomisin Adebayo",
-    title: "CEO, ConnectSphere"
-  },
-  {
-    heading: "Flawless execution and support.",
-    review: "The entire process, from design to development and launch, was seamless. The team is responsive, professional, and delivered a website that is both beautiful and functional. I couldn't be happier with the outcome.",
+    heading: "Mobile app perfection",
+    review: "We had this crazy mobile app idea that we weren't even sure could be pulled off, but Designing Dose made it happen. The app looks amazing, runs like butter, and just feels right. What I loved most was how easy they were to work with; no tech jargon, no stress, just results. If you've got an idea you actually care about, they're the team you want building it.",
     name: "Isabella Rossi",
-    title: "Photographer & Artist"
+    title: "Trustpilot Review"
   },
   {
-    heading: "They delivered on time and exceeded expectations.",
-    review: "In the fast-paced world of e-commerce, you need a reliable team. Designing Dose built our dropshipping store quickly and equipped it with all the tools we needed to succeed. Their post-launch support has been invaluable.",
-    name: "Kenji Tanaka",
-    title: "Entrepreneur, GadgetFlow"
+    heading: "I'm blown away by the stunning website...",
+    review: "I'm blown away by the stunning website development and logo design created by Designingdose! Their attention to detail and creativity have taken my brand to the next level.",
+    name: "Pierre Dupont",
+    title: "Trustpilot Review"
   },
   {
-    heading: "Finally, an agency that gets it.",
-    review: "We've worked with other agencies before, but Designing Dose is in a league of their own. The strategic insights they provide are top-notch, and they are genuinely invested in our success. It's a true partnership.",
-    name: "Fatima Al-Jamil",
-    title: "Marketing VP, Horizon Dynamics"
+    heading: "Quality work in best prices",
+    review: "They were very professional and supportive. I personally find their prices to be the best and the work was exceptional too. I'm satisfied with my website and would love to try them again if needed and definitely would recommend others. Although, they could improve their response time, sometimes I wasn't catered right away but still they managed to respond the same day. So it was a good experience overall.",
+    name: "Jasper",
+    title: "Trustpilot Review"
   },
   {
-    heading: "The communication was outstanding.",
-    review: "Throughout the project, I was kept in the loop with regular updates. They were always available to answer my questions and were incredibly receptive to feedback. It made the whole process stress-free.",
-    name: "Liam O'Connell",
-    title: "Restaurateur, The Gilded Spoon"
+    heading: "Exceeded my expectations",
+    review: "Hired them just to get a basic website and ended up with a whole lot more. Trevor and team were very professional and cooperative throughout our entire journey. The prices were so good that at the beginning I was reluctant and thought maybe I'm getting played lol but all ended well, very well. Got a website, logo, hosting add-ons and whatnot. They are now working on the SEO, we're just 2nd month in but I can feel it's going in a good direction. Highly recommend!!",
+    name: "Daniel Prescott",
+    title: "Trustpilot Review"
   },
   {
-    heading: "Stunning design and powerful functionality.",
-    review: "I'm blown away by the website they created for me. It looks incredible and works perfectly on all devices. They managed to blend artistic design with practical, user-friendly features. Highly recommended!",
-    name: "Chloé Dubois",
-    title: "Fashion Blogger, Chic & Sage"
+    heading: "I highly recommend them",
+    review: "I highly recommend them Trevor is a very friendly and cooperative person, he guided me step by step in my website journey. Much appreciated.",
+    name: "Tilal Mahgoub",
+    title: "Trustpilot Review"
   },
   {
-    heading: "A massive ROI.",
-    review: "The marketing campaign they ran for us generated leads almost immediately. We saw a return on our investment within the first month. Their data-driven approach is incredibly effective.",
-    name: "Markus Schmidt",
-    title: "General Manager, Precision Engineering"
+    heading: "Excellent Logo Design and Website Development",
+    review: "I recently worked with Designingdose for logo design and website development, and I couldn't be happier with the results! The team took the time to understand my vision and delivered a unique logo that perfectly represents my brand. Their website development service was equally impressive - the site is sleek, user-friendly, and responsive across all devices. Their communication was clear, and they made revisions until everything was perfect.",
+    name: "Amber Moreland",
+    title: "Trustpilot Review"
+  },
+  {
+    heading: "Excellent Service with Creative Input",
+    review: "I hired Designingdose to build a website for my business, and I couldn't be happier with the results! Not only did they listen to my needs, but they also provided their own creative ideas that improved the final product. The result was a high-quality, user-friendly design that was up to my expectations. Their professionalism, pro-activeness and timely delivery made the whole process smooth. Highly recommend their services!",
+    name: "Hasnain Ali",
+    title: "Trustpilot Review"
+  },
+  {
+    heading: "Excellent from start to finish",
+    review: "Trevor and the team were excellent from start to finish. They created a website within a short time period with no issues and excellent communication throughout.",
+    name: "Johnm",
+    title: "Trustpilot Review"
+  },
+  {
+    heading: "Good communications",
+    review: "Good communications and good website made for good quote.",
+    name: "Aidan Mone",
+    title: "Trustpilot Review"
+  },
+  {
+    heading: "Incredible ROI on our SEO campaign",
+    review: "We were struggling to get noticed online until we partnered with Designing Dose. Their SEO strategy was comprehensive and transparent. Within 4 months, our organic traffic doubled, and the quality of leads has improved significantly. Professional, data-driven, and effective.",
+    name: "Sarah Jenkins",
+    title: "Marketing Director, TechFlow"
+  },
+  {
+    heading: "A partner, not just a vendor",
+    review: "What sets Designing Dose apart is their genuine care for your business growth. They don't just deliver a product; they provide strategy. The e-commerce store they built for us is robust, fast, and converting higher than our old site ever did.",
+    name: "Michael O'Connor",
+    title: "CEO, O'Connor Retail"
   }
 ];
 
@@ -96,7 +79,7 @@ export const servicesData: ServiceCategory[] = [
       {
         tabName: 'Informative',
         plans: [
-          { name: 'Beginner', price: '€199', features: ['1-page Custom Website', '1 Design Concept', 'Content Integration', '3 Stock Photos', '1 Banner Design', 'Contact/Query Form', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
+          { name: 'Beginner', price: '€199', features: ['1-page Custom Website', '1 Design Concept', 'Content Integration', '3 Stock Photos', '1 Banner Design', { feature: 'Contact/Query Form', tooltip: 'A simple form allowing visitors to send you messages directly from your website.' }, 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
             comparisonFeatures: {
                 'Pages': '1',
                 'Design Concepts': '1',
@@ -115,7 +98,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': false
             }
           },
-          { name: 'Budget', price: '€449', features: ['4-5 pages Custom Website', { feature: 'Basic on-page SEO', tooltip: 'We optimize your page titles, meta descriptions, and keywords to improve visibility on search engines for relevant queries.' }, 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Social media link integration', 'Google Map embed for location', '1 Design Concept', '5 Stock Photos', '1 Banner Design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
+          { name: 'Budget', price: '€449', features: ['4-5 pages Custom Website', { feature: 'Basic on-page SEO', tooltip: 'We optimize your page titles, meta descriptions, and keywords to improve visibility on search engines for relevant queries.' }, { feature: 'Cross Browser Compatibility', tooltip: 'Ensures your website looks and works correctly on all major web browsers like Chrome, Firefox, and Safari.' }, { feature: 'Lead capture form with auto-email response', tooltip: 'Collect visitor details and automatically send them a confirmation or welcome email.' }, 'Social media link integration', 'Google Map embed for location', '1 Design Concept', '5 Stock Photos', '1 Banner Design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
             comparisonFeatures: {
                 'Pages': '4-5',
                 'Design Concepts': '1',
@@ -134,7 +117,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': false
             }
           },
-          { name: 'Standard', price: '€749', isPopular: true, features: ['6-8 pages Custom Website', { feature: 'Mobile Responsive Website', tooltip: 'Your website will look and function perfectly on all devices, including desktops, tablets, and smartphones.' }, 'Custom visuals & icons', { feature: 'Enhanced SEO for key pages', tooltip: 'Advanced SEO techniques applied to your most important pages to boost their ranking for targeted keywords.' }, 'Click-to-call & WhatsApp chat functionality', 'Testimonial or case study section', 'Blog with category filters', 'Image gallery or portfolio section', 'Embedded Video (Customer will provide)', { feature: 'Secure admin tools for easy updates', tooltip: 'A user-friendly dashboard that allows you to manage and update your website content without any coding knowledge.' }, 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Social media link integration', 'Google Map embed for location', 'Stock Photos', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
+          { name: 'Standard', price: '€749', isPopular: true, features: ['6-8 pages Custom Website', { feature: 'Mobile Responsive Website', tooltip: 'Your website will look and function perfectly on all devices, including desktops, tablets, and smartphones.' }, 'Custom visuals & icons', { feature: 'Enhanced SEO for key pages', tooltip: 'Advanced SEO techniques applied to your most important pages to boost their ranking for targeted keywords.' }, 'Click-to-call & WhatsApp chat functionality', 'Testimonial or case study section', { feature: 'Blog with category filters', tooltip: 'A section to share news and articles, organized by topics for easy navigation.' }, 'Image gallery or portfolio section', 'Embedded Video (Customer will provide)', { feature: 'Secure admin tools for easy updates', tooltip: 'A user-friendly dashboard that allows you to manage and update your website content without any coding knowledge.' }, 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Social media link integration', 'Google Map embed for location', 'Stock Photos', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
             comparisonFeatures: {
                 'Pages': '6-8',
                 'Design Concepts': '1',
@@ -153,7 +136,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': false
             }
           },
-          { name: 'Professional', price: '€1299', features: ['8-10 pages Custom Website', 'Appointment Booking System/calendar integration', 'Sliding Promotional Banners', 'Advanced Animations & Scroll Effects', { feature: 'Google Analytics setup', tooltip: 'We integrate Google Analytics to track your website traffic, user behavior, and other key metrics, providing valuable insights for your business.' }, 'Live chat integration', 'Social media feed display', { feature: 'Newsletter signup with email automation', tooltip: 'Capture leads with a newsletter form and automatically send welcome emails or add them to your marketing campaigns.' }, 'FAQ or resources section', 'Priority Support', { feature: 'Website Optimization Package for Speed', tooltip: 'We implement techniques like image compression, caching, and code minification to ensure your website loads quickly for all users.' }, 'Advanced Hover Effects', 'Search Engine Submission', 'Mobile Responsive Website', 'Custom visuals & icons', 'Enhanced SEO for key pages', 'Click-to-call & WhatsApp chat functionality', 'Testimonial or case study section', 'Blog with category filters', 'Image gallery or portfolio section', 'Embedded Video (Customer will provide)', 'Secure admin tools for easy updates', 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Social media link integration', 'Google Map embed for location', 'Stock Photos', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
+          { name: 'Professional', price: '€1299', features: ['8-10 pages Custom Website', { feature: 'Appointment Booking System/calendar integration', tooltip: 'Allow clients to book appointments with you directly through your website.' }, 'Sliding Promotional Banners', 'Advanced Animations & Scroll Effects', { feature: 'Google Analytics setup', tooltip: 'We integrate Google Analytics to track your website traffic, user behavior, and other key metrics, providing valuable insights for your business.' }, 'Live chat integration', 'Social media feed display', { feature: 'Newsletter signup with email automation', tooltip: 'Capture leads with a newsletter form and automatically send welcome emails or add them to your marketing campaigns.' }, 'FAQ or resources section', 'Priority Support', { feature: 'Website Optimization Package for Speed', tooltip: 'We implement techniques like image compression, caching, and code minification to ensure your website loads quickly for all users.' }, 'Advanced Hover Effects', 'Search Engine Submission', 'Mobile Responsive Website', 'Custom visuals & icons', 'Enhanced SEO for key pages', 'Click-to-call & WhatsApp chat functionality', 'Testimonial or case study section', 'Blog with category filters', 'Image gallery or portfolio section', 'Embedded Video (Customer will provide)', 'Secure admin tools for easy updates', 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Social media link integration', 'Google Map embed for location', 'Stock Photos', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
             comparisonFeatures: {
                 'Pages': '8-10',
                 'Design Concepts': '1',
@@ -172,7 +155,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': false
             }
           },
-          { name: 'Premium', price: '€1899', features: ['10-15 Pages Custom Website', 'Membership Portal', 'Customer Signup Area', { feature: 'Multi-language option', tooltip: 'Make your website accessible to a global audience by offering it in multiple languages.' }, { feature: 'Advanced local SEO (schema, geo-targeting)', tooltip: 'Optimize your site for local search results, including schema markup for rich snippets and targeting specific geographic areas.' }, { feature: 'Content Management System Integration', tooltip: 'We integrate a user-friendly CMS like WordPress, allowing you to easily update your website\'s content, images, and blog posts without needing to code.' }, 'Dedicated Team of Designers Developers', '30 Days Post-Launch Support', '1 Hour Strategy Call Included', 'Email Auto Responder', 'Appointment Booking System/calendar integration', 'Sliding Promotional Banners', 'Advanced Animations & Scroll Effects', 'Google Analytics setup', 'Live chat integration', 'Social media feed display', 'Newsletter signup with email automation', 'FAQ or resources section', 'Priority Support', 'Website Optimization Package for Speed', 'Advanced Hover Effects', 'Search Engine Submission', 'Mobile Responsive Website', 'Custom visuals & icons', 'Enhanced SEO for key pages', 'Click-to-call & WhatsApp chat functionality', 'Testimonial or case study section', 'Blog with category filters', 'Image gallery or portfolio section', 'Embedded Video (Customer will provide)', 'Secure admin tools for easy updates', 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Google Map embed for location', 'Stock Photos', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
+          { name: 'Premium', price: '€1899', features: ['10-15 Pages Custom Website', { feature: 'Membership Portal', tooltip: 'A restricted area of your site accessible only to registered members or subscribers.' }, 'Customer Signup Area', { feature: 'Multi-language option', tooltip: 'Make your website accessible to a global audience by offering it in multiple languages.' }, { feature: 'Advanced local SEO (schema, geo-targeting)', tooltip: 'Optimize your site for local search results, including schema markup for rich snippets and targeting specific geographic areas.' }, { feature: 'Content Management System Integration', tooltip: 'We integrate a user-friendly CMS like WordPress, allowing you to easily update your website\'s content, images, and blog posts without needing to code.' }, 'Dedicated Team of Designers Developers', '30 Days Post-Launch Support', '1 Hour Strategy Call Included', 'Email Auto Responder', 'Appointment Booking System/calendar integration', 'Sliding Promotional Banners', 'Advanced Animations & Scroll Effects', 'Google Analytics setup', 'Live chat integration', 'Social media feed display', 'Newsletter signup with email automation', 'FAQ or resources section', 'Priority Support', 'Website Optimization Package for Speed', 'Advanced Hover Effects', 'Search Engine Submission', 'Mobile Responsive Website', 'Custom visuals & icons', 'Enhanced SEO for key pages', 'Click-to-call & WhatsApp chat functionality', 'Testimonial or case study section', 'Blog with category filters', 'Image gallery or portfolio section', 'Embedded Video (Customer will provide)', 'Secure admin tools for easy updates', 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Google Map embed for location', 'Stock Photos', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
             comparisonFeatures: {
                 'Pages': '10-15',
                 'Design Concepts': '1',
@@ -191,7 +174,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': '30 Days'
             }
           },
-          { name: 'Ultimate', price: '€2499', features: ['Unlimited Pages Custom Website', '2 Design Concepts', 'Online Payment Module Integration (Optional)', { feature: 'CRM integration (HubSpot, Mailchimp)', tooltip: 'Connect your website forms directly to your Customer Relationship Management (CRM) software to streamline lead management.' }, 'Advanced Forms (Multi-step/Conditional)', 'Multilingual Setup', '1 Month Maintenance', 'Premium graphics/illustrations/animations', 'Custom lead magnets (PDFs, checklists)', 'Multi-location setup', 'Blog automation (RSS or YouTube)', 'VIP Support Access', 'Advanced site analytics dashboard setup', 'Membership Portal', 'Customer Signup Area', 'Multi-language option', 'Advanced local SEO (schema, geo-targeting)', 'Content Management System Integration', 'Dedicated Team of Designers Developers', '30 Days Post-Launch Support', '1 Hour Strategy Call Included', 'Email Auto Responder', 'Appointment Booking System/calendar integration', 'Sliding Promotional Banners', 'Advanced Animations & Scroll Effects', 'Google Analytics setup', 'Live chat integration', 'Social media feed display', 'Newsletter signup with email automation', 'FAQ or resources section', 'Priority Support', 'Website Optimization Package for Speed', 'Advanced Hover Effects', 'Search Engine Submission', 'Mobile Responsive Website', 'Custom visuals & icons', 'Enhanced SEO for key pages', 'Click-to-call & WhatsApp chat functionality', 'Testimonial or case study section', 'Blog with category filters', 'Image gallery or portfolio section', 'Embedded Video (Customer will provide)', 'Secure admin tools for easy updates', 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Google Map embed for location', 'Stock Photos', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'], note: 'Fair Use Policy (FUP) applies: Up to 30 pages are included.',
+          { name: 'Ultimate', price: '€2499', features: ['Unlimited Pages Custom Website', '2 Design Concepts', { feature: 'Online Payment Module Integration (Optional)', tooltip: 'Accept payments directly on your site for services or digital products.' }, { feature: 'CRM integration (HubSpot, Mailchimp)', tooltip: 'Connect your website forms directly to your Customer Relationship Management (CRM) software to streamline lead management.' }, { feature: 'Advanced Forms (Multi-step/Conditional)', tooltip: 'Complex forms that change based on user input, ideal for detailed inquiries or applications.' }, 'Multilingual Setup', '1 Month Maintenance', 'Premium graphics/illustrations/animations', 'Custom lead magnets (PDFs, checklists)', 'Multi-location setup', { feature: 'Blog automation (RSS or YouTube)', tooltip: 'Automatically populate your blog with content from your RSS feeds or YouTube channel.' }, 'VIP Support Access', 'Advanced site analytics dashboard setup', 'Membership Portal', 'Customer Signup Area', 'Multi-language option', 'Advanced local SEO (schema, geo-targeting)', 'Content Management System Integration', 'Dedicated Team of Designers Developers', '30 Days Post-Launch Support', '1 Hour Strategy Call Included', 'Email Auto Responder', 'Appointment Booking System/calendar integration', 'Sliding Promotional Banners', 'Advanced Animations & Scroll Effects', 'Google Analytics setup', 'Live chat integration', 'Social media feed display', 'Newsletter signup with email automation', 'FAQ or resources section', 'Priority Support', 'Website Optimization Package for Speed', 'Advanced Hover Effects', 'Search Engine Submission', 'Mobile Responsive Website', 'Custom visuals & icons', 'Enhanced SEO for key pages', 'Click-to-call & WhatsApp chat functionality', 'Testimonial or case study section', 'Blog with category filters', 'Image gallery or portfolio section', 'Embedded Video (Customer will provide)', 'Secure admin tools for easy updates', 'Cross Browser Compatibility', 'Lead capture form with auto-email response', 'Google Map embed for location', 'Stock Photos', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'], note: 'Fair Use Policy (FUP) applies: Up to 30 pages are included.',
             comparisonFeatures: {
                 'Pages': 'Unlimited (FUP: 30)',
                 'Design Concepts': '2',
@@ -228,13 +211,13 @@ export const servicesData: ServiceCategory[] = [
                 'Customer Accounts': false,
                 'Inventory Management': false,
                 'Store Analytics': false,
-                'CMS / Admin Panel': 'Basic',
+                'CMS / Admin Panel': false,
                 'Internationalization': false,
                 'Advanced Features': false,
                 'Post-Launch Support': false
             }
           },
-          { name: 'Standard Store', price: '€649', isPopular: true, features: ['Up to 30 products', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Homepage banner/slider design', 'Checkout & payment gateway setup (PayPal, Stripe, cards)', 'Mini shopping cart integration', 'Basic shipping configuration', 'Email order notifications', 'Basic store styling', 'Social media shop link', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
+          { name: 'Standard Store', price: '€649', isPopular: true, features: ['Up to 30 products', { feature: 'Advanced navigation setup', tooltip: 'Organization of products into collections, categories, and intuitive menus for better user experience.' }, 'Mobile-responsive design', 'Homepage banner/slider design', 'Checkout & payment gateway setup (PayPal, Stripe, cards)', 'Mini shopping cart integration', 'Basic shipping configuration', 'Email order notifications', 'Basic store styling', 'Social media shop link', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
             comparisonFeatures: {
                 'Product Count': 'Up to 30',
                 'Design Level': 'Mobile-Responsive',
@@ -253,7 +236,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': false
             }
           },
-          { name: 'Advanced Store', price: '€999', features: ['Custom design matching your brand', 'Add up to 75 products', 'Full shopping cart', 'payment integration', 'Smart product search', { feature: 'Basic app installations', tooltip: 'Installation of essential e-commerce apps for features like product reviews, live chat, or a customer wishlist.' }, 'Shipping & tax configuration', 'Email order notifications', 'Product reviews integration', 'Store analytics dashboard', 'Low stock alerts', 'Social media integration', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
+          { name: 'Advanced Store', price: '€999', features: ['Custom design matching your brand', 'Add up to 75 products', 'Full shopping cart', 'payment integration', { feature: 'Smart product search', tooltip: 'Advanced search bar that predicts and suggests products as customers type.' }, { feature: 'Basic app installations', tooltip: 'Installation of essential e-commerce apps for features like product reviews, live chat, or a customer wishlist.' }, 'Shipping & tax configuration', 'Email order notifications', 'Product reviews integration', 'Store analytics dashboard', { feature: 'Low stock alerts', tooltip: 'Get notified automatically when product inventory drops below a certain level.' }, 'Social media integration', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back-Guarantee'],
             comparisonFeatures: {
                 'Product Count': 'Up to 75',
                 'Design Level': 'Custom Branded',
@@ -272,7 +255,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': false
             }
           },
-          { name: 'Professional Store', price: '€1499', features: ['Up to 125 products', { feature: 'Abandoned cart recovery setup', tooltip: 'Automatically send reminder emails to customers who add products to their cart but don\'t complete the purchase, helping you recover lost sales.' }, 'Blog setup for content marketing', 'Product reviews & rating system integration', 'Promotional banners & announcement bars', 'Upsell & cross-sell functionality', 'Discount codes & coupon setup', 'Gift card setup', 'Newsletter popup', 'Advanced product filtering', 'Product Variants (Size, Color, etc.)', 'Multi-payment gateways (Stripe, PayPal, Apple Pay, Klarna)', { feature: 'Email marketing integration', tooltip: 'Connect your store to platforms like Klaviyo or Mailchimp to build email lists and run marketing campaigns.' }, 'Performance & sales analytics dashboard', 'Wishlist, reviews, & loyalty system', 'Smart product search', 'Shipping & tax configuration', 'Email order notifications', 'Low stock alerts', 'Social media integration', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'],
+          { name: 'Professional Store', price: '€1499', features: ['Up to 125 products', { feature: 'Abandoned cart recovery setup', tooltip: 'Automatically send reminder emails to customers who add products to their cart but don\'t complete the purchase, helping you recover lost sales.' }, 'Blog setup for content marketing', 'Product reviews & rating system integration', 'Promotional banners & announcement bars', { feature: 'Upsell & cross-sell functionality', tooltip: 'Suggest related or higher-value products to customers during browsing or checkout to increase order value.' }, 'Discount codes & coupon setup', 'Gift card setup', 'Newsletter popup', 'Advanced product filtering', { feature: 'Product Variants (Size, Color, etc.)', tooltip: 'Support for products that come in multiple options, like different sizes or colors.' }, 'Multi-payment gateways (Stripe, PayPal, Apple Pay, Klarna)', { feature: 'Email marketing integration', tooltip: 'Connect your store to platforms like Klaviyo or Mailchimp to build email lists and run marketing campaigns.' }, 'Performance & sales analytics dashboard', 'Wishlist, reviews, & loyalty system', 'Smart product search', 'Shipping & tax configuration', 'Email order notifications', 'Low stock alerts', 'Social media integration', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'],
             comparisonFeatures: {
                 'Product Count': 'Up to 125',
                 'Design Level': 'Brand-Focused',
@@ -291,7 +274,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': false
             }
           },
-          { name: 'Business Store', price: '€2499', features: ['Up to 500 products', 'Conversion-Focused Design', 'Customer Login Area (Sign-Up & Sign-In)', 'Multi-currency support', 'Multiple Shipping Module Integration', 'Advanced shipping rules (zones, weight, custom rates)', 'Inventory management system setup', 'Loyalty program / reward points integration', 'Custom Shopping Cart Integration', { feature: 'CMS / Backend Administrative System', tooltip: 'A powerful and secure backend system that gives you full control over your products, orders, customers, and store settings.' }, 'Store speed & performance optimization', 'Free unlimited revisions', 'Abandoned cart recovery setup', 'Blog setup for content marketing', 'Product reviews & rating system integration', 'Promotional banners & announcement bars', 'Upsell & cross-sell functionality', 'Discount codes & coupon setup', 'Gift card setup', 'Newsletter popup', 'Advanced product filtering', 'Product Variants (Size, Color, etc.)', 'Multi-payment gateways (Stripe, PayPal, Apple Pay, Klarna)', 'Email marketing integration (Klaviyo, Mailchimp, etc.)', 'Performance & sales analytics dashboard', 'Wishlist, reviews, & loyalty system', 'Smart product search', 'Tax configuration', 'Email order notifications', 'Low stock alerts', 'Social media integration', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'],
+          { name: 'Business Store', price: '€2499', features: ['Up to 500 products', 'Conversion-Focused Design', { feature: 'Customer Login Area', tooltip: 'Allow customers to create accounts, view order history, and manage their details.' }, { feature: 'Multi-currency support', tooltip: 'Display prices in different currencies based on the customer\'s location.' }, 'Multiple Shipping Module Integration', { feature: 'Advanced shipping rules', tooltip: 'Set complex shipping rates based on weight, location, or cart value (e.g., free shipping over €50).' }, 'Inventory management system setup', { feature: 'Loyalty program / reward points', tooltip: 'Encourage repeat business by rewarding customers with points for purchases.' }, 'Custom Shopping Cart Integration', { feature: 'CMS / Backend Administrative System', tooltip: 'A powerful and secure backend system that gives you full control over your products, orders, customers, and store settings.' }, 'Store speed & performance optimization', 'Free unlimited revisions', 'Abandoned cart recovery setup', 'Blog setup for content marketing', 'Product reviews & rating system integration', 'Promotional banners & announcement bars', 'Upsell & cross-sell functionality', 'Discount codes & coupon setup', 'Gift card setup', 'Newsletter popup', 'Advanced product filtering', 'Product Variants (Size, Color, etc.)', 'Multi-payment gateways (Stripe, PayPal, Apple Pay, Klarna)', 'Email marketing integration (Klaviyo, Mailchimp, etc.)', 'Performance & sales analytics dashboard', 'Wishlist, reviews, & loyalty system', 'Smart product search', 'Tax configuration', 'Email order notifications', 'Low stock alerts', 'Social media integration', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'],
             comparisonFeatures: {
                 'Product Count': 'Up to 500',
                 'Design Level': 'Conversion-Focused',
@@ -310,7 +293,7 @@ export const servicesData: ServiceCategory[] = [
                 'Post-Launch Support': false
             }
           },
-          { name: 'Enterprise Store', price: '€4999', features: ['Unlimited Products', 'High-end interactive custom design', 'unique logo concepts', 'Unlimited categories & advanced product filters', { feature: 'Wholesale / B2B functionality', tooltip: 'Enable special pricing and ordering options for your wholesale or business-to-business customers.' }, { feature: 'ERP & CRM integrations', tooltip: 'Seamlessly connect your e-commerce store with your existing enterprise resource planning (ERP) or customer relationship management (CRM) systems.' }, 'Digital Downloads or Subscriptions', 'Subscriptions & memberships setup (recurring billing)', 'Invoicing System', 'POS & Inventory Sync', 'Multi-currency & multi-language support', 'Affiliate & referral programs', 'Advanced analytics & reporting dashboard setup', 'Admin panel for complete store control', 'Social media page linking & live feed integration', 'SEO-optimized & mobile responsive', 'Full deployment + W3C validation', 'Priority support & 30-day post-launch assistance', { feature: 'Google Analytics & Facebook Pixel integration', tooltip: 'Advanced tracking setup for in-depth analysis of user behavior and for running effective retargeting ad campaigns.' }, 'Complete Database Creation', 'Custom Dynamic Forms', 'Customer Login Area (Sign-Up & Sign-In)', 'Multiple Shipping Module Integration', 'Advanced shipping rules (zones, weight, custom rates)', 'Loyalty program / reward points integration', 'Custom Shopping Cart Integration', 'Store speed & performance optimization', 'Free unlimited revisions', 'abandoned cart recovery setup', 'Blog setup for content marketing', 'Product reviews & rating system integration', 'Promotional banners & announcement bars', 'Upsell & cross-sell functionality', 'Discount codes & coupon setup', 'Gift card setup', 'Newsletter popup', 'Advanced product filtering', 'Product Variants (Size, Color, etc.)', 'Multi-payment gateways (Stripe, PayPal, Apple Pay, Klarna)', 'Email marketing integration (Klaviyo, Mailchimp, etc.)', 'Performance & sales analytics dashboard', 'Wishlist, reviews, & loyalty system', 'Smart product search', 'Tax configuration', 'Email order notifications', 'Low stock alerts', 'Social media integration', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'], note: 'Fair Use Policy (FUP) applies: Up to 1000 products are included.',
+          { name: 'Enterprise Store', price: '€4999', features: ['Unlimited Products', 'High-end interactive custom design', 'unique logo concepts', 'Unlimited categories & advanced product filters', { feature: 'Wholesale / B2B functionality', tooltip: 'Enable special pricing and ordering options for your wholesale or business-to-business customers.' }, { feature: 'ERP & CRM integrations', tooltip: 'Seamlessly connect your e-commerce store with your existing enterprise resource planning (ERP) or customer relationship management (CRM) systems.' }, { feature: 'Digital Downloads or Subscriptions', tooltip: 'Sell digital files or set up recurring payments for subscription boxes or services.' }, 'Invoicing System', { feature: 'POS & Inventory Sync', tooltip: 'Sync your online store with your physical Point of Sale system to manage inventory in real-time.' }, 'Multi-currency & multi-language support', { feature: 'Affiliate & referral programs', tooltip: 'Let other people market your products for a commission, tracking sales automatically.' }, 'Advanced analytics & reporting dashboard setup', 'Admin panel for complete store control', 'Social media page linking & live feed integration', 'SEO-optimized & mobile responsive', 'Full deployment + W3C validation', 'Priority support & 30-day post-launch assistance', { feature: 'Google Analytics & Facebook Pixel integration', tooltip: 'Advanced tracking setup for in-depth analysis of user behavior and for running effective retargeting ad campaigns.' }, 'Complete Database Creation', 'Custom Dynamic Forms', 'Customer Login Area (Sign-Up & Sign-In)', 'Multiple Shipping Module Integration', 'Advanced shipping rules (zones, weight, custom rates)', 'Loyalty program / reward points integration', 'Custom Shopping Cart Integration', 'Store speed & performance optimization', 'Free unlimited revisions', 'abandoned cart recovery setup', 'Blog setup for content marketing', 'Product reviews & rating system integration', 'Promotional banners & announcement bars', 'Upsell & cross-sell functionality', 'Discount codes & coupon setup', 'Gift card setup', 'Newsletter popup', 'Advanced product filtering', 'Product Variants (Size, Color, etc.)', 'Multi-payment gateways (Stripe, PayPal, Apple Pay, Klarna)', 'Email marketing integration (Klaviyo, Mailchimp, etc.)', 'Performance & sales analytics dashboard', 'Wishlist, reviews, & loyalty system', 'Smart product search', 'Tax configuration', 'Email order notifications', 'Low stock alerts', 'Social media integration', 'Advanced navigation setup (collections, categories, menus)', 'Mobile-responsive design', 'Complete Deployment', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'], note: 'Fair Use Policy (FUP) applies: Up to 1000 products are included.',
             comparisonFeatures: {
                 'Product Count': 'Unlimited (FUP: 1000)',
                 'Design Level': 'High-End Interactive',
@@ -360,22 +343,178 @@ export const servicesData: ServiceCategory[] = [
     title: 'Search Engine Optimization (SEO)',
     description: 'Boost your visibility and climb the search rankings. Our SEO strategies are designed to drive organic traffic and deliver measurable results.',
     plans: [
-        { name: 'Startup', price: '€299', priceDetails: '/month', features: ['Site Audit', '5-10 Keywords', 'Competitor Analysis', 'Keyword Grouping', 'Keyword Mapping', 'XML Sitemap Optimization', 'Robots.txt Check', 'Meta Tags Creation', 'Web Content Optimization', 'Keyword Optimization', 'Anchor Text Optimization', 'Google Analytics Installation', 'Google Webmaster Installation', 'Webpage Copywriting (1000 words)', '2 Articles (400 words)', '2 On-Page Blogs (500 words)', '2 Off-Page Blogs (500 words)', 'Social Bookmarking', 'Forums/FAQ\'s', 'Link Building', 'Directory Submission', 'Local Business Listings', 'Monthly Reporting', 'Google Analytics Report', 'Monthly Progress Report', 'Dedicated Project Manager'],
+        { name: 'Startup', price: '€299', priceDetails: '/month', features: [
+            { feature: 'Site Audit', tooltip: 'A comprehensive health check of your website to identify technical issues hindering your search performance.' },
+            '5-10 Keywords',
+            { feature: 'Competitor Analysis', tooltip: 'We analyze your top competitors to understand their strengths and find opportunities for you to outperform them.' },
+            { feature: 'Keyword Grouping', tooltip: 'Organizing your target keywords into logical groups to create focused and relevant content clusters.' },
+            { feature: 'Keyword Mapping', tooltip: 'Assigning specific keywords to specific pages on your site to prevent pages from competing with each other.' },
+            { feature: 'XML Sitemap Optimization', tooltip: 'Creating and optimizing a map of your website to help search engines find and crawl your pages efficiently.' },
+            { feature: 'Robots.txt Check', tooltip: 'Ensuring this file correctly instructs search engine bots on which pages to crawl and which to ignore.' },
+            { feature: 'Meta Tags Creation', tooltip: 'Writing compelling Title Tags and Meta Descriptions that appear in search results to improve click-through rates.' },
+            'Web Content Optimization',
+            'Keyword Optimization',
+            { feature: 'Anchor Text Optimization', tooltip: 'Optimizing the clickable text in hyperlinks to help search engines understand what the linked page is about.' },
+            { feature: 'Google Analytics Installation', tooltip: 'Setting up Google\'s tool to track website traffic and user behavior.' },
+            { feature: 'Google Webmaster Installation', tooltip: 'Setting up Google Search Console to monitor your site\'s presence in Google Search results.' },
+            'Webpage Copywriting (1000 words)',
+            '2 Articles (400 words)',
+            '2 On-Page Blogs (500 words)',
+            '2 Off-Page Blogs (500 words)',
+            { feature: 'Social Bookmarking', tooltip: 'Saving your website links on public social bookmarking sites to gain backlinks and traffic.' },
+            'Forums/FAQ\'s',
+            'Link Building',
+            { feature: 'Directory Submission', tooltip: 'Submitting your website URL to various web directories to build authority.' },
+            'Local Business Listings',
+            'Monthly Reporting',
+            'Google Analytics Report',
+            'Monthly Progress Report',
+            'Dedicated Project Manager'
+        ],
             comparisonFeatures: {
                 'Strategy & Audits': 'Site Audit', 'Keywords': '5-10', 'Competitor Analysis': true, 'On-Page SEO': 'Standard', 'Technical SEO': 'Standard', 'Analytics & GMB': 'GA + GSC Install', 'Content: Copywriting': '1000 words', 'Content: Articles': '2 (400 words)', 'Content: On-Page Blogs': '2 (500 words)', 'Content: Off-Page Blogs': '2 (500 words)', 'Off-Page SEO': 'Standard', 'Reporting': 'Monthly', 'Support': 'Dedicated PM'
             }
         },
-        { name: 'Standard', price: '€499', priceDetails: '/month', isPopular: true, features: ['Site Audit', '20-25 Keywords', 'Competitor Analysis', 'Keyword Grouping', 'Keyword Mapping', 'XML Sitemap Optimization', 'Robots.txt Check', 'Meta Tags Creation', 'Web Content Optimization', 'Keyword Optimization', 'Anchor Text Optimization', 'Landing Page Optimization', 'Image Optimization', 'Conversion Tracking', 'Google Analytics Installation', 'Google Webmaster Installation', 'Google My Business (GMB) Listing', 'Google Places Submissions', 'Webpage Copywriting (2000 Words)', '4 Articles (400 Words)', '4 On-Page Blogs (500 Words)', '4 Off-Page Blogs (500 Words)', '1 Press Releases', 'Promotional Content', '1 Infographics', 'Business Profiles', 'Social Bookmarking', 'Classifieds', 'Forums / FAQ\'s', 'Link Building', 'Directory Submission', 'Local Business Listings', 'Google Analytics Report', 'Monthly Progress Report', 'Dedicated Project Manager'],
+        { name: 'Standard', price: '€499', priceDetails: '/month', isPopular: true, features: [
+            'Site Audit',
+            '20-25 Keywords',
+            'Competitor Analysis',
+            'Keyword Grouping',
+            'Keyword Mapping',
+            'XML Sitemap Optimization',
+            'Robots.txt Check',
+            'Meta Tags Creation',
+            'Web Content Optimization',
+            'Keyword Optimization',
+            'Anchor Text Optimization',
+            { feature: 'Landing Page Optimization', tooltip: 'Improving specific pages to maximize conversions (sales or leads) from visitors.' },
+            { feature: 'Image Optimization', tooltip: 'Compressing images and adding Alt Tags to improve load speed and help search engines understand your visuals.' },
+            { feature: 'Conversion Tracking', tooltip: 'Setting up tools to measure specific actions users take, like form submissions or purchases.' },
+            'Google Analytics Installation',
+            'Google Webmaster Installation',
+            { feature: 'Google My Business (GMB) Listing', tooltip: 'Optimizing your business profile on Google Maps and Search for local visibility.' },
+            'Google Places Submissions',
+            'Webpage Copywriting (2000 Words)',
+            '4 Articles (400 Words)',
+            '4 On-Page Blogs (500 Words)',
+            '4 Off-Page Blogs (500 Words)',
+            { feature: '1 Press Releases', tooltip: 'Writing and distributing news about your company to media outlets for exposure and backlinks.' },
+            'Promotional Content',
+            '1 Infographics',
+            'Business Profiles',
+            'Social Bookmarking',
+            'Classifieds',
+            'Forums / FAQ\'s',
+            'Link Building',
+            'Directory Submission',
+            'Local Business Listings',
+            'Google Analytics Report',
+            'Monthly Progress Report',
+            'Dedicated Project Manager'
+        ],
             comparisonFeatures: {
                 'Strategy & Audits': 'Site Audit', 'Keywords': '20-25', 'Competitor Analysis': true, 'On-Page SEO': 'Advanced', 'Technical SEO': 'Standard', 'Analytics & GMB': 'GA + GSC + GMB', 'Content: Copywriting': '2000 words', 'Content: Articles': '4 (400 words)', 'Content: On-Page Blogs': '4 (500 words)', 'Content: Off-Page Blogs': '4 (500 words)', 'Content: Press Releases': '1', 'Content: Infographics': '1', 'Off-Page SEO': 'Advanced', 'Reporting': 'Monthly', 'Support': 'Dedicated PM'
             }
         },
-        { name: 'Advanced', price: '€999', priceDetails: '/month', features: ['Comprehensive Site & Technical SEO Audit', '40-60 Keywords (clustered by intent & funnel stage)', 'Competitor Gap Analysis (keyword + backlink)', 'Keyword Grouping & Mapping', 'Page Speed & Core Web Vitals Review', 'Mobile Usability Audit', 'Full XML Sitemap Optimization', 'Robots.txt Validation', 'Meta Tags Creation & CTR Optimization', 'Web Content Optimization (existing pages)', 'Keyword Optimization (LSI + semantic keywords)', 'Anchor Text Optimization', 'Landing Page Optimization (A/B test variants)', 'Image Optimization (alt tags + compression)', 'Schema Markup Implementation (FAQ, Article, Local)', 'Internal Linking Strategy', 'Conversion Tracking Setup (Google Tag Manager)', 'Webpage Copywriting (3,000 words total)', '6 Articles (600 words each)', '6 On-Page Blogs (700 words each)', '4 Off-Page Blogs (600 words each)', '2 Press Releases', '2 Infographics', 'Basic Video SEO (YouTube tags, titles, description)', 'Content Calendar & Topic Strategy', 'Business Profiles & Local Citations', 'High-DA Guest Posts (2/month)', 'Social Bookmarking', 'Classifieds & Forums', 'Targeted Link Building Campaign', 'Directory Submissions', 'Local Business Listings & Map Citations', 'Niche Directory Submissions', 'Broken Link Building', 'Monthly Performance Report', 'Keyword Ranking Report', 'Google Analytics & Search Console Insights', 'Traffic Growth & Conversion Summary', 'Quarterly Strategy Call', 'Dedicated SEO Strategist', 'Monthly Strategy Review Meeting', 'Competitor Watchlist Alerts', 'Email & Chat Support (Priority)'],
+        { name: 'Advanced', price: '€999', priceDetails: '/month', features: [
+            'Comprehensive Site & Technical SEO Audit',
+            '40-60 Keywords (clustered by intent & funnel stage)',
+            { feature: 'Competitor Gap Analysis', tooltip: 'Identifying keywords and backlinks your competitors have but you don\'t.' },
+            'Keyword Grouping & Mapping',
+            { feature: 'Page Speed & Core Web Vitals Review', tooltip: 'Analyzing site performance metrics that Google uses as ranking factors (loading, interactivity, stability).' },
+            'Mobile Usability Audit',
+            'Full XML Sitemap Optimization',
+            'Robots.txt Validation',
+            'Meta Tags Creation & CTR Optimization',
+            'Web Content Optimization (existing pages)',
+            { feature: 'Keyword Optimization (LSI)', tooltip: 'Using Latent Semantic Indexing (related terms) to help search engines better understand your content context.' },
+            'Anchor Text Optimization',
+            'Landing Page Optimization (A/B test variants)',
+            'Image Optimization (alt tags + compression)',
+            { feature: 'Schema Markup Implementation', tooltip: 'Adding code that helps search engines return more informative results (rich snippets) like reviews, FAQs, or events.' },
+            { feature: 'Internal Linking Strategy', tooltip: 'Optimizing how pages on your site link to one another to distribute authority and help navigation.' },
+            { feature: 'Conversion Tracking (GTM)', tooltip: 'Advanced tracking setup using Google Tag Manager for flexible and detailed data collection.' },
+            'Webpage Copywriting (3,000 words total)',
+            '6 Articles (600 words each)',
+            '6 On-Page Blogs (700 words each)',
+            '4 Off-Page Blogs (600 words each)',
+            '2 Press Releases',
+            '2 Infographics',
+            { feature: 'Basic Video SEO', tooltip: 'Optimizing titles, tags, and descriptions for your videos on YouTube and your site.' },
+            'Content Calendar & Topic Strategy',
+            'Business Profiles & Local Citations',
+            { feature: 'High-DA Guest Posts (2/month)', tooltip: 'Publishing articles on other high-authority websites to earn powerful backlinks.' },
+            'Social Bookmarking',
+            'Classifieds & Forums',
+            'Targeted Link Building Campaign',
+            'Directory Submissions',
+            'Local Business Listings & Map Citations',
+            'Niche Directory Submissions',
+            { feature: 'Broken Link Building', tooltip: 'Finding broken links on other sites and suggesting your content as a replacement to gain a backlink.' },
+            'Monthly Performance Report',
+            'Keyword Ranking Report',
+            'Google Analytics & Search Console Insights',
+            'Traffic Growth & Conversion Summary',
+            'Quarterly Strategy Call',
+            'Dedicated SEO Strategist',
+            'Monthly Strategy Review Meeting',
+            'Competitor Watchlist Alerts',
+            'Email & Chat Support (Priority)'
+        ],
             comparisonFeatures: {
                 'Strategy & Audits': 'Comprehensive', 'Keywords': '40-60 (clustered)', 'Competitor Analysis': 'Gap Analysis', 'On-Page SEO': 'Full Suite', 'Technical SEO': 'Advanced (Schema, Speed)', 'Analytics & GMB': 'GTM Tracking', 'Content: Copywriting': '3000 words', 'Content: Articles': '6 (600 words)', 'Content: On-Page Blogs': '6 (700 words)', 'Content: Off-Page Blogs': '4 (600 words)', 'Content: Press Releases': '2', 'Content: Infographics': '2', 'Content: Video SEO': 'Basic', 'Off-Page SEO': 'Targeted + Guest Posts', 'Reporting': 'Performance Insights', 'Support': 'Dedicated Strategist'
             }
         },
-        { name: 'Enterprise', price: '€1999', priceDetails: '/month', features: ['Enterprise-Level SEO Audit (Technical + UX + Conversion)', '100-300 Keywords / Topic Clusters', 'Competitor Intelligence & Market Share Analysis', 'Content Gap & Opportunity Mapping', 'Backlink Profile Audit (Toxic Link Removal)', 'Technical Health Monitoring Dashboard', 'Advanced Schema Markup (Product, Review, Organization)', 'Custom Meta & Title Tag Strategy', 'Full Content Optimization for 15+ Pages', 'Conversion Rate Optimization (CRO) Setup', 'Core Web Vitals Optimization', 'Internal Linking & Silo Structure Design', 'Multilingual SEO (if applicable)', 'Voice Search Optimization', 'Al/Chatbot SEO Integration', 'Google Tag Manager Event Tracking', 'Webpage Copywriting (Up to 10,000 Words)', '12 Articles (800–1000 Words)', '8 On-Page Blogs (800 Words)', '6 Off-Page Blogs (800 Words)', '4 Press Releases', '4 Infographics / Visual Content Assets', '1 Whitepaper / eBook (lead magnet)', 'Content Strategy & Editorial Calendar', 'Custom Video SEO (YouTube + Site Embed)', 'High-Authority Guest Posting (5+/month)', 'Digital PR Outreach & Influencer Collaboration', 'Industry-Specific Backlink Acquisition', 'Business Listings in Premium Directories', 'Reputation Management (Reviews & Mentions)', 'Local SEO Domination (Google Maps + Citations)', 'Competitor Link Reclamation', 'Press Syndication (Google News, Medium, etc.)', 'Google Analytics 4 Custom Dashboards', 'Goal Tracking & Funnel Setup', 'E-commerce Tracking (if applicable)', 'Heatmap & Session Recording (Hotjar/Clarity)', 'User Behavior Reports', 'Comprehensive Monthly Report', 'Real-Time Analytics Dashboard Access', 'Bi-Weekly Progress Check-In', 'Quarterly Growth Strategy Meeting', 'ROI & KPI Tracking', 'Dedicated SEO Manager + Content Team', 'Technical Support (Priority)', 'Competitor Monitoring & Alerts', 'Custom SEO Automation Setup', 'Slack or WhatsApp Communication Channel'],
+        { name: 'Enterprise', price: '€1999', priceDetails: '/month', features: [
+            'Enterprise-Level SEO Audit (Technical + UX + Conversion)',
+            '100-300 Keywords / Topic Clusters',
+            'Competitor Intelligence & Market Share Analysis',
+            'Content Gap & Opportunity Mapping',
+            { feature: 'Backlink Profile Audit (Toxic Link Removal)', tooltip: 'Analyzing your backlinks and disavowing harmful, low-quality links that could hurt your ranking.' },
+            'Technical Health Monitoring Dashboard',
+            'Advanced Schema Markup (Product, Review, Organization)',
+            'Custom Meta & Title Tag Strategy',
+            'Full Content Optimization for 15+ Pages',
+            { feature: 'Conversion Rate Optimization (CRO) Setup', tooltip: 'Systematic process of increasing the percentage of website visitors who take a desired action.' },
+            'Core Web Vitals Optimization',
+            { feature: 'Internal Linking & Silo Structure Design', tooltip: 'Grouping related content into distinct sections (silos) to establish topical authority.' },
+            'Multilingual SEO (if applicable)',
+            { feature: 'Voice Search Optimization', tooltip: 'Optimizing content to appear in voice search results (Siri, Alexa, Google Assistant).' },
+            'Al/Chatbot SEO Integration',
+            'Google Tag Manager Event Tracking',
+            'Webpage Copywriting (Up to 10,000 Words)',
+            '12 Articles (800–1000 Words)',
+            '8 On-Page Blogs (800 Words)',
+            '6 Off-Page Blogs (800 Words)',
+            '4 Press Releases',
+            '4 Infographics / Visual Content Assets',
+            { feature: '1 Whitepaper / eBook (lead magnet)', tooltip: 'Creating a high-value downloadable resource to capture email leads.' },
+            'Content Strategy & Editorial Calendar',
+            'Custom Video SEO (YouTube + Site Embed)',
+            'High-Authority Guest Posting (5+/month)',
+            { feature: 'Digital PR Outreach', tooltip: 'Networking with journalists and bloggers to get press coverage and high-quality backlinks.' },
+            'Industry-Specific Backlink Acquisition',
+            'Business Listings in Premium Directories',
+            { feature: 'Reputation Management', tooltip: 'Monitoring and managing online reviews and mentions to maintain a positive brand image.' },
+            'Local SEO Domination (Google Maps + Citations)',
+            { feature: 'Competitor Link Reclamation', tooltip: 'Finding links your competitors have lost and trying to acquire them for yourself.' },
+            'Press Syndication (Google News, Medium, etc.)',
+            'Google Analytics 4 Custom Dashboards',
+            'Goal Tracking & Funnel Setup',
+            'E-commerce Tracking (if applicable)',
+            { feature: 'Heatmap & Session Recording', tooltip: 'Tools like Hotjar/Clarity that visually show where users click, scroll, and move on your site.' },
+            'User Behavior Reports',
+            'Comprehensive Monthly Report',
+            'Real-Time Analytics Dashboard Access',
+            'Bi-Weekly Progress Check-In',
+            'Quarterly Growth Strategy Meeting',
+            'ROI & KPI Tracking',
+            'Dedicated SEO Manager + Content Team',
+            'Technical Support (Priority)',
+            'Competitor Monitoring & Alerts',
+            'Custom SEO Automation Setup',
+            'Slack or WhatsApp Communication Channel'
+        ],
             comparisonFeatures: {
                 'Strategy & Audits': 'Enterprise Level', 'Keywords': '100-300 (clusters)', 'Competitor Analysis': 'Intelligence & Market Share', 'On-Page SEO': 'CRO Focused', 'Technical SEO': 'Enterprise (Voice, Multilingual)', 'Analytics & GMB': 'GA4 Custom Dashboards', 'Content: Copywriting': '10,000 words', 'Content: Articles': '12 (800-1000 words)', 'Content: On-Page Blogs': '8 (800 words)', 'Content: Off-Page Blogs': '6 (800 words)', 'Content: Press Releases': '4', 'Content: Infographics': '4', 'Content: Whitepaper/eBook': '1', 'Content: Video SEO': 'Custom', 'Off-Page SEO': 'Digital PR & Outreach', 'Reporting': 'Real-Time Dashboard', 'Support': 'Dedicated Team + Slack'
             }
@@ -405,7 +544,20 @@ export const servicesData: ServiceCategory[] = [
     title: 'Social Media Marketing',
     description: 'Engage your audience and build a strong brand presence across social platforms. From content creation to ad management, we have you covered.',
     plans: [
-        { name: 'Starter', price: '€399', priceDetails: '/month', features: ['Social Media Audit', 'Basic Recommendations', '08 Posts Per Month (static graphics)', '02 Stories / Highlights', '02 Carousel Posts', 'Facebook & Instagram Supported', 'Monthly Post Scheduling', 'Page Setup (Profile Picture, Bio, Cover Photo)', 'Hashtag Research', 'Monthly Monitoring of Social Assets', 'Monthly Progress Report', 'Dedicated Project Manager'],
+        { name: 'Starter', price: '€399', priceDetails: '/month', features: [
+            { feature: 'Social Media Audit', tooltip: 'Reviewing your current social media presence to identify strengths, weaknesses, and opportunities.' },
+            'Basic Recommendations',
+            '08 Posts Per Month (static graphics)',
+            '02 Stories / Highlights',
+            { feature: '02 Carousel Posts', tooltip: 'Posts containing multiple swipeable images or videos, great for storytelling.' },
+            'Facebook & Instagram Supported',
+            'Monthly Post Scheduling',
+            'Page Setup (Profile Picture, Bio, Cover Photo)',
+            { feature: 'Hashtag Research', tooltip: 'Finding the best hashtags to use to increase the reach and discoverability of your posts.' },
+            'Monthly Monitoring of Social Assets',
+            'Monthly Progress Report',
+            'Dedicated Project Manager'
+        ],
             comparisonFeatures: {
                 'Strategy & Audit': 'Audit + Recommendations',
                 'Competitor Research': false,
@@ -434,7 +586,25 @@ export const servicesData: ServiceCategory[] = [
                 'Support': 'Dedicated PM',
             }
         },
-        { name: 'Basic', price: '€549', priceDetails: '/month', features: ['Social Media Strategy', 'Social Media Audit', 'Social Recommendations', '12 Posts Per Month', '5 Graphic Social Posts', '03 Stories / Highlights', '02 Carousel Posts', 'Facebook & Instagram Supported', 'Monthly Social Posts Scheduling', 'Social Pages Cosmetics (Cover Photo, About Section, Display Picture and more)', 'Community Management (Comments + DMs)', 'Facebook Business Manager Setup', 'Basic Pixel Integration', 'Weekly Monitoring of Social Assets', 'Weekly Monitoring of Boosted Posts', 'Dedicated Project Manager', 'Monthly Progress Report'],
+        { name: 'Basic', price: '€549', priceDetails: '/month', features: [
+            'Social Media Strategy',
+            'Social Media Audit',
+            'Social Recommendations',
+            '12 Posts Per Month',
+            '5 Graphic Social Posts',
+            '03 Stories / Highlights',
+            '02 Carousel Posts',
+            'Facebook & Instagram Supported',
+            'Monthly Social Posts Scheduling',
+            'Social Pages Cosmetics (Cover Photo, About Section, Display Picture and more)',
+            { feature: 'Community Management (Comments + DMs)', tooltip: 'We actively respond to comments and direct messages on your behalf to engage your audience.' },
+            { feature: 'Facebook Business Manager Setup', tooltip: 'Setting up the central hub for managing your Facebook assets, ads, and pages.' },
+            { feature: 'Basic Pixel Integration', tooltip: 'Adding tracking code to your website to measure the effectiveness of your Facebook ads.' },
+            'Weekly Monitoring of Social Assets',
+            'Weekly Monitoring of Boosted Posts',
+            'Dedicated Project Manager',
+            'Monthly Progress Report'
+        ],
             comparisonFeatures: {
                 'Strategy & Audit': 'Full Strategy & Audit',
                 'Competitor Research': false,
@@ -463,7 +633,40 @@ export const servicesData: ServiceCategory[] = [
                 'Support': 'Dedicated PM',
             }
         },
-        { name: 'Standard', price: '€999', priceDetails: '/month', isPopular: true, features: ['Social Media Strategy', 'Social Media Audit', 'Competitor Research', 'Social Recommendations', '24 Posts Per Month', '10 Graphic Social Posts', '05 Stories / Highlights', '03 Carousel Posts', '01 GIF Post', 'Facebook, Instagram, LinkedIn Supported', 'Monthly Social Posts Scheduling', 'Social Community Management (Query + Comment Responses)', 'Social Pages Cosmetics (Cover Photo, About Section, Display Picture and more)', 'Facebook Business Manager Setup', 'Facebook Pixel Integration', 'Daily Monitoring of Social Assets', 'Daily Monitoring of Boosted Posts', 'Reputation Management (Reviews, Q/A)', 'Facebook Shop Setup', 'Target Page Likes & Followers', 'Spam monitoring', 'Social Ads Management', 'Campaigns Across All Platforms', 'Up to 3 Campaigns Per Month', '6 Ad Sets Per Month', 'All Ad Objectives Supported', 'Campaign Monitoring + Optimization', 'Ad Spend (Budget Required)', 'Dedicated Ads Expert', 'Value-added services', 'Dedicated Project Manager', 'Monthly Progress Report'],
+        { name: 'Standard', price: '€999', priceDetails: '/month', isPopular: true, features: [
+            'Social Media Strategy',
+            'Social Media Audit',
+            'Competitor Research',
+            'Social Recommendations',
+            '24 Posts Per Month',
+            '10 Graphic Social Posts',
+            '05 Stories / Highlights',
+            '03 Carousel Posts',
+            '01 GIF Post',
+            'Facebook, Instagram, LinkedIn Supported',
+            'Monthly Social Posts Scheduling',
+            'Social Community Management (Query + Comment Responses)',
+            'Social Pages Cosmetics (Cover Photo, About Section, Display Picture and more)',
+            'Facebook Business Manager Setup',
+            'Facebook Pixel Integration',
+            'Daily Monitoring of Social Assets',
+            'Daily Monitoring of Boosted Posts',
+            { feature: 'Reputation Management (Reviews, Q/A)', tooltip: 'Monitoring and addressing public reviews and questions to maintain a positive brand image.' },
+            'Facebook Shop Setup',
+            'Target Page Likes & Followers',
+            'Spam monitoring',
+            'Social Ads Management',
+            'Campaigns Across All Platforms',
+            { feature: 'Up to 3 Campaigns Per Month', tooltip: 'Running three distinct advertising initiatives, e.g., one for awareness, one for traffic, one for sales.' },
+            { feature: '6 Ad Sets Per Month', tooltip: 'Variations within campaigns targeting different audiences or using different placements.' },
+            { feature: 'All Ad Objectives Supported', tooltip: 'We can optimize for clicks, video views, leads, messages, or conversions.' },
+            'Campaign Monitoring + Optimization',
+            { feature: 'Ad Spend (Budget Required)', tooltip: 'The money paid directly to social platforms for ads is separate from our management fee.' },
+            'Dedicated Ads Expert',
+            'Value-added services',
+            'Dedicated Project Manager',
+            'Monthly Progress Report'
+        ],
             comparisonFeatures: {
                 'Strategy & Audit': 'Full Strategy & Audit',
                 'Competitor Research': true,
@@ -492,7 +695,44 @@ export const servicesData: ServiceCategory[] = [
                 'Support': 'Dedicated Ads Expert',
             }
         },
-        { name: 'Professional', price: '€1999', priceDetails: '/month', features: ['Social Media Strategy', 'Social Media Audit', 'Competitor Research', 'Social Recommendations', '36 Posts Per Month', '20 Graphic Social Posts', '10 Stories / Highlights', '07 Carousel Posts', '03 GIFS Post', '02 Articles / SEO Blog Posts', 'Facebook, Instagram, LinkedIn, Twitter, Pinterest Supported', 'Monthly Social Posts Scheduling', 'Social Community Management (Query + Comment Responses)', 'Social Pages Cosmetics (Cover Photo, About Section, Display Picture and more)', 'Facebook Business Manager Setup', 'Facebook Pixel Integration', 'Daily Monitoring of Social Assets', 'Daily Monitoring of Boosted Posts', 'Reputation Management (Reviews, Q/A)', 'Facebook Shop Setup', 'Target Page Likes & Followers', 'Chatbot Integration', 'Spam monitoring', 'Social Ads Management', 'All Social Ad Platforms', 'Up to 5 Campaigns Per Month', '10 Ad Sets Per Month', 'All Ad Objectives Supported', 'Detailed Campaign Monitoring', 'Daily Campaign Optimization', 'Ad Spend (Budget Required)', 'Dedicated Ads Expert', 'Value-added services', 'Dedicated Project Manager', 'Bi-weekly Progress Report', 'Priority Support'],
+        { name: 'Professional', price: '€1999', priceDetails: '/month', features: [
+            'Social Media Strategy',
+            'Social Media Audit',
+            'Competitor Research',
+            'Social Recommendations',
+            '36 Posts Per Month',
+            '20 Graphic Social Posts',
+            '10 Stories / Highlights',
+            '07 Carousel Posts',
+            '03 GIFS Post',
+            '02 Articles / SEO Blog Posts',
+            'Facebook, Instagram, LinkedIn, Twitter, Pinterest Supported',
+            'Monthly Social Posts Scheduling',
+            'Social Community Management (Query + Comment Responses)',
+            'Social Pages Cosmetics (Cover Photo, About Section, Display Picture and more)',
+            'Facebook Business Manager Setup',
+            'Facebook Pixel Integration',
+            'Daily Monitoring of Social Assets',
+            'Daily Monitoring of Boosted Posts',
+            'Reputation Management (Reviews, Q/A)',
+            'Facebook Shop Setup',
+            'Target Page Likes & Followers',
+            { feature: 'Chatbot Integration', tooltip: 'Setting up automated messaging to handle common customer queries instantly.' },
+            'Spam monitoring',
+            'Social Ads Management',
+            'All Social Ad Platforms',
+            'Up to 5 Campaigns Per Month',
+            '10 Ad Sets Per Month',
+            'All Ad Objectives Supported',
+            'Detailed Campaign Monitoring',
+            'Daily Campaign Optimization',
+            'Ad Spend (Budget Required)',
+            'Dedicated Ads Expert',
+            'Value-added services',
+            'Dedicated Project Manager',
+            'Bi-weekly Progress Report',
+            'Priority Support'
+        ],
             comparisonFeatures: {
                 'Strategy & Audit': 'Full Strategy & Audit',
                 'Competitor Research': true,
@@ -521,7 +761,39 @@ export const servicesData: ServiceCategory[] = [
                 'Support': 'Priority',
             }
         },
-        { name: 'Enterprise Plus', price: '€3,499', priceDetails: '/month', features: ['Comprehensive Social Strategy (Quarterly Roadmap)', 'In-depth Competitor & Market Analysis', 'Advanced Audience Segmentation', '60+ Posts Per Month', '30 Graphic Social Posts', '15 Stories / Highlights', '10 Carousel Posts', '05 GIF Posts', '04 SEO Blog Posts / Articles', 'Short-Form Video Production (Reels, Shorts, TikToks)', 'Facebook, Instagram, LinkedIn, Twitter, Pinterest, YouTube / TikTok Supported', 'Daily Post Scheduling', 'Full Community Management (24/7 Query & Comment Response)', 'Page Cosmetics & Branding Consistency', 'Advanced Pixel & Tracking Integrations', 'Real-Time Reputation Monitoring', 'Facebook / Instagram Shop Setup', 'Influencer Collaboration Management', 'Spam & Crisis Management', 'Conversion Funnel Tracking', 'All Social Ad Platforms Supported', 'Unlimited Campaigns + Ad Sets', 'Retargeting + Lookalike Audiences', 'Multi-Country Ad Targeting', 'Al-driven Optimization', 'Ad Spend (Budget Required)', 'Dedicated Ads & Analytics Team', 'Dedicated Project Manager & Creative Strategist', 'Weekly Progress & Analytics Report', 'Custom Dashboard Access', 'Priority Support'],
+        { name: 'Enterprise Plus', price: '€3,499', priceDetails: '/month', features: [
+            'Comprehensive Social Strategy (Quarterly Roadmap)',
+            'In-depth Competitor & Market Analysis',
+            'Advanced Audience Segmentation',
+            '60+ Posts Per Month',
+            '30 Graphic Social Posts',
+            '15 Stories / Highlights',
+            '10 Carousel Posts',
+            '05 GIF Posts',
+            '04 SEO Blog Posts / Articles',
+            'Short-Form Video Production (Reels, Shorts, TikToks)',
+            'Facebook, Instagram, LinkedIn, Twitter, Pinterest, YouTube / TikTok Supported',
+            'Daily Post Scheduling',
+            'Full Community Management (24/7 Query & Comment Response)',
+            'Page Cosmetics & Branding Consistency',
+            'Advanced Pixel & Tracking Integrations',
+            'Real-Time Reputation Monitoring',
+            'Facebook / Instagram Shop Setup',
+            'Influencer Collaboration Management',
+            'Spam & Crisis Management',
+            { feature: 'Conversion Funnel Tracking', tooltip: 'Tracking user journey from social click to website purchase to optimize ROI.' },
+            'All Social Ad Platforms Supported',
+            'Unlimited Campaigns + Ad Sets',
+            { feature: 'Retargeting + Lookalike Audiences', tooltip: 'Showing ads to people who visited your site and finding new people similar to your best customers.' },
+            'Multi-Country Ad Targeting',
+            'Al-driven Optimization',
+            'Ad Spend (Budget Required)',
+            'Dedicated Ads & Analytics Team',
+            'Dedicated Project Manager & Creative Strategist',
+            'Weekly Progress & Analytics Report',
+            'Custom Dashboard Access',
+            'Priority Support'
+        ],
             comparisonFeatures: {
                 'Strategy & Audit': 'Quarterly Roadmap',
                 'Competitor Research': 'In-depth Analysis',
@@ -575,22 +847,82 @@ export const servicesData: ServiceCategory[] = [
     title: 'Logo Design & Branding',
     description: 'Craft a memorable brand identity with a unique, professional logo. Our design process ensures your vision comes to life.',
     plans: [
-      { name: 'Starter', price: '€49', features: ['2 Original Logo Concepts', '2 Revision Rounds', 'Choice of 2 Color Variations', 'Transparent PNG File', 'JPG & PNG Formats', 'Basic Font & Color Recommendations', 'Delivery in 48 Hours', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'],
+      { name: 'Starter', price: '€49', features: [
+          '2 Original Logo Concepts',
+          '2 Revision Rounds',
+          'Choice of 2 Color Variations',
+          { feature: 'Transparent PNG File', tooltip: 'A logo file with no background, perfect for placing over images or colored backgrounds.' },
+          'JPG & PNG Formats',
+          'Basic Font & Color Recommendations',
+          'Delivery in 48 Hours',
+          'Dedicated Project Manager',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money-Back Guarantee'
+        ],
         comparisonFeatures: {
             'Logo Concepts': '2', 'Revision Rounds': '2', 'Color Variations': '2', 'File Formats': 'JPG, PNG', 'Vector Files': false, 'Brand Guide': 'Basic Recommendations', 'Social Media Kit': false, 'Stationery Design': false, 'Delivery Time': '48 Hours'
         }
       },
-      { name: 'Basic', price: '€99', features: ['3 Unique Logo Concepts', 'Up to 4 Revision Rounds', 'Full-Color, Black, and White Variants', 'Transparent & Background Versions', 'JPG, PNG, and PDF Files (Print-Ready)', 'Simple Icon or Symbol Design', 'Basic Typography & Color Palette', 'Delivery in 72 Hours', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'],
+      { name: 'Basic', price: '€99', features: [
+          '3 Unique Logo Concepts',
+          'Up to 4 Revision Rounds',
+          'Full-Color, Black, and White Variants',
+          'Transparent & Background Versions',
+          { feature: 'JPG, PNG, and PDF Files (Print-Ready)', tooltip: 'High-quality files suitable for both digital use and printing.' },
+          'Simple Icon or Symbol Design',
+          'Basic Typography & Color Palette',
+          'Delivery in 72 Hours',
+          'Dedicated Project Manager',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money-Back Guarantee'
+        ],
         comparisonFeatures: {
             'Logo Concepts': '3', 'Revision Rounds': '4', 'Color Variations': 'Full, B&W', 'File Formats': 'JPG, PNG, PDF', 'Vector Files': false, 'Brand Guide': 'Basic Palette', 'Social Media Kit': false, 'Stationery Design': false, 'Delivery Time': '72 Hours'
         }
       },
-      { name: 'Standard', price: '€199', isPopular: true, features: ['5 Unique Logo Concepts', 'Unlimited Revisions (within scope)', 'Versions for Light & Dark Backgrounds', 'JPG, PNG, PDF, AI, and EPS Files', 'Full Vector & Scalable Formats', 'Icon & Symbol Variations', 'Complete Color Palette (Full Brand Spectrum)', 'Typography Recommendations', 'Mini Brand Guide (Usage Rules, Color Codes, Fonts)', 'Facebook & Instagram Profile Logos', 'Business Card & Letterhead Mockups', 'Delivery in 5 Business Days', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'],
+      { name: 'Standard', price: '€199', isPopular: true, features: [
+          '5 Unique Logo Concepts',
+          'Unlimited Revisions (within scope)',
+          'Versions for Light & Dark Backgrounds',
+          'JPG, PNG, PDF, AI, and EPS Files',
+          { feature: 'Full Vector & Scalable Formats', tooltip: 'Master files (AI, EPS) that can be resized to any size (from business card to billboard) without losing quality.' },
+          'Icon & Symbol Variations',
+          'Complete Color Palette (Full Brand Spectrum)',
+          'Typography Recommendations',
+          { feature: 'Mini Brand Guide', tooltip: 'A document outlining your logo usage rules, color codes, and fonts to ensure consistency.' },
+          'Facebook & Instagram Profile Logos',
+          { feature: 'Business Card & Letterhead Mockups', tooltip: 'Visual previews of how your logo will look on printed stationery.' },
+          'Delivery in 5 Business Days',
+          'Dedicated Project Manager',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money-Back Guarantee'
+        ],
         comparisonFeatures: {
             'Logo Concepts': '5', 'Revision Rounds': 'Unlimited', 'Color Variations': 'Full, B&W, Inverse', 'File Formats': 'JPG, PNG, PDF, AI, EPS', 'Vector Files': true, 'Brand Guide': 'Mini Guide', 'Social Media Kit': 'Profile Logos', 'Stationery Design': 'Mockups', 'Delivery Time': '5 Business Days'
         }
       },
-      { name: 'Pro', price: '€399', features: ['Unlimited Logo Concepts by 2 Designers', 'Unlimited Revisions', 'Horizontal, Vertical & Icon-Only Versions', 'JPG, PNG, PDF, AI, EPS & SVG Files', 'CMYK + RGB Color Profiles', 'Full Color Palette (Primary, Secondary, Accent)', 'Advanced Typography System', 'Comprehensive Brand Identity Sheet', 'Iconography & Favicon Design', 'Social Media Kit (Profile, Banner, Cover Images)', 'Business Card & Letterhead Design', 'Product Mockups (Apparel, Signage, Packaging)', 'Priority Delivery in 3-4 Business Days', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money-Back Guarantee'],
+      { name: 'Pro', price: '€399', features: [
+          'Unlimited Logo Concepts by 2 Designers',
+          'Unlimited Revisions',
+          'Horizontal, Vertical & Icon-Only Versions',
+          { feature: 'JPG, PNG, PDF, AI, EPS & SVG Files', tooltip: 'Every file format you will ever need for web, print, and editing.' },
+          { feature: 'CMYK + RGB Color Profiles', tooltip: 'Files optimized for both screens (RGB) and professional printing (CMYK).' },
+          'Full Color Palette (Primary, Secondary, Accent)',
+          'Advanced Typography System',
+          { feature: 'Comprehensive Brand Identity Sheet', tooltip: 'A detailed guide defining your brand\'s visual language, ensuring a cohesive look across all media.' },
+          { feature: 'Iconography & Favicon Design', tooltip: 'Custom icons for your website and the small icon appearing in browser tabs.' },
+          { feature: 'Social Media Kit', tooltip: 'Ready-to-use profile pictures, banners, and cover images sized perfectly for all major platforms.' },
+          'Business Card & Letterhead Design',
+          { feature: 'Product Mockups', tooltip: 'Realistic 3D previews of your logo on apparel, signage, or packaging.' },
+          'Priority Delivery in 3-4 Business Days',
+          'Dedicated Project Manager',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money-Back Guarantee'
+        ],
         comparisonFeatures: {
             'Logo Concepts': 'Unlimited (2 Designers)', 'Revision Rounds': 'Unlimited', 'Color Variations': 'Full Suite + Profiles', 'File Formats': 'JPG, PNG, PDF, AI, EPS, SVG', 'Vector Files': true, 'Brand Guide': 'Comprehensive Sheet', 'Social Media Kit': 'Full Kit', 'Stationery Design': 'Full Design Files', 'Delivery Time': '3-4 Business Days (Priority)'
         }
@@ -620,17 +952,78 @@ export const servicesData: ServiceCategory[] = [
     title: 'Mobile App Development',
     description: 'From concept to launch, we build intuitive and powerful mobile applications for iOS and Android that engage users and achieve business goals.',
     plans: [
-      { name: 'Startup MVP', price: '€5,449', features: ['Single Platform (iOS or Android)', 'Up to 5 Core Screens', 'User Login & Social Signup', 'Custom Dashboard Design', 'Advanced Data Display', 'Custom UI/UX Design', 'Interactive Prototyping', 'Firebase Backend Integration', 'Basic Admin Panel', 'Testing on 10+ Devices', 'App Store Deployment Support', '15 Days Free Bug Support', 'Push Notifications', 'Basic Analytics Integration', 'Contact/Support Form', 'Splash Screen & App Icons', 'Basic Animation Effects', 'Crash Reporting', 'Performance Optimization', 'Source Code Delivery'],
+      { name: 'Startup MVP', price: '€5,449', features: [
+          'Single Platform (iOS or Android)',
+          'Up to 5 Core Screens',
+          'User Login & Social Signup',
+          'Custom Dashboard Design',
+          'Advanced Data Display',
+          'Custom UI/UX Design',
+          { feature: 'Interactive Prototyping', tooltip: 'A clickable mockup of your app to test the flow and design before coding begins.' },
+          { feature: 'Firebase Backend Integration', tooltip: 'Using Google\'s mobile platform for real-time databases, authentication, and hosting.' },
+          'Basic Admin Panel',
+          'Testing on 10+ Devices',
+          'App Store Deployment Support',
+          '15 Days Free Bug Support',
+          'Push Notifications',
+          'Basic Analytics Integration',
+          'Contact/Support Form',
+          'Splash Screen & App Icons',
+          'Basic Animation Effects',
+          { feature: 'Crash Reporting', tooltip: 'Tools to automatically detect and report app crashes so they can be fixed quickly.' },
+          'Performance Optimization',
+          'Source Code Delivery'
+        ],
         comparisonFeatures: {
             'Platforms': '1 (iOS or Android)', 'Core Screens': 'Up to 5', 'UI/UX Design': 'Custom', 'User Login': 'Email & Social', 'Backend': 'Firebase', 'Admin Panel': 'Basic', 'Push Notifications': true, 'Analytics': 'Basic', 'In-App Purchases': false, 'Live Chat': false, 'Maps Integration': false, 'Post-Launch Support': '15 Days Bug Support'
         }
       },
-      { name: 'Business Growth', price: '€9,999', isPopular: true, features: ['Both iOS & Android', 'User Login (Email & Social)', 'Custom UI/UX with Prototype', 'In-App Purchases / E-commerce', 'Payment Gateway (Stripe, PayPal)', 'Advanced Shopping Cart', 'Push Notifications', 'Messaging & Live Chat API', 'Social Sharing', 'Google Maps & Location Services', 'Data Import/Export Functionality', 'Custom Web APIs & Online Database', 'Product Gallery & Showcase', 'Product Categories & Subcategories', 'Crashlytics & Analytics Dashboard', 'Audio/Video Streaming Capability', 'Wishlist & Favorites', 'Order History & Tracking', 'Rating & Review System', 'Custom Backend & Admin Panel', 'Comprehensive Testing', 'Full App Store Deployment', '1 Month of Bug Support'],
+      { name: 'Business Growth', price: '€9,999', isPopular: true, features: [
+          'Both iOS & Android',
+          'User Login (Email & Social)',
+          'Custom UI/UX with Prototype',
+          'In-App Purchases / E-commerce',
+          'Payment Gateway (Stripe, PayPal)',
+          'Advanced Shopping Cart',
+          'Push Notifications',
+          'Messaging & Live Chat API',
+          'Social Sharing',
+          'Google Maps & Location Services',
+          'Data Import/Export Functionality',
+          { feature: 'Custom Web APIs & Online Database', tooltip: 'Building custom connectors to allow your app to communicate with a dedicated server and database.' },
+          'Product Gallery & Showcase',
+          'Product Categories & Subcategories',
+          'Crashlytics & Analytics Dashboard',
+          'Audio/Video Streaming Capability',
+          'Wishlist & Favorites',
+          'Order History & Tracking',
+          'Rating & Review System',
+          'Custom Backend & Admin Panel',
+          'Comprehensive Testing',
+          'Full App Store Deployment',
+          '1 Month of Bug Support'
+        ],
         comparisonFeatures: {
             'Platforms': '2 (iOS & Android)', 'Core Screens': 'Not Limited', 'UI/UX Design': 'Custom + Prototype', 'User Login': 'Email & Social', 'Backend': 'Custom Web APIs', 'Admin Panel': 'Custom', 'Push Notifications': true, 'Analytics': 'Dashboard', 'In-App Purchases': true, 'Live Chat': true, 'Maps Integration': true, 'Post-Launch Support': '1 Month Bug Support'
         }
       },
-      { name: 'Enterprise Scale', price: '€19,999', features: ['Everything in Business Growth, PLUS:', 'Native Tablet Support', 'Multi-tier User Roles & Permissions', 'Complex API Integration (ERP, CRM, Legacy Systems)', 'Advanced Analytics & Reporting Dashboard', 'Full Offline Functionality & Sync', 'Biometric/Fingerprint Login', 'Deep Linking', 'Scalable Microservices Architecture (AWS/Azure)', 'Automated Testing Suite', 'Security Penetration Testing', 'Performance & Load Testing', 'CI/CD Pipeline Setup', 'SLA-Backed Hosting & Maintenance', '3 Months of Support & Priority Enhancements'],
+      { name: 'Enterprise Scale', price: '€19,999', features: [
+          'Everything in Business Growth, PLUS:',
+          'Native Tablet Support',
+          { feature: 'Multi-tier User Roles & Permissions', tooltip: 'Different access levels for admins, managers, and regular users.' },
+          { feature: 'Complex API Integration (ERP, CRM, Legacy Systems)', tooltip: 'Connecting the app to your existing enterprise software systems.' },
+          'Advanced Analytics & Reporting Dashboard',
+          'Full Offline Functionality & Sync',
+          'Biometric/Fingerprint Login',
+          { feature: 'Deep Linking', tooltip: 'Links that open directly inside specific pages of your mobile app.' },
+          { feature: 'Scalable Microservices Architecture', tooltip: 'Structuring the app as a collection of loosely coupled services for better scalability and maintenance.' },
+          { feature: 'Automated Testing Suite', tooltip: 'Scripts that automatically test the app\'s functionality to ensure high quality.' },
+          { feature: 'Security Penetration Testing', tooltip: 'Simulated cyberattacks to identify and fix security vulnerabilities.' },
+          'Performance & Load Testing',
+          { feature: 'CI/CD Pipeline Setup', tooltip: 'Automating the process of building, testing, and deploying the app for faster updates.' },
+          'SLA-Backed Hosting & Maintenance',
+          '3 Months of Support & Priority Enhancements'
+        ],
         comparisonFeatures: {
             'Platforms': '2 + Tablet', 'Core Screens': 'Not Limited', 'UI/UX Design': 'Custom + Prototype', 'User Login': 'Biometric', 'Backend': 'Microservices Architecture', 'Admin Panel': 'Custom + Multi-tier Roles', 'Push Notifications': true, 'Analytics': 'Advanced Reporting', 'In-App Purchases': true, 'Live Chat': true, 'Maps Integration': true, 'Post-Launch Support': '3 Months Priority', 'Complex API Integrations': true, 'Offline Functionality': true, 'Security Testing': true
         }
@@ -660,27 +1053,150 @@ export const servicesData: ServiceCategory[] = [
     title: 'Dropshipping Solutions',
     description: 'Launch your e-commerce empire without the hassle of inventory. We build and optimize dropshipping stores for maximum profitability.',
     plans: [
-      { name: 'Micro', price: '€999', features: ['Niche Selection Guidance', 'Supplier & Product Category Research', 'Customized Website design & development', 'Payment Gateway Integration', 'Up to 25 Products Imported', 'Supplier Vetting (Delivery, Quality, Ratings)', 'Automated Inventory & Price Sync Setup', 'Product Title & Description Optimization', 'Basic Logo Creation', 'Storefront Customization (Colors, Fonts, Layout)', 'Homepage Banner Design', 'Product Page Formatting', 'Abandoned Cart Recovery Setup', 'Order Tracking Integration', 'Shipping Policy & Terms Setup', '5 Days Post-Launch Support via Email', 'Store Management Quick Guide', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back Guarantee'],
+      { name: 'Micro', price: '€999', features: [
+          { feature: 'Niche Selection Guidance', tooltip: 'We help you identify a profitable market segment with high demand and low competition.' },
+          'Supplier & Product Category Research',
+          'Customized Website design & development',
+          'Payment Gateway Integration',
+          'Up to 25 Products Imported',
+          { feature: 'Supplier Vetting', tooltip: 'We check suppliers for delivery speed, product quality, and ratings to ensure reliability.' },
+          { feature: 'Automated Inventory & Price Sync Setup', tooltip: 'Your store automatically updates stock levels and prices when suppliers make changes.' },
+          'Product Title & Description Optimization',
+          'Basic Logo Creation',
+          'Storefront Customization (Colors, Fonts, Layout)',
+          'Homepage Banner Design',
+          'Product Page Formatting',
+          { feature: 'Abandoned Cart Recovery Setup', tooltip: 'Emails sent to customers who leave without buying, encouraging them to complete the purchase.' },
+          'Order Tracking Integration',
+          'Shipping Policy & Terms Setup',
+          '5 Days Post-Launch Support via Email',
+          'Store Management Quick Guide',
+          'Dedicated Project Manager',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money Back Guarantee'
+        ],
         comparisonFeatures: {
             'Research & Strategy': 'Niche Guidance', 'Products Imported': 'Up to 25', 'Supplier Sourcing': 'Vetted', 'Automation': 'Inventory & Price Sync', 'Branding': 'Basic Logo & Storefront', 'Marketing & Sales Tools': 'Abandoned Cart', 'Post-Launch Support': '5 Days (Email)', 'Training': 'Quick Guide'
         }
       },
-      { name: 'Basic', price: '€2,999', features: ['Complete Niche Validation', 'Competitor Analysis', 'Customized Website design & development', 'Tax & Shipping Zone Configuration', 'Payment Gateway & Currency Setup', '100 Products Imported', 'Verified Supplier Sourcing (AliExpress, CJ, etc.)', 'Product Image Optimization', 'Product Pricing Rule Automation', 'Custom Logo Design (2 Concepts)', 'Branded Homepage Design', 'Banner & Hero Section Design', 'Product Page Copywriting (SEO-Optimized)', 'Abandoned Cart & Welcome Email Setup', 'Order Tracking Dashboard', 'App Integration (Trust Badges, Reviews, Timer)', 'Store Speed Optimization', '7 Days Post-Launch Support', 'Store Management Training (1 Hour)', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back Guarantee'],
+      { name: 'Basic', price: '€2,999', features: [
+          'Complete Niche Validation',
+          'Competitor Analysis',
+          'Customized Website design & development',
+          'Tax & Shipping Zone Configuration',
+          'Payment Gateway & Currency Setup',
+          '100 Products Imported',
+          'Verified Supplier Sourcing (AliExpress, CJ, etc.)',
+          'Product Image Optimization',
+          { feature: 'Product Pricing Rule Automation', tooltip: 'Automatically set prices based on a formula (e.g., Cost + 50%) to maintain margins.' },
+          'Custom Logo Design (2 Concepts)',
+          'Branded Homepage Design',
+          'Banner & Hero Section Design',
+          'Product Page Copywriting (SEO-Optimized)',
+          'Abandoned Cart & Welcome Email Setup',
+          'Order Tracking Dashboard',
+          { feature: 'App Integration', tooltip: 'Adding trust badges, review widgets, or countdown timers to increase conversions.' },
+          'Store Speed Optimization',
+          '7 Days Post-Launch Support',
+          'Store Management Training (1 Hour)',
+          'Dedicated Project Manager',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money Back Guarantee'
+        ],
         comparisonFeatures: {
             'Research & Strategy': 'Niche Validation + Competitor Analysis', 'Products Imported': '100', 'Supplier Sourcing': 'Verified', 'Automation': 'Pricing Rules', 'Branding': 'Custom Logo (2 concepts)', 'Marketing & Sales Tools': 'Welcome Email + App Integration', 'Post-Launch Support': '7 Days', 'Training': '1 Hour'
         }
       },
-      { name: 'Standard', price: '€5,999', isPopular: true, features: ['Advanced Niche Research (Data-Driven)', 'Competitor & Keyword Analysis', 'Customized Website design & development', 'Branded Email Setup (info@yourdomain.com)', 'SEO Optimization (Meta Titles, Tags, Descriptions)', '250 Products Imported', 'Supplier Vetting + Backup Supplier Options', 'Bulk Product Upload & Optimization', 'Automated Inventory & Stock Sync', 'Premium Logo Design (3 Concepts)', 'Custom Homepage + Inner Pages', 'Product Page Aesthetic design', 'Homepage & Collection Banner Design', 'Upsell & Cross-Sell Plugin Setup', 'Abandoned Cart Email Workflow', 'Tracking Page Integration', 'Live Chat & Customer Inquiry Setup', '15 Days Post-Launch Support', '1-on-1 Store Training (2 Sessions)', 'Dedicated Project Manager', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back Guarantee'],
+      { name: 'Standard', price: '€5,999', isPopular: true, features: [
+          'Advanced Niche Research (Data-Driven)',
+          'Competitor & Keyword Analysis',
+          'Customized Website design & development',
+          'Branded Email Setup (info@yourdomain.com)',
+          'SEO Optimization (Meta Titles, Tags, Descriptions)',
+          '250 Products Imported',
+          'Supplier Vetting + Backup Supplier Options',
+          'Bulk Product Upload & Optimization',
+          'Automated Inventory & Stock Sync',
+          'Premium Logo Design (3 Concepts)',
+          'Custom Homepage + Inner Pages',
+          'Product Page Aesthetic design',
+          'Homepage & Collection Banner Design',
+          { feature: 'Upsell & Cross-Sell Plugin Setup', tooltip: 'Automatically suggest related products or upgrades to increase average order value.' },
+          'Abandoned Cart Email Workflow',
+          'Tracking Page Integration',
+          'Live Chat & Customer Inquiry Setup',
+          '15 Days Post-Launch Support',
+          '1-on-1 Store Training (2 Sessions)',
+          'Dedicated Project Manager',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money Back Guarantee'
+        ],
         comparisonFeatures: {
             'Research & Strategy': 'Data-Driven + Keyword Analysis', 'Products Imported': '250', 'Supplier Sourcing': 'Vetted + Backup', 'Automation': 'Inventory & Stock Sync', 'Branding': 'Premium Logo (3 concepts)', 'Marketing & Sales Tools': 'Upsell/Cross-Sell + Live Chat', 'SEO Optimization': true, 'Post-Launch Support': '15 Days', 'Training': '2 Sessions (1-on-1)'
         }
       },
-      { name: 'Pro', price: '€8,999', features: ['Multi-Niche Analysis & Validation', 'Competitor Benchmarking & Market Positioning', 'Customized Website design & development', 'Currency Conversion & International Shipping Setup', 'Email Domain & Google Workspace Integration', 'Up to 500 High-Margin Products', 'Verified & Preferred Supplier Partnerships', 'Advanced Pricing Automation (Profit Margin Rules)', 'Bulk Product Import with Category Mapping', 'Full Custom Brand Identity (Logo, Fonts, Palette)', 'Premium UI/UX Store Design', 'Animated Homepage Banners', 'Mobile & Tablet Responsive Design', 'Full Funnel Automation (Cart Recovery, Retargeting)', 'Order Management Dashboard Setup', 'Advanced Analytics (Sales, Traffic, Conversion)', 'Multi-Language & Multi-Currency Setup', '30 Days Post-Launch Technical Support', 'Store Training (3 Sessions)', '1 Strategy Consultation Call', 'Dedicated Operations Team', 'Dedicated Project Manager', 'Priority Support', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back Guarantee'],
+      { name: 'Pro', price: '€8,999', features: [
+          'Multi-Niche Analysis & Validation',
+          'Competitor Benchmarking & Market Positioning',
+          'Customized Website design & development',
+          'Currency Conversion & International Shipping Setup',
+          'Email Domain & Google Workspace Integration',
+          'Up to 500 High-Margin Products',
+          'Verified & Preferred Supplier Partnerships',
+          { feature: 'Advanced Pricing Automation', tooltip: 'Dynamic pricing strategies based on profit margin rules and competitor prices.' },
+          'Bulk Product Import with Category Mapping',
+          'Full Custom Brand Identity (Logo, Fonts, Palette)',
+          'Premium UI/UX Store Design',
+          'Animated Homepage Banners',
+          'Mobile & Tablet Responsive Design',
+          { feature: 'Full Funnel Automation', tooltip: 'Automated emails and ads targeting customers at every stage, from browsing to buying.' },
+          'Order Management Dashboard Setup',
+          'Advanced Analytics (Sales, Traffic, Conversion)',
+          'Multi-Language & Multi-Currency Setup',
+          '30 Days Post-Launch Technical Support',
+          'Store Training (3 Sessions)',
+          '1 Strategy Consultation Call',
+          'Dedicated Operations Team',
+          'Dedicated Project Manager',
+          'Priority Support',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money Back Guarantee'
+        ],
         comparisonFeatures: {
             'Research & Strategy': 'Multi-Niche + Market Positioning', 'Products Imported': 'Up to 500', 'Supplier Sourcing': 'Preferred Partnerships', 'Automation': 'Full Funnel', 'Branding': 'Full Custom Identity', 'Marketing & Sales Tools': 'Advanced Analytics', 'SEO Optimization': true, 'Internationalization': 'Multi-Language & Currency', 'Post-Launch Support': '30 Days (Technical)', 'Training': '3 Sessions + Strategy Call'
         }
       },
-      { name: 'Enterprise', price: '€11,999', features: ['Brand & Business Roadmap', 'Niche Diversification Strategy', 'Global Payment & Multi-Region Fulfillment Setup', 'Tax, Duty & Compliance Configuration', 'Unlimited Product Import', 'Private Label / White Label Supplier Sourcing', 'Verified & Preferred Supplier Partnerships', 'Bulk Supplier Negotiation Assistance', 'Custom Product Bundling & Pricing Strategy', 'Custom High-End Store Design (Tailored to Brand)', 'Full Brand Kit (Logo, Colors, Typography, Icons)', 'Homepage Video Banner + Motion Graphics', 'Branded Product Mockups & Lifestyle Imagery', 'Complete eCommerce Automation System', 'CRM & Email Marketing Integrations', 'AI-Based Product Recommendation Setup', 'Advanced Analytics Dashboard (Real-Time Reporting)', '60 Days Post-Launch Support', 'Dedicated Team Training Session', 'Business Scaling Consultation', 'Dedicated full team: account manager, product manager, logistics specialist', 'VIP support', '100% Ownership Rights', '100% Satisfaction Guarantee', '100% Money Back Guarantee'], note: 'Fair Use Policy (FUP) applies: Up to 1000 products are included.',
+      { name: 'Enterprise', price: '€11,999', features: [
+          'Brand & Business Roadmap',
+          'Niche Diversification Strategy',
+          'Global Payment & Multi-Region Fulfillment Setup',
+          'Tax, Duty & Compliance Configuration',
+          'Unlimited Product Import',
+          { feature: 'Private Label / White Label Sourcing', tooltip: 'Sourcing generic products to sell under your own brand name and logo.' },
+          'Verified & Preferred Supplier Partnerships',
+          'Bulk Supplier Negotiation Assistance',
+          'Custom Product Bundling & Pricing Strategy',
+          'Custom High-End Store Design (Tailored to Brand)',
+          'Full Brand Kit (Logo, Colors, Typography, Icons)',
+          'Homepage Video Banner + Motion Graphics',
+          'Branded Product Mockups & Lifestyle Imagery',
+          'Complete eCommerce Automation System',
+          'CRM & Email Marketing Integrations',
+          { feature: 'AI-Based Product Recommendation Setup', tooltip: 'Using artificial intelligence to show customers the products they are most likely to buy.' },
+          'Advanced Analytics Dashboard (Real-Time Reporting)',
+          '60 Days Post-Launch Support',
+          'Dedicated Team Training Session',
+          'Business Scaling Consultation',
+          'Dedicated full team: account manager, product manager, logistics specialist',
+          'VIP support',
+          '100% Ownership Rights',
+          '100% Satisfaction Guarantee',
+          '100% Money Back Guarantee'
+        ], note: 'Fair Use Policy (FUP) applies: Up to 1000 products are included.',
         comparisonFeatures: {
             'Research & Strategy': 'Business Roadmap', 'Products Imported': 'Unlimited (FUP: 1000)', 'Supplier Sourcing': 'Private Label / White Label', 'Automation': 'Complete System + CRM/Email', 'Branding': 'Full Brand Kit + Video/Motion', 'Marketing & Sales Tools': 'AI Recommendations', 'SEO Optimization': true, 'Internationalization': 'Global Fulfillment', 'Post-Launch Support': '60 Days + VIP', 'Training': 'Team Training + Scaling Consultation'
         }

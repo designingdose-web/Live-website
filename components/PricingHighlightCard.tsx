@@ -1,3 +1,4 @@
+
 import React from 'react';
 import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
@@ -12,8 +13,8 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const remainingFeatures = plan.features.length - MAX_FEATURES;
 
   const cardClasses = plan.isPopular
-    ? 'border-brand-accent-middle scale-105 shadow-2xl shadow-brand-accent-middle/20'
-    : 'border-gray-700 hover:border-brand-accent-start/50';
+    ? 'border-brand-accent-middle scale-105 shadow-2xl shadow-brand-accent-middle/20 z-10'
+    : 'border-gray-700 hover:border-brand-accent-start/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-accent-start/10';
 
   return (
     <Link 

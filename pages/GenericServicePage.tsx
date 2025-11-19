@@ -7,15 +7,41 @@ import FaqSection from '../components/FaqSection';
 import ComparisonModal from '../components/ComparisonModal';
 
 
-const GenericServicePage: React.FC<{ service: ServiceCategory }> = ({ service }) => {
+const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.ReactNode }> = ({ service, children }) => {
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
   const headerRef = useScrollAnimation('slide-in-up');
+  const anchorNavRef = useScrollAnimation('slide-in-up');
   const gridRef = useRef<HTMLDivElement>(null);
   const plansToShow = service.plans || [];
 
-  const gridCols = plansToShow.length >= 4 
-    ? 'lg:grid-cols-4' 
-    : (plansToShow.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2');
+  // Determine column width based on number of plans to mimic grid but allow centering
+  const getWidthClass = (count: number) => {
+    // User requested 4 items to be 4-columns (all in one row)
+    if (count === 4) return 'lg:w-1/4';
+    // User requested 5 items to be 3 on top, 2 below (so 3 columns)
+    if (count === 5) return 'lg:w-1/3';
+    // Standard 3 items or 6 items use 3 columns
+    if (count === 3 || count >= 6) return 'lg:w-1/3';
+    
+    return 'lg:w-1/2';
+  };
+
+  const widthClass = getWidthClass(plansToShow.length);
+
+  const scrollToPlan = (planName: string) => {
+    const element = document.getElementById(planName);
+    if (element) {
+      // Scroll with a bit of offset for the sticky header
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   useEffect(() => {
     if (!gridRef.current) return;
@@ -24,7 +50,6 @@ const GenericServicePage: React.FC<{ service: ServiceCategory }> = ({ service })
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Fix: Add a type guard to ensure entry.target is an Element before accessing classList or passing to observer.unobserve.
             if (entry.target instanceof Element) {
               entry.target.classList.add('is-visible');
               observer.unobserve(entry.target);
@@ -37,7 +62,6 @@ const GenericServicePage: React.FC<{ service: ServiceCategory }> = ({ service })
 
     const cards = Array.from(gridRef.current.children);
     cards.forEach(card => {
-        // Fix: Add a type guard to ensure 'card' is an Element. The compiler was inferring it as 'unknown'.
         if (card instanceof Element) {
             card.classList.add('animate-on-scroll', 'slide-in-up');
             observer.observe(card);
@@ -46,7 +70,6 @@ const GenericServicePage: React.FC<{ service: ServiceCategory }> = ({ service })
 
     return () => {
       cards.forEach(card => {
-        // Fix: Add a type guard to ensure 'card' is an Element. The compiler was inferring it as 'unknown'.
         if (card instanceof Element) {
             observer.unobserve(card);
         }
@@ -63,8 +86,24 @@ const GenericServicePage: React.FC<{ service: ServiceCategory }> = ({ service })
             <p className="mt-4 text-lg max-w-3xl mx-auto text-brand-muted">{service.description}</p>
           </div>
           
+          {/* Plan Anchor Navigation Bar */}
+          {plansToShow.length > 0 && (
+             <div ref={anchorNavRef} className="flex flex-wrap justify-center gap-3 mb-8 animate-on-scroll" style={{ transitionDelay: '100ms' }}>
+                <span className="w-full text-center text-xs text-brand-muted uppercase tracking-widest mb-1 font-semibold">Available Plans</span>
+                {plansToShow.map((plan) => (
+                  <button
+                    key={plan.name}
+                    onClick={() => scrollToPlan(plan.name)}
+                    className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-brand-secondary bg-brand-secondary/50 text-brand-muted hover:bg-brand-secondary hover:text-white hover:border-brand-accent-middle hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-accent-middle"
+                  >
+                    {plan.name}
+                  </button>
+                ))}
+             </div>
+          )}
+
           {plansToShow.length > 1 && (
-            <div className="flex justify-center mb-12">
+            <div className="flex justify-center mb-16 pb-6 relative z-20">
               <button
                 onClick={() => setIsCompareModalOpen(true)}
                 className="bg-transparent border-2 border-brand-accent-end text-brand-accent-end font-bold py-2 px-6 rounded-full text-base hover:bg-brand-accent-end hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -74,19 +113,22 @@ const GenericServicePage: React.FC<{ service: ServiceCategory }> = ({ service })
             </div>
           )}
 
-          <div ref={gridRef} className={`grid grid-cols-1 md:grid-cols-2 ${gridCols} gap-8 xl:gap-10 justify-center`}>
+          <div ref={gridRef} className="flex flex-wrap justify-center -mx-4 xl:-mx-5 mt-8">
             {plansToShow.map((plan, index) => {
               return (
                 <div
                   key={plan.name}
                   style={{ transitionDelay: `${index * 100}ms` }}
-                  className="flex"
+                  className={`flex px-4 xl:px-5 mb-8 xl:mb-10 w-full md:w-1/2 ${widthClass}`}
                 >
                   <FullFeaturePricingCard plan={plan} />
                 </div>
               );
             })}
           </div>
+
+          {/* Render custom injected content (like SEO trends) here, after the packages */}
+          {children}
           
           {service.faqs && service.faqs.length > 0 && (
             <FaqSection faqs={service.faqs} />

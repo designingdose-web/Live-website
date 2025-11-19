@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
@@ -36,9 +37,12 @@ const Header: React.FC = () => {
   };
 
   const handleMouseLeave = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
     closeTimeoutRef.current = window.setTimeout(() => {
       setIsServicesOpen(false);
-    }, 200);
+    }, 300);
   };
   
   const closeMenu = () => {
@@ -47,12 +51,12 @@ const Header: React.FC = () => {
   };
   
   const servicesLinks = [
-    { to: "/services/website-packages", label: "Web Development", icon: "💻" },
-    { to: "/services/seo", label: "SEO Services", icon: "📈" },
-    { to: "/services/social-media", label: "Social Media", icon: "📱" },
-    { to: "/services/logo-design", label: "Logo & Branding", icon: "🎨" },
-    { to: "/services/mobile-app-development", label: "Mobile Apps", icon: "📲" },
-    { to: "/services/dropshipping", label: "Dropshipping", icon: "📦" },
+    { to: "/services/website-packages", label: "Web Development" },
+    { to: "/services/seo", label: "SEO Services" },
+    { to: "/services/social-media", label: "Social Media" },
+    { to: "/services/logo-design", label: "Logo & Branding" },
+    { to: "/services/mobile-app-development", label: "Mobile Apps" },
+    { to: "/services/dropshipping", label: "Dropshipping" },
   ];
 
   const headerRef = useRef<HTMLElement>(null);
@@ -83,10 +87,10 @@ const Header: React.FC = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 <button
-                  className="text-brand-muted hover:text-white flex items-center py-2 px-3 rounded-md transition-colors duration-200 group-hover:text-white focus-visible:text-white focus:outline-none"
+                  className={`flex items-center py-2 px-3 rounded-md transition-colors duration-200 focus:outline-none ${isServicesOpen ? 'text-white' : 'text-brand-muted hover:text-white'}`}
                 >
                   Pricing
-                  <svg className={`w-4 h-4 ml-1 transition-transform duration-200 ${isServicesOpen ? 'transform rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  <svg className={`w-4 h-4 ml-1 transition-transform duration-200 ${isServicesOpen ? 'transform rotate-180 text-brand-accent-middle' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
               </div>
               <NavItem to="/contact">Contact Us</NavItem>
@@ -114,37 +118,52 @@ const Header: React.FC = () => {
       </header>
        {/* Dropdown Menu & Overlay */}
       <div 
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         className={`fixed inset-0 top-0 left-0 z-30 transition-opacity duration-300 ${isServicesOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
+        {/* Overlay - closes menu when hovered */}
+        <div 
+          className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"
+          onMouseEnter={handleMouseLeave}
+        ></div>
         
-        {/* Menu */}
+        {/* Menu - keeps menu open when hovered */}
         <div 
           ref={dropdownRef}
-          className={`absolute top-[73px] left-1/2 -translate-x-1/2 transition-all duration-300 ${isServicesOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}`}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className={`absolute top-[75px] left-1/2 -translate-x-1/2 transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${isServicesOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}
         >
           <div 
-            className="p-1 rounded-2xl shadow-2xl shadow-[#9759E9]/30"
-            style={{ backgroundImage: 'linear-gradient(to bottom right, #9759E9, #B952C9, #DB4BA9, #B170B1, #9484BE, #60A8D4)' }}
+            className="rounded-xl w-[90vw] max-w-[600px] p-8 overflow-hidden relative"
+            style={{
+              // Reverted to darker, more transparent glassy look
+              background: 'linear-gradient(145deg, rgba(13, 17, 23, 0.6) 0%, rgba(22, 27, 34, 0.4) 100%)',
+              backdropFilter: 'blur(20px)', 
+              border: '1px solid rgba(139, 92, 246, 0.15)', 
+              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(139, 92, 246, 0.1)'
+            }}
           >
-            <div className="bg-brand-secondary/95 p-6 rounded-[14px] w-[90vw] max-w-[550px]">
-              <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+              {/* Subtle internal gradient glow for depth */}
+               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-accent-start/10 to-brand-accent-end/5 pointer-events-none"></div>
+
+              <div className="relative grid grid-cols-2 gap-4 z-10">
                 {servicesLinks.map(link => (
                   <NavLink
                     key={link.to}
                     to={link.to}
                     onClick={closeMenu}
-                    className="group flex items-center p-3 rounded-lg transition-colors duration-200 hover:bg-white/10"
+                    className="group flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-brand-accent-start/20"
                   >
-                    <span className="text-xl mr-4">{link.icon}</span>
-                    <span className="text-white font-medium group-hover:text-brand-accent-end transition-colors">{link.label}</span>
+                    {/* Increased vibrancy: bolder, larger text with neon glow shadow on hover */}
+                    <span className="text-white font-bold text-lg tracking-wide transition-all duration-300 group-hover:translate-x-1 inline-block group-hover:text-brand-accent-end group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
+                      {link.label}
+                    </span>
+                    <svg className="w-5 h-5 text-brand-accent-end opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ml-auto drop-shadow-[0_0_5px_rgba(34,211,238,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                    </svg>
                   </NavLink>
                 ))}
               </div>
-            </div>
           </div>
         </div>
       </div>
