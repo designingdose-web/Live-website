@@ -335,6 +335,22 @@ export const servicesData: ServiceCategory[] = [
       {
         question: 'What is the difference between an Informative and an E-commerce website?',
         answer: 'An informative website is designed to provide information about your business, services, and contact details, essentially acting as a digital brochure. An e-commerce website includes all the features of an informative site but also has full online store functionality, allowing you to sell products directly to customers.'
+      },
+      {
+        question: 'Do I need to provide my own content and images?',
+        answer: 'It depends. If you have existing content and high-quality images, we can use them. However, if you need help, we can provide stock photos and professional copywriting services as an add-on or as part of our higher-tier packages.'
+      },
+      {
+        question: 'What platform do you use for website development?',
+        answer: 'We primarily build on WordPress for its flexibility and ease of use, but we are also proficient in Shopify for e-commerce, and can develop custom solutions using React/Next.js for specific needs.'
+      },
+      {
+        question: 'Is hosting and domain included in the package price?',
+        answer: 'Hosting and domain registration are typically separate costs as they are recurring annual fees paid to providers. However, we can assist you in setting these up and selecting the best provider for your needs.'
+      },
+      {
+        question: 'Can you help with logo design if I don\'t have one?',
+        answer: 'Yes, absolutely! We offer dedicated Logo Design & Branding packages. If you bundle a logo design with a website package, we can often offer a special discount.'
       }
     ]
   },
@@ -536,6 +552,22 @@ export const servicesData: ServiceCategory[] = [
       {
         question: 'Is SEO a one-time thing or an ongoing process?',
         answer: 'SEO is an ongoing process. Search engines constantly update their algorithms, and your competitors are always working to outrank you. Continuous effort is needed to maintain and improve your rankings over time.'
+      },
+      {
+        question: 'Do I need to change my website for SEO?',
+        answer: 'In most cases, yes. SEO often requires technical adjustments to your site\'s structure, speed, and meta tags, as well as content optimization. We handle these changes for you to ensure your site is fully optimized for search engines.'
+      },
+      {
+        question: 'How do you track the progress of my SEO campaign?',
+        answer: 'We provide detailed monthly reports that show key metrics such as keyword rankings, organic traffic growth, and conversions. We also set up Google Analytics so you can monitor your site\'s performance in real-time.'
+      },
+      {
+        question: 'What happens if a customer returns a product?',
+        answer: 'Returns are handled based on the policy we help you set up. Typically, the customer returns the item to you or the supplier. We guide you on setting up a clear Refund & Return policy to manage expectations.'
+      },
+      {
+        question: 'Do you offer local SEO services?',
+        answer: 'Yes, local SEO is a key part of our strategy for businesses serving specific geographic areas. We optimize your Google My Business profile, build local citations, and target location-specific keywords to help you dominate your local market.'
       }
     ]
   },
@@ -839,94 +871,295 @@ export const servicesData: ServiceCategory[] = [
       {
         question: 'How much should I spend on social media ads?',
         answer: 'Your ad budget (ad spend) is separate from our management fee. The amount you should spend depends on your goals, industry, and target audience. We can provide recommendations for a starting budget based on our initial strategy session.'
+      },
+      {
+        question: 'Do I need to provide you with images and videos?',
+        answer: 'While original content from you (like team photos or product shots) is always best, we can create high-quality graphics and use stock footage if needed. For the best results, a mix of your authentic content and our designed assets works wonders.'
+      },
+      {
+        question: 'Can I approve the posts before they go live?',
+        answer: 'Absolutely. We use a content calendar system where you can view, review, and approve all posts before they are scheduled for publishing. Nothing goes live without your green light.'
+      },
+      {
+        question: 'Do you handle community management and reply to comments?',
+        answer: 'Yes, our Standard and higher packages include community management. We monitor your accounts, reply to comments, and handle direct messages to keep your audience engaged and supported.'
+      },
+      {
+        question: 'What is the difference between organic posts and paid ads?',
+        answer: 'Organic posts are the regular content on your feed that reaches your existing followers. Paid ads are sponsored content shown to a targeted audience (who may not follow you yet) to drive specific actions like website visits or sales.'
       }
     ]
   },
   {
     id: 'logo-design',
     title: 'Logo Design & Branding',
-    description: 'Craft a memorable brand identity with a unique, professional logo. Our design process ensures your vision comes to life.',
-    plans: [
-      { name: 'Starter', price: '€49', features: [
-          '2 Original Logo Concepts',
-          '2 Revision Rounds',
-          'Choice of 2 Color Variations',
-          { feature: 'Transparent PNG File', tooltip: 'A logo file with no background, perfect for placing over images or colored backgrounds.' },
-          'JPG & PNG Formats',
-          'Basic Font & Color Recommendations',
-          'Delivery in 48 Hours',
-          'Dedicated Project Manager',
-          '100% Ownership Rights',
-          '100% Satisfaction Guarantee',
-          '100% Money-Back Guarantee'
+    description: 'Craft a memorable brand identity with a unique, professional logo and cohesive marketing materials. Our design process ensures your vision comes to life.',
+    tabs: [
+      {
+        tabName: 'Logo Design',
+        plans: [
+          { name: 'Starter', price: '€49', features: [
+              '2 Original Logo Concepts',
+              '2 Revision Rounds',
+              'Choice of 2 Color Variations',
+              { feature: 'Transparent PNG File', tooltip: 'A logo file with no background, perfect for placing over images or colored backgrounds.' },
+              'JPG & PNG Formats',
+              'Basic Font & Color Recommendations',
+              'Delivery in 48 Hours',
+              'Dedicated Project Manager',
+              '100% Ownership Rights',
+              '100% Satisfaction Guarantee',
+              '100% Money-Back Guarantee'
+            ],
+            comparisonFeatures: {
+                'Design Concepts': '2', 'Revision Rounds': '2', 'Color Variations': '2', 'File Formats': 'JPG, PNG', 'Vector Files': false, 'Brand Guide': 'Basic Recommendations', 'Social Media Kit': false, 'Stationery Design': false, 'Delivery Time': '48 Hours'
+            }
+          },
+          { name: 'Basic', price: '€99', features: [
+              '3 Unique Logo Concepts',
+              'Up to 4 Revision Rounds',
+              'Full-Color, Black, and White Variants',
+              'Transparent & Background Versions',
+              { feature: 'JPG, PNG, and PDF Files (Print-Ready)', tooltip: 'High-quality files suitable for both digital use and printing.' },
+              'Simple Icon or Symbol Design',
+              'Basic Typography & Color Palette',
+              'Delivery in 72 Hours',
+              'Dedicated Project Manager',
+              '100% Ownership Rights',
+              '100% Satisfaction Guarantee',
+              '100% Money-Back Guarantee'
+            ],
+            comparisonFeatures: {
+                'Design Concepts': '3', 'Revision Rounds': '4', 'Color Variations': 'Full, B&W', 'File Formats': 'JPG, PNG, PDF', 'Vector Files': false, 'Brand Guide': 'Basic Palette', 'Social Media Kit': false, 'Stationery Design': false, 'Delivery Time': '72 Hours'
+            }
+          },
+          { name: 'Standard', price: '€199', isPopular: true, features: [
+              '5 Unique Logo Concepts',
+              'Unlimited Revisions (within scope)',
+              'Versions for Light & Dark Backgrounds',
+              'JPG, PNG, PDF, AI, and EPS Files',
+              { feature: 'Full Vector & Scalable Formats', tooltip: 'Master files (AI, EPS) that can be resized to any size (from business card to billboard) without losing quality.' },
+              'Icon & Symbol Variations',
+              'Complete Color Palette (Full Brand Spectrum)',
+              'Typography Recommendations',
+              { feature: 'Mini Brand Guide', tooltip: 'A document outlining your logo usage rules, color codes, and fonts to ensure consistency.' },
+              'Facebook & Instagram Profile Logos',
+              { feature: 'Business Card & Letterhead Mockups', tooltip: 'Visual previews of how your logo will look on printed stationery.' },
+              'Delivery in 5 Business Days',
+              'Dedicated Project Manager',
+              '100% Ownership Rights',
+              '100% Satisfaction Guarantee',
+              '100% Money-Back Guarantee'
+            ],
+            comparisonFeatures: {
+                'Design Concepts': '5', 'Revision Rounds': 'Unlimited', 'Color Variations': 'Full, B&W, Inverse', 'File Formats': 'JPG, PNG, PDF, AI, EPS', 'Vector Files': true, 'Brand Guide': 'Mini Guide', 'Social Media Kit': 'Profile Logos', 'Stationery Design': 'Mockups', 'Delivery Time': '5 Business Days'
+            }
+          },
+          { name: 'Pro', price: '€399', features: [
+              'Unlimited Logo Concepts by 2 Designers',
+              'Unlimited Revisions',
+              'Horizontal, Vertical & Icon-Only Versions',
+              { feature: 'JPG, PNG, PDF, AI, EPS & SVG Files', tooltip: 'Every file format you will ever need for web, print, and editing.' },
+              { feature: 'CMYK + RGB Color Profiles', tooltip: 'Files optimized for both screens (RGB) and professional printing (CMYK).' },
+              'Full Color Palette (Primary, Secondary, Accent)',
+              'Advanced Typography System',
+              { feature: 'Comprehensive Brand Identity Sheet', tooltip: 'A detailed guide defining your brand\'s visual language, ensuring a cohesive look across all media.' },
+              { feature: 'Iconography & Favicon Design', tooltip: 'Custom icons for your website and the small icon appearing in browser tabs.' },
+              { feature: 'Social Media Kit', tooltip: 'Ready-to-use profile pictures, banners, and cover images sized perfectly for all major platforms.' },
+              'Business Card & Letterhead Design',
+              { feature: 'Product Mockups', tooltip: 'Realistic 3D previews of your logo on apparel, signage, or packaging.' },
+              'Priority Delivery in 3-4 Business Days',
+              'Dedicated Project Manager',
+              '100% Ownership Rights',
+              '100% Satisfaction Guarantee',
+              '100% Money-Back Guarantee'
+            ],
+            comparisonFeatures: {
+                'Design Concepts': 'Unlimited (2 Designers)', 'Revision Rounds': 'Unlimited', 'Color Variations': 'Full Suite + Profiles', 'File Formats': 'JPG, PNG, PDF, AI, EPS, SVG', 'Vector Files': true, 'Brand Guide': 'Comprehensive Sheet', 'Social Media Kit': 'Full Kit', 'Stationery Design': 'Full Design Files', 'Delivery Time': '3-4 Business Days (Priority)'
+            }
+          },
         ],
-        comparisonFeatures: {
-            'Logo Concepts': '2', 'Revision Rounds': '2', 'Color Variations': '2', 'File Formats': 'JPG, PNG', 'Vector Files': false, 'Brand Guide': 'Basic Recommendations', 'Social Media Kit': false, 'Stationery Design': false, 'Delivery Time': '48 Hours'
-        }
       },
-      { name: 'Basic', price: '€99', features: [
-          '3 Unique Logo Concepts',
-          'Up to 4 Revision Rounds',
-          'Full-Color, Black, and White Variants',
-          'Transparent & Background Versions',
-          { feature: 'JPG, PNG, and PDF Files (Print-Ready)', tooltip: 'High-quality files suitable for both digital use and printing.' },
-          'Simple Icon or Symbol Design',
-          'Basic Typography & Color Palette',
-          'Delivery in 72 Hours',
-          'Dedicated Project Manager',
-          '100% Ownership Rights',
-          '100% Satisfaction Guarantee',
-          '100% Money-Back Guarantee'
-        ],
-        comparisonFeatures: {
-            'Logo Concepts': '3', 'Revision Rounds': '4', 'Color Variations': 'Full, B&W', 'File Formats': 'JPG, PNG, PDF', 'Vector Files': false, 'Brand Guide': 'Basic Palette', 'Social Media Kit': false, 'Stationery Design': false, 'Delivery Time': '72 Hours'
-        }
+      {
+        tabName: 'Brochures',
+        plans: [
+            { name: 'Starter (Bi-Fold)', price: '€149', features: [
+                '4-Panel Bi-Fold Layout',
+                '2 Custom Design Concepts',
+                'Print-Ready High-Res PDF',
+                'Standard Typography',
+                '2 Rounds of Revisions',
+                'Stock Photo Integration (Up to 2 images)',
+                'Full Ownership Rights',
+                'Dedicated Project Manager',
+                '100% Satisfaction Guarantee'
+            ],
+            comparisonFeatures: {
+                'Format': 'Bi-Fold (4 Panel)', 'Design Concepts': '2', 'Print Ready': true, 'Source Files': false, 'Stock Photos': '2', 'Revisions': '2 Rounds', 'Custom Icons': false, 'Infographics': false
+            }},
+            { name: 'Classic (Tri-Fold)', price: '€249', isPopular: true, features: [
+                '6-Panel Tri-Fold Layout',
+                '3 Custom Design Concepts',
+                'Print-Ready PDF + Digital PDF (Web)',
+                'Custom Iconography (Up to 5 icons)',
+                'Unlimited Revisions',
+                'Photo Retouching & Enhancement',
+                'Editable Source Files (AI/InDesign)',
+                'Full Ownership Rights',
+                'Dedicated Project Manager',
+                '100% Satisfaction Guarantee'
+            ],
+            comparisonFeatures: {
+                'Format': 'Tri-Fold (6 Panel)', 'Design Concepts': '3', 'Print Ready': true, 'Source Files': true, 'Stock Photos': '5', 'Revisions': 'Unlimited', 'Custom Icons': '5', 'Infographics': false
+            }},
+            { name: 'Corporate (4-8 Pages)', price: '€499', features: [
+                'Multi-page Booklet or Company Profile',
+                'Cover Design + Inner Layouts',
+                'Advanced Typography & Grid Systems',
+                'Infographic & Data Visualization',
+                'Unlimited Revisions',
+                'Full Stock Photo Library Access',
+                'Print-Ready + Interactive Digital PDF',
+                'Editable Source Files',
+                'Priority Support',
+                'Full Ownership Rights'
+            ],
+            comparisonFeatures: {
+                'Format': 'Booklet (4-8 Pages)', 'Design Concepts': 'Custom Layouts', 'Print Ready': true, 'Source Files': true, 'Stock Photos': 'Unlimited', 'Revisions': 'Unlimited', 'Custom Icons': 'Full Set', 'Infographics': 'Data Visualization'
+            }},
+            { name: 'Catalog / Pro (12+ Pages)', price: '€899', features: [
+                'Extensive Catalog or Annual Report',
+                '12+ Pages Custom Layout',
+                'Table of Contents & Indexing Design',
+                'High-End Image Manipulation',
+                'Custom Illustration Elements',
+                'Brand Consistency Audit',
+                'Unlimited Revisions',
+                'Print, Web & Interactive Formats',
+                'Full Source Code / Files',
+                'Dedicated Art Director'
+            ],
+            comparisonFeatures: {
+                'Format': 'Catalog (12+ Pages)', 'Design Concepts': 'Premium', 'Print Ready': true, 'Source Files': true, 'Stock Photos': 'Unlimited', 'Revisions': 'Unlimited', 'Custom Icons': 'Custom Illustrations', 'Infographics': 'Advanced'
+            }}
+        ]
       },
-      { name: 'Standard', price: '€199', isPopular: true, features: [
-          '5 Unique Logo Concepts',
-          'Unlimited Revisions (within scope)',
-          'Versions for Light & Dark Backgrounds',
-          'JPG, PNG, PDF, AI, and EPS Files',
-          { feature: 'Full Vector & Scalable Formats', tooltip: 'Master files (AI, EPS) that can be resized to any size (from business card to billboard) without losing quality.' },
-          'Icon & Symbol Variations',
-          'Complete Color Palette (Full Brand Spectrum)',
-          'Typography Recommendations',
-          { feature: 'Mini Brand Guide', tooltip: 'A document outlining your logo usage rules, color codes, and fonts to ensure consistency.' },
-          'Facebook & Instagram Profile Logos',
-          { feature: 'Business Card & Letterhead Mockups', tooltip: 'Visual previews of how your logo will look on printed stationery.' },
-          'Delivery in 5 Business Days',
-          'Dedicated Project Manager',
-          '100% Ownership Rights',
-          '100% Satisfaction Guarantee',
-          '100% Money-Back Guarantee'
-        ],
-        comparisonFeatures: {
-            'Logo Concepts': '5', 'Revision Rounds': 'Unlimited', 'Color Variations': 'Full, B&W, Inverse', 'File Formats': 'JPG, PNG, PDF, AI, EPS', 'Vector Files': true, 'Brand Guide': 'Mini Guide', 'Social Media Kit': 'Profile Logos', 'Stationery Design': 'Mockups', 'Delivery Time': '5 Business Days'
-        }
+      {
+        tabName: 'Flyers',
+        plans: [
+             { name: 'Event Promo', price: '€79', features: [
+                'Single-Sided Design',
+                'Optimized for Digital / Social Media',
+                '1 Creative Concept',
+                'Standard Resolution (72/150 DPI)',
+                '2 Rounds of Revisions',
+                'Quick Turnaround (48 Hours)',
+                'Full Ownership Rights',
+                '100% Satisfaction Guarantee'
+            ],
+            comparisonFeatures: {
+                'Sides': 'Single Sided', 'Format': 'Digital Only', 'Design Concepts': '1', 'Resolution': 'Standard', 'Source Files': false, 'Revisions': '2 Rounds', 'Turnaround': '48 Hours'
+            }},
+            { name: 'Business One-Pager', price: '€129', features: [
+                'Single-Sided Design (A4/A5/Letter)',
+                'Print-Ready High-Res (300 DPI)',
+                '2 Creative Concepts',
+                'Bleed & Trim Marks Included',
+                'Photo Enhancement',
+                '3 Rounds of Revisions',
+                'PDF & JPG Deliverables',
+                'Full Ownership Rights',
+                '100% Satisfaction Guarantee'
+            ],
+            comparisonFeatures: {
+                'Sides': 'Single Sided', 'Format': 'Print Ready', 'Design Concepts': '2', 'Resolution': 'High-Res (300 DPI)', 'Source Files': false, 'Revisions': '3 Rounds', 'Turnaround': '72 Hours'
+            }},
+            { name: 'Double Impact', price: '€199', isPopular: true, features: [
+                'Double-Sided Design',
+                'Print-Ready + Digital Versions',
+                '3 Creative Concepts',
+                'QR Code Generation & Integration',
+                'Custom Icons & Graphics',
+                'Unlimited Revisions',
+                'Editable Source Files (PSD/AI)',
+                'Full Ownership Rights',
+                'Priority Support'
+            ],
+            comparisonFeatures: {
+                'Sides': 'Double Sided', 'Format': 'Print + Digital', 'Design Concepts': '3', 'Resolution': 'High-Res Vector', 'Source Files': true, 'Revisions': 'Unlimited', 'Turnaround': '3-4 Days'
+            }},
+            { name: 'Marketing Suite', price: '€349', features: [
+                'Bundle of 3 Distinct Flyer Designs',
+                '(e.g., Sale, Event, General Info)',
+                'Double-Sided Options Included',
+                'Cohesive Brand Theme',
+                'Social Media Resize for Each',
+                'Unlimited Revisions',
+                'All Source Files',
+                'Dedicated Senior Designer',
+                '100% Satisfaction Guarantee'
+            ],
+            comparisonFeatures: {
+                'Sides': 'Double Sided (x3)', 'Format': 'Multi-Format Bundle', 'Design Concepts': '3 Distinct Flyers', 'Resolution': 'High-Res Vector', 'Source Files': true, 'Revisions': 'Unlimited', 'Turnaround': '5-7 Days'
+            }}
+        ]
       },
-      { name: 'Pro', price: '€399', features: [
-          'Unlimited Logo Concepts by 2 Designers',
-          'Unlimited Revisions',
-          'Horizontal, Vertical & Icon-Only Versions',
-          { feature: 'JPG, PNG, PDF, AI, EPS & SVG Files', tooltip: 'Every file format you will ever need for web, print, and editing.' },
-          { feature: 'CMYK + RGB Color Profiles', tooltip: 'Files optimized for both screens (RGB) and professional printing (CMYK).' },
-          'Full Color Palette (Primary, Secondary, Accent)',
-          'Advanced Typography System',
-          { feature: 'Comprehensive Brand Identity Sheet', tooltip: 'A detailed guide defining your brand\'s visual language, ensuring a cohesive look across all media.' },
-          { feature: 'Iconography & Favicon Design', tooltip: 'Custom icons for your website and the small icon appearing in browser tabs.' },
-          { feature: 'Social Media Kit', tooltip: 'Ready-to-use profile pictures, banners, and cover images sized perfectly for all major platforms.' },
-          'Business Card & Letterhead Design',
-          { feature: 'Product Mockups', tooltip: 'Realistic 3D previews of your logo on apparel, signage, or packaging.' },
-          'Priority Delivery in 3-4 Business Days',
-          'Dedicated Project Manager',
-          '100% Ownership Rights',
-          '100% Satisfaction Guarantee',
-          '100% Money-Back Guarantee'
-        ],
-        comparisonFeatures: {
-            'Logo Concepts': 'Unlimited (2 Designers)', 'Revision Rounds': 'Unlimited', 'Color Variations': 'Full Suite + Profiles', 'File Formats': 'JPG, PNG, PDF, AI, EPS, SVG', 'Vector Files': true, 'Brand Guide': 'Comprehensive Sheet', 'Social Media Kit': 'Full Kit', 'Stationery Design': 'Full Design Files', 'Delivery Time': '3-4 Business Days (Priority)'
-        }
-      },
+      {
+        tabName: 'Digital Creatives',
+        plans: [
+             { name: 'Social Starter', price: '€99', features: [
+                '3 Static Social Media Templates',
+                'Optimized for Instagram/Facebook Feed',
+                'Branded with your Colors/Logo',
+                'Canva or Figma Source Link',
+                '2 Rounds of Revisions',
+                'Standard Licensing',
+                'Fast Delivery'
+            ],
+            comparisonFeatures: {
+                'Asset Count': '3 Templates', 'Type': 'Static', 'Platform': 'IG/FB Feed', 'Animation': false, 'Source Files': 'Canva/Figma', 'Revisions': '2 Rounds', 'Resizing': false
+            }},
+            { name: 'Ad Creative Pack', price: '€199', isPopular: true, features: [
+                '5 High-Conversion Ad Creatives',
+                'Mix of Feed & Story Sizes',
+                'Psychology-Driven Design for Clicks',
+                'A/B Testing Variations Included',
+                'Stock Photo Sourcing',
+                'Unlimited Revisions',
+                'Source Files (PSD/Figma)',
+                'Commercial Usage Rights'
+            ],
+            comparisonFeatures: {
+                'Asset Count': '5 Ads', 'Type': 'Static High-Conversion', 'Platform': 'Feed + Story', 'Animation': false, 'Source Files': 'PSD/Figma', 'Revisions': 'Unlimited', 'Resizing': 'Included'
+            }},
+            { name: 'Motion & Signage', price: '€399', features: [
+                '3 Animated Screens / Stories',
+                'HD Video Export (MP4/MOV)',
+                'Ideal for Digital Signage or Reels',
+                'Custom Motion Graphics',
+                'Background Music Licensing',
+                'Unlimited Revisions',
+                'Project Files (After Effects)',
+                'Priority Support'
+            ],
+            comparisonFeatures: {
+                'Asset Count': '3 Animated Assets', 'Type': 'Motion/Video', 'Platform': 'Signage/Reels', 'Animation': true, 'Source Files': 'After Effects', 'Revisions': 'Unlimited', 'Resizing': 'Upon Request'
+            }},
+            { name: 'Campaign Master', price: '€699', features: [
+                '15+ Assets (Static + Motion Mix)',
+                'Cohesive Campaign Theme Strategy',
+                'Covers All Platforms (IG, FB, LinkedIn, YouTube)',
+                'Carousel & Story Sequences',
+                'Advanced Photo Manipulation',
+                'Dedicated Creative Director',
+                'All Source Files & Assets',
+                'VIP Support Channel'
+            ],
+            comparisonFeatures: {
+                'Asset Count': '15+ Assets', 'Type': 'Static + Motion Mix', 'Platform': 'All Platforms', 'Animation': true, 'Source Files': 'All Formats', 'Revisions': 'Unlimited', 'Resizing': 'All Sizes'
+            }}
+        ]
+      }
     ],
     faqs: [
       {
@@ -935,116 +1168,280 @@ export const servicesData: ServiceCategory[] = [
       },
       {
         question: 'How many revisions can I request?',
-        answer: 'The number of revision rounds varies by package. Our Standard and Pro packages offer unlimited revisions to ensure you are 100% satisfied with the final design.'
+        answer: 'The number of revision rounds varies by package. Our Standard and Pro packages often offer unlimited revisions to ensure you are 100% satisfied with the final design.'
       },
       {
-        question: 'Do I get full ownership of the final logo?',
-        answer: 'Yes, absolutely. Upon completion of the project, you will have 100% ownership rights to the final logo design.'
+        question: 'Do I get full ownership of the final design?',
+        answer: 'Yes, absolutely. Upon completion of the project and final payment, you will have 100% ownership rights to the final logo, brochure, or flyer design.'
       },
       {
         question: 'What is a brand guide?',
-        answer: 'A brand guide, included in our Standard and Pro packages, is a document that outlines your brand\'s visual identity. It includes your final logo, color palette (with color codes), and typography, ensuring your brand is presented consistently everywhere.'
+        answer: 'A brand guide, included in our Standard and Pro logo packages, is a document that outlines your brand\'s visual identity. It includes your final logo, color palette (with color codes), and typography, ensuring your brand is presented consistently everywhere.'
+      },
+      {
+        question: 'What is the difference between a Bi-Fold and Tri-Fold brochure?',
+        answer: 'A Bi-Fold brochure is a single sheet folded once to create 4 panels (front, back, and two inside panels). A Tri-Fold brochure is folded twice to create 6 panels. Tri-folds are great for displaying more segmented information.'
+      },
+      {
+        question: 'Can you print the brochures or flyers for me?',
+        answer: 'Our primary service is design. We provide you with high-resolution, print-ready files (with bleed and trim marks) that you can send to any professional printer. However, we can recommend trusted printing partners if needed.'
+      },
+      {
+        question: 'Do you provide stock photos for the designs?',
+        answer: 'Yes, most of our packages include the sourcing of high-quality licensed stock photography. If you have specific proprietary images (like team photos or products), you can provide those for us to include.'
+      },
+      {
+        question: 'For digital creatives, can I edit the templates myself?',
+        answer: 'Yes! For our "Social Starter" plan, we can provide editable links for tools like Canva. For higher-tier packages, we provide source files like Photoshop (PSD) or Figma files, which require specific software to edit.'
       }
     ]
   },
   {
     id: 'mobile-app',
     title: 'Mobile App Development',
-    description: 'From concept to launch, we build intuitive and powerful mobile applications for iOS and Android that engage users and achieve business goals.',
+    description: 'From clickable prototypes to enterprise-grade ecosystems. We build intuitive, high-performance mobile applications for iOS and Android tailored to the Irish and global market.',
     plans: [
-      { name: 'Startup MVP', price: '€5,449', features: [
-          'Single Platform (iOS or Android)',
-          'Up to 5 Core Screens',
-          'User Login & Social Signup',
-          'Custom Dashboard Design',
-          'Advanced Data Display',
-          'Custom UI/UX Design',
-          { feature: 'Interactive Prototyping', tooltip: 'A clickable mockup of your app to test the flow and design before coding begins.' },
-          { feature: 'Firebase Backend Integration', tooltip: 'Using Google\'s mobile platform for real-time databases, authentication, and hosting.' },
-          'Basic Admin Panel',
-          'Testing on 10+ Devices',
-          'App Store Deployment Support',
-          '15 Days Free Bug Support',
-          'Push Notifications',
-          'Basic Analytics Integration',
-          'Contact/Support Form',
-          'Splash Screen & App Icons',
-          'Basic Animation Effects',
-          { feature: 'Crash Reporting', tooltip: 'Tools to automatically detect and report app crashes so they can be fixed quickly.' },
+      { name: 'App Prototype', price: '€2,499', features: [
+          'Includes all features from Previous Plan',
+          'Discovery Workshop & Idea Validation',
+          { feature: 'User Flow & Journey Mapping', tooltip: 'Visualizing the path a user takes through your app to achieve their goal.' },
+          { feature: 'Low-Fidelity Wireframing', tooltip: 'Blueprint sketches of your app layout without colors or images.' },
+          { feature: 'High-Fidelity UI Design', tooltip: 'Pixel-perfect designs showing exactly how the app will look.' },
+          { feature: 'Clickable Interactive Prototype', tooltip: 'A realistic simulation of the app used for investor pitches and user testing. No functional code.' },
+          'Brand Asset Creation (App Icon, Splash)',
+          'Color Palette & Typography Selection',
+          '2 Rounds of Design Revisions',
+          'Source File Delivery (Figma/XD)',
+          '100% Design Ownership Rights',
+          'Dedicated Project Manager'
+        ],
+        comparisonFeatures: {
+            'Development Type': 'Visual Prototype (No Code)',
+            'Platforms': 'Visuals for iOS & Android',
+            'Core Screens': 'Up to 10',
+            'Authentication': false,
+            'Database & Backend': false,
+            'Admin Panel': false,
+            'Commerce Features': false,
+            'Advanced Integrations': false,
+            'Support': 'Design Handover',
+            'Timeline': '2-3 Weeks'
+        }
+      },
+      { name: 'MVP Launch', price: '€6,499', features: [
+          'Includes all features from Previous Plan',
+          'Includes Prototype Phase Findings',
+          { feature: 'Cross-Platform Development (Flutter/React Native)', tooltip: 'Building one codebase that works on both iOS and Android devices.' },
+          'Deploy to iOS (App Store)',
+          'Deploy to Android (Google Play)',
+          { feature: 'User Authentication (Email/Social)', tooltip: 'Secure login systems using email or social media accounts like Google or Facebook.' },
+          'Up to 5 Core Functional Screens',
+          'Basic Database Integration (Firebase/AWS)',
+          'Contact & Enquiry Forms',
+          { feature: 'Push Notifications (Basic)', tooltip: 'Send alerts to users\' devices to keep them engaged.' },
+          'Basic Admin Dashboard',
+          'Privacy Policy & Terms Pages',
+          'App Store Submission Handling',
+          '1 Month Bug Support',
+          '100% Code Ownership'
+        ],
+        comparisonFeatures: {
+            'Development Type': 'Functional MVP',
+            'Platforms': 'iOS & Android (Hybrid)',
+            'Core Screens': 'Up to 5 Functional',
+            'Authentication': 'Email & Social',
+            'Database & Backend': 'Basic Cloud DB',
+            'Admin Panel': 'Basic',
+            'Commerce Features': false,
+            'Advanced Integrations': 'Google Maps (Basic)',
+            'Push Notifications': 'Basic Alerts',
+            'Support': '1 Month Bug Support',
+            'Timeline': '6-8 Weeks'
+        }
+      },
+      { name: 'Business Standard', price: '€10,999', isPopular: true, features: [
+          'Includes all features from Previous Plan',
+          'Includes all MVP Launch features',
+          'Cross-Platform Development (Flutter/React Native)',
+          'iOS & Android App Deployment',
+          { feature: 'Advanced User Profiles', tooltip: 'Users can manage avatars, bios, and personal settings.' },
+          { feature: 'Social Media Integrations', tooltip: 'Social login, sharing to feeds, and friend invites.' },
+          'Up to 10 Core Functional Screens',
+          { feature: 'In-App Messaging System', tooltip: 'Allow users to chat with each other or support within the app.' },
+          { feature: 'Google Maps & Location Services', tooltip: 'Geolocation, route plotting, and nearby search.' },
+          { feature: 'Media Upload & Gallery', tooltip: 'Image/video compression, uploading, and gallery viewing.' },
+          { feature: 'Robust Admin Panel', tooltip: 'A comprehensive web-based dashboard to manage users, content, and app settings.' },
+          { feature: 'Google Analytics Integration', tooltip: 'Track active users, retention rates, and screen views.' },
+          { feature: 'Search & Filtering', tooltip: 'Advanced search capabilities within the app content.' },
+          'FAQ & Support Section Integration',
+          '2 Months Bug Support',
+          '100% Code Ownership'
+        ],
+        comparisonFeatures: {
+            'Development Type': 'Full Business App',
+            'Platforms': 'iOS & Android (Hybrid)',
+            'Core Screens': 'Up to 10 Functional',
+            'Authentication': 'Advanced Profiles',
+            'Database & Backend': 'Scalable Cloud DB',
+            'Admin Panel': 'Robust',
+            'Commerce Features': false,
+            'Advanced Integrations': 'Location, Messaging',
+            'Push Notifications': 'Standard',
+            'Support': '2 Months Bug Support',
+            'Timeline': '3-4 Months'
+        }
+      },
+      { name: 'Pro Commerce', price: '€24,999', features: [
+          'Includes all features from Previous Plan',
+          'Includes Business Standard Architecture',
+          'Full E-commerce Mobile App Logic',
+          'iOS & Android App Deployment',
+          { feature: 'Secure User Accounts', tooltip: 'Encrypted login with password recovery and session management.' },
+          { feature: 'Dynamic Product Catalog', tooltip: 'Cloud-managed product listings with variants (size, color).' },
+          { feature: 'Initial Product Setup', tooltip: 'We will upload and configure your initial batch of products to get you started.' },
+          { feature: 'Smart Search', tooltip: 'Auto-complete search with history and trending items.' },
+          { feature: 'Shopping Cart System', tooltip: 'Persistent cart functionality with edit capabilities.' },
+          { feature: 'Secure Checkout', tooltip: 'Multi-step checkout flow optimized for conversion.' },
+          { feature: 'Payment Gateway Integration', tooltip: 'Stripe, PayPal, Apple Pay, and Google Pay support.' },
+          { feature: 'Order Management', tooltip: 'User order history, status tracking, and re-order functions.' },
+          { feature: 'Push Notifications with Deep Linking', tooltip: 'Marketing notifications that open specific products directly.' },
+          'Wishlist & Favorites System',
+          'Product Reviews & Ratings',
+          { feature: 'Real-Time Chat Support', tooltip: 'Live chat integration for instant customer service.' },
+          'Discount Codes & Coupons Engine',
+          { feature: 'Advanced Admin Dashboard', tooltip: 'Web portal for managing inventory, orders, and viewing sales reports.' },
+          'Up to 15 Core Functional Screens',
+          { feature: 'Native Device Features', tooltip: 'Camera access, photo library, GPS, and contacts integration.' },
           'Performance Optimization',
-          'Source Code Delivery'
+          '3 Months Bug Support',
+          '100% Code Ownership'
         ],
         comparisonFeatures: {
-            'Platforms': '1 (iOS or Android)', 'Core Screens': 'Up to 5', 'UI/UX Design': 'Custom', 'User Login': 'Email & Social', 'Backend': 'Firebase', 'Admin Panel': 'Basic', 'Push Notifications': true, 'Analytics': 'Basic', 'In-App Purchases': false, 'Live Chat': false, 'Maps Integration': false, 'Post-Launch Support': '15 Days Bug Support'
+            'Development Type': 'E-commerce App',
+            'Platforms': 'iOS & Android (Hybrid)',
+            'Core Screens': 'Up to 15 Functional',
+            'Authentication': 'Secure Customer Accounts',
+            'Database & Backend': 'Commerce Backend',
+            'Admin Panel': 'Sales & Order Mgmt',
+            'Commerce Features': 'Full Cart & Payments',
+            'Advanced Integrations': 'Payment Gateways',
+            'Push Notifications': 'Deep Linking',
+            'Security': 'SSL & Secure Payments',
+            'Support': '3 Months Bug Support',
+            'Timeline': '4-5 Months'
         }
       },
-      { name: 'Business Growth', price: '€9,999', isPopular: true, features: [
-          'Both iOS & Android',
-          'User Login (Email & Social)',
-          'Custom UI/UX with Prototype',
-          'In-App Purchases / E-commerce',
-          'Payment Gateway (Stripe, PayPal)',
-          'Advanced Shopping Cart',
-          'Push Notifications',
-          'Messaging & Live Chat API',
-          'Social Sharing',
-          'Google Maps & Location Services',
-          'Data Import/Export Functionality',
-          { feature: 'Custom Web APIs & Online Database', tooltip: 'Building custom connectors to allow your app to communicate with a dedicated server and database.' },
-          'Product Gallery & Showcase',
-          'Product Categories & Subcategories',
-          'Crashlytics & Analytics Dashboard',
-          'Audio/Video Streaming Capability',
-          'Wishlist & Favorites',
-          'Order History & Tracking',
-          'Rating & Review System',
-          'Custom Backend & Admin Panel',
-          'Comprehensive Testing',
-          'Full App Store Deployment',
-          '1 Month of Bug Support'
+      { name: 'Advanced Scale', price: '€44,999', features: [
+          'Includes all features from Previous Plan',
+          'Includes all Pro Commerce & Business features',
+          { feature: 'Custom Backend Architecture', tooltip: 'High-performance server infrastructure built for scale.' },
+          { feature: 'API Development & Integration', tooltip: 'Custom REST/GraphQL APIs connecting to third-party services.' },
+          { feature: 'Real-Time Data Synchronization', tooltip: 'WebSockets implementation for instant data updates across all devices.' },
+          { feature: 'Role-Based Access Control (RBAC)', tooltip: 'Granular permissions for Super Admins, Managers, and Users.' },
+          { feature: 'CRM Integration (Salesforce/HubSpot)', tooltip: 'Two-way sync with your existing customer relationship tools.' },
+          { feature: 'ERP System Integration', tooltip: 'Connect with enterprise resource planning software like SAP or Oracle.' },
+          { feature: 'Advanced Analytics & Reporting', tooltip: 'Integration with tools like Mixpanel or Amplitude for deep user insights.' },
+          { feature: 'Offline Functionality & Sync', tooltip: 'Robust local database caching allowing usage without internet and auto-sync when online.' },
+          { feature: 'Automated Workflows', tooltip: 'Background jobs, scheduled tasks, and email triggers.' },
+          { feature: 'Complex Data Visualization', tooltip: 'Interactive charts, graphs, and dashboards within the app.' },
+          'Tablet & iPad Optimization',
+          { feature: 'Multi-Language Support', tooltip: 'Localization framework for global audiences.' },
+          { feature: 'Security Audits & Compliance', tooltip: 'GDPR/CCPA compliance checks and data encryption.' },
+          { feature: 'Performance Monitoring', tooltip: 'Real-time crash reporting (Sentry) and performance tracking.' },
+          'File Management System (AWS S3)',
+          'Multi-Factor Authentication (MFA)',
+          'Automated CI/CD Pipelines',
+          '6 Months Priority Support',
+          '100% Code Ownership'
         ],
         comparisonFeatures: {
-            'Platforms': '2 (iOS & Android)', 'Core Screens': 'Not Limited', 'UI/UX Design': 'Custom + Prototype', 'User Login': 'Email & Social', 'Backend': 'Custom Web APIs', 'Admin Panel': 'Custom', 'Push Notifications': true, 'Analytics': 'Dashboard', 'In-App Purchases': true, 'Live Chat': true, 'Maps Integration': true, 'Post-Launch Support': '1 Month Bug Support'
+            'Development Type': 'Scalable Custom Solution',
+            'Platforms': 'Mobile & Tablet',
+            'Core Screens': '20+ Functional',
+            'Authentication': 'Multi-Role RBAC + MFA',
+            'Database & Backend': 'Custom REST/GraphQL APIs',
+            'Admin Panel': 'Enterprise Grade',
+            'Commerce Features': 'Subscription/Custom Logic',
+            'Advanced Integrations': 'CRM/ERP, Legacy Systems',
+            'Offline Mode': 'Full Sync',
+            'Push Notifications': 'Targeted & Automated',
+            'Security': 'MFA & Compliance',
+            'Support': '6 Months Priority',
+            'Timeline': '5-7 Months'
         }
       },
-      { name: 'Enterprise Scale', price: '€19,999', features: [
-          'Everything in Business Growth, PLUS:',
-          'Native Tablet Support',
-          { feature: 'Multi-tier User Roles & Permissions', tooltip: 'Different access levels for admins, managers, and regular users.' },
-          { feature: 'Complex API Integration (ERP, CRM, Legacy Systems)', tooltip: 'Connecting the app to your existing enterprise software systems.' },
-          'Advanced Analytics & Reporting Dashboard',
-          'Full Offline Functionality & Sync',
-          'Biometric/Fingerprint Login',
-          { feature: 'Deep Linking', tooltip: 'Links that open directly inside specific pages of your mobile app.' },
-          { feature: 'Scalable Microservices Architecture', tooltip: 'Structuring the app as a collection of loosely coupled services for better scalability and maintenance.' },
-          { feature: 'Automated Testing Suite', tooltip: 'Scripts that automatically test the app\'s functionality to ensure high quality.' },
-          { feature: 'Security Penetration Testing', tooltip: 'Simulated cyberattacks to identify and fix security vulnerabilities.' },
-          'Performance & Load Testing',
-          { feature: 'CI/CD Pipeline Setup', tooltip: 'Automating the process of building, testing, and deploying the app for faster updates.' },
-          'SLA-Backed Hosting & Maintenance',
-          '3 Months of Support & Priority Enhancements'
+      { name: 'Enterprise Elite', price: '€74,999', features: [
+          'Includes all features from Previous Plan',
+          'Includes ALL Advanced Scale features',
+          { feature: 'Native Development Option', tooltip: 'Choice of Swift (iOS) and Kotlin (Android) for maximum performance.' },
+          { feature: 'Microservices Architecture', tooltip: 'Scalable, decoupled service architecture for massive growth and fault tolerance.' },
+          { feature: 'AI & Machine Learning Integration', tooltip: 'Personalization engines, chatbots, predictive models, or image recognition.' },
+          'High-Volume Data Processing',
+          { feature: 'Biometric Security', tooltip: 'FaceID and TouchID integration for enterprise-grade security.' },
+          { feature: 'End-to-End Encryption', tooltip: 'Advanced cryptography for sensitive data transmission.' },
+          { feature: 'Dedicated Infrastructure', tooltip: 'Private cloud setup (AWS/Azure/GCP) with load balancing and auto-scaling.' },
+          'White-Label Solution Capability',
+          { feature: 'Advanced DevOps & SecOps', tooltip: 'Automated security scanning, containerization (Docker/Kubernetes).' },
+          'Disaster Recovery & Backups Strategy',
+          { feature: 'Predictive Analytics Dashboard', tooltip: 'AI-driven insights to forecast trends and user behavior.' },
+          'IoT (Internet of Things) Integration',
+          'Real-Time Socket Connections (Chat/Live Streaming)',
+          'Source Code Escrow Agreement',
+          'Comprehensive SLA (Service Level Agreement)',
+          'Dedicated QA Team & Penetration Testing',
+          'Audit Logging & Compliance Modules (HIPAA/FinTech)',
+          '1 Year Premium Support & Maintenance',
+          '100% Code Ownership'
         ],
         comparisonFeatures: {
-            'Platforms': '2 + Tablet', 'Core Screens': 'Not Limited', 'UI/UX Design': 'Custom + Prototype', 'User Login': 'Biometric', 'Backend': 'Microservices Architecture', 'Admin Panel': 'Custom + Multi-tier Roles', 'Push Notifications': true, 'Analytics': 'Advanced Reporting', 'In-App Purchases': true, 'Live Chat': true, 'Maps Integration': true, 'Post-Launch Support': '3 Months Priority', 'Complex API Integrations': true, 'Offline Functionality': true, 'Security Testing': true
+            'Development Type': 'Enterprise Ecosystem',
+            'Platforms': 'Native or Cross-Platform',
+            'Core Screens': 'Unlimited (Scope Dependent)',
+            'Authentication': 'SSO / Biometric',
+            'Database & Backend': 'Microservices / Dedicated',
+            'Admin Panel': 'Full Custom Suite',
+            'Commerce Features': 'Global/Complex',
+            'Advanced Integrations': 'AI/ML, IoT, Big Data',
+            'Security': 'End-to-End Encryption',
+            'Offline Mode': 'Full Sync & Encrypted',
+            'Push Notifications': 'AI-Personalized',
+            'Support': '1 Year Premium SLA',
+            'Timeline': '6+ Months'
         }
-      },
+      }
     ],
     faqs: [
       {
+        question: 'What is the difference between a Prototype and an MVP?',
+        answer: 'A **Prototype** is a visual, interactive simulation of your app (often created in tools like Figma). It looks and feels like a real app but has no functional code or database behind it. It is used for design validation, user testing, and investor pitches. An **MVP (Minimum Viable Product)** is a functional application with actual code, databases, and core features that users can download, install, and use.'
+      },
+      {
         question: 'How much does it cost to build a mobile app?',
-        answer: 'The cost varies widely based on the complexity, features, and platforms (iOS, Android, or both). Our packages provide a clear starting point, from an MVP to a full-scale enterprise app. Contact us for a custom quote based on your specific requirements.'
+        answer: 'Our packages range from €2,499 for a design prototype to €6,499 for an MVP, and up to €74,999+ for enterprise-grade solutions. The final cost depends on the complexity of features, design requirements, and platform needs.'
       },
       {
         question: 'Do you develop for both iOS and Android?',
-        answer: 'Yes, we develop for both platforms. Our "Business Growth" and "Enterprise Scale" packages include development for both iOS and Android. We can build native apps for each platform or use cross-platform technologies depending on the project needs.'
-      },
-      {
-        question: 'What is an MVP (Minimum Viable Product)?',
-        answer: 'An MVP is a version of your app that includes just the core features needed to solve a primary user problem. It\'s a strategic way to launch quickly, gather user feedback, and validate your idea before investing in a full-featured application.'
+        answer: 'Yes. Our MVP and Business packages typically use cross-platform technologies (like Flutter or React Native) to deploy to both iOS and Android simultaneously, saving time and cost. For Enterprise plans, we can also offer native development (Swift/Kotlin) if specific performance needs dictate it.'
       },
       {
         question: 'Will you help me publish my app to the app stores?',
-        answer: 'Yes, all of our mobile app development packages include full support for deploying and publishing your app to the Apple App Store and Google Play Store.'
+        answer: 'Absolutely. All our development packages (MVP and above) include full support for the submission and approval process for both the Apple App Store and Google Play Store.'
+      },
+      {
+        question: 'Do you offer post-launch maintenance for apps?',
+        answer: 'Yes, we offer ongoing maintenance packages to ensure your app remains compatible with new OS updates (iOS and Android), fix any bugs that arise, and ensure security standards are met.'
+      },
+      {
+        question: 'Can you integrate third-party APIs into my app?',
+        answer: 'Absolutely. We have extensive experience integrating payment gateways (Stripe, PayPal), mapping services (Google Maps), social media logins, and various other third-party tools to enhance your app\'s functionality.'
+      },
+      {
+        question: 'Who owns the source code after development?',
+        answer: 'You do. Once the project is fully paid for, we transfer 100% of the intellectual property and source code to you. You have full control over your digital asset.'
+      },
+      {
+        question: 'How do you ensure the security of the app?',
+        answer: 'We implement industry-standard security practices including SSL encryption, secure authentication (OAuth), data encryption at rest and in transit, and regular security audits to protect user data.'
       }
     ]
   },
@@ -1054,6 +1451,7 @@ export const servicesData: ServiceCategory[] = [
     description: 'Launch your e-commerce empire without the hassle of inventory. We build and optimize dropshipping stores for maximum profitability.',
     plans: [
       { name: 'Micro', price: '€999', features: [
+          { feature: 'Includes all features from Previous Plan', tooltip: 'Includes all features from the plan below this one.' },
           { feature: 'Niche Selection Guidance', tooltip: 'We help you identify a profitable market segment with high demand and low competition.' },
           'Supplier & Product Category Research',
           'Customized Website design & development',
@@ -1081,6 +1479,7 @@ export const servicesData: ServiceCategory[] = [
         }
       },
       { name: 'Basic', price: '€2,999', features: [
+          { feature: 'Includes all features from Previous Plan', tooltip: 'Includes all features from the plan below this one.' },
           'Complete Niche Validation',
           'Competitor Analysis',
           'Customized Website design & development',
@@ -1110,6 +1509,7 @@ export const servicesData: ServiceCategory[] = [
         }
       },
       { name: 'Standard', price: '€5,999', isPopular: true, features: [
+          { feature: 'Includes all features from Previous Plan', tooltip: 'Includes all features from the plan below this one.' },
           'Advanced Niche Research (Data-Driven)',
           'Competitor & Keyword Analysis',
           'Customized Website design & development',
@@ -1139,6 +1539,7 @@ export const servicesData: ServiceCategory[] = [
         }
       },
       { name: 'Pro', price: '€8,999', features: [
+          { feature: 'Includes all features from Previous Plan', tooltip: 'Includes all features from the plan below this one.' },
           'Multi-Niche Analysis & Validation',
           'Competitor Benchmarking & Market Positioning',
           'Customized Website design & development',
@@ -1171,6 +1572,7 @@ export const servicesData: ServiceCategory[] = [
         }
       },
       { name: 'Enterprise', price: '€11,999', features: [
+          { feature: 'Includes all features from Previous Plan', tooltip: 'Includes all features from the plan below this one.' },
           'Brand & Business Roadmap',
           'Niche Diversification Strategy',
           'Global Payment & Multi-Region Fulfillment Setup',
@@ -1218,6 +1620,22 @@ export const servicesData: ServiceCategory[] = [
       {
         question: 'Is dropshipping still profitable?',
         answer: 'Yes, dropshipping can be very profitable when done correctly. Success depends on choosing the right niche, sourcing quality products, effective marketing, and providing excellent customer service. Our packages are designed to set you up with all the tools and strategies needed to succeed.'
+      },
+      {
+        question: 'Which e-commerce platform do you use for dropshipping stores?',
+        answer: 'We primarily use Shopify as it is the gold standard for dropshipping, offering robust integrations with suppliers, ease of use, and scalability. We can also work with WooCommerce if preferred.'
+      },
+      {
+        question: 'Can I add my own products later?',
+        answer: 'Yes, absolutely. The store is yours to manage. We provide training on how to add, remove, or edit products so you can keep your inventory fresh and updated.'
+      },
+      {
+        question: 'What happens if a customer returns a product?',
+        answer: 'Returns are handled based on the policy we help you set up. Typically, the customer returns the item to you or the supplier. We guide you on setting up a clear Refund & Return policy to manage expectations.'
+      },
+      {
+        question: 'Do you help with marketing the dropshipping store?',
+        answer: 'While our dropshipping packages focus on build and setup, we have separate Social Media Marketing and SEO services designed specifically to drive traffic and sales to your new store.'
       }
     ]
   }

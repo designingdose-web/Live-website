@@ -1,5 +1,6 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import type { ServiceCategory } from '../types';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
@@ -8,15 +9,46 @@ import ComparisonModal from '../components/ComparisonModal';
 
 
 const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.ReactNode }> = ({ service, children }) => {
-  const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isCompareModalOpen, setIsCompareModalOpen] = React.useState(false);
   const headerRef = useScrollAnimation('slide-in-up');
   const anchorNavRef = useScrollAnimation('slide-in-up');
+  const tabsRef = useScrollAnimation('slide-in-up');
   const gridRef = useRef<HTMLDivElement>(null);
-  const plansToShow = service.plans || [];
+  
+  // Helper to create URL-friendly tab names
+  const getTabSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-');
+
+  const hasTabs = service.tabs && service.tabs.length > 0;
+
+  // Determine active tab index based on URL param, default to 0
+  const activeTabParam = searchParams.get('tab');
+  
+  let activeTab = 0;
+  if (hasTabs && service.tabs) {
+    const foundIndex = service.tabs.findIndex(t => getTabSlug(t.tabName) === activeTabParam);
+    if (foundIndex !== -1) {
+      activeTab = foundIndex;
+    }
+  }
+
+  const handleTabClick = (index: number) => {
+    if (hasTabs && service.tabs) {
+      setSearchParams({ tab: getTabSlug(service.tabs[index].tabName) });
+    }
+  };
+
+  const plansToShow = hasTabs && service.tabs 
+    ? service.tabs[activeTab].plans 
+    : (service.plans || []);
+    
+  const activeCategoryTitle = hasTabs && service.tabs 
+    ? service.tabs[activeTab].tabName 
+    : service.title;
 
   // Determine column width based on number of plans to mimic grid but allow centering
   const getWidthClass = (count: number) => {
-    // User requested 4 items to be 4-columns (all in one row)
+    // User requested 4 items to be 4-columns (all in one row) if screen allows
     if (count === 4) return 'lg:w-1/4';
     // User requested 5 items to be 3 on top, 2 below (so 3 columns)
     if (count === 5) return 'lg:w-1/3';
@@ -42,6 +74,20 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
       });
     }
   };
+
+  useEffect(() => {
+    // If we switch between services but stay on GenericServicePage, 
+    // we might want to reset the tab if the URL param doesn't match the new service's tabs.
+    // However, since most navigations change the route path, this is less critical,
+    // but good for cleanup if the path structure allows reuse.
+    if (hasTabs && service.tabs && activeTabParam) {
+       const slugExists = service.tabs.some(t => getTabSlug(t.tabName) === activeTabParam);
+       if (!slugExists) {
+           // Optionally reset URL if invalid tab for this service
+           // setSearchParams({}); // Commented out to avoid aggressive URL manipulation
+       }
+    }
+  }, [service.id]);
 
   useEffect(() => {
     if (!gridRef.current) return;
@@ -75,7 +121,7 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
         }
       });
     };
-  }, [service]);
+  }, [service, activeTab]);
 
   return (
     <>
@@ -85,6 +131,27 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
             <h1 className="text-4xl md:text-5xl font-extrabold text-white">{service.title}</h1>
             <p className="mt-4 text-lg max-w-3xl mx-auto text-brand-muted">{service.description}</p>
           </div>
+          
+          {/* Tab Navigation (if applicable) */}
+          {hasTabs && service.tabs && (
+            <div ref={tabsRef} className="flex flex-col items-center mb-8 relative z-20 animate-on-scroll" style={{ transitionDelay: '200ms'}}>
+              <div className="bg-brand-secondary p-2 rounded-lg flex flex-wrap justify-center gap-2">
+                {service.tabs.map((tab, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleTabClick(index)}
+                    className={`px-6 py-2 rounded-md font-semibold transition-colors duration-300 ${
+                      activeTab === index
+                        ? 'bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white'
+                        : 'text-brand-muted hover:bg-brand-primary/50'
+                    }`}
+                  >
+                    {tab.tabName}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           
           {/* Plan Anchor Navigation Bar */}
           {plansToShow.length > 0 && (
@@ -103,12 +170,12 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
           )}
 
           {plansToShow.length > 1 && (
-            <div className="flex justify-center mb-16 pb-6 relative z-20">
+            <div className="flex justify-center mb-24 pb-6 relative z-20">
               <button
                 onClick={() => setIsCompareModalOpen(true)}
                 className="bg-transparent border-2 border-brand-accent-end text-brand-accent-end font-bold py-2 px-6 rounded-full text-base hover:bg-brand-accent-end hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                Compare Plans
+                Compare {activeCategoryTitle} Plans
               </button>
             </div>
           )}
@@ -140,7 +207,7 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
           isOpen={isCompareModalOpen}
           onClose={() => setIsCompareModalOpen(false)}
           plans={plansToShow}
-          categoryTitle={service.title}
+          categoryTitle={activeCategoryTitle}
         />
       )}
     </>

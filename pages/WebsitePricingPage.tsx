@@ -1,5 +1,6 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { servicesData } from '../data/servicesData';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
@@ -7,14 +8,29 @@ import FaqSection from '../components/FaqSection';
 import ComparisonModal from '../components/ComparisonModal';
 
 const WebsitePricingPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isCompareModalOpen, setIsCompareModalOpen] = React.useState(false);
   const websiteService = servicesData.find(service => service.id === 'website');
 
   const headerRef = useScrollAnimation('slide-in-up');
   const tabsRef = useScrollAnimation('slide-in-up');
   const anchorNavRef = useScrollAnimation('slide-in-up');
   const gridRef = useRef<HTMLDivElement>(null);
+
+  // Helper to create URL-friendly tab names (e.g., "Logo Design" -> "logo-design")
+  const getTabSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-');
+
+  // Determine active tab index based on URL param, default to 0
+  const activeTabParam = searchParams.get('tab');
+  const activeTab = websiteService?.tabs 
+    ? Math.max(0, websiteService.tabs.findIndex(t => getTabSlug(t.tabName) === activeTabParam)) 
+    : 0;
+
+  const handleTabClick = (index: number) => {
+    if (websiteService?.tabs) {
+      setSearchParams({ tab: getTabSlug(websiteService.tabs[index].tabName) });
+    }
+  };
 
   const scrollToPlan = (planName: string) => {
     const element = document.getElementById(planName);
@@ -37,7 +53,6 @@ const WebsitePricingPage: React.FC = () => {
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Fix: Add a type guard to ensure entry.target is an Element before accessing classList or passing to observer.unobserve.
             if (entry.target instanceof Element) {
               entry.target.classList.add('is-visible');
               observer.unobserve(entry.target);
@@ -50,7 +65,6 @@ const WebsitePricingPage: React.FC = () => {
 
     const cards = Array.from(gridRef.current.children);
     cards.forEach(card => {
-        // Fix: Add a type guard to ensure 'card' is an Element. The compiler was inferring it as 'unknown'.
         if (card instanceof Element) {
           card.classList.add('animate-on-scroll', 'slide-in-up');
           observer.observe(card);
@@ -59,7 +73,6 @@ const WebsitePricingPage: React.FC = () => {
 
     return () => {
       cards.forEach(card => {
-        // Fix: Add a type guard to ensure 'card' is an Element. The compiler was inferring it as 'unknown'.
         if (card instanceof Element) {
           observer.unobserve(card);
         }
@@ -88,7 +101,7 @@ const WebsitePricingPage: React.FC = () => {
               {websiteService.tabs.map((tab, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveTab(index)}
+                  onClick={() => handleTabClick(index)}
                   className={`px-6 py-2 rounded-md font-semibold transition-colors duration-300 ${
                     activeTab === index
                       ? 'bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white'
@@ -117,7 +130,7 @@ const WebsitePricingPage: React.FC = () => {
              </div>
           )}
 
-          <div className="flex justify-center mb-12 relative z-20">
+          <div className="flex justify-center mb-24 relative z-20">
              <button
                 onClick={() => setIsCompareModalOpen(true)}
                 className="bg-transparent border-2 border-brand-accent-end text-brand-accent-end font-bold py-2 px-6 rounded-full text-base hover:bg-brand-accent-end hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"

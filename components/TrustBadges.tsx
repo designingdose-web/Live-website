@@ -13,8 +13,8 @@ const TrustBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
       <div className="container mx-auto px-6">
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-90">
           
-          {/* Trustpilot */}
-          <a href="https://www.trustpilot.com/review/designingdose.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group cursor-pointer transition-all duration-300 hover:scale-105 hover:opacity-100">
+          {/* Trustpilot - Non-clickable */}
+          <div className="flex items-center gap-4 group cursor-default transition-all duration-300 hover:scale-105 hover:opacity-100">
              <div className="hidden sm:block">
                 <Star className="w-8 h-8 text-[#00b67a]" fill="#00b67a" />
              </div>
@@ -41,13 +41,13 @@ const TrustBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
                     </span>
                 </div>
              </div>
-          </a>
+          </div>
 
           {/* Divider */}
           <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-gray-700/50 to-transparent"></div>
 
           {/* Clutch */}
-          <div className="flex items-center gap-3 group cursor-pointer transition-all duration-300 hover:scale-105 hover:opacity-100">
+          <div className="flex items-center gap-3 group cursor-default transition-all duration-300 hover:scale-105 hover:opacity-100">
               <div className="flex flex-col">
                  <div className="flex items-baseline gap-1">
                     <span className="text-white font-extrabold text-xl tracking-tighter">Clutch</span>
@@ -68,7 +68,7 @@ const TrustBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
           <div className="hidden md:block w-px h-12 bg-gradient-to-b from-transparent via-gray-700/50 to-transparent"></div>
 
           {/* Google */}
-          <div className="flex items-center gap-3 group cursor-pointer transition-all duration-300 hover:scale-105 hover:opacity-100">
+          <div className="flex items-center gap-3 group cursor-default transition-all duration-300 hover:scale-105 hover:opacity-100">
               <div className="bg-white p-2 rounded-full shadow-lg shadow-black/20">
                  <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

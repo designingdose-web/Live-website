@@ -20,8 +20,8 @@ const Footer: React.FC = () => {
               Designing Dose is a growth-focused digital marketing agency. We help businesses scale their revenue with our expertise in SEO, Web Development, and Social Media Marketing.
             </p>
             
-             {/* Trustpilot Mini Badge */}
-            <a href="https://www.trustpilot.com/review/designingdose.com" target="_blank" rel="noopener noreferrer" className="mt-6 flex items-center gap-3 bg-brand-primary/50 p-3 rounded-lg border border-gray-700/50 w-fit hover:border-brand-accent-start/30 transition-colors group">
+             {/* Trustpilot Mini Badge - Non-clickable */}
+            <div className="mt-6 flex items-center gap-3 bg-brand-primary/50 p-3 rounded-lg border border-gray-700/50 w-fit transition-colors group cursor-default">
                 <div className="bg-[#00b67a] p-1.5 rounded-md">
                     <Star className="w-5 h-5 text-white" fill="white" />
                 </div>
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
                     </div>
                     <p className="text-xs text-brand-muted mt-0.5">Rated <span className="text-white font-semibold">4.2</span>/5</p>
                 </div>
-            </a>
+            </div>
           </div>
           <div className="md:col-span-2">
             <h4 className="font-semibold text-white tracking-wider uppercase">Contact Us</h4>
