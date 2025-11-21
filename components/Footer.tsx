@@ -66,12 +66,15 @@ const Footer: React.FC = () => {
               <li><Link to="/services/logo-design" className="hover:text-white transition-colors">Logo & Branding</Link></li>
               <li><Link to="/services/mobile-app-development" className="hover:text-white transition-colors">Mobile Apps</Link></li>
               <li><Link to="/services/dropshipping" className="hover:text-white transition-colors">Dropshipping</Link></li>
+              <li><Link to="/services/video-animation" className="hover:text-white transition-colors">Video Animation</Link></li>
+              <li><Link to="/services/illustration" className="hover:text-white transition-colors">Illustration</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-white tracking-wider uppercase">Company</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors">Blog & Articles</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               <li><Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link></li>

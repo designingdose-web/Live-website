@@ -46,6 +46,8 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
     ? service.tabs[activeTab].tabName 
     : service.title;
 
+  const compareButtonTitle = activeCategoryTitle === 'Search Engine Optimization (SEO)' ? 'SEO' : activeCategoryTitle;
+
   // Determine column width based on number of plans to mimic grid but allow centering
   const getWidthClass = (count: number) => {
     // User requested 4 items to be 4-columns (all in one row) if screen allows
@@ -155,7 +157,7 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
           
           {/* Plan Anchor Navigation Bar */}
           {plansToShow.length > 0 && (
-             <div ref={anchorNavRef} className="flex flex-wrap justify-center gap-3 mb-8 animate-on-scroll" style={{ transitionDelay: '100ms' }}>
+             <div ref={anchorNavRef} className="flex flex-wrap justify-center gap-3 mb-12 animate-on-scroll" style={{ transitionDelay: '100ms' }}>
                 <span className="w-full text-center text-xs text-brand-muted uppercase tracking-widest mb-1 font-semibold">Available Plans</span>
                 {plansToShow.map((plan) => (
                   <button
@@ -170,12 +172,12 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
           )}
 
           {plansToShow.length > 1 && (
-            <div className="flex justify-center mb-24 pb-6 relative z-20">
+            <div className="flex justify-center mb-24 pb-6 mt-4 relative z-20">
               <button
                 onClick={() => setIsCompareModalOpen(true)}
                 className="bg-transparent border-2 border-brand-accent-end text-brand-accent-end font-bold py-2 px-6 rounded-full text-base hover:bg-brand-accent-end hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                Compare {activeCategoryTitle} Plans
+                Compare {compareButtonTitle} Plans
               </button>
             </div>
           )}

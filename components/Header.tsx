@@ -5,7 +5,8 @@ import Logo from './Logo';
 
 const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick?: () => void }> = ({ to, children, onClick }) => {
   const location = useLocation();
-  const isActive = location.pathname === to;
+  // Handle partial matching for blog routes so "Blog" stays active when viewing a post
+  const isActive = location.pathname === to || (to === '/blog' && location.pathname.startsWith('/blog'));
   return (
     <NavLink
       to={to}
@@ -57,6 +58,8 @@ const Header: React.FC = () => {
     { to: "/services/logo-design", label: "Logo & Branding" },
     { to: "/services/mobile-app-development", label: "Mobile Apps" },
     { to: "/services/dropshipping", label: "Dropshipping" },
+    { to: "/services/video-animation", label: "Video Animation" },
+    { to: "/services/illustration", label: "Illustration" },
   ];
 
   const headerRef = useRef<HTMLElement>(null);
@@ -93,6 +96,7 @@ const Header: React.FC = () => {
                   <svg className={`w-4 h-4 ml-1 transition-transform duration-200 ${isServicesOpen ? 'transform rotate-180 text-brand-accent-middle' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
               </div>
+              <NavItem to="/blog">Blog</NavItem>
               <NavItem to="/contact">Contact Us</NavItem>
             </div>
             <div className="md:hidden">
@@ -111,6 +115,7 @@ const Header: React.FC = () => {
               {servicesLinks.map(link => (
                 <NavLink key={link.to} to={link.to} onClick={closeMenu} className="block pl-6 pr-3 py-2 text-brand-muted hover:text-white hover:bg-brand-secondary rounded-md">{link.label}</NavLink>
               ))}
+              <NavItem to="/blog" onClick={closeMenu}>Blog</NavItem>
               <NavItem to="/contact" onClick={closeMenu}>Contact Us</NavItem>
             </div>
           )}

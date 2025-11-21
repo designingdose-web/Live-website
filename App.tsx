@@ -10,6 +10,10 @@ import SocialMediaPage from './pages/SocialMediaPage';
 import LogoDesignPage from './pages/LogoDesignPage';
 import MobileAppPage from './pages/MobileAppPage';
 import DropshippingPage from './pages/DropshippingPage';
+import VideoAnimationPage from './pages/VideoAnimationPage';
+import IllustrationPage from './pages/IllustrationPage';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
@@ -85,6 +89,10 @@ const App: React.FC = () => {
             <Route path="/services/logo-design" element={<LogoDesignPage />} />
             <Route path="/services/mobile-app-development" element={<MobileAppPage />} />
             <Route path="/services/dropshipping" element={<DropshippingPage />} />
+            <Route path="/services/video-animation" element={<VideoAnimationPage />} />
+            <Route path="/services/illustration" element={<IllustrationPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogPostPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/refund-policy" element={<RefundPolicyPage />} />
             <Route path="/terms-of-service" element={<TermsOfServicePage />} />

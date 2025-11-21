@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 
 type AnimationType = 'slide-in-up' | 'slide-in-left' | 'slide-in-right' | 'fade-in';
 
-export const useScrollAnimation = (animationType: AnimationType) => {
-  const ref = useRef<HTMLDivElement>(null);
+export const useScrollAnimation = <T extends HTMLElement = HTMLDivElement>(animationType: AnimationType) => {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
