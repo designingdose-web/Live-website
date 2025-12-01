@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Senior UI/UX Designer',
     date: 'January 12, 2025',
     readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/website-packages',
     content: [
       { type: 'paragraph', text: 'The digital landscape is shifting beneath our feet. As we move further into 2025, a static brochure website is no longer enough. Users demand experiences, interactivity, and lightning-fast performance. In this deep dive, we explore the top 5 trends that are shaping the internet in 2025 and why your business needs to adapt.' },
@@ -56,7 +56,7 @@ export const blogPosts: BlogPost[] = [
     role: 'E-commerce Strategist',
     date: 'November 28, 2024',
     readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/dropshipping',
     content: [
       { type: 'paragraph', text: 'You’ve seen the YouTube gurus. You’ve heard the rumors. "Dropshipping is dead." "It’s too competitive." "Ads are too expensive." Let’s set the record straight: Dropshipping isn’t dead; lazy dropshipping is dead. The model has evolved, and for those who adapt, it is more profitable than ever.' },
@@ -86,7 +86,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Social Media Lead',
     date: 'February 03, 2025',
     readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/social-media',
     content: [
       { type: 'paragraph', text: 'Social media is not about technology; it is about people. It is about connection, validation, and emotion. To succeed in social media marketing, you need to stop thinking like a salesman and start thinking like a psychologist. What makes someone stop scrolling? What makes them double-tap?' },
@@ -110,7 +110,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Lead Developer',
     date: 'December 15, 2024',
     readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/mobile-app-development',
     content: [
       { type: 'paragraph', text: 'One of the first questions we ask clients is: "Do you want Native or Cross-Platform?" The answer often determines your budget, timeline, and future scalability. In the past, cross-platform meant "slow and ugly," but in 2025, the game has changed completely.' },
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Creative Director',
     date: 'October 30, 2024',
     readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1626785774573-4b7993143a2d?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/logo-design',
     content: [
       { type: 'paragraph', text: 'Think of your favorite company. Do you just see their logo, or do you feel something? Apple signifies innovation. Nike signifies determination. Coca-Cola signifies happiness. This is branding. It is the gut feeling a person has about your product, service, or organization.' },
@@ -166,7 +166,7 @@ export const blogPosts: BlogPost[] = [
     role: 'SEO Specialist',
     date: 'January 25, 2025',
     readTime: '9 min read',
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/seo',
     content: [
       { type: 'paragraph', text: 'Search Engine Optimization (SEO) has undergone its biggest shift in 20 years. Google is no longer just a library index; it is an answer engine. With AI Overviews (formerly SGE) pushing organic links further down the page, simple keyword stuffing strategies are dead. Strategies must evolve to survive.' },
@@ -189,7 +189,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Art Director',
     date: 'December 05, 2024',
     readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1598518619679-584fbdd36639?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/illustration',
     content: [
       { type: 'paragraph', text: 'In a children\'s book, the text might say "The dragon was big," but the illustration tells us if the dragon is scary, goofy, lonely, or magical. For pre-readers and early readers, visuals are not just decoration; they are the primary way they understand the narrative. Visual storytelling is the heart of children\'s literature.' },
@@ -212,7 +212,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Motion Graphics Lead',
     date: 'November 10, 2024',
     readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1574717432707-c6780568f8b0?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1579632652768-6cb9dcf85912?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/video-animation',
     content: [
       { type: 'paragraph', text: 'If a picture is worth a thousand words, a video is worth a million. Statistics show that video content generates 1200% more shares than text and images combined. In the age of TikTok and YouTube Shorts, if you aren\'t doing video, you are effectively invisible.' },
@@ -235,7 +235,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Senior UI/UX Designer',
     date: 'February 10, 2025',
     readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1556742111-a301076d9d18?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/website-packages',
     content: [
       { type: 'paragraph', text: 'We hear it often from local plumbers, salons, and consultants: "I have enough business from referrals, I don\'t need a website." This mindset works... until it doesn\'t. A pandemic, a new competitor, or a shift in consumer behavior can dry up referrals overnight. A website is your insurance policy.' },
@@ -258,7 +258,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Art Director',
     date: 'January 08, 2025',
     readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1495640388908-05fa85288e61?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/illustration?tab=ebook-illustration',
     content: [
       { type: 'paragraph', text: 'The barrier to publishing has never been lower, but the noise has never been louder. Millions of books are published on Amazon KDP every year. How do you ensure yours isn\'t lost in the void? The answer is strategic marketing assets.' },
@@ -281,7 +281,7 @@ export const blogPosts: BlogPost[] = [
     role: 'E-commerce Strategist',
     date: 'February 15, 2025',
     readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/website-packages?tab=e-commerce',
     content: [
       { type: 'paragraph', text: 'You’ve spent money on ads. People are clicking. They land on your site... and leave. This is "Bounce Rate," and it’s a profit killer. Usually, the problem isn\'t your product; it\'s your user experience (UX). Let\'s troubleshoot your store.' },
@@ -305,7 +305,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Social Media Lead',
     date: 'December 20, 2024',
     readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1622032969622-2322844f516d?q=80&w=1200&auto=format&fit=crop',
     serviceLink: '/services/social-media',
     content: [
       { type: 'paragraph', text: 'Vertical, short-form video is the dominant content format of the decade. But with limited resources, should your brand focus on TikTok or Instagram Reels? The answer depends on your target audience and brand voice.' },
