@@ -1,12 +1,58 @@
 
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogData';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
+// Helper to generate optimized URLs for specific widths
+const getOptimizedUrl = (url: string, width: number) => {
+  if (!url) return '';
+  
+  // Handle Unsplash
+  if (url.includes('unsplash.com')) {
+    const cleanUrl = url.split('?')[0];
+    return `${cleanUrl}?auto=format&fit=crop&q=80&w=${width}`;
+  }
+  
+  // Handle Cloudinary
+  if (url.includes('res.cloudinary.com')) {
+    // If we're resizing, we need to inject the width parameter.
+    // The url might already have f_auto,q_auto from blogData.ts, or be raw.
+    // Strategy: Remove any existing f_auto/q_auto segments to avoid duplication,
+    // then insert the full set of params: w_{width},f_auto,q_auto.
+    
+    // Split at /upload/ to isolate the base from the transforms/id
+    const parts = url.split('/upload/');
+    if (parts.length === 2) {
+      // parts[0] is everything before /upload/
+      // parts[1] is the rest. It might start with v123... or f_auto...
+      let suffix = parts[1];
+      
+      // Clean up existing transforms if present to start fresh
+      // This regex removes f_auto, q_auto, and their separators if they exist at the start of the suffix
+      suffix = suffix.replace(/f_auto,q_auto\/?/, '');
+      
+      return `${parts[0]}/upload/w_${width},f_auto,q_auto/${suffix}`;
+    }
+  }
+  
+  return url;
+};
+
 const BlogCard: React.FC<{ post: typeof blogPosts[0]; index: number }> = ({ post, index }) => {
   const cardRef = useScrollAnimation<HTMLAnchorElement>('slide-in-up');
   
+  // Generate srcSet for responsive loading
+  const srcSet = `
+      ${getOptimizedUrl(post.image, 400)} 400w,
+      ${getOptimizedUrl(post.image, 600)} 600w,
+      ${getOptimizedUrl(post.image, 800)} 800w
+  `;
+
+  // Default src for fallback (medium size)
+  const imageSrc = getOptimizedUrl(post.image, 600);
+
   return (
     <Link 
       to={`/blog/${post.id}`}
@@ -16,10 +62,13 @@ const BlogCard: React.FC<{ post: typeof blogPosts[0]; index: number }> = ({ post
     >
       <div className="relative h-48 sm:h-60 w-full overflow-hidden bg-gray-800">
         <img 
-          src={post.image} 
+          src={imageSrc}
+          srcSet={srcSet}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={post.title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           loading="lazy"
+          decoding="async"
         />
         <div className="absolute top-4 left-4 bg-brand-primary/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-accent-middle border border-brand-accent-middle/30">
           {post.category}
@@ -58,6 +107,14 @@ const BlogPage: React.FC = () => {
 
   // Featured post is always the first one
   const featuredPost = blogPosts[0];
+  
+  const featuredSrcSet = `
+    ${getOptimizedUrl(featuredPost.image, 600)} 600w,
+    ${getOptimizedUrl(featuredPost.image, 1200)} 1200w,
+    ${getOptimizedUrl(featuredPost.image, 1600)} 1600w
+  `;
+
+  const featuredImgSrc = getOptimizedUrl(featuredPost.image, 1200);
 
   return (
     <div className="bg-brand-primary min-h-screen overflow-x-hidden">
@@ -65,9 +122,10 @@ const BlogPage: React.FC = () => {
       <div className="relative py-20 bg-brand-secondary border-b border-gray-800">
          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <img 
-                src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1200" 
+                src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=75&w=1200" 
                 alt="Blog Background" 
                 className="w-full h-full object-cover opacity-10 mix-blend-overlay"
+                loading="eager"
             />
          </div>
          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-primary"></div>
@@ -93,9 +151,14 @@ const BlogPage: React.FC = () => {
            </h2>
            <Link to={`/blog/${featuredPost.id}`} className="group relative block rounded-2xl overflow-hidden aspect-[21/9] md:aspect-[2.5/1] bg-gray-800">
               <img 
-                src={featuredPost.image} 
+                src={featuredImgSrc} 
+                srcSet={featuredSrcSet}
+                sizes="(max-width: 768px) 100vw, 80vw"
                 alt={featuredPost.title} 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-6 md:p-10 max-w-3xl">
