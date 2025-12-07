@@ -1,5 +1,6 @@
 
 
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -27,7 +28,8 @@ const optimizeImage = (url: string) => {
   if (url.includes('unsplash.com')) {
     // Strip existing params to ensure fresh optimization
     const baseUrl = url.split('?')[0];
-    return `${baseUrl}?auto=format&fit=crop&q=80&w=1200`;
+    // Changed quality from 75 to 70 for speed boost
+    return `${baseUrl}?auto=format&fit=crop&q=70&w=1200`;
   }
   
   if (url.includes('res.cloudinary.com')) {

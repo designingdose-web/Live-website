@@ -1,5 +1,6 @@
 
 
+
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { blogPosts } from '../data/blogData';
@@ -11,7 +12,7 @@ const getOptimizedUrl = (url: string, width: number) => {
   
   if (url.includes('unsplash.com')) {
     const cleanUrl = url.split('?')[0];
-    return `${cleanUrl}?auto=format&fit=crop&q=80&w=${width}`;
+    return `${cleanUrl}?auto=format&fit=crop&q=75&w=${width}`;
   }
   
   if (url.includes('res.cloudinary.com')) {

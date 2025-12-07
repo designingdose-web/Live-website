@@ -44,6 +44,7 @@ const ArrowButton: React.FC<{ direction: 'left' | 'right'; onClick: () => void }
 
 const Banner: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadOthers, setLoadOthers] = useState(false);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -57,6 +58,14 @@ const Banner: React.FC = () => {
     const slideInterval = setInterval(nextSlide, 7000);
     return () => clearInterval(slideInterval);
   }, [nextSlide]);
+
+  // Defer loading of non-active slides to ensure LCP (first paint) is lightning fast
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadOthers(true);
+    }, 1500); // Start loading other images after 1.5s
+    return () => clearTimeout(timer);
+  }, []);
   
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -68,68 +77,74 @@ const Banner: React.FC = () => {
   
   const generateSrcSet = (baseUrl: string) => {
     const widths = [640, 768, 1024, 1280, 1536, 1920];
-    return widths.map(w => `${baseUrl}?q=80&w=${w}&auto=format&fit=crop ${w}w`).join(', ');
+    return widths.map(w => `${baseUrl}?q=70&w=${w}&auto=format&fit=crop ${w}w`).join(', ');
   };
 
   return (
     <div className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden bg-brand-primary">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-            index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-          }`}
-        >
-          {slide.type === 'video' ? (
-             <video src={slide.source} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-          ) : (
-            <img 
-                src={`${slide.source}?q=80&w=1280&auto=format&fit=crop`}
-                srcSet={generateSrcSet(slide.source)}
-                sizes="100vw"
-                loading={index === 0 ? 'eager' : 'lazy'}
-                // FIX: Changed `fetchpriority` to `fetchPriority` to align with React's property naming for the `fetchpriority` HTML attribute.
-                fetchPriority={index === 0 ? 'high' : 'auto'}
-                decoding="async"
-                alt="Banner Background" 
-                className="w-full h-full object-cover" 
-            />
-          )}
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-          <div className="absolute inset-0 flex items-center justify-center text-center">
-            <div className="container mx-auto px-6">
-              <h1
-                className={`text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 transition-all duration-700 ease-out ${
-                  index === currentIndex ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-10'
-                }`}
-                style={{textShadow: '2px 2px 8px rgba(0,0,0,0.7)'}}
-              >
-                {slide.tagline}
-              </h1>
-              <p
-                className={`text-lg md:text-2xl text-brand-light max-w-3xl mx-auto mb-8 transition-all duration-700 ease-out ${
-                  index === currentIndex ? 'opacity-100 translate-y-0 delay-400' : 'opacity-0 translate-y-10'
-                }`}
-                style={{textShadow: '1px 1px 4px rgba(0,0,0,0.7)'}}
-              >
-                {slide.subTagline}
-              </p>
-              <div
-                className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 ease-out ${
-                  index === currentIndex ? 'opacity-100 translate-y-0 delay-600' : 'opacity-0 translate-y-10'
-                }`}
-              >
-                 <button onClick={openModal} className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg w-full sm:w-auto transform transition-all duration-300 hover:scale-105 hover:opacity-90 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary focus-visible:ring-brand-accent-end">
-                    Get a Quote
-                  </button>
-                  <Link to="/services/website-packages" className="bg-brand-secondary/80 border-2 border-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-brand-secondary transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary focus-visible:ring-brand-accent-end">
-                    Explore Packages
-                  </Link>
+      {slides.map((slide, index) => {
+        // Only render the image tag if it is the first slide OR if we have passed the defer delay
+        const shouldRenderImage = index === 0 || loadOthers;
+
+        return (
+          <div
+            key={index}
+            className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+              index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+            }`}
+          >
+            {slide.type === 'video' ? (
+               <video src={slide.source} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            ) : (
+              shouldRenderImage && (
+                <img 
+                    src={`${slide.source}?q=70&w=1280&auto=format&fit=crop`}
+                    srcSet={generateSrcSet(slide.source)}
+                    sizes="100vw"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                    decoding="async"
+                    alt="Banner Background" 
+                    className="w-full h-full object-cover" 
+                />
+              )
+            )}
+            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+            <div className="absolute inset-0 flex items-center justify-center text-center">
+              <div className="container mx-auto px-6">
+                <h1
+                  className={`text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 transition-all duration-700 ease-out ${
+                    index === currentIndex ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-10'
+                  }`}
+                  style={{textShadow: '2px 2px 8px rgba(0,0,0,0.7)'}}
+                >
+                  {slide.tagline}
+                </h1>
+                <p
+                  className={`text-lg md:text-2xl text-brand-light max-w-3xl mx-auto mb-8 transition-all duration-700 ease-out ${
+                    index === currentIndex ? 'opacity-100 translate-y-0 delay-400' : 'opacity-0 translate-y-10'
+                  }`}
+                  style={{textShadow: '1px 1px 4px rgba(0,0,0,0.7)'}}
+                >
+                  {slide.subTagline}
+                </p>
+                <div
+                  className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 ease-out ${
+                    index === currentIndex ? 'opacity-100 translate-y-0 delay-600' : 'opacity-0 translate-y-10'
+                  }`}
+                >
+                   <button onClick={openModal} className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg w-full sm:w-auto transform transition-all duration-300 hover:scale-105 hover:opacity-90 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary focus-visible:ring-brand-accent-end">
+                      Get a Quote
+                    </button>
+                    <Link to="/services/website-packages" className="bg-brand-secondary/80 border-2 border-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-brand-secondary transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary focus-visible:ring-brand-accent-end">
+                      Explore Packages
+                    </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
 
       {/* Navigation Arrows */}
       <ArrowButton direction="left" onClick={prevSlide} />
