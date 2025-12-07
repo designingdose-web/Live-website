@@ -115,13 +115,13 @@ const brands = [
 
 const TechStackSlider: React.FC = () => {
   return (
-    <div className="py-16 bg-brand-secondary border-t border-brand-primary overflow-hidden relative">
+    <div className="py-12 md:py-16 bg-brand-secondary border-t border-brand-primary overflow-hidden relative z-10">
        {/* Fade Overlay for seamless look */}
-       <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-brand-secondary to-transparent z-10 pointer-events-none"></div>
-       <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-brand-secondary to-transparent z-10 pointer-events-none"></div>
+       <div className="absolute top-0 left-0 h-full w-12 md:w-24 bg-gradient-to-r from-brand-secondary to-transparent z-10 pointer-events-none"></div>
+       <div className="absolute top-0 right-0 h-full w-12 md:w-24 bg-gradient-to-l from-brand-secondary to-transparent z-10 pointer-events-none"></div>
 
        <div className="container mx-auto px-6 mb-8 text-center">
-          <p className="text-brand-muted uppercase tracking-widest text-sm font-bold">Powered By Industry-Leading Technologies & Trusted Partners</p>
+          <p className="text-brand-muted uppercase tracking-widest text-xs md:text-sm font-bold">Powered By Industry-Leading Technologies & Trusted Partners</p>
        </div>
 
       <div className="flex w-full overflow-hidden">
@@ -129,7 +129,7 @@ const TechStackSlider: React.FC = () => {
         <div className="flex animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
           {/* First set of brands */}
           {brands.map((brand, index) => (
-            <div key={`brand-${index}`} className="flex flex-col items-center justify-center mx-12 group min-w-[100px]">
+            <div key={`brand-${index}`} className="flex flex-col items-center justify-center mx-8 md:mx-12 group min-w-[80px] md:min-w-[100px]">
               {/* Removed text-brand-muted to show original colors, added brightness hover effect */}
               <div className="transition-all duration-300 transform group-hover:scale-110 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100">
                 {brand.icon}
@@ -142,7 +142,7 @@ const TechStackSlider: React.FC = () => {
           
           {/* Duplicate set for seamless loop */}
           {brands.map((brand, index) => (
-            <div key={`brand-dup-${index}`} className="flex flex-col items-center justify-center mx-12 group min-w-[100px]">
+            <div key={`brand-dup-${index}`} className="flex flex-col items-center justify-center mx-8 md:mx-12 group min-w-[80px] md:min-w-[100px]">
                <div className="transition-all duration-300 transform group-hover:scale-110 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100">
                 {brand.icon}
               </div>

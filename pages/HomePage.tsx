@@ -19,13 +19,13 @@ const PricingHighlight: React.FC = () => {
   const headerRef = useScrollAnimation('slide-in-up');
 
   return (
-    <section ref={sectionRef} className="py-20 bg-brand-secondary animate-on-scroll">
-      <div className="container mx-auto px-6">
-        <div ref={headerRef} className="text-center mb-12 animate-on-scroll">
+    <section ref={sectionRef} className="py-12 md:py-20 bg-brand-secondary animate-on-scroll">
+      <div className="container mx-auto px-4 md:px-6">
+        <div ref={headerRef} className="text-center mb-8 md:mb-12 animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white">Launch Your <span className="gradient-text">Digital Presence</span></h2>
-          <p className="mt-4 text-lg text-brand-muted">Solutions designed to deliver maximum impact and value.</p>
+          <p className="mt-3 md:mt-4 text-base md:text-lg text-brand-muted">Solutions designed to deliver maximum impact and value.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 justify-center items-stretch">
           {websitePlans?.map((plan, index) => {
             const cardRef = useScrollAnimation('slide-in-up');
             return (
@@ -33,8 +33,8 @@ const PricingHighlight: React.FC = () => {
             )
           })}
         </div>
-         <div className="text-center mt-16">
-            <Link to="/services/website-packages" className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105">
+         <div className="text-center mt-10 md:mt-16">
+            <Link to="/services/website-packages" className="inline-block bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg">
               View All Website Packages
             </Link>
           </div>
@@ -50,7 +50,7 @@ const WhyChooseUs: React.FC = () => {
   const features = [
     { 
       icon: (
-        <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-16 h-16 md:w-20 md:h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="gradResult" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#22D3EE" />
@@ -72,7 +72,7 @@ const WhyChooseUs: React.FC = () => {
     },
     { 
       icon: (
-        <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-16 h-16 md:w-20 md:h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="gradIdea" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#EC4899" />
@@ -100,7 +100,7 @@ const WhyChooseUs: React.FC = () => {
     },
     { 
       icon: (
-         <svg className="w-20 h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <svg className="w-16 h-16 md:w-20 md:h-20 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="gradSupport" x1="1" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#22D3EE" />
@@ -128,23 +128,23 @@ const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-brand-primary animate-on-scroll">
-      <div className="container mx-auto px-6">
-        <div ref={headerRef} className="text-center mb-12 animate-on-scroll">
+    <section ref={sectionRef} className="py-12 md:py-20 bg-brand-primary animate-on-scroll">
+      <div className="container mx-auto px-4 md:px-6">
+        <div ref={headerRef} className="text-center mb-8 md:mb-12 animate-on-scroll">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white">Why Choose <span className="gradient-text">Designing Dose</span>?</h2>
-          <p className="mt-4 text-lg text-brand-muted">We're more than a service provider; we're your partner in growth.</p>
+          <p className="mt-3 md:mt-4 text-base md:text-lg text-brand-muted">We're more than a service provider; we're your partner in growth.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => {
              const cardRef = useScrollAnimation('fade-in');
              const iconRef = useScrollAnimation('fade-in');
              const titleRef = useScrollAnimation('slide-in-up');
              const descRef = useScrollAnimation('slide-in-up');
              return (
-              <div ref={cardRef} key={index} className="bg-brand-secondary p-8 rounded-lg text-center animate-on-scroll border border-transparent hover:border-brand-accent-start transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-accent-start/20" style={{ transitionDelay: `${index * 150}ms`}}>
-                <div ref={iconRef} className="flex justify-center mb-6 animate-on-scroll transform transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${index * 150 + 150}ms`}}>{feature.icon}</div>
+              <div ref={cardRef} key={index} className="bg-brand-secondary p-6 md:p-8 rounded-lg text-center animate-on-scroll border border-transparent hover:border-brand-accent-start transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-accent-start/20" style={{ transitionDelay: `${index * 150}ms`}}>
+                <div ref={iconRef} className="flex justify-center mb-4 md:mb-6 animate-on-scroll transform transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${index * 150 + 150}ms`}}>{feature.icon}</div>
                 <h3 ref={titleRef} className="text-xl font-bold text-white mb-2 animate-on-scroll" style={{ transitionDelay: `${index * 150 + 250}ms`}}>{feature.title}</h3>
-                <p ref={descRef} className="text-brand-muted animate-on-scroll" style={{ transitionDelay: `${index * 150 + 350}ms`}}>{feature.description}</p>
+                <p ref={descRef} className="text-brand-muted text-sm md:text-base animate-on-scroll" style={{ transitionDelay: `${index * 150 + 350}ms`}}>{feature.description}</p>
               </div>
             )
           })}

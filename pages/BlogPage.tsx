@@ -1,6 +1,4 @@
 
-
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogData';
@@ -120,7 +118,7 @@ const BlogPage: React.FC = () => {
   return (
     <div className="bg-brand-primary min-h-screen overflow-x-hidden">
       {/* Hero Section */}
-      <div className="relative py-20 bg-brand-secondary border-b border-gray-800">
+      <div className="relative py-16 md:py-20 bg-brand-secondary border-b border-gray-800">
          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <img 
                 src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=75&w=1200" 
@@ -131,26 +129,26 @@ const BlogPage: React.FC = () => {
          </div>
          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-primary"></div>
          
-         <div className="container mx-auto px-6 relative z-10">
+         <div className="container mx-auto px-4 md:px-6 relative z-10">
             <div ref={headerRef} className="text-center max-w-3xl mx-auto animate-on-scroll">
-              <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
+              <h1 className="text-3xl md:text-6xl font-extrabold text-white mb-4 md:mb-6">
                 Insights & <span className="gradient-text">Articles</span>
               </h1>
-              <p className="text-lg text-brand-muted leading-relaxed">
+              <p className="text-base md:text-lg text-brand-muted leading-relaxed">
                 Expert advice, industry trends, and actionable strategies to help you grow your digital presence. From SEO to Design, we cover it all.
               </p>
             </div>
          </div>
       </div>
 
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 md:px-6 py-12">
         {/* Featured Article */}
-        <div className="mb-16">
-           <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
-             <span className="w-2 h-8 bg-brand-accent-start rounded-full mr-3"></span>
+        <div className="mb-12 md:mb-16">
+           <h2 className="text-xl md:text-2xl font-bold text-white mb-6 flex items-center">
+             <span className="w-2 h-6 md:h-8 bg-brand-accent-start rounded-full mr-3"></span>
              Featured Story
            </h2>
-           <Link to={`/blog/${featuredPost.id}`} className="group relative block rounded-2xl overflow-hidden aspect-[21/9] md:aspect-[2.5/1] bg-gray-800">
+           <Link to={`/blog/${featuredPost.id}`} className="group relative block rounded-xl md:rounded-2xl overflow-hidden aspect-[4/3] md:aspect-[2.5/1] bg-gray-800">
               <img 
                 src={featuredImgSrc} 
                 srcSet={featuredSrcSet}
@@ -163,16 +161,16 @@ const BlogPage: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-6 md:p-10 max-w-3xl">
-                 <span className="inline-block px-3 py-1 bg-brand-accent-start text-white text-xs font-bold rounded-full mb-4">
+                 <span className="inline-block px-3 py-1 bg-brand-accent-start text-white text-xs font-bold rounded-full mb-3 md:mb-4">
                     {featuredPost.category}
                  </span>
-                 <h3 className="text-2xl md:text-4xl font-bold text-white mb-3 group-hover:text-brand-accent-end transition-colors">
+                 <h3 className="text-xl md:text-4xl font-bold text-white mb-2 md:mb-3 group-hover:text-brand-accent-end transition-colors leading-tight">
                     {featuredPost.title}
                  </h3>
-                 <p className="text-gray-300 mb-4 line-clamp-2 md:line-clamp-none hidden sm:block">
+                 <p className="text-gray-300 mb-4 line-clamp-2 md:line-clamp-none hidden sm:block text-sm md:text-base">
                     {featuredPost.excerpt}
                  </p>
-                 <div className="flex items-center text-sm text-gray-400 space-x-4">
+                 <div className="flex items-center text-xs md:text-sm text-gray-400 space-x-3 md:space-x-4">
                     <span>{featuredPost.author}</span>
                     <span>•</span>
                     <span>{featuredPost.readTime}</span>
@@ -182,24 +180,26 @@ const BlogPage: React.FC = () => {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((cat, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
-                activeCategory === cat 
-                ? 'bg-brand-accent-start text-white shadow-lg shadow-brand-accent-start/20' 
-                : 'bg-brand-secondary text-brand-muted hover:text-white border border-gray-700 hover:border-brand-accent-start'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="w-full overflow-x-auto pb-2 mb-8 md:mb-12 scrollbar-hide">
+            <div className="flex flex-nowrap md:flex-wrap md:justify-center gap-2 md:gap-3 min-w-min">
+            {categories.map((cat, idx) => (
+                <button
+                key={idx}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 md:px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 whitespace-nowrap ${
+                    activeCategory === cat 
+                    ? 'bg-brand-accent-start text-white shadow-lg shadow-brand-accent-start/20' 
+                    : 'bg-brand-secondary text-brand-muted hover:text-white border border-gray-700 hover:border-brand-accent-start'
+                }`}
+                >
+                {cat}
+                </button>
+            ))}
+            </div>
         </div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredPosts.map((post, index) => (
             <BlogCard key={post.id} post={post} index={index} />
           ))}

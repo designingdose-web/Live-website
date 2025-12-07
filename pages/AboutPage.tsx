@@ -19,9 +19,9 @@ const AboutPage: React.FC = () => {
     <div className="bg-brand-primary text-white overflow-x-hidden">
       {/* Hero Section */}
       <div ref={heroRef} className="py-20 md:py-32 bg-brand-secondary animate-on-scroll">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold">About <span className="gradient-text">Designing Dose</span></h1>
-          <p className="mt-4 text-lg md:text-xl text-brand-muted max-w-3xl mx-auto">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <h1 className="text-3xl md:text-6xl font-extrabold">About <span className="gradient-text">Designing Dose</span></h1>
+          <p className="mt-4 text-base md:text-xl text-brand-muted max-w-3xl mx-auto">
             We are a team of passionate creators, strategists, and developers dedicated to helping businesses grow in the digital world.
           </p>
         </div>
@@ -30,18 +30,18 @@ const AboutPage: React.FC = () => {
       <TrustBadges className="bg-brand-primary/50" />
 
       {/* Mission & Vision */}
-      <div className="py-20">
-        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="py-12 md:py-20">
+        <div className="container mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="order-2 lg:order-1">
-                <div ref={missionRef} className="animate-on-scroll mb-12">
-                    <h2 className="text-3xl font-bold mb-4 gradient-text">Our Mission</h2>
-                    <p className="text-brand-muted leading-relaxed">
+                <div ref={missionRef} className="animate-on-scroll mb-8 md:mb-12">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 gradient-text">Our Mission</h2>
+                    <p className="text-brand-muted leading-relaxed text-sm md:text-base">
                         To empower businesses of all sizes with innovative, data-driven digital marketing solutions that deliver tangible results. We strive to be more than just a service provider; we aim to be a genuine partner in our clients' success, crafting strategies that foster growth, engagement, and a powerful online presence.
                     </p>
                 </div>
                 <div ref={visionRef} className="animate-on-scroll">
-                    <h2 className="text-3xl font-bold mb-4 gradient-text">Our Vision</h2>
-                    <p className="text-brand-muted leading-relaxed">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 gradient-text">Our Vision</h2>
+                    <p className="text-brand-muted leading-relaxed text-sm md:text-base">
                         To be a leading force in the digital marketing industry, recognized for our creativity, integrity, and unwavering commitment to client success. We envision a future where every business can unlock its full digital potential through strategic and beautifully executed online experiences.
                     </p>
                 </div>
@@ -52,7 +52,7 @@ const AboutPage: React.FC = () => {
                     srcSet={imageSrcSet}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     alt="Strategy session" 
-                    className="rounded-lg shadow-2xl object-cover w-full h-full"
+                    className="rounded-lg shadow-2xl object-cover w-full h-auto"
                     loading="lazy"
                     decoding="async"
                 />

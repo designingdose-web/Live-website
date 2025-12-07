@@ -66,11 +66,11 @@ const StatCounter: React.FC<StatProps> = ({ end, label, suffix = '', duration = 
     }, [hasViewed, end, duration, decimals]);
 
     return (
-        <div ref={elementRef} className="text-center p-6 transform transition-transform duration-300 hover:scale-105 group">
-            <div className="text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-3 opacity-0 transition-opacity duration-700 delay-100" style={{ opacity: hasViewed ? 1 : 0 }}>
+        <div ref={elementRef} className="text-center p-4 md:p-6 transform transition-transform duration-300 hover:scale-105 group">
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-2 md:mb-3 opacity-0 transition-opacity duration-700 delay-100" style={{ opacity: hasViewed ? 1 : 0 }}>
                 {count}{suffix}
             </div>
-            <p className="text-brand-muted font-semibold text-sm md:text-base uppercase tracking-widest group-hover:text-white transition-colors">
+            <p className="text-brand-muted font-semibold text-xs sm:text-sm md:text-base uppercase tracking-widest group-hover:text-white transition-colors">
                 {label}
             </p>
         </div>
@@ -86,17 +86,17 @@ const StatsSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-16 bg-brand-secondary border-y border-gray-800 relative overflow-hidden">
+        <section className="py-12 md:py-16 bg-brand-secondary border-y border-gray-800 relative overflow-hidden">
              {/* Background Ambient Glows */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                  <div className="absolute -top-24 -left-24 w-64 h-64 bg-brand-accent-start/20 rounded-full blur-[80px]"></div>
                  <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-brand-accent-end/20 rounded-full blur-[80px]"></div>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-y divide-gray-800 md:divide-y-0 md:divide-x md:divide-gray-800">
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 divide-y divide-gray-800 md:divide-y-0 md:divide-x md:divide-gray-800">
                     {stats.map((stat, index) => (
-                        <div key={index} className={index % 2 !== 0 ? "border-t border-gray-800 md:border-t-0" : ""}>
+                        <div key={index} className={index >= 2 ? "pt-6 md:pt-0" : ""}>
                              <StatCounter {...stat} />
                         </div>
                     ))}
