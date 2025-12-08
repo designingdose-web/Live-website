@@ -12,7 +12,7 @@ const FaqSection: React.FC<{ faqs: FAQ[] }> = ({ faqs }) => {
   };
 
   return (
-    <div ref={sectionRef} className="mt-24 animate-on-scroll">
+    <div ref={sectionRef} className="mt-12 animate-on-scroll">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white">Frequently Asked <span className="gradient-text">Questions</span></h2>
       </div>

@@ -22,7 +22,7 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
       className={`bg-brand-secondary p-8 rounded-2xl border transition-all duration-300 flex flex-col h-full relative ${cardClasses} group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-secondary focus-visible:ring-brand-accent-middle`}
     >
         {plan.isPopular && (
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(236,72,153,0.5)]">
             Most Popular
             </div>
         )}
@@ -49,8 +49,16 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
             </li>
         )}
       </ul>
-      <div className="block w-full text-center mt-8 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-6 rounded-lg group-hover:opacity-90 transition-all duration-300 transform group-hover:scale-105">
-        View Details
+      
+      {/* Stylish Minimal CTA Button */}
+      <div className="mt-8 relative rounded-full overflow-hidden group/btn shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] transition-all duration-300">
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
+        <div className="relative py-4 text-center text-white font-bold flex justify-center items-center gap-2">
+           View Details 
+           <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </div>
+        {/* Sheen */}
+        <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover/btn:left-[100%]"></div>
       </div>
     </Link>
   );

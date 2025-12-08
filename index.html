@@ -1,19 +1,78 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Designing Dose - Web & Digital Solutions</title>
-    <meta name="description" content="A professional, modern website for Designing Dose, showcasing their comprehensive digital services including web development, e-commerce solutions, SEO, social media marketing, and more. Features an interactive interface with detailed pricing plans." />
+    <meta name="description" content="A professional, modern website for Designing Dose, showcasing their comprehensive digital services including web development, e-commerce solutions, SEO, social media marketing, and more." />
+    <meta name="keywords" content="Web Development, SEO Services, Mobile App Development, Social Media Marketing, Designing Dose, Digital Agency, Ireland, USA, UK, Canada, Australia, Pakistan, Europe" />
+    <meta name="author" content="Designing Dose" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://designingdose.com/" />
+    <meta property="og:title" content="Designing Dose - Global Digital Solutions" />
+    <meta property="og:description" content="Expert Web Development, SEO, and Digital Marketing services tailored for businesses worldwide. Scale your brand with Designing Dose." />
+    <meta property="og:image" content="https://res.cloudinary.com/dmaqptknc/image/upload/v1765127202/new_web2_lbyr0c.webp" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://designingdose.com/" />
+    <meta property="twitter:title" content="Designing Dose - Global Digital Solutions" />
+    <meta property="twitter:description" content="Expert Web Development, SEO, and Digital Marketing services tailored for businesses worldwide. Scale your brand with Designing Dose." />
+    <meta property="twitter:image" content="https://res.cloudinary.com/dmaqptknc/image/upload/v1765127202/new_web2_lbyr0c.webp" />
+
+    <link rel="canonical" href="https://designingdose.com/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://res.cloudinary.com" />
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Designing Dose",
+      "url": "https://designingdose.com",
+      "logo": "https://designingdose.com/favicon.svg",
+      "description": "A premier digital agency providing Web Development, SEO, Mobile Apps, and Branding services globally.",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+353-1-254-8762",
+          "contactType": "customer service",
+          "areaServed": ["IE", "US", "GB", "CA", "AU", "PK", "EU"],
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+1-929-563-6983",
+          "contactType": "sales",
+          "areaServed": "US",
+          "availableLanguage": "English"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/designingdose",
+        "https://www.instagram.com/designingdose",
+        "https://www.linkedin.com/company/designingdose"
+      ]
+    }
+    </script>
+
     <style>
       /* Failsafe to ensure dark background and light text are applied */
       html, body {
         background-color: #0D1117;
         color: #E6EDF3;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
       }
 
       html {

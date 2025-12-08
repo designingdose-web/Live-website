@@ -52,7 +52,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Senior UI/UX Designer',
     date: 'January 12, 2025',
     readTime: '12 min read',
-    image: optimizeImage('https://images.unsplash.com/photo-1547658719-da2b51169166'),
+    image: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1765127202/new_web2_lbyr0c.webp'),
     serviceLink: '/services/website-packages',
     content: [
       { type: 'paragraph', text: 'The digital landscape is shifting rapidly. As we move deeper into 2025, the concept of a website has fundamentally changed. It is no longer just a digital brochure or a static collection of pages; it is a dynamic, living entity that interacts with users in real-time. For businesses, keeping up with these changes is not just about aesthetics—it is about survival. A website that looks like it was built in 2020 feels ancient to a user in 2025, and that perception directly impacts trust and conversion rates.' },
@@ -175,7 +175,7 @@ export const blogPosts: BlogPost[] = [
     role: 'Lead Developer',
     date: 'December 15, 2024',
     readTime: '11 min read',
-    image: optimizeImage('https://images.unsplash.com/photo-1526498460520-4c246339dccb'),
+    image: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1765126967/new_app2_tiwbcu.webp'),
     serviceLink: '/services/mobile-app-development',
     content: [
       { type: 'paragraph', text: 'When you decide to build a mobile app, you are immediately faced with a critical technical decision: Native or Cross-Platform? This choice will dictate your budget, your timeline, your app’s performance, and your long-term maintenance strategy. Make the wrong choice, and you could burn through your runway building two separate apps when one would have sufficed. Or conversely, you could build a sluggish app that frustrates users because you tried to cut corners.' },
@@ -451,7 +451,7 @@ export const blogPosts: BlogPost[] = [
     serviceLink: '/services/social-media',
     content: [
       { type: 'paragraph', text: 'Short-form, vertical video is the undisputed king of social media content. But for a business with limited resources, trying to master every platform is a recipe for burnout. You need to choose your battlefield. The two main contenders are TikTok and Instagram Reels. While they look similar on the surface, they are fundamentally different ecosystems.' },
-      { type: 'paragraph', text: 'Deciding where to invest your time depends on your target audience, your brand voice, and your content style. Let\'s compare them head-to-head.' },
+      { type: 'paragraph', text: 'Deciding where to invest your time depends on your target audience, your brand voice, and your content style. Let\'t compare them head-to-head.' },
       { type: 'heading', text: 'The Audience Demographics' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865528/ti1_npsvbh.webp'), alt: 'The Audience Demographics' },
       { type: 'paragraph', text: 'TikTok skews younger. It is the domain of Gen Z and younger Millennials. If your target customer is under 25, TikTok is non-negotiable. However, the user base is aging up, with more users in their 30s joining every day.' },

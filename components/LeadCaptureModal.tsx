@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import CountryCodeDropdown from './CountryCodeDropdown';
 
@@ -72,7 +73,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
         style={{
             boxShadow: '0 0 25px rgba(139, 92, 246, 0.3), 0 0 50px rgba(236, 72, 153, 0.3)'
         }}
-        className={`bg-brand-secondary p-8 rounded-lg w-full max-w-md mx-4 transform transition-all duration-300 border border-brand-accent-start/30 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        className={`bg-brand-secondary p-8 rounded-2xl w-full max-w-md mx-4 transform transition-all duration-300 border border-brand-accent-start/30 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-4">
@@ -113,8 +114,14 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
                     required
                 />
                </div>
-              <button type="submit" disabled={isLoading} className="w-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 rounded-lg hover:opacity-90 transition-transform transform hover:scale-105 flex justify-center items-center disabled:opacity-60">
-                {isLoading ? 'Submitting...' : 'Request a Callback'}
+              <button 
+                type="submit" 
+                disabled={isLoading} 
+                className="relative overflow-hidden group w-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 flex justify-center items-center disabled:opacity-60 disabled:transform-none disabled:shadow-none"
+              >
+                <span className="relative z-10">{isLoading ? 'Submitting...' : 'Request a Callback'}</span>
+                {/* Sheen */}
+                <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
               </button>
                {status && <p className={`mt-4 text-center text-sm ${status.startsWith('Thank') ? 'text-green-400' : 'text-yellow-400'}`}>{status}</p>}
             </form>

@@ -10,6 +10,7 @@ import PricingHighlightCard from '../components/PricingHighlightCard';
 import StatsSection from '../components/StatsSection';
 import TrustBadges from '../components/TrustBadges';
 import TechStackSlider from '../components/TechStackSlider';
+import SEO from '../components/SEO';
 
 const PricingHighlight: React.FC = () => {
   const websitePlans = servicesData
@@ -34,8 +35,15 @@ const PricingHighlight: React.FC = () => {
           })}
         </div>
          <div className="text-center mt-10 md:mt-16">
-            <Link to="/services/website-packages" className="inline-block bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg">
-              View All Website Packages
+            <Link 
+              to="/services/website-packages" 
+              className="inline-block relative overflow-hidden group bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 px-12 rounded-full text-lg shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:shadow-[0_0_40px_rgba(34,211,238,0.6)] transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                View All Website Packages
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
+              <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
             </Link>
           </div>
       </div>
@@ -158,6 +166,11 @@ const WhyChooseUs: React.FC = () => {
 const HomePage: React.FC = () => {
   return (
     <>
+      <SEO 
+        title="Designing Dose - Web Development, SEO & Digital Marketing Agency"
+        description="Designing Dose is a top-rated digital agency offering Web Development, SEO, Mobile Apps, and Social Media Marketing services. We help businesses in Ireland, USA, UK, Canada, Australia, and Pakistan grow online."
+        keywords="Web Design Ireland, SEO Company USA, Digital Marketing UK, Mobile App Developers Canada, E-commerce Experts Australia, Dropshipping Services Europe, Software House Pakistan, Designing Dose, Global Digital Agency, Professional Website Builder"
+      />
       <Banner />
       <TrustBadges />
       <WhyChooseUs />

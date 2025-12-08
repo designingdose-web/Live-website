@@ -1,20 +1,44 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import type { ServiceCategory } from '../types';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
 import FaqSection from '../components/FaqSection';
 import ComparisonModal from '../components/ComparisonModal';
+import PriceCalculator from '../components/PriceCalculator';
 
+// Wrapper component to handle individual card animations immediately on load
+const PricingCardWrapper: React.FC<{ 
+  children: React.ReactNode; 
+  index: number; 
+  widthClass: string 
+}> = ({ children, index, widthClass }) => {
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    // Trigger animation immediately on mount with staggering
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100 + (index * 100)); 
+    return () => clearTimeout(timer);
+  }, [index]);
+  
+  return (
+    <div
+      className={`flex px-4 xl:px-5 mb-6 md:mb-8 xl:mb-10 w-full md:w-1/2 ${widthClass} transition-all duration-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      {children}
+    </div>
+  );
+};
 
 const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.ReactNode }> = ({ service, children }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isCompareModalOpen, setIsCompareModalOpen] = React.useState(false);
   const headerRef = useScrollAnimation('slide-in-up');
-  const anchorNavRef = useScrollAnimation('slide-in-up');
+  const controlsRef = useScrollAnimation('slide-in-up');
   const tabsRef = useScrollAnimation('slide-in-up');
-  const gridRef = useRef<HTMLDivElement>(null);
   
   // Helper to create URL-friendly tab names
   const getTabSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-');
@@ -50,13 +74,9 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
 
   // Determine column width based on number of plans to mimic grid but allow centering
   const getWidthClass = (count: number) => {
-    // User requested 4 items to be 4-columns (all in one row) if screen allows
     if (count === 4) return 'lg:w-1/4';
-    // User requested 5 items to be 3 on top, 2 below (so 3 columns)
     if (count === 5) return 'lg:w-1/3';
-    // Standard 3 items or 6 items use 3 columns
     if (count === 3 || count >= 6) return 'lg:w-1/3';
-    
     return 'lg:w-1/2';
   };
 
@@ -65,7 +85,6 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
   const scrollToPlan = (planName: string) => {
     const element = document.getElementById(planName);
     if (element) {
-      // Scroll with a bit of offset for the sticky header
       const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -77,53 +96,23 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
     }
   };
 
+  const scrollToCalculator = () => {
+    const element = document.getElementById('price-calculator');
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
-    // If we switch between services but stay on GenericServicePage, 
-    // we might want to reset the tab if the URL param doesn't match the new service's tabs.
-    // However, since most navigations change the route path, this is less critical,
-    // but good for cleanup if the path structure allows reuse.
     if (hasTabs && service.tabs && activeTabParam) {
        const slugExists = service.tabs.some(t => getTabSlug(t.tabName) === activeTabParam);
        if (!slugExists) {
            // Optionally reset URL if invalid tab for this service
-           // setSearchParams({}); // Commented out to avoid aggressive URL manipulation
        }
     }
   }, [service.id]);
 
-  useEffect(() => {
-    if (!gridRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (entry.target instanceof Element) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const cards = Array.from(gridRef.current.children);
-    cards.forEach(card => {
-        if (card instanceof Element) {
-            card.classList.add('animate-on-scroll', 'slide-in-up');
-            observer.observe(card);
-        }
-    });
-
-    return () => {
-      cards.forEach(card => {
-        if (card instanceof Element) {
-            observer.unobserve(card);
-        }
-      });
-    };
-  }, [service, activeTab]);
+  const showCompareButton = plansToShow.length > 1;
 
   return (
     <>
@@ -136,8 +125,8 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
           
           {/* Tab Navigation (if applicable) */}
           {hasTabs && service.tabs && (
-            <div ref={tabsRef} className="w-full max-w-full overflow-x-auto pb-2 mb-6 relative z-20 animate-on-scroll scrollbar-thin scrollbar-thumb-brand-secondary scrollbar-track-transparent md:flex md:justify-center md:pb-0" style={{ transitionDelay: '200ms'}}>
-              <div className="bg-brand-secondary p-1.5 md:p-2 rounded-lg flex space-x-2 whitespace-nowrap min-w-min mx-auto">
+            <div ref={tabsRef} className="w-full max-w-full overflow-x-auto pb-2 mb-8 relative z-20 animate-on-scroll scrollbar-thin scrollbar-thumb-brand-secondary scrollbar-track-transparent md:flex md:justify-center md:pb-0" style={{ transitionDelay: '200ms'}}>
+              <div className="bg-brand-secondary p-1.5 md:p-2 rounded-lg flex space-x-2 whitespace-nowrap min-w-min mx-auto w-fit">
                 {service.tabs.map((tab, index) => (
                   <button
                     key={index}
@@ -155,56 +144,87 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
             </div>
           )}
           
-          {/* Plan Anchor Navigation Bar */}
+          {/* Combined Controls Section: Anchors + Action Buttons */}
           {plansToShow.length > 0 && (
-             <div ref={anchorNavRef} className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-12 animate-on-scroll" style={{ transitionDelay: '100ms' }}>
-                <span className="w-full text-center text-xs text-brand-muted uppercase tracking-widest mb-1 font-semibold">Available Plans</span>
-                {plansToShow.map((plan) => (
-                  <button
-                    key={plan.name}
-                    onClick={() => scrollToPlan(plan.name)}
-                    className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border border-brand-secondary bg-brand-secondary/50 text-brand-muted hover:bg-brand-secondary hover:text-white hover:border-brand-accent-middle hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-accent-middle"
-                  >
-                    {plan.name}
-                  </button>
-                ))}
+             <div ref={controlsRef} className="flex flex-col items-center mb-16 animate-on-scroll relative z-20" style={{ transitionDelay: '100ms' }}>
+                
+                {/* Available Plans Anchors */}
+                <div className="flex flex-wrap justify-center items-center gap-2 mb-6 max-w-4xl px-4">
+                    <span className="mr-2 text-xs font-bold text-brand-muted tracking-widest bg-brand-secondary/50 px-2 py-1 rounded select-none">Available Plans:</span>
+                    {plansToShow.map((plan) => (
+                    <button
+                        key={plan.name}
+                        onClick={() => scrollToPlan(plan.name)}
+                        className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 border border-gray-800 bg-brand-secondary/20 text-gray-400 hover:bg-brand-secondary hover:text-white hover:border-gray-600 focus:outline-none focus:border-brand-accent-start/50"
+                    >
+                        {plan.name}
+                    </button>
+                    ))}
+                </div>
+
+                {/* Main Actions Row (Side by Side) */}
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full justify-center px-4 max-w-3xl mx-auto">
+                    {/* Compare Button - Minimal Glassy */}
+                    {showCompareButton && (
+                        <button
+                            onClick={() => setIsCompareModalOpen(true)}
+                            className="flex-1 flex items-center justify-center px-6 py-4 rounded-full bg-brand-primary/50 backdrop-blur-md border border-brand-accent-end/30 text-brand-accent-end font-bold transition-all duration-300 group hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:bg-brand-accent-end/10 hover:border-brand-accent-end min-w-[200px] relative overflow-hidden transform hover:-translate-y-0.5"
+                        >
+                            <svg className="w-5 h-5 mr-2 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                            Compare Plans
+                        </button>
+                    )}
+
+                    {/* Calculator Button */}
+                    <button 
+                        onClick={scrollToCalculator}
+                        className={`flex items-center justify-center px-6 py-4 rounded-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold transition-all duration-300 group shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] relative overflow-hidden transform hover:-translate-y-1 ${!showCompareButton ? 'w-full sm:w-auto min-w-[240px]' : 'flex-1 min-w-[200px]'}`}
+                    >
+                        <span className="relative z-10 flex items-center">
+                            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+                            Build Custom Package
+                        </span>
+                        {/* Sheen */}
+                        <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
+                    </button>
+                </div>
              </div>
           )}
 
-          {plansToShow.length > 1 && (
-            <div className="flex justify-center mb-16 md:mb-24 pb-6 mt-4 relative z-20">
-              <button
-                onClick={() => setIsCompareModalOpen(true)}
-                className="bg-transparent border-2 border-brand-accent-end text-brand-accent-end font-bold py-2 px-6 rounded-full text-sm md:text-base hover:bg-brand-accent-end hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                Compare {compareButtonTitle} Plans
-              </button>
-            </div>
-          )}
-
-          <div ref={gridRef} className="flex flex-wrap justify-center -mx-4 xl:-mx-5 mt-8">
+          <div className="flex flex-wrap justify-center -mx-4 xl:-mx-5 mt-32">
             {plansToShow.map((plan, index) => {
               return (
-                <div
+                <PricingCardWrapper
                   key={plan.name}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                  className={`flex px-4 xl:px-5 mb-6 md:mb-8 xl:mb-10 w-full md:w-1/2 ${widthClass}`}
+                  index={index}
+                  widthClass={widthClass}
                 >
                   <FullFeaturePricingCard plan={plan} />
-                </div>
+                </PricingCardWrapper>
               );
             })}
           </div>
 
-          {/* Render custom injected content (like SEO trends) here, after the packages */}
           {children}
-          
-          {service.faqs && service.faqs.length > 0 && (
-            <FaqSection faqs={service.faqs} />
-          )}
         </div>
       </div>
-       {plansToShow.length > 1 && (
+
+      {/* Interactive Price Calculator */}
+      <PriceCalculator 
+        serviceId={service.id} 
+        categoryTitle={activeCategoryTitle} 
+        plans={plansToShow} 
+      />
+
+      <div className="bg-brand-primary">
+        <div className="container mx-auto px-4 md:px-6 pb-24">
+            {service.faqs && service.faqs.length > 0 && (
+                <FaqSection faqs={service.faqs} />
+            )}
+        </div>
+      </div>
+
+       {showCompareButton && (
         <ComparisonModal 
           isOpen={isCompareModalOpen}
           onClose={() => setIsCompareModalOpen(false)}

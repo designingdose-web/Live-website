@@ -15,38 +15,82 @@ const slides: Slide[] = [
    {
     type: 'video',
     // Optimized Cloudinary URL: q_auto:best keeps quality high, f_auto serves optimized format (AV1/WebM)
-    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:best,f_auto/v1765068211/banner_vid_1_m1dwlb.mp4', 
+    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:best,f_auto/v1765068211/banner_vid_1_m1dwlb.mp4',
+    // Generated poster image for instant loading (prevents black screen on slow connections)
+    poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765068211/banner_vid_1_m1dwlb.jpg', 
     tagline: "We Don't Just Build Websites. We Build Empires.",
     subTagline: 'Immersive design, flawless code, and a user experience that turns visitors into obsessed fans.',
     duration: 10000, // 10 seconds for the main video
   },
   {
-    type: 'image',
-    source: 'https://images.unsplash.com/photo-1639322537228-f710d846310a',
+    type: 'video',
+    // Optimized Cloudinary URL for high quality and modern format
+    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:best,f_auto/v1765132642/banner_2_nrpm1o.mp4',
+    // Generated poster for instant loading
+    poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765132642/banner_2_nrpm1o.jpg',
     tagline: 'Invisibility is Not an Option.',
     subTagline: 'Climb the rankings and claim your throne. We turn search engines into your most powerful growth engine.',
-    duration: 7000,
+    duration: 10000,
   },
   {
-    type: 'image',
-    source: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853',
+    type: 'video',
+    // Optimized Cloudinary URL for high quality and modern format
+    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:best,f_auto/v1765132642/3_gv10bs.mp4',
+    // Generated poster for instant loading
+    poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765132642/3_gv10bs.jpg',
     tagline: 'Stop the Scroll. Start the Conversation.',
     subTagline: "From viral visuals to strategic storytelling, we amplify your brand's voice in a noisy digital world.",
-    duration: 7000,
+    duration: 10000,
   },
 ];
 
 const ArrowButton: React.FC<{ direction: 'left' | 'right'; onClick: () => void }> = ({ direction, onClick }) => (
   <button
     onClick={onClick}
-    className={`absolute top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-white/20 hover:bg-white/40 rounded-full transition-colors duration-300 ${direction === 'left' ? 'left-2 md:left-5' : 'right-2 md:right-5'}`}
+    className={`absolute top-1/2 -translate-y-1/2 z-40 p-2 md:p-3 bg-white/10 hover:bg-white/30 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 ${direction === 'left' ? 'left-2 md:left-5' : 'right-2 md:right-5'} group`}
     aria-label={direction === 'left' ? 'Previous Slide' : 'Next Slide'}
   >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
       {direction === 'left' ? <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /> : <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />}
     </svg>
   </button>
 );
+
+const VideoSlide: React.FC<{ source: string; poster?: string }> = ({ source, poster }) => {
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+
+  return (
+    <div className="absolute inset-0 w-full h-full bg-brand-primary">
+      {/* Static Image Underlay: Acts as loading placeholder AND error fallback */}
+      {poster && (
+        <img
+          src={poster}
+          alt="Banner Fallback"
+          className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
+          loading="eager"
+          fetchPriority="high"
+        />
+      )}
+      
+      {/* Video Overlay: Fades in only when fully loaded and no error */}
+      {!videoError && (
+        <video 
+          src={source}
+          // No poster attribute on video tag needed since we handle it manually via the underlay
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          preload="auto" 
+          onLoadedData={() => setIsVideoLoaded(true)}
+          onError={() => setVideoError(true)}
+          className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000 transform scale-[1.02] ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+        />
+      )}
+    </div>
+  );
+};
 
 const Banner: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -107,15 +151,7 @@ const Banner: React.FC = () => {
           >
             {shouldRenderMedia && (
                 slide.type === 'video' ? (
-                <video 
-                    src={slide.source}
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    preload="auto" 
-                    className="w-full h-full object-cover" 
-                />
+                  <VideoSlide source={slide.source} poster={slide.poster} />
                 ) : (
                 <img 
                     src={`${slide.source}?q=70&w=1280&auto=format&fit=crop`}
@@ -125,13 +161,13 @@ const Banner: React.FC = () => {
                     fetchPriority={index === 0 ? 'high' : 'auto'}
                     decoding="async"
                     alt="Banner Background" 
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover transform scale-[1.02]" 
                 />
                 )
             )}
             
-            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-            <div className="absolute inset-0 flex items-center justify-center text-center">
+            <div className="absolute inset-0 bg-black bg-opacity-60 z-20"></div>
+            <div className="absolute inset-0 flex items-center justify-center text-center z-30">
               <div className="container mx-auto px-4 md:px-6">
                 <h1
                   className={`text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight mb-3 md:mb-4 transition-all duration-700 ease-out ${
@@ -150,15 +186,29 @@ const Banner: React.FC = () => {
                   {slide.subTagline}
                 </p>
                 <div
-                  className={`flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 transition-all duration-700 ease-out ${
+                  className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 ease-out ${
                     index === currentIndex ? 'opacity-100 translate-y-0 delay-600' : 'opacity-0 translate-y-10'
                   }`}
                 >
-                   <button onClick={openModal} className="bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-base md:text-lg shadow-lg w-full sm:w-auto transform transition-all duration-300 hover:scale-105 hover:opacity-90 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary focus-visible:ring-brand-accent-end">
-                      Get a Quote
+                   {/* Stylish Primary CTA */}
+                   <button 
+                      onClick={openModal} 
+                      className="relative overflow-hidden group bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 px-10 rounded-full text-lg shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto"
+                   >
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        Get a Quote
+                        <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                      </span>
+                      {/* Sheen Effect */}
+                      <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
                     </button>
-                    <Link to="/services/website-packages" className="bg-brand-secondary/80 border-2 border-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-base md:text-lg hover:bg-brand-secondary transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary focus-visible:ring-brand-accent-end">
-                      Explore Packages
+
+                    {/* Minimal Stylish Secondary CTA */}
+                    <Link 
+                      to="/services/website-packages" 
+                      className="relative overflow-hidden group bg-white/5 backdrop-blur-sm border border-white/20 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-white/10 hover:border-brand-accent-end/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto text-center"
+                    >
+                      <span className="relative z-10">Explore Packages</span>
                     </Link>
                 </div>
               </div>
@@ -171,13 +221,13 @@ const Banner: React.FC = () => {
       <ArrowButton direction="left" onClick={prevSlide} />
       <ArrowButton direction="right" onClick={nextSlide} />
 
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-40">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex ? 'bg-brand-accent-middle scale-125' : 'bg-white/50 hover:bg-white'
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
+              index === currentIndex ? 'bg-brand-accent-end w-8' : 'bg-white/30 hover:bg-white/70'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           ></button>
