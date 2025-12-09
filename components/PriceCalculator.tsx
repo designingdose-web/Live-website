@@ -340,7 +340,8 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                   <button
                     key={index}
                     onClick={() => setSelectedPlanIndex(index)}
-                    className={`p-5 rounded-xl border text-left transition-all duration-300 relative overflow-hidden group ${
+                    aria-pressed={selectedPlanIndex === index}
+                    className={`p-5 rounded-xl border text-left transition-all duration-300 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-brand-accent-start ${
                       selectedPlanIndex === index 
                         ? 'bg-brand-secondary border-brand-accent-middle shadow-[0_0_20px_rgba(236,72,153,0.15)] transform scale-[1.02]' 
                         : 'bg-brand-secondary/30 border-gray-700 hover:border-gray-500 hover:bg-brand-secondary/50'
@@ -373,7 +374,9 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                     <span>+{config.max}</span>
                 </div>
                 <div className="relative h-10 flex items-center">
+                    <label htmlFor="quantity-slider" className="sr-only">Adjust quantity of {config.unitName}</label>
                     <input
+                    id="quantity-slider"
                     type="range"
                     min={config.min}
                     max={config.max}
@@ -399,7 +402,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                 {config.addOns.map((addon, index) => (
                   <label 
                     key={index}
-                    className={`flex items-center p-4 rounded-xl border cursor-pointer transition-all duration-200 group ${
+                    className={`flex items-center p-4 rounded-xl border cursor-pointer transition-all duration-200 group focus-within:ring-2 focus-within:ring-brand-accent-end ${
                         selectedAddons.includes(index)
                         ? 'bg-brand-secondary border-brand-accent-end shadow-[0_0_10px_rgba(34,211,238,0.1)]'
                         : 'bg-brand-secondary/10 border-gray-700 hover:bg-brand-secondary/30 hover:border-gray-600'
@@ -414,7 +417,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                     </div>
                     <input 
                         type="checkbox" 
-                        className="hidden" 
+                        className="sr-only" 
                         checked={selectedAddons.includes(index)} 
                         onChange={() => handleAddonToggle(index)} 
                     />
@@ -483,7 +486,8 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                         subject: `Custom Quote Request: ${plans[selectedPlanIndex]?.name} + ${sliderValue} Extras`,
                         messageBody: `I am interested in a custom package based on the ${plans[selectedPlanIndex]?.name} plan.\n\nConfiguration:\n- Service: ${categoryTitle}\n- Base Plan: ${plans[selectedPlanIndex]?.name} (€${basePrice})\n- Customization: ${sliderValue} ${config.unitName} (€${sliderCost})\n\nSelected Add-ons:\n${selectedAddons.map(i => `- ${config.addOns[i].label} (€${config.addOns[i].price})`).join('\n')}\n\nTotal Estimated Price: €${totalCost}`
                     }}
-                    className="relative overflow-hidden group block w-full py-4 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold text-center rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] hover:scale-[1.02] transition-all duration-300 text-lg"
+                    aria-label={`Request custom quote for ${plans[selectedPlanIndex]?.name} plan with selected options`}
+                    className="relative overflow-hidden group block w-full py-4 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold text-center rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] hover:scale-[1.02] transition-all duration-300 text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-middle"
                 >
                     <span className="relative z-10">Request This Custom Plan</span>
                     <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>

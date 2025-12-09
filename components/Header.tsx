@@ -46,6 +46,10 @@ const Header: React.FC = () => {
     }, 300);
   };
   
+  const toggleServices = () => {
+    setIsServicesOpen(!isServicesOpen);
+  };
+
   const closeMenu = () => {
     setIsMenuOpen(false);
     setIsServicesOpen(false);
@@ -73,12 +77,24 @@ const Header: React.FC = () => {
     }
   }, [isServicesOpen]);
 
+  // Handle escape key to close dropdown
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+            setIsServicesOpen(false);
+            setIsMenuOpen(false);
+        }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, []);
+
   return (
     <>
-      <header ref={headerRef} className="bg-brand-primary/80 backdrop-blur-sm sticky top-0 border-b border-brand-secondary/50 transition-all duration-300">
-        <nav className="container mx-auto px-6 py-4">
+      <header ref={headerRef} className="bg-brand-primary/80 backdrop-blur-sm sticky top-0 border-b border-brand-secondary/50 transition-all duration-300" role="banner">
+        <nav className="container mx-auto px-6 py-4" aria-label="Main Navigation">
           <div className="flex items-center justify-between">
-            <Link to="/" onClick={closeMenu} className="transition-opacity hover:opacity-80">
+            <Link to="/" onClick={closeMenu} className="transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-brand-accent-start rounded-md" aria-label="Designing Dose Home">
               <Logo className="h-9 w-auto" />
             </Link>
             <div className="hidden md:flex items-center space-x-2">
@@ -90,7 +106,11 @@ const Header: React.FC = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 <button
-                  className={`flex items-center py-2 px-3 rounded-md transition-colors duration-200 focus:outline-none ${isServicesOpen ? 'text-white' : 'text-brand-muted hover:text-white'}`}
+                  onClick={toggleServices}
+                  aria-expanded={isServicesOpen}
+                  aria-haspopup="true"
+                  aria-controls="services-dropdown"
+                  className={`flex items-center py-2 px-3 rounded-md transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end ${isServicesOpen ? 'text-white' : 'text-brand-muted hover:text-white'}`}
                 >
                   Pricing
                   <svg className={`w-4 h-4 ml-1 transition-transform duration-200 ${isServicesOpen ? 'transform rotate-180 text-brand-accent-middle' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -100,7 +120,13 @@ const Header: React.FC = () => {
               <NavItem to="/contact">Contact Us</NavItem>
             </div>
             <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white focus:outline-none" aria-label="Open menu" aria-expanded={isMenuOpen}>
+              <button 
+                onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                className="text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end rounded-md p-1" 
+                aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
+              >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}></path>
                 </svg>
@@ -108,12 +134,20 @@ const Header: React.FC = () => {
             </div>
           </div>
           {isMenuOpen && (
-            <div className="md:hidden mt-4 space-y-2 bg-brand-primary animate-fade-in-up">
+            <div id="mobile-menu" className="md:hidden mt-4 space-y-2 bg-brand-primary animate-fade-in-up" role="menu">
               <NavItem to="/" onClick={closeMenu}>Home</NavItem>
               <NavItem to="/about" onClick={closeMenu}>About Us</NavItem>
               <h3 className="px-3 pt-2 text-sm font-semibold text-brand-muted uppercase">Pricing</h3>
               {servicesLinks.map(link => (
-                <NavLink key={link.to} to={link.to} onClick={closeMenu} className="block pl-6 pr-3 py-2 text-brand-muted hover:text-white hover:bg-brand-secondary rounded-md">{link.label}</NavLink>
+                <NavLink 
+                    key={link.to} 
+                    to={link.to} 
+                    onClick={closeMenu} 
+                    className="block pl-6 pr-3 py-2 text-brand-muted hover:text-white hover:bg-brand-secondary rounded-md focus:outline-none focus:bg-brand-secondary focus:text-white"
+                    role="menuitem"
+                >
+                    {link.label}
+                </NavLink>
               ))}
               <NavItem to="/blog" onClick={closeMenu}>Blog</NavItem>
               <NavItem to="/contact" onClick={closeMenu}>Contact Us</NavItem>
@@ -123,12 +157,15 @@ const Header: React.FC = () => {
       </header>
        {/* Dropdown Menu & Overlay */}
       <div 
+        id="services-dropdown"
         className={`fixed inset-0 top-0 left-0 z-30 transition-opacity duration-300 ${isServicesOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        aria-hidden={!isServicesOpen}
       >
         {/* Overlay - closes menu when hovered */}
         <div 
           className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"
           onMouseEnter={handleMouseLeave}
+          onClick={closeMenu}
         ></div>
         
         {/* Menu - keeps menu open when hovered */}
@@ -157,7 +194,7 @@ const Header: React.FC = () => {
                     key={link.to}
                     to={link.to}
                     onClick={closeMenu}
-                    className="group flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-brand-accent-start/20"
+                    className="group flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-brand-accent-start/20 focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
                   >
                     {/* Increased vibrancy: bolder, larger text with neon glow shadow on hover */}
                     <span className="text-white font-bold text-lg tracking-wide transition-all duration-300 group-hover:translate-x-1 inline-block group-hover:text-brand-accent-end group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">

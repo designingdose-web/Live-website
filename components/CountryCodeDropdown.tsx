@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { countries, Country } from '../data/countries';
 
@@ -51,6 +52,13 @@ const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, countr
     setSearchTerm('');
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent, country: Country) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleSelectCountry(country);
+    }
+  }
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -59,6 +67,7 @@ const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, countr
         className={`flex items-center justify-between w-full bg-brand-primary border border-r-0 border-gray-600 rounded-l-lg py-2.5 px-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end ${heightClass}`}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
+        aria-label="Select country code"
       >
         <span className="truncate">{selectedCountry?.flag} {selectedCountry?.dial_code}</span>
         <svg className={`w-4 h-4 ml-2 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -74,21 +83,24 @@ const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, countr
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-brand-primary border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-1 focus:ring-brand-accent-end"
+              aria-label="Search for a country"
             />
           </div>
-          <ul className="overflow-auto" tabIndex={-1} role="listbox">
+          <ul className="overflow-auto" role="listbox" aria-label="Country list">
             {filteredCountries.length > 0 ? filteredCountries.map((country) => (
               <li
                 key={country.code}
                 onClick={() => handleSelectCountry(country)}
-                className="px-4 py-2 text-sm text-white cursor-pointer hover:bg-brand-primary"
+                onKeyDown={(e) => handleKeyDown(e, country)}
+                className="px-4 py-2 text-sm text-white cursor-pointer hover:bg-brand-primary focus:bg-brand-primary focus:outline-none"
                 role="option"
+                tabIndex={0}
                 aria-selected={value === country.dial_code}
               >
                 {country.flag} {country.name} ({country.dial_code})
               </li>
             )) : (
-                <li className="px-4 py-2 text-sm text-brand-muted">No countries found.</li>
+                <li className="px-4 py-2 text-sm text-brand-muted" role="option" aria-disabled="true">No countries found.</li>
             )}
           </ul>
         </div>

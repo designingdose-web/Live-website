@@ -47,26 +47,37 @@ const slides: Slide[] = [
 const ArrowButton: React.FC<{ direction: 'left' | 'right'; onClick: () => void }> = ({ direction, onClick }) => (
   <button
     onClick={onClick}
-    className={`absolute top-1/2 -translate-y-1/2 z-40 p-2 md:p-3 bg-white/10 hover:bg-white/30 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 ${direction === 'left' ? 'left-2 md:left-5' : 'right-2 md:right-5'} group`}
+    className={`absolute top-1/2 -translate-y-1/2 z-40 p-2 md:p-3 bg-white/10 hover:bg-white/30 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 ${direction === 'left' ? 'left-2 md:left-5' : 'right-2 md:right-5'} group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end`}
     aria-label={direction === 'left' ? 'Previous Slide' : 'Next Slide'}
   >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       {direction === 'left' ? <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /> : <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />}
     </svg>
   </button>
 );
 
-const VideoSlide: React.FC<{ source: string; poster?: string }> = ({ source, poster }) => {
+const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean }> = ({ source, poster, isPaused }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+        if (isPaused) {
+            videoRef.current.pause();
+        } else {
+            videoRef.current.play().catch(() => {});
+        }
+    }
+  }, [isPaused]);
 
   return (
-    <div className="absolute inset-0 w-full h-full bg-brand-primary">
+    <div className="absolute inset-0 w-full h-full bg-brand-primary" aria-hidden="true">
       {/* Static Image Underlay: Acts as loading placeholder AND error fallback */}
       {poster && (
         <img
           src={poster}
-          alt="Banner Fallback"
+          alt=""
           className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
           loading="eager"
           fetchPriority="high"
@@ -76,9 +87,10 @@ const VideoSlide: React.FC<{ source: string; poster?: string }> = ({ source, pos
       {/* Video Overlay: Fades in only when fully loaded and no error */}
       {!videoError && (
         <video 
+          ref={videoRef}
           src={source}
           // No poster attribute on video tag needed since we handle it manually via the underlay
-          autoPlay 
+          autoPlay={!isPaused}
           loop 
           muted 
           playsInline
@@ -86,6 +98,8 @@ const VideoSlide: React.FC<{ source: string; poster?: string }> = ({ source, pos
           onLoadedData={() => setIsVideoLoaded(true)}
           onError={() => setVideoError(true)}
           className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000 transform scale-[1.02] ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          aria-hidden="true"
+          tabIndex={-1}
         />
       )}
     </div>
@@ -95,6 +109,7 @@ const VideoSlide: React.FC<{ source: string; poster?: string }> = ({ source, pos
 const Banner: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadOthers, setLoadOthers] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -105,6 +120,8 @@ const Banner: React.FC = () => {
   };
 
   useEffect(() => {
+    if (isPaused) return;
+
     // Use setTimeout instead of setInterval to support variable durations per slide
     const slideDuration = slides[currentIndex].duration || 7000;
     
@@ -113,7 +130,7 @@ const Banner: React.FC = () => {
     }, slideDuration);
 
     return () => clearTimeout(timer);
-  }, [currentIndex, nextSlide]);
+  }, [currentIndex, nextSlide, isPaused]);
 
   // Defer loading of non-active slides to ensure LCP (first paint) is lightning fast
   useEffect(() => {
@@ -136,8 +153,17 @@ const Banner: React.FC = () => {
     return widths.map(w => `${baseUrl}?q=70&w=${w}&auto=format&fit=crop ${w}w`).join(', ');
   };
 
+  const togglePause = () => {
+    setIsPaused(!isPaused);
+  };
+
   return (
-    <div className="relative w-full h-[65vh] md:h-[80vh] overflow-hidden bg-brand-primary">
+    <div className="relative w-full h-[65vh] md:h-[80vh] overflow-hidden bg-brand-primary group" aria-roledescription="carousel" aria-label="Highlighted Services">
+      {/* Live Region for Screen Reader Announcements */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Slide {currentIndex + 1} of {slides.length}: {slides[currentIndex].tagline}
+      </div>
+
       {slides.map((slide, index) => {
         // Only render the image/video tag if it is the first slide OR if we have passed the defer delay
         const shouldRenderMedia = index === 0 || loadOthers;
@@ -148,10 +174,14 @@ const Banner: React.FC = () => {
             className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
               index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${index + 1} of ${slides.length}`}
+            aria-hidden={index !== currentIndex}
           >
             {shouldRenderMedia && (
                 slide.type === 'video' ? (
-                  <VideoSlide source={slide.source} poster={slide.poster} />
+                  <VideoSlide source={slide.source} poster={slide.poster} isPaused={isPaused} />
                 ) : (
                 <img 
                     src={`${slide.source}?q=70&w=1280&auto=format&fit=crop`}
@@ -160,8 +190,9 @@ const Banner: React.FC = () => {
                     loading={index === 0 ? 'eager' : 'lazy'}
                     fetchPriority={index === 0 ? 'high' : 'auto'}
                     decoding="async"
-                    alt="Banner Background" 
+                    alt="" 
                     className="w-full h-full object-cover transform scale-[1.02]" 
+                    aria-hidden="true"
                 />
                 )
             )}
@@ -193,11 +224,11 @@ const Banner: React.FC = () => {
                    {/* Stylish Primary CTA */}
                    <button 
                       onClick={openModal} 
-                      className="relative overflow-hidden group bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 px-10 rounded-full text-lg shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto"
+                      className="relative overflow-hidden group bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 px-10 rounded-full text-lg shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-middle focus:ring-offset-black"
                    >
                       <span className="relative z-10 flex items-center justify-center gap-2">
                         Get a Quote
-                        <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                       </span>
                       {/* Sheen Effect */}
                       <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
@@ -206,7 +237,7 @@ const Banner: React.FC = () => {
                     {/* Minimal Stylish Secondary CTA */}
                     <Link 
                       to="/services/website-packages" 
-                      className="relative overflow-hidden group bg-white/5 backdrop-blur-sm border border-white/20 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-white/10 hover:border-brand-accent-end/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto text-center"
+                      className="relative overflow-hidden group bg-white/5 backdrop-blur-sm border border-white/20 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-white/10 hover:border-brand-accent-end/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto text-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-end focus:ring-offset-black"
                     >
                       <span className="relative z-10">Explore Packages</span>
                     </Link>
@@ -221,15 +252,29 @@ const Banner: React.FC = () => {
       <ArrowButton direction="left" onClick={prevSlide} />
       <ArrowButton direction="right" onClick={nextSlide} />
 
+      {/* Pause/Play Button for Accessibility */}
+      <button
+        onClick={togglePause}
+        className="absolute bottom-6 left-6 z-50 p-2 bg-black/30 hover:bg-black/50 rounded-full text-white backdrop-blur-sm transition-colors border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
+        aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+      >
+        {isPaused ? (
+           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        ) : (
+           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        )}
+      </button>
+
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-40">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-brand-accent-end focus:ring-offset-1 focus:ring-offset-black ${
               index === currentIndex ? 'bg-brand-accent-end w-8' : 'bg-white/30 hover:bg-white/70'
             }`}
             aria-label={`Go to slide ${index + 1}`}
+            aria-current={index === currentIndex ? "true" : "false"}
           ></button>
         ))}
       </div>

@@ -16,6 +16,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
   const [isVisible, setIsVisible] = useState(false);
   const [country, setCountry] = useState({ code: '+353', name: 'Ireland' });
   const formRef = useRef<HTMLFormElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   
   const handleCountryChange = (code: string, name: string) => {
     setCountry({ code, name });
@@ -24,11 +25,49 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
+      // Focus management: when modal opens, focus on the container or the first input
+      setTimeout(() => {
+        modalRef.current?.focus();
+      }, 100);
     } else {
       // Delay hiding to allow for fade-out animation
       setTimeout(() => setIsVisible(false), 300);
     }
   }, [isOpen]);
+
+  // Trap focus within modal when open
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if (!isOpen) return;
+        
+        if (e.key === 'Escape') {
+            onClose();
+        }
+        
+        if (e.key === 'Tab' && modalRef.current) {
+            const focusableElements = modalRef.current.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstElement = focusableElements[0] as HTMLElement;
+            const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -68,31 +107,43 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-300 ${isOpen ? 'opacity-100 bg-black/60 backdrop-blur-sm' : 'opacity-0'}`} onClick={onClose}>
+    <div 
+        className={`fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-300 ${isOpen ? 'opacity-100 bg-black/60 backdrop-blur-sm' : 'opacity-0'}`} 
+        onClick={onClose}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+    >
       <div 
+        ref={modalRef}
         style={{
             boxShadow: '0 0 25px rgba(139, 92, 246, 0.3), 0 0 50px rgba(236, 72, 153, 0.3)'
         }}
-        className={`bg-brand-secondary p-8 rounded-2xl w-full max-w-md mx-4 transform transition-all duration-300 border border-brand-accent-start/30 ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        className={`bg-brand-secondary p-8 rounded-2xl w-full max-w-md mx-4 transform transition-all duration-300 border border-brand-accent-start/30 outline-none ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
         onClick={(e) => e.stopPropagation()}
+        tabIndex={-1}
       >
         <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-white">Get a <span className="gradient-text">Free Consultation</span></h2>
-            <button onClick={onClose} className="text-brand-muted hover:text-white text-2xl">&times;</button>
+            <h2 id="modal-title" className="text-2xl font-bold text-white">Get a <span className="gradient-text">Free Consultation</span></h2>
+            <button onClick={onClose} className="text-brand-muted hover:text-white text-2xl focus:outline-none focus:ring-2 focus:ring-brand-accent-end rounded" aria-label="Close modal">&times;</button>
         </div>
         <p className="text-brand-muted mb-6">Leave your details below, and one of our experts will contact you to discuss how we can help your business grow.</p>
         {!status.startsWith('Thank') ? (
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                <input type="hidden" name="countryCode" value={country.code} />
                <input type="hidden" name="countryName" value={country.name} />
+               <label htmlFor="modal-name" className="sr-only">Full Name</label>
                <input
+                id="modal-name"
                 type="text"
                 name="name"
                 placeholder="Enter your full name"
                 className="w-full bg-brand-primary border border-gray-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
                 required
               />
+              <label htmlFor="modal-email" className="sr-only">Email Address</label>
               <input
+                id="modal-email"
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
@@ -106,7 +157,9 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
                     onChange={handleCountryChange}
                     heightClass="h-[50px]"
                  />
+                <label htmlFor="modal-phone" className="sr-only">Phone Number</label>
                 <input
+                    id="modal-phone"
                     type="tel"
                     name="phone"
                     placeholder="Your number"
@@ -117,16 +170,16 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
               <button 
                 type="submit" 
                 disabled={isLoading} 
-                className="relative overflow-hidden group w-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 flex justify-center items-center disabled:opacity-60 disabled:transform-none disabled:shadow-none"
+                className="relative overflow-hidden group w-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 flex justify-center items-center disabled:opacity-60 disabled:transform-none disabled:shadow-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-end"
               >
                 <span className="relative z-10">{isLoading ? 'Submitting...' : 'Request a Callback'}</span>
                 {/* Sheen */}
                 <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
               </button>
-               {status && <p className={`mt-4 text-center text-sm ${status.startsWith('Thank') ? 'text-green-400' : 'text-yellow-400'}`}>{status}</p>}
+               {status && <p className={`mt-4 text-center text-sm ${status.startsWith('Thank') ? 'text-green-400' : 'text-yellow-400'}`} aria-live="polite">{status}</p>}
             </form>
         ) : (
-            <p className="text-center text-lg text-green-400 py-8">{status}</p>
+            <p className="text-center text-lg text-green-400 py-8" aria-live="polite">{status}</p>
         )}
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
@@ -7,7 +8,7 @@ interface PricingCardProps {
 }
 
 const CheckIcon: React.FC = () => (
-    <svg className="w-5 h-5 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+    <svg className="w-5 h-5 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
 
 
@@ -44,7 +45,12 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
         })}
       </ul>
       {plan.note && <p className="text-xs text-center text-brand-muted mt-4">{plan.note}</p>}
-      <Link to="/contact" state={{ subject: `Inquiry about: ${plan.name} package` }} className="block w-full text-center mt-8 bg-brand-accent text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105">
+      <Link 
+        to="/contact" 
+        state={{ subject: `Inquiry about: ${plan.name} package` }}
+        aria-label={`Get started with the ${plan.name} plan`}
+        className="block w-full text-center mt-8 bg-brand-accent text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent focus:ring-offset-brand-secondary"
+      >
         Get Started
       </Link>
     </div>

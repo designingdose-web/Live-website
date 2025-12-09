@@ -72,19 +72,19 @@ const ContactForm: React.FC = () => {
           <div>
             <label htmlFor="name" className="block text-brand-muted mb-2 text-sm font-medium">Full Name *</label>
             <div className="relative group">
-               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors">
+               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors" aria-hidden="true">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" /></svg>
               </div>
-              <input type="text" id="name" name="name" required className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
+              <input type="text" id="name" name="name" required aria-required="true" className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
             </div>
           </div>
           <div>
             <label htmlFor="email" className="block text-brand-muted mb-2 text-sm font-medium">Email Address *</label>
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors" aria-hidden="true">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
               </div>
-              <input type="email" id="email" name="email" required className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
+              <input type="email" id="email" name="email" required aria-required="true" className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
             </div>
           </div>
         </div>
@@ -107,21 +107,21 @@ const ContactForm: React.FC = () => {
         <div>
           <label htmlFor="inquiry-subject" className="block text-brand-muted mb-2 text-sm font-medium">Subject</label>
            <div className="relative group">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors" aria-hidden="true">
                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>
               </div>
-              <input type="text" id="inquiry-subject" name="Inquiry Subject" defaultValue={location.state?.subject || ''} required className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
+              <input type="text" id="inquiry-subject" name="Inquiry Subject" defaultValue={location.state?.subject || ''} required aria-required="true" className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
             </div>
         </div>
         <div>
           <label htmlFor="message" className="block text-brand-muted mb-2 text-sm font-medium">Message *</label>
-          <textarea id="message" name="message" required rows={5} className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end"></textarea>
+          <textarea id="message" name="message" required aria-required="true" rows={5} className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end"></textarea>
         </div>
         
         <button 
           type="submit" 
           disabled={isLoading} 
-          className="relative overflow-hidden group w-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 px-6 rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+          className="relative overflow-hidden group w-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 px-6 rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none focus:outline-none focus:ring-2 focus:ring-brand-accent-end focus:ring-offset-2 focus:ring-offset-brand-secondary"
         >
           <span className="relative z-10 flex items-center">
             {isLoading ? (
@@ -139,7 +139,7 @@ const ContactForm: React.FC = () => {
           {/* Sheen */}
           <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
         </button>
-        {status && <p className={`mt-4 text-center text-sm ${getStatusColor()}`}>{status}</p>}
+        {status && <p className={`mt-4 text-center text-sm ${getStatusColor()}`} aria-live="polite">{status}</p>}
       </form>
     </div>
   );

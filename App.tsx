@@ -37,6 +37,9 @@ const ScrollManager = () => {
       }
     } else {
       window.scrollTo(0, 0);
+      // Accessibility: Move focus to the skip link or top of body on route change
+      // so keyboard users start from top
+      document.body.focus();
     }
   }, [pathname, hash]);
 
@@ -76,9 +79,12 @@ const App: React.FC = () => {
   return (
     <HashRouter>
       <ScrollManager />
+      {/* ADA Compliance: Skip to content link */}
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow">
+        {/* ADA Compliance: Main landmark with ID */}
+        <main id="main-content" className="flex-grow focus:outline-none" tabIndex={-1}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

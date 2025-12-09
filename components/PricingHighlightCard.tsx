@@ -4,7 +4,7 @@ import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
 
 const CheckIcon: React.FC = () => (
-    <svg className="w-5 h-5 text-brand-accent-end flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+    <svg className="w-5 h-5 text-brand-accent-end flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
 
 const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
@@ -19,6 +19,7 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   return (
     <Link 
       to={`/services/website-packages#${plan.name}`} 
+      aria-label={`View details for the ${plan.name} website package`}
       className={`bg-brand-secondary p-8 rounded-2xl border transition-all duration-300 flex flex-col h-full relative ${cardClasses} group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-secondary focus-visible:ring-brand-accent-middle`}
     >
         {plan.isPopular && (
@@ -55,7 +56,7 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
         <div className="relative py-4 text-center text-white font-bold flex justify-center items-center gap-2">
            View Details 
-           <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+           <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
         </div>
         {/* Sheen */}
         <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover/btn:left-[100%]"></div>
