@@ -1,4 +1,6 @@
 
+
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogData';
@@ -142,7 +144,7 @@ const BlogPage: React.FC = () => {
            <div className="absolute inset-0 w-full h-full overflow-hidden">
               <img 
                   src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=75&w=1200" 
-                  alt="Blog Background" 
+                  alt="Digital technology abstract background for Designing Dose insights blog" 
                   className="w-full h-full object-cover opacity-10 mix-blend-overlay"
                   loading="eager"
               />
@@ -204,7 +206,7 @@ const BlogPage: React.FC = () => {
                       src={featuredImgSrc} 
                       srcSet={featuredSrcSet}
                       sizes="(max-width: 768px) 100vw, 80vw"
-                      alt={featuredPost.title} 
+                      alt={`Featured article: ${featuredPost.title}`} 
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="eager"
                       fetchPriority="high"

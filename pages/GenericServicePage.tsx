@@ -1,7 +1,9 @@
 
+
+
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import type { ServiceCategory } from '../types';
+import type { ServiceCategory, Plan } from '../types';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
 import FaqSection from '../components/FaqSection';
@@ -114,8 +116,47 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
 
   const showCompareButton = plansToShow.length > 1;
 
+  const generateSchema = () => {
+    const allPlans: Plan[] = [];
+    if (service.plans) allPlans.push(...service.plans);
+    if (service.tabs) {
+        service.tabs.forEach(tab => allPlans.push(...tab.plans));
+    }
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": service.title,
+      "description": service.description,
+      "provider": {
+        "@type": "Organization",
+        "name": "Designing Dose",
+        "url": "https://designingdose.com",
+        "logo": "https://designingdose.com/favicon.svg"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "Ireland" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "Australia" }
+      ],
+      "offers": allPlans.map(plan => ({
+        "@type": "Offer",
+        "name": plan.name,
+        "price": plan.price.replace(/[^0-9.]/g, ''),
+        "priceCurrency": "EUR",
+        "description": plan.features.map(f => typeof f === 'string' ? f : f.feature).join('. '),
+        "url": window.location.href
+      }))
+    };
+  };
+
+  const schemaData = generateSchema();
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaData)}} />
       <div className="py-12 md:py-20 bg-brand-primary overflow-x-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div ref={headerRef} className="text-center mb-8 animate-on-scroll">

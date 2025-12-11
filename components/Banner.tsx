@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -56,7 +58,7 @@ const ArrowButton: React.FC<{ direction: 'left' | 'right'; onClick: () => void }
   </button>
 );
 
-const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean }> = ({ source, poster, isPaused }) => {
+const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean; tagline: string }> = ({ source, poster, isPaused, tagline }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
@@ -77,7 +79,7 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
       {poster && (
         <img
           src={poster}
-          alt=""
+          alt={`Designing Dose Background - ${tagline}`}
           className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
           loading="eager"
           fetchPriority="high"
@@ -181,7 +183,7 @@ const Banner: React.FC = () => {
           >
             {shouldRenderMedia && (
                 slide.type === 'video' ? (
-                  <VideoSlide source={slide.source} poster={slide.poster} isPaused={isPaused} />
+                  <VideoSlide source={slide.source} poster={slide.poster} isPaused={isPaused} tagline={slide.tagline} />
                 ) : (
                 <img 
                     src={`${slide.source}?q=70&w=1280&auto=format&fit=crop`}
@@ -190,7 +192,7 @@ const Banner: React.FC = () => {
                     loading={index === 0 ? 'eager' : 'lazy'}
                     fetchPriority={index === 0 ? 'high' : 'auto'}
                     decoding="async"
-                    alt="" 
+                    alt={`Designing Dose Banner: ${slide.tagline}`} 
                     className="w-full h-full object-cover transform scale-[1.02]" 
                     aria-hidden="true"
                 />

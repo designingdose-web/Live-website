@@ -1,4 +1,6 @@
 
+
+
 import React, { useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { servicesData } from '../data/servicesData';
@@ -8,6 +10,7 @@ import FaqSection from '../components/FaqSection';
 import ComparisonModal from '../components/ComparisonModal';
 import PriceCalculator from '../components/PriceCalculator';
 import SEO from '../components/SEO';
+import type { Plan } from '../types';
 
 const WebsitePricingPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -75,12 +78,51 @@ const WebsitePricingPage: React.FC = () => {
     });
   }, [activeTab]);
 
+  const generateSchema = () => {
+    if (!websiteService) return null;
+
+    const allPlans: Plan[] = [];
+    if (websiteService.plans) allPlans.push(...websiteService.plans);
+    if (websiteService.tabs) {
+        websiteService.tabs.forEach(tab => allPlans.push(...tab.plans));
+    }
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": websiteService.title,
+      "description": websiteService.description,
+      "provider": {
+        "@type": "Organization",
+        "name": "Designing Dose",
+        "url": "https://designingdose.com",
+        "logo": "https://designingdose.com/favicon.svg"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "Ireland" },
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "Australia" }
+      ],
+      "offers": allPlans.map(plan => ({
+        "@type": "Offer",
+        "name": plan.name,
+        "price": plan.price.replace(/[^0-9.]/g, ''),
+        "priceCurrency": "EUR",
+        "description": plan.features.map(f => typeof f === 'string' ? f : f.feature).join('. '),
+        "url": window.location.href
+      }))
+    };
+  };
+
   if (!websiteService || !websiteService.tabs) {
     return <div className="text-center py-20">No website packages found.</div>;
   }
   
   const activePlans = websiteService.tabs[activeTab].plans;
   const activeCategoryTitle = websiteService.tabs[activeTab].tabName;
+  const schemaData = generateSchema();
 
   return (
     <>
@@ -89,6 +131,9 @@ const WebsitePricingPage: React.FC = () => {
         description="Affordable and professional website development packages. Choose from Informative or E-commerce plans. Custom designs, SEO-friendly, and mobile-optimized."
         keywords="website pricing, web development packages, e-commerce web design cost, cheap website design Ireland, custom website development USA, Shopify store pricing"
       />
+      {schemaData && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaData)}} />
+      )}
       <div className="py-12 md:py-20 bg-brand-primary overflow-x-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div ref={headerRef} className="text-center mb-8 md:mb-12 animate-on-scroll">

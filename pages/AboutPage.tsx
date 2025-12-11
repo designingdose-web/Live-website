@@ -1,4 +1,6 @@
 
+
+
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import ProcessSection from '../components/ProcessSection';
@@ -66,7 +68,7 @@ const AboutPage: React.FC = () => {
                       <div className="absolute inset-0 bg-gradient-to-tr from-brand-accent-start to-brand-accent-end rounded-2xl transform rotate-3 opacity-20 blur-lg"></div>
                       <img 
                           src={ourJourneyImage} 
-                          alt="Our Journey - A Decade of Innovation" 
+                          alt="Designing Dose team collaborating on digital innovation projects over the last decade" 
                           className="relative rounded-2xl shadow-2xl border border-gray-800 w-full h-full object-cover"
                           loading="lazy"
                       />
@@ -120,7 +122,7 @@ const AboutPage: React.FC = () => {
                       <div className="relative h-64 md:h-full min-h-[300px] rounded-xl overflow-hidden shadow-2xl border border-gray-700 group">
                           <img 
                               src={successStoryImage} 
-                              alt="The Enterprise E-commerce Overhaul" 
+                              alt="Enterprise e-commerce mobile app interface showing increased conversion rates" 
                               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
                           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
@@ -159,7 +161,7 @@ const AboutPage: React.FC = () => {
                   <div className="block sticky top-24">
                       <img 
                           src={missionVisionImage} 
-                          alt="Our Mission and Vision" 
+                          alt="Futuristic digital landscape representing Designing Dose's vision for marketing innovation" 
                           className="rounded-2xl shadow-2xl border border-gray-800 object-cover w-full h-[600px] filter saturate-[.85]"
                           loading="lazy"
                       />
