@@ -168,7 +168,7 @@ const HomePage: React.FC = () => {
     <>
       <SEO 
         title="Designing Dose - Web Development, SEO & Digital Marketing Agency"
-        description="Designing Dose is a top-rated digital agency offering Web Development, SEO, Mobile Apps, and Social Media Marketing services. We help businesses in Ireland, USA, UK, Canada, Australia, and Pakistan grow online."
+        description="Designing Dose is a global digital agency offering Web Development, SEO, Mobile Apps, and Social Media Marketing to help businesses scale online."
         keywords="Web Design Ireland, SEO Company USA, Digital Marketing UK, Mobile App Developers Canada, E-commerce Experts Australia, Dropshipping Services Europe, Software House Pakistan, Designing Dose, Global Digital Agency, Professional Website Builder"
       />
       <Banner />

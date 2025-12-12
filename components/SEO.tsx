@@ -18,10 +18,15 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) =
   const defaultImage = "https://res.cloudinary.com/dmaqptknc/image/upload/v1765127202/new_web2_lbyr0c.webp";
 
   useEffect(() => {
-    // 1. Update Document Title
-    document.title = `${title} | Designing Dose`;
+    // 1. Logic to prevent double branding
+    // If the title already contains "Designing Dose", don't append it again.
+    const brandName = "Designing Dose";
+    const finalTitle = title.includes(brandName) ? title : `${title} | ${brandName}`;
 
-    // 2. Helper to update or create meta tags
+    // 2. Update Document Title
+    document.title = finalTitle;
+
+    // 3. Helper to update or create meta tags
     const updateMeta = (name: string, content: string, attribute = 'name') => {
       let element = document.querySelector(`meta[${attribute}="${name}"]`);
       if (!element) {
@@ -32,25 +37,25 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) =
       element.setAttribute('content', content);
     };
 
-    // 3. Update Standard SEO Tags
+    // 4. Update Standard SEO Tags
     updateMeta('description', description);
     updateMeta('keywords', keywords || "Web Development, SEO, Mobile Apps, Designing Dose, Digital Marketing, Ireland, USA, UK, Europe, Australia, Canada, Pakistan");
 
-    // 4. Update Open Graph Tags
-    updateMeta('og:title', title, 'property');
+    // 5. Update Open Graph Tags
+    updateMeta('og:title', finalTitle, 'property');
     updateMeta('og:description', description, 'property');
     updateMeta('og:url', canonicalUrl, 'property');
     updateMeta('og:image', image || defaultImage, 'property');
     updateMeta('og:type', 'website', 'property');
     updateMeta('og:site_name', 'Designing Dose', 'property');
 
-    // 5. Update Twitter Tags
+    // 6. Update Twitter Tags
     updateMeta('twitter:card', 'summary_large_image', 'property');
-    updateMeta('twitter:title', title, 'property');
+    updateMeta('twitter:title', finalTitle, 'property');
     updateMeta('twitter:description', description, 'property');
     updateMeta('twitter:image', image || defaultImage, 'property');
 
-    // 6. Update Canonical Link
+    // 7. Update Canonical Link
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (!linkCanonical) {
       linkCanonical = document.createElement('link');

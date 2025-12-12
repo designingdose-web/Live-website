@@ -7,6 +7,7 @@ import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
 import FaqSection from '../components/FaqSection';
 import ComparisonModal from '../components/ComparisonModal';
 import PriceCalculator from '../components/PriceCalculator';
+import RelatedServices from '../components/RelatedServices';
 
 // Wrapper component to handle individual card animations immediately on load
 const PricingCardWrapper: React.FC<{ 
@@ -300,6 +301,8 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
             )}
         </div>
       </div>
+
+      <RelatedServices currentServiceId={service.id} />
 
        {showCompareButton && (
         <ComparisonModal 

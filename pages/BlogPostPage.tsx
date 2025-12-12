@@ -26,6 +26,26 @@ const getOptimizedUrl = (url: string, width: number) => {
   return url;
 };
 
+// Helper to parse text with internal links formatted as [text](/url)
+const parseTextWithLinks = (text: string) => {
+  const parts = text.split(/(\[.*?\]\(.*?\))/g);
+  return parts.map((part, i) => {
+    const match = part.match(/\[(.*?)\]\((.*?)\)/);
+    if (match) {
+      return (
+        <Link 
+          key={i} 
+          to={match[2]} 
+          className="text-brand-accent-start hover:text-brand-accent-middle underline decoration-brand-accent-start/30 underline-offset-2 transition-colors font-semibold"
+        >
+          {match[1]}
+        </Link>
+      );
+    }
+    return part;
+  });
+};
+
 const BlogPostPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const post = blogPosts.find(p => p.id === id);
@@ -182,7 +202,11 @@ const BlogPostPage: React.FC = () => {
                                               </h2>
                                           );
                                       case 'paragraph':
-                                          return <p key={idx} className="text-gray-300 leading-relaxed mb-4 md:mb-6 text-base md:text-lg">{block.text}</p>;
+                                          return (
+                                            <p key={idx} className="text-gray-300 leading-relaxed mb-4 md:mb-6 text-base md:text-lg">
+                                              {block.text ? parseTextWithLinks(block.text) : null}
+                                            </p>
+                                          );
                                       case 'list':
                                           return (
                                               <div key={idx} className="my-6 md:my-8 bg-brand-secondary/30 p-5 md:p-8 rounded-2xl border border-gray-800/50">
@@ -190,7 +214,7 @@ const BlogPostPage: React.FC = () => {
                                                       {block.items?.map((item, i) => (
                                                           <li key={i} className="flex items-start text-brand-light text-base md:text-lg">
                                                               <svg className="w-5 h-5 md:w-6 md:h-6 text-brand-accent-end mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                              <span>{item}</span>
+                                                              <span>{parseTextWithLinks(item)}</span>
                                                           </li>
                                                       ))}
                                                   </ul>

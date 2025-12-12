@@ -8,6 +8,7 @@ import FaqSection from '../components/FaqSection';
 import ComparisonModal from '../components/ComparisonModal';
 import PriceCalculator from '../components/PriceCalculator';
 import SEO from '../components/SEO';
+import RelatedServices from '../components/RelatedServices';
 import type { Plan } from '../types';
 
 const WebsitePricingPage: React.FC = () => {
@@ -269,6 +270,8 @@ const WebsitePricingPage: React.FC = () => {
             )}
         </div>
       </div>
+
+      <RelatedServices currentServiceId="website" />
 
        <ComparisonModal 
         isOpen={isCompareModalOpen}

@@ -1,27 +1,39 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { BrowserRouter, HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import WebsitePricingPage from './pages/WebsitePricingPage';
-import SeoPage from './pages/SeoPage';
-import SocialMediaPage from './pages/SocialMediaPage';
-import LogoDesignPage from './pages/LogoDesignPage';
-import MobileAppPage from './pages/MobileAppPage';
-import DropshippingPage from './pages/DropshippingPage';
-import VideoAnimationPage from './pages/VideoAnimationPage';
-import IllustrationPage from './pages/IllustrationPage';
-import BlogPage from './pages/BlogPage';
-import BlogPostPage from './pages/BlogPostPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import RefundPolicyPage from './pages/RefundPolicyPage';
-import TermsOfServicePage from './pages/TermsOfServicePage';
 import FloatingCTA from './components/FloatingCTA';
 import LeadCaptureModal from './components/LeadCaptureModal';
 import ScrollToTop from './components/ScrollToTop';
+
+// Lazy load pages to split the bundle size
+const HomePage = lazy(() => import('./pages/HomePage'));
+const WebsitePricingPage = lazy(() => import('./pages/WebsitePricingPage'));
+const SeoPage = lazy(() => import('./pages/SeoPage'));
+const SocialMediaPage = lazy(() => import('./pages/SocialMediaPage'));
+const LogoDesignPage = lazy(() => import('./pages/LogoDesignPage'));
+const MobileAppPage = lazy(() => import('./pages/MobileAppPage'));
+const DropshippingPage = lazy(() => import('./pages/DropshippingPage'));
+const VideoAnimationPage = lazy(() => import('./pages/VideoAnimationPage'));
+const IllustrationPage = lazy(() => import('./pages/IllustrationPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const RefundPolicyPage = lazy(() => import('./pages/RefundPolicyPage'));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
+
+// Minimalist Loader for page transitions
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-[60vh] w-full bg-brand-primary">
+    <div className="relative w-12 h-12">
+        <div className="absolute top-0 left-0 w-full h-full border-4 border-brand-secondary rounded-full"></div>
+        <div className="absolute top-0 left-0 w-full h-full border-4 border-brand-accent-start rounded-full border-t-transparent animate-spin"></div>
+    </div>
+  </div>
+);
 
 const ScrollManager = () => {
   const { pathname, hash } = useLocation();
@@ -97,24 +109,26 @@ const App: React.FC = () => {
         <Header />
         {/* ADA Compliance: Main landmark with ID */}
         <main id="main-content" className="flex-grow focus:outline-none" tabIndex={-1}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/services/website-packages" element={<WebsitePricingPage />} />
-            <Route path="/services/seo" element={<SeoPage />} />
-            <Route path="/services/social-media" element={<SocialMediaPage />} />
-            <Route path="/services/logo-design" element={<LogoDesignPage />} />
-            <Route path="/services/mobile-app-development" element={<MobileAppPage />} />
-            <Route path="/services/dropshipping" element={<DropshippingPage />} />
-            <Route path="/services/video-animation" element={<VideoAnimationPage />} />
-            <Route path="/services/illustration" element={<IllustrationPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:id" element={<BlogPostPage />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            <Route path="/refund-policy" element={<RefundPolicyPage />} />
-            <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/services/website-packages" element={<WebsitePricingPage />} />
+              <Route path="/services/seo" element={<SeoPage />} />
+              <Route path="/services/social-media" element={<SocialMediaPage />} />
+              <Route path="/services/logo-design" element={<LogoDesignPage />} />
+              <Route path="/services/mobile-app-development" element={<MobileAppPage />} />
+              <Route path="/services/dropshipping" element={<DropshippingPage />} />
+              <Route path="/services/video-animation" element={<VideoAnimationPage />} />
+              <Route path="/services/illustration" element={<IllustrationPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:id" element={<BlogPostPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/refund-policy" element={<RefundPolicyPage />} />
+              <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
         <FloatingCTA />

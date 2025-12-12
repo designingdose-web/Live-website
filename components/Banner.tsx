@@ -1,6 +1,4 @@
 
-
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -16,9 +14,9 @@ interface Slide {
 const slides: Slide[] = [
    {
     type: 'video',
-    // Optimized Cloudinary URL: q_auto:best keeps quality high, f_auto serves optimized format (AV1/WebM)
-    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:best,f_auto/v1765068211/banner_vid_1_m1dwlb.mp4',
-    // Generated poster image for instant loading (prevents black screen on slow connections)
+    // Optimized Cloudinary URL: q_auto:good balances quality and file size better than 'best' for web background
+    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:good,f_auto/v1765068211/banner_vid_1_m1dwlb.mp4',
+    // Generated poster image for instant loading
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765068211/banner_vid_1_m1dwlb.jpg', 
     tagline: "We Don't Just Build Websites. We Build Empires.",
     subTagline: 'Immersive design, flawless code, and a user experience that turns visitors into obsessed fans.',
@@ -26,9 +24,7 @@ const slides: Slide[] = [
   },
   {
     type: 'video',
-    // Optimized Cloudinary URL for high quality and modern format
-    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:best,f_auto/v1765132642/banner_2_nrpm1o.mp4',
-    // Generated poster for instant loading
+    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:good,f_auto/v1765132642/banner_2_nrpm1o.mp4',
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765132642/banner_2_nrpm1o.jpg',
     tagline: 'Invisibility is Not an Option.',
     subTagline: 'Climb the rankings and claim your throne. We turn search engines into your most powerful growth engine.',
@@ -36,9 +32,7 @@ const slides: Slide[] = [
   },
   {
     type: 'video',
-    // Optimized Cloudinary URL for high quality and modern format
-    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:best,f_auto/v1765132642/3_gv10bs.mp4',
-    // Generated poster for instant loading
+    source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:good,f_auto/v1765132642/3_gv10bs.mp4',
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765132642/3_gv10bs.jpg',
     tagline: 'Stop the Scroll. Start the Conversation.',
     subTagline: "From viral visuals to strategic storytelling, we amplify your brand's voice in a noisy digital world.",
@@ -159,8 +153,33 @@ const Banner: React.FC = () => {
     setIsPaused(!isPaused);
   };
 
+  // Generate VideoObject Schema for SEO
+  const videoSchemas = slides
+    .filter(slide => slide.type === 'video')
+    .map(slide => ({
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": slide.tagline,
+      "description": slide.subTagline,
+      "thumbnailUrl": slide.poster,
+      "contentUrl": slide.source,
+      "uploadDate": "2024-01-01T08:00:00+08:00",
+      "duration": "PT10S", // ISO 8601 duration
+      "publisher": {
+        "@type": "Organization",
+        "name": "Designing Dose",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://designingdose.com/favicon.svg"
+        }
+      }
+    }));
+
   return (
     <div className="relative w-full h-[65vh] md:h-[80vh] overflow-hidden bg-brand-primary group" aria-roledescription="carousel" aria-label="Highlighted Services">
+      {/* JSON-LD Schema for Videos */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(videoSchemas)}} />
+
       {/* Live Region for Screen Reader Announcements */}
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         Slide {currentIndex + 1} of {slides.length}: {slides[currentIndex].tagline}
