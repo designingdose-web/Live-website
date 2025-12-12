@@ -172,10 +172,27 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
     ]
   };
 
+  // Generate FAQ Schema
+  const faqSchema = service.faqs && service.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": service.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaData)}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
+      )}
       <div className="py-12 md:py-20 bg-brand-primary overflow-x-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div ref={headerRef} className="text-center mb-8 animate-on-scroll">

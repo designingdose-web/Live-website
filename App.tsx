@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -46,6 +46,18 @@ const ScrollManager = () => {
   return null;
 };
 
+// Smart Router: Uses BrowserRouter for SEO on the live site, HashRouter for stability in previews
+const SmartRouter: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Check if the current hostname matches your live domain
+  const isProduction = window.location.hostname === 'designingdose.com' || window.location.hostname === 'www.designingdose.com';
+
+  return isProduction ? (
+    <BrowserRouter>{children}</BrowserRouter>
+  ) : (
+    <HashRouter>{children}</HashRouter>
+  );
+};
+
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalOpenCount, setModalOpenCount] = useState(0);
@@ -77,7 +89,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <HashRouter>
+    <SmartRouter>
       <ScrollManager />
       {/* ADA Compliance: Skip to content link */}
       <a href="#main-content" className="skip-link">Skip to main content</a>
@@ -109,7 +121,7 @@ const App: React.FC = () => {
         <ScrollToTop />
         <LeadCaptureModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
-    </HashRouter>
+    </SmartRouter>
   );
 };
 
