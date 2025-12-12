@@ -1,8 +1,6 @@
 
-
-
 import React, { useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { servicesData } from '../data/servicesData';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
@@ -14,6 +12,7 @@ import type { Plan } from '../types';
 
 const WebsitePricingPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const [isCompareModalOpen, setIsCompareModalOpen] = React.useState(false);
   const websiteService = servicesData.find(service => service.id === 'website');
 
@@ -124,6 +123,25 @@ const WebsitePricingPage: React.FC = () => {
   const activeCategoryTitle = websiteService.tabs[activeTab].tabName;
   const schemaData = generateSchema();
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://designingdose.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Website Development Packages",
+        "item": `https://designingdose.com${location.pathname}`
+      }
+    ]
+  };
+
   return (
     <>
       <SEO 
@@ -134,6 +152,7 @@ const WebsitePricingPage: React.FC = () => {
       {schemaData && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schemaData)}} />
       )}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbSchema)}} />
       <div className="py-12 md:py-20 bg-brand-primary overflow-x-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div ref={headerRef} className="text-center mb-8 md:mb-12 animate-on-scroll">
