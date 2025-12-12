@@ -90,7 +90,8 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
           loop 
           muted 
           playsInline
-          preload="auto" 
+          // Changed to 'none' to prioritize bandwidth for LCP image and CSS
+          preload="none" 
           onLoadedData={() => setIsVideoLoaded(true)}
           onError={() => setVideoError(true)}
           className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000 transform scale-[1.02] ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
@@ -176,7 +177,8 @@ const Banner: React.FC = () => {
     }));
 
   return (
-    <div className="relative w-full h-[65vh] md:h-[80vh] overflow-hidden bg-brand-primary group" aria-roledescription="carousel" aria-label="Highlighted Services">
+    // Changed height from h-[65vh] to h-[65svh] to fix Cumulative Layout Shift (CLS) on mobile
+    <div className="relative w-full h-[65svh] md:h-[80svh] overflow-hidden bg-brand-primary group" aria-roledescription="carousel" aria-label="Highlighted Services">
       {/* JSON-LD Schema for Videos */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(videoSchemas)}} />
 
@@ -188,6 +190,7 @@ const Banner: React.FC = () => {
       {slides.map((slide, index) => {
         // Only render the image/video tag if it is the first slide OR if we have passed the defer delay
         const shouldRenderMedia = index === 0 || loadOthers;
+        const isLcpSlide = index === 0;
 
         return (
           <div
@@ -208,8 +211,8 @@ const Banner: React.FC = () => {
                     src={`${slide.source}?q=70&w=1280&auto=format&fit=crop`}
                     srcSet={generateSrcSet(slide.source)}
                     sizes="100vw"
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                    loading={isLcpSlide ? 'eager' : 'lazy'}
+                    fetchPriority={isLcpSlide ? 'high' : 'auto'}
                     decoding="async"
                     alt={`Designing Dose Banner: ${slide.tagline}`} 
                     className="w-full h-full object-cover transform scale-[1.02]" 
@@ -222,24 +225,33 @@ const Banner: React.FC = () => {
             <div className="absolute inset-0 flex items-center justify-center text-center z-30">
               <div className="container mx-auto px-4 md:px-6">
                 <h1
+                  // Removed animation delay for index 0 to improve Largest Contentful Paint (LCP)
                   className={`text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight mb-3 md:mb-4 transition-all duration-700 ease-out ${
-                    index === currentIndex ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-10'
+                    index === currentIndex 
+                      ? `opacity-100 translate-y-0 ${isLcpSlide ? '' : 'delay-200'}` 
+                      : 'opacity-0 translate-y-10'
                   }`}
                   style={{textShadow: '2px 2px 8px rgba(0,0,0,0.7)'}}
                 >
                   {slide.tagline}
                 </h1>
                 <p
+                  // Removed animation delay for index 0 to improve LCP
                   className={`text-base sm:text-lg md:text-2xl text-brand-light max-w-3xl mx-auto mb-6 md:mb-8 transition-all duration-700 ease-out ${
-                    index === currentIndex ? 'opacity-100 translate-y-0 delay-400' : 'opacity-0 translate-y-10'
+                    index === currentIndex 
+                      ? `opacity-100 translate-y-0 ${isLcpSlide ? '' : 'delay-400'}`
+                      : 'opacity-0 translate-y-10'
                   }`}
                   style={{textShadow: '1px 1px 4px rgba(0,0,0,0.7)'}}
                 >
                   {slide.subTagline}
                 </p>
                 <div
+                  // Removed animation delay for index 0 to improve LCP
                   className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 ease-out ${
-                    index === currentIndex ? 'opacity-100 translate-y-0 delay-600' : 'opacity-0 translate-y-10'
+                    index === currentIndex 
+                      ? `opacity-100 translate-y-0 ${isLcpSlide ? '' : 'delay-600'}`
+                      : 'opacity-0 translate-y-10'
                   }`}
                 >
                    {/* Stylish Primary CTA */}
