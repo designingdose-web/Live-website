@@ -11,7 +11,7 @@ html, body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  /* Removed scroll-behavior: smooth to prevent UI locking during route transitions */
 }
 
 /* "Diamond Cut" Glassmorphism Utility - Refined for Elegance */
@@ -27,6 +27,14 @@ html, body {
   /* Hardware acceleration base */
   transform: translateZ(0);
   will-change: transform;
+}
+
+/* Fix for mobile stacking contexts: Disable transform on mobile to allow fixed tooltips */
+@media (max-width: 768px) {
+  .glass-panel {
+    transform: none !important;
+    will-change: auto !important;
+  }
 }
 
 /* Premium Glass Hover Effect - BACKGROUND COLOR DOES NOT CHANGE */

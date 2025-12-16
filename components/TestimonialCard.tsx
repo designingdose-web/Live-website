@@ -8,9 +8,11 @@ interface TestimonialCardProps {
     onNext: () => void;
     onPrev: () => void;
     isActive?: boolean;
+    isPaused: boolean;
+    onTogglePause: () => void;
 }
 
-const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, onPrev, isActive = false }) => {
+const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, onPrev, isActive = false, isPaused, onTogglePause }) => {
   return (
     <div className={`
         relative overflow-hidden w-full h-full
@@ -47,7 +49,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
          <h3 className="font-bold text-white text-lg md:text-2xl mb-3 md:mb-4 line-clamp-2 pr-8 leading-tight">{testimonial.heading}</h3>
          
          {/* Scrollable text area with custom scrollbar. max-h ensures it doesn't overflow mobile screens. */}
-         <div className="overflow-y-auto max-h-[240px] md:max-h-[200px] pr-2 scrollbar-thin scrollbar-thumb-brand-muted/30 scrollbar-track-transparent overscroll-contain">
+         <div className="overflow-y-auto max-h-[240px] md:max-h-[240px] pr-2 scrollbar-thin scrollbar-thumb-brand-muted/30 scrollbar-track-transparent overscroll-contain">
              <p className="text-brand-light/90 italic leading-relaxed text-base md:text-lg font-light">"{testimonial.review}"</p>
          </div>
       </div>
@@ -72,6 +74,20 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
             </button>
+
+            {/* Pause/Play Button - Placed in the middle */}
+            <button
+                onClick={(e) => { e.preventDefault(); onTogglePause(); }}
+                aria-label={isPaused ? "Resume rotation" : "Pause rotation"}
+                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-middle hover:bg-brand-accent-middle/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
+            >
+                {isPaused ? (
+                    <svg className="h-4 w-4 md:h-5 md:w-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                ) : (
+                    <svg className="h-4 w-4 md:h-5 md:w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                )}
+            </button>
+
             <button 
                 onClick={(e) => { e.preventDefault(); onNext(); }} 
                 aria-label="Next testimonial"
@@ -91,6 +107,7 @@ const TestimonialsSection: React.FC = () => {
     const headerRef = useScrollAnimation('slide-in-up');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isMobileOrTablet, setIsMobileOrTablet] = useState(true);
+    const [isPaused, setIsPaused] = useState(false);
     const totalTestimonials = testimonialData.length;
     
     // Swipe state
@@ -116,28 +133,43 @@ const TestimonialsSection: React.FC = () => {
       setCurrentIndex(prev => (prev - 1 + totalTestimonials) % totalTestimonials);
     }, [totalTestimonials]);
 
+    const togglePause = useCallback(() => {
+        setIsPaused(prev => !prev);
+    }, []);
+
     // Keyboard navigation
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'ArrowRight') {
                 next();
+                // Removed setIsPaused(true) to keep auto-slide running after manual nav
             } else if (event.key === 'ArrowLeft') {
                 prev();
+                // Removed setIsPaused(true) to keep auto-slide running after manual nav
+            } else if (event.key === ' ' || event.code === 'Space') {
+                event.preventDefault(); // Prevent scrolling
+                togglePause();
             }
         };
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [next, prev]);
+    }, [next, prev, togglePause]);
 
     useEffect(() => {
-        const interval = setInterval(next, 8000); 
+        if (isPaused) return;
+        
+        // Interval now depends on currentIndex.
+        // This ensures the timer resets whenever the slide changes (manually or automatically),
+        // preventing a "double jump" right after a user clicks.
+        const interval = setInterval(next, 5000); 
         return () => clearInterval(interval);
-    }, [next]);
+    }, [next, isPaused, currentIndex]);
 
     // Touch Handlers for Swipe
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.targetTouches[0].clientX;
+        // Removed setIsPaused(true) - Swipe should not permanently pause
     };
 
     const handleTouchMove = (e: React.TouchEvent) => {
@@ -173,11 +205,12 @@ const TestimonialsSection: React.FC = () => {
                 </div>
                 
                 {/* 
-                   Height adjustment for responsiveness.
-                   Added touch handlers to the container.
+                   Height adjustment: 
+                   Mobile stays 600px to ensure nothing is cut. 
+                   Desktop increased to 550px to fit larger reviews like Amber's.
                 */}
                 <div 
-                    className="relative h-[600px] md:h-[450px] w-full touch-pan-y"
+                    className="relative h-[600px] md:h-[550px] w-full touch-pan-y"
                     onTouchStart={handleTouchStart}
                     onTouchMove={handleTouchMove}
                     onTouchEnd={handleTouchEnd}
@@ -248,6 +281,8 @@ const TestimonialsSection: React.FC = () => {
                                     onNext={next} 
                                     onPrev={prev} 
                                     isActive={isCenter}
+                                    isPaused={isPaused}
+                                    onTogglePause={togglePause}
                                 />
                             </div>
                         );

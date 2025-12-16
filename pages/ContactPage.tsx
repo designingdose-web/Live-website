@@ -16,7 +16,7 @@ const ContactPage: React.FC = () => {
         description="Ready to scale? Contact Designing Dose today for a consultation on Web Development, SEO, or Mobile App projects. Offices in Ireland and USA."
         keywords="Contact Designing Dose, Free Quote Web Design, Hire SEO Agency, Digital Marketing Consultation"
       />
-      <div className="py-12 md:py-20 bg-brand-primary overflow-x-hidden">
+      <div className="pt-28 pb-12 md:pt-36 md:pb-20 bg-brand-primary overflow-x-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div ref={headerRef} className="text-center mb-10 md:mb-16 animate-on-scroll">
             <h1 className="text-3xl md:text-5xl font-extrabold text-white">Get In <span className="gradient-text">Touch</span></h1>

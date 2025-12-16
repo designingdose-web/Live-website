@@ -1,6 +1,4 @@
 
-
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogData';
@@ -140,7 +138,7 @@ const BlogPage: React.FC = () => {
       />
       <div className="bg-brand-primary min-h-screen overflow-x-hidden">
         {/* Hero Section */}
-        <div className="relative py-16 md:py-20 bg-brand-secondary border-b border-gray-800">
+        <div className="relative pt-28 pb-16 md:pt-36 md:pb-20 bg-brand-secondary border-b border-gray-800">
            <div className="absolute inset-0 w-full h-full overflow-hidden">
               <img 
                   src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=75&w=1200" 

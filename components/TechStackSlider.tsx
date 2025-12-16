@@ -89,8 +89,14 @@ const icons = {
     </svg>
   ),
   hubspot: (
-     <svg viewBox="0 0 24 24" className="w-auto h-12">
-        <path fill="#FF7A59" d="M22.9 13.9c-.3 0-.5-.2-.5-.5v-2c0-.3.2-.5.5-.5h.6c.3 0 .5.2.5.5v2c0 .3-.2.5-.5.5h-.6zM20.2 12.9c0 1.7-1.3 3-3 3s-3-1.3-3-3 1.3-3 3-3 3 1.3 3 3zM18.8 12.9c0-.9-.7-1.6-1.6-1.6s-1.6.7-1.6 1.6.7 1.6 1.6 1.6 1.6-.7 1.6-1.6zM11.7 16.9c0 .3-.2.5-.5.5h-1c-.3 0-.5-.2-.5-.5v-4c0-.3.2-.5.5-.5h1c.3 0 .5.2.5.5v4zM11.7 10.9c0 .3-.2.5-.5.5h-1c-.3 0-.5-.2-.5-.5V8.4c0-.3.2-.5.5-.5h1c.3 0 .5.2.5.5v2.5zM11.7 5.9c0 .3-.2.5-.5.5h-1c-.3 0-.5-.2-.5-.5V4.4c0-.3.2-.5.5-.5h1c.3 0 .5.2.5.5v1.5zM11.2 3.4c-.8 0-1.5-.7-1.5-1.5S10.4.4 11.2.4s1.5.7 1.5 1.5-.7 1.5-1.5 1.5zM6.7 14.9c0 .3-.2.5-.5.5H5.2c-.3 0-.5-.2-.5-.5v-2c0-.3.2-.5.5-.5h1c.3 0 .5.2.5.5v2zM5.7 11.4c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/>
+     <svg viewBox="0 0 24 24" className="w-auto h-12" fill="#FF7A59">
+        <circle cx="12" cy="12" r="3.5" stroke="#FF7A59" strokeWidth="2" fill="none" />
+        <circle cx="12" cy="3" r="2" />
+        <rect x="11" y="5" width="2" height="4" />
+        <circle cx="20" cy="17" r="2" />
+        <path d="M14.5 13.5L18.5 16" stroke="#FF7A59" strokeWidth="2" />
+        <circle cx="4" cy="17" r="2" />
+        <path d="M9.5 13.5L5.5 16" stroke="#FF7A59" strokeWidth="2" />
      </svg>
   )
 };
@@ -116,10 +122,13 @@ const brands = [
 const TechStackSlider: React.FC = () => {
   return (
     // Reduced vertical padding to decrease height as requested (py-8 md:py-10)
-    <div className="glass-panel py-8 md:py-10 border-y border-white/40 overflow-hidden relative z-10 bg-brand-secondary/30">
-       {/* Fade Overlay for seamless look */}
-       <div className="absolute top-0 left-0 h-full w-12 md:w-24 bg-gradient-to-r from-brand-secondary/90 to-transparent z-10 pointer-events-none"></div>
-       <div className="absolute top-0 right-0 h-full w-12 md:w-24 bg-gradient-to-l from-brand-secondary/90 to-transparent z-10 pointer-events-none"></div>
+    // REMOVED 'glass-panel' to eliminate the vertical box borders and the hover shadow effect causing the black shade.
+    // ADDED 'border-y border-white/10' for elegant, classy horizontal lines only.
+    // ADDED 'bg-brand-secondary/20 backdrop-blur-md' to maintain the subtle translucent feel without the box border.
+    <div className="py-8 md:py-10 border-y border-white/10 overflow-hidden relative z-10 bg-brand-secondary/20 backdrop-blur-md">
+       {/* Fade Overlay for seamless look - using brand-primary to fade into the page background */}
+       <div className="absolute top-0 left-0 h-full w-12 md:w-24 bg-gradient-to-r from-brand-primary to-transparent z-10 pointer-events-none"></div>
+       <div className="absolute top-0 right-0 h-full w-12 md:w-24 bg-gradient-to-l from-brand-primary to-transparent z-10 pointer-events-none"></div>
 
        <div className="container mx-auto px-6 mb-6 text-center">
           <p className="text-brand-muted uppercase tracking-widest text-xs md:text-sm font-bold">Powered By Industry-Leading Technologies & Trusted Partners</p>

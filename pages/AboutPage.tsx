@@ -1,6 +1,4 @@
 
-
-
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import ProcessSection from '../components/ProcessSection';
@@ -30,7 +28,7 @@ const AboutPage: React.FC = () => {
       />
       <div className="bg-brand-primary text-white overflow-x-hidden">
         {/* Hero Section */}
-        <div ref={heroRef} className="py-20 md:py-32 bg-brand-secondary animate-on-scroll relative overflow-hidden">
+        <div ref={heroRef} className="pt-28 pb-20 md:pt-40 md:pb-32 bg-brand-secondary animate-on-scroll relative overflow-hidden">
           {/* Background Element */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-accent-start/5 to-transparent pointer-events-none"></div>
           

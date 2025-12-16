@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Slide {
@@ -20,7 +19,7 @@ const slides: Slide[] = [
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765068211/banner_vid_1_m1dwlb.jpg', 
     tagline: "We Don't Just Build Websites. We Build Empires.",
     subTagline: 'Immersive design, flawless code, and a user experience that turns visitors into obsessed fans.',
-    duration: 10000, // 10 seconds for the main video
+    duration: 6000, // 6 seconds
   },
   {
     type: 'video',
@@ -28,7 +27,7 @@ const slides: Slide[] = [
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765132642/banner_2_nrpm1o.jpg',
     tagline: 'Invisibility is Not an Option.',
     subTagline: 'Climb the rankings and claim your throne. We turn search engines into your most powerful growth engine.',
-    duration: 10000,
+    duration: 6000, // 6 seconds
   },
   {
     type: 'video',
@@ -36,7 +35,7 @@ const slides: Slide[] = [
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765132642/3_gv10bs.jpg',
     tagline: 'Stop the Scroll. Start the Conversation.',
     subTagline: "From viral visuals to strategic storytelling, we amplify your brand's voice in a noisy digital world.",
-    duration: 10000,
+    duration: 6000, // 6 seconds
   },
 ];
 
@@ -52,20 +51,23 @@ const ArrowButton: React.FC<{ direction: 'left' | 'right'; onClick: () => void }
   </button>
 );
 
-const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean; tagline: string }> = ({ source, poster, isPaused, tagline }) => {
+const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean; tagline: string; isActive: boolean }> = ({ source, poster, isPaused, tagline, isActive }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (videoRef.current) {
-        if (isPaused) {
+        // Smart Playback: Only play if the slide is Active AND global pause is false
+        if (isPaused || !isActive) {
             videoRef.current.pause();
         } else {
-            videoRef.current.play().catch(() => {});
+            videoRef.current.play().catch(() => {
+                // Catch generic play errors (e.g. user interaction policy), safe to ignore for background video
+            });
         }
     }
-  }, [isPaused]);
+  }, [isPaused, isActive]);
 
   return (
     <div className="absolute inset-0 w-full h-full bg-brand-primary" aria-hidden="true">
@@ -86,7 +88,7 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
           ref={videoRef}
           src={source}
           // No poster attribute on video tag needed since we handle it manually via the underlay
-          autoPlay={!isPaused}
+          // AutoPlay removed from attribute to be handled by JS for tighter control
           loop 
           muted 
           playsInline
@@ -107,6 +109,10 @@ const Banner: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadOthers, setLoadOthers] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  
+  // Touch state for swipe navigation
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -168,6 +174,36 @@ const Banner: React.FC = () => {
     setIsPaused(!isPaused);
   };
 
+  // Touch handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = null; // Reset on start
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50; // Minimum pixel distance to be considered a swipe
+
+    // Swipe Left (finger moves right to left) -> Next Slide
+    if (distance > minSwipeDistance) {
+      nextSlide();
+    } 
+    // Swipe Right (finger moves left to right) -> Previous Slide
+    else if (distance < -minSwipeDistance) {
+      prevSlide();
+    }
+    
+    // Reset
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   // Generate VideoObject Schema for SEO
   const videoSchemas = slides
     .filter(slide => slide.type === 'video')
@@ -191,8 +227,15 @@ const Banner: React.FC = () => {
     }));
 
   return (
-    // Ideal responsive height: 65vh for mobile, 80vh for desktop.
-    <div className="relative w-full h-[65vh] md:h-[80vh] overflow-hidden bg-brand-primary group border-b border-white/20" aria-roledescription="carousel" aria-label="Highlighted Services">
+    // Ideal responsive height: 85vh for mobile, 95vh for desktop.
+    <div 
+        className="relative w-full h-[85vh] md:h-[95vh] overflow-hidden bg-brand-primary group border-b border-white/20" 
+        aria-roledescription="carousel" 
+        aria-label="Highlighted Services"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+    >
       {/* JSON-LD Schema for Videos */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(videoSchemas)}} />
 
@@ -243,7 +286,13 @@ const Banner: React.FC = () => {
           >
             {shouldRenderMedia && (
                 slide.type === 'video' ? (
-                  <VideoSlide source={slide.source} poster={slide.poster} isPaused={isPaused} tagline={slide.tagline} />
+                  <VideoSlide 
+                    source={slide.source} 
+                    poster={slide.poster} 
+                    isPaused={isPaused} 
+                    tagline={slide.tagline} 
+                    isActive={isActive} 
+                  />
                 ) : (
                 <img 
                     src={`${slide.source}?q=70&w=1280&auto=format&fit=crop`}

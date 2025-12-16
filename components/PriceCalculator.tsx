@@ -315,7 +315,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
   const totalCost = basePrice + sliderCost + addonsCost;
 
   return (
-    <div id="price-calculator" className="py-16 md:py-24 bg-brand-secondary/30 border-t border-brand-secondary scroll-mt-24">
+    <div id="price-calculator" className="py-12 md:py-16 bg-brand-secondary/30 border-t border-brand-secondary scroll-mt-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-10 md:mb-16">
           <span className="text-brand-accent-middle font-bold tracking-wider uppercase text-xs md:text-sm">Custom Quote</span>

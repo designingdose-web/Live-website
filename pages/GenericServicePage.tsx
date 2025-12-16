@@ -194,7 +194,7 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
       )}
-      <div className="py-12 md:py-20 bg-brand-primary overflow-x-hidden">
+      <div className="pt-28 md:pt-36 pb-8 md:pb-12 bg-brand-primary overflow-x-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div ref={headerRef} className="text-center mb-8 animate-on-scroll">
             <h1 className="text-3xl md:text-5xl font-extrabold text-white">{service.title}</h1>

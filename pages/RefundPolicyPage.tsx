@@ -12,7 +12,7 @@ const RefundPolicyPage: React.FC = () => {
         title="Refund Policy | Designing Dose"
         description="Our transparent Refund Policy for digital services. Learn about our satisfaction guarantees and refund conditions."
       />
-      <div ref={pageRef} className="py-20 bg-brand-primary animate-on-scroll">
+      <div ref={pageRef} className="pt-28 pb-20 md:pt-36 bg-brand-primary animate-on-scroll">
         <div className="container mx-auto px-6 text-brand-muted">
           <h1 className="text-4xl font-extrabold text-white mb-8">Refund Policy</h1>
           

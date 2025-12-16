@@ -12,7 +12,7 @@ const TermsOfServicePage: React.FC = () => {
         title="Terms of Service | Designing Dose"
         description="The Terms of Service governing the use of Designing Dose's website and services."
       />
-      <div ref={pageRef} className="py-20 bg-brand-primary animate-on-scroll">
+      <div ref={pageRef} className="pt-28 pb-20 md:pt-36 bg-brand-primary animate-on-scroll">
         <div className="container mx-auto px-6 text-brand-muted">
           <h1 className="text-4xl font-extrabold text-white mb-8">Terms of Service</h1>
           
