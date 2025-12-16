@@ -66,7 +66,8 @@ const StatCounter: React.FC<StatProps> = ({ end, label, suffix = '', duration = 
     }, [hasViewed, end, duration, decimals]);
 
     return (
-        <div ref={elementRef} className="text-center p-4 md:p-6 transform transition-transform duration-300 hover:scale-105 group">
+        // Removed 'glass-panel' and bg-colors to avoid the awkward shade. Used minimal styling.
+        <div ref={elementRef} className="text-center p-6 md:p-8 rounded-xl transform transition-transform duration-300 hover:scale-105 group border border-white/5 bg-brand-primary/20 backdrop-blur-sm">
             <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold gradient-text mb-2 md:mb-3 opacity-0 transition-opacity duration-700 delay-100" style={{ opacity: hasViewed ? 1 : 0 }}>
                 {count}{suffix}
             </div>
@@ -94,11 +95,9 @@ const StatsSection: React.FC = () => {
             </div>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 divide-y divide-gray-800 md:divide-y-0 md:divide-x md:divide-gray-800">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                     {stats.map((stat, index) => (
-                        <div key={index} className={index >= 2 ? "pt-6 md:pt-0" : ""}>
-                             <StatCounter {...stat} />
-                        </div>
+                        <StatCounter key={index} {...stat} />
                     ))}
                 </div>
             </div>

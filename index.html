@@ -36,8 +36,6 @@
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://res.cloudinary.com" />
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <!-- Organization Schema -->
     <script type="application/ld+json">
     {
@@ -71,136 +69,97 @@
     }
     </script>
 
-    <style>
-      /* Failsafe to ensure dark background and light text are applied */
-      html, body {
-        background-color: #0D1117;
-        color: #E6EDF3;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        overflow-x: hidden;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Failsafe for form input styling */
-      input[type="text"],
-      input[type="email"],
-      input[type="tel"],
-      textarea {
-        background-color: #0D1117 !important;
-        color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important; /* Ensure text color is applied on WebKit */
-        caret-color: #FFFFFF !important;
-      }
-      input::placeholder,
-      textarea::placeholder {
-        color: #8D96A0 !important; /* brand-muted color */
-        opacity: 1; /* Firefox needs this */
-      }
-
-      /* For scroll-triggered animations */
-      .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-      .slide-in-up { transform: translateY(30px); }
-      .slide-in-left { transform: translateX(-30px); }
-      .slide-in-right { transform: translateX(30px); }
-      .fade-in { transition-duration: 1.2s; }
-      .is-visible { opacity: 1; transform: translate(0, 0); }
-      /* For the gradient text */
-      .gradient-text { background-image: linear-gradient(to right, #8B5CF6, #EC4899, #22D3EE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; }
-      
-      /* Fix for browser autofill styles on forms */
-      input:-webkit-autofill,
-      input:-webkit-autofill:hover, 
-      input:-webkit-autofill:focus, 
-      input:-webkit-autofill:active,
-      textarea:-webkit-autofill,
-      textarea:-webkit-autofill:hover,
-      textarea:-webkit-autofill:focus,
-      textarea:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px #0D1117 inset !important;
-        -webkit-text-fill-color: #FFFFFF !important;
-        caret-color: #FFFFFF !important;
-      }
-
-      /* Accessibility Styles - WCAG Focus Visible */
-      :focus-visible {
-        outline: 2px solid #22D3EE;
-        outline-offset: 4px;
-        border-radius: 2px;
-      }
-      
-      /* Screen Reader Only Utility */
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-      }
-
-      /* Skip to Content Link - Hidden until focused */
-      .skip-link {
-        position: absolute;
-        top: -100px;
-        left: 0;
-        background: #8B5CF6;
-        color: white;
-        padding: 12px 20px;
-        z-index: 9999;
-        text-decoration: none;
-        font-weight: bold;
-        transition: top 0.3s ease;
-        border-radius: 0 0 8px 0;
-      }
-      .skip-link:focus {
-        top: 0;
-        outline: 2px solid #22D3EE;
-      }
-
-      /* Reduced Motion Preference */
-      @media (prefers-reduced-motion: reduce) {
-        *, ::before, ::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
-        }
-      }
-    </style>
+    <!-- Tailwind CSS CDN (For Preview Environment Only) - Stripped on Build -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: false,
         theme: {
           extend: {
-            colors: { 
-              'brand-primary': '#0D1117', 
-              'brand-secondary': '#161B22', 
-              'brand-accent-start': '#8B5CF6', 
+            colors: {
+              'brand-primary': '#020204',
+              'brand-secondary': '#0A0A0C',
+              'brand-accent-start': '#8B5CF6',
               'brand-accent-middle': '#EC4899',
-              'brand-accent-end': '#22D3EE', 
-              'brand-light': '#E6EDF3', 
-              'brand-muted': '#8D96A0', 
+              'brand-accent-end': '#22D3EE',
+              'brand-light': '#E6EDF3',
+              'brand-muted': '#8D96A0',
             },
-            animation: { 'fade-in-up': 'fadeInUp 0.8s ease-out forwards', 'dropdown-enter': 'dropdown-enter 0.3s ease-out forwards', 'dropdown-leave': 'dropdown-leave 0.3s ease-in forwards', 'gradient-pan': 'gradient-pan 3s ease infinite', 'dropdown-enter-up': 'dropdown-enter-up 0.3s ease-out forwards', },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'dropdown-enter': 'dropdown-enter 0.3s ease-out forwards',
+              'dropdown-leave': 'dropdown-leave 0.3s ease-in forwards',
+              'gradient-pan': 'gradient-pan 3s ease infinite',
+              'dropdown-enter-up': 'dropdown-enter-up 0.3s ease-out forwards',
+            },
             keyframes: {
               fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' }, },
               'dropdown-enter': { '0%': { opacity: '0', transform: 'scale(0.95) translateY(-10px)' }, '100%': { opacity: '1', transform: 'scale(1) translateY(0)' }, },
               'dropdown-leave': { '0%': { opacity: '1', transform: 'scale(1) translateY(0)' }, '100%': { opacity: '0', transform: 'scale(0.95) translateY(-10px)' }, },
-              'gradient-pan': { '0%': { background-position: '0% 50%' }, '50%': { background-position: '100% 50%' }, '100%': { background-position: '0% 50%' }, },
+              'gradient-pan': { '0%': { 'background-position': '0% 50%' }, '50%': { 'background-position': '100% 50%' }, '100%': { 'background-position': '0% 50%' }, },
               'dropdown-enter-up': { '0%': { opacity: '0', transform: 'scale(0.95) translateY(10px)' }, '100%': { opacity: '1', transform: 'scale(1) translateY(0)' }, },
             }
           }
         }
       }
     </script>
+
+    <!-- Custom Styles for Preview Mode - Stripped on Build -->
+    <style type="text/tailwindcss">
+      /* Global Styles mirrored from index.css for Preview */
+      html, body {
+        background-color: #020204;
+        color: #E6EDF3;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+      /* Failsafe for form input styling */
+      input[type="text"], input[type="email"], input[type="tel"], textarea {
+        background-color: #0A0A0C !important;
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
+        caret-color: #FFFFFF !important;
+      }
+      input::placeholder, textarea::placeholder {
+        color: #8D96A0 !important;
+        opacity: 1;
+      }
+      /* Scroll-triggered animations */
+      .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+      .slide-in-up { transform: translateY(30px); }
+      .slide-in-left { transform: translateX(-30px); }
+      .slide-in-right { transform: translateX(30px); }
+      .fade-in { transition-duration: 1.2s; }
+      .is-visible { opacity: 1; transform: translate(0, 0); }
+      /* Gradient text */
+      .gradient-text {
+        background-image: linear-gradient(to right, #8B5CF6, #EC4899, #22D3EE);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+      /* Autofill fixes */
+      input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active,
+      textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, textarea:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #0A0A0C inset !important;
+        -webkit-text-fill-color: #FFFFFF !important;
+        caret-color: #FFFFFF !important;
+      }
+      /* Accessibility */
+      :focus-visible { outline: 2px solid #22D3EE; outline-offset: 4px; border-radius: 2px; }
+      /* Utilities */
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+      .skip-link { position: absolute; top: -100px; left: 0; background: #8B5CF6; color: white; padding: 12px 20px; z-index: 9999; text-decoration: none; font-weight: bold; transition: top 0.3s ease; border-radius: 0 0 8px 0; }
+      .skip-link:focus { top: 0; outline: 2px solid #22D3EE; }
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+      /* Scrollbar Utility */
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 <script type="importmap">
 {
   "imports": {

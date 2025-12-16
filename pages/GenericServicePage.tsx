@@ -269,7 +269,7 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
              </div>
           )}
 
-          <div className="flex flex-wrap justify-center -mx-4 xl:-mx-5 mt-32">
+          <div className="flex flex-wrap justify-center -mx-4 xl:-mx-5 mt-12">
             {plansToShow.map((plan, index) => {
               return (
                 <PricingCardWrapper

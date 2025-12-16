@@ -60,7 +60,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-brand-secondary p-8 rounded-2xl border border-gray-700/50 shadow-xl">
+    <div className="glass-panel p-8 rounded-2xl">
       <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* This hidden field sets a clear subject for the email notification you receive */}
@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors" aria-hidden="true">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" /></svg>
               </div>
-              <input type="text" id="name" name="name" required aria-required="true" className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
+              <input type="text" id="name" name="name" required aria-required="true" className="w-full bg-brand-primary/50 border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end backdrop-blur-sm" />
             </div>
           </div>
           <div>
@@ -84,7 +84,7 @@ const ContactForm: React.FC = () => {
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors" aria-hidden="true">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
               </div>
-              <input type="email" id="email" name="email" required aria-required="true" className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
+              <input type="email" id="email" name="email" required aria-required="true" className="w-full bg-brand-primary/50 border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end backdrop-blur-sm" />
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ const ContactForm: React.FC = () => {
                 id="phone" 
                 name="phone"
                 placeholder="Your number"
-                className="w-full bg-brand-primary border border-gray-600 rounded-r-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end h-[46px]" />
+                className="w-full bg-brand-primary/50 border border-gray-600 rounded-r-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end h-[46px] backdrop-blur-sm" />
            </div>
         </div>
         <div>
@@ -110,12 +110,12 @@ const ContactForm: React.FC = () => {
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-muted group-focus-within:text-brand-accent-end transition-colors" aria-hidden="true">
                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>
               </div>
-              <input type="text" id="inquiry-subject" name="Inquiry Subject" defaultValue={location.state?.subject || ''} required aria-required="true" className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end" />
+              <input type="text" id="inquiry-subject" name="Inquiry Subject" defaultValue={location.state?.subject || ''} required aria-required="true" className="w-full bg-brand-primary/50 border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end backdrop-blur-sm" />
             </div>
         </div>
         <div>
           <label htmlFor="message" className="block text-brand-muted mb-2 text-sm font-medium">Message *</label>
-          <textarea id="message" name="message" required aria-required="true" rows={5} className="w-full bg-brand-primary border border-gray-600 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end"></textarea>
+          <textarea id="message" name="message" required aria-required="true" rows={5} className="w-full bg-brand-primary/50 border border-gray-600 rounded-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end backdrop-blur-sm"></textarea>
         </div>
         
         <button 

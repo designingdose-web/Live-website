@@ -90,7 +90,7 @@ const icons = {
   ),
   hubspot: (
      <svg viewBox="0 0 24 24" className="w-auto h-12">
-        <path fill="#FF7A59" d="M20.5 10.2c-1.2 0-2.2 1-2.2 2.2 0 1.2 1 2.2 2.2 2.2 1.2 0 2.2-1 2.2-2.2-2.2m-8.5 2.2c0-1.2-1-2.2-2.2-2.2-1.2 0-2.2 1-2.2 2.2 0 1.2 1 2.2 2.2 2.2 1.2 0 2.2-1 2.2-2.2m0 4.4v4.7h-3.1v-4.7c-1.8-.3-3.1-1.8-3.1-3.7 0-2.1 1.7-3.7 3.7-3.7 2.1 0 3.7 1.7 3.7 3.7 0 .8-.2 1.5-.6 2.1l3.2 2.7c.6-1.5 2.1-2.6 3.8-2.6 2.3 0 4.1 1.8 4.1 4.1 0 2.3-1.8 4.1-4.1 4.1-2.3 0-4.1-1.8-4.1-4.1 0-.6.1-1.2.4-1.8l-3.2-2.8v2z"/>
+        <path fill="#FF7A59" d="M22.9 13.9c-.3 0-.5-.2-.5-.5v-2c0-.3.2-.5.5-.5h.6c.3 0 .5.2.5.5v2c0 .3-.2.5-.5.5h-.6zM20.2 12.9c0 1.7-1.3 3-3 3s-3-1.3-3-3 1.3-3 3-3 3 1.3 3 3zM18.8 12.9c0-.9-.7-1.6-1.6-1.6s-1.6.7-1.6 1.6.7 1.6 1.6 1.6 1.6-.7 1.6-1.6zM11.7 16.9c0 .3-.2.5-.5.5h-1c-.3 0-.5-.2-.5-.5v-4c0-.3.2-.5.5-.5h1c.3 0 .5.2.5.5v4zM11.7 10.9c0 .3-.2.5-.5.5h-1c-.3 0-.5-.2-.5-.5V8.4c0-.3.2-.5.5-.5h1c.3 0 .5.2.5.5v2.5zM11.7 5.9c0 .3-.2.5-.5.5h-1c-.3 0-.5-.2-.5-.5V4.4c0-.3.2-.5.5-.5h1c.3 0 .5.2.5.5v1.5zM11.2 3.4c-.8 0-1.5-.7-1.5-1.5S10.4.4 11.2.4s1.5.7 1.5 1.5-.7 1.5-1.5 1.5zM6.7 14.9c0 .3-.2.5-.5.5H5.2c-.3 0-.5-.2-.5-.5v-2c0-.3.2-.5.5-.5h1c.3 0 .5.2.5.5v2zM5.7 11.4c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/>
      </svg>
   )
 };
@@ -115,27 +115,28 @@ const brands = [
 
 const TechStackSlider: React.FC = () => {
   return (
-    <div className="py-12 md:py-16 bg-brand-secondary border-t border-brand-primary overflow-hidden relative z-10">
+    // Reduced vertical padding to decrease height as requested (py-8 md:py-10)
+    <div className="glass-panel py-8 md:py-10 border-y border-white/40 overflow-hidden relative z-10 bg-brand-secondary/30">
        {/* Fade Overlay for seamless look */}
-       <div className="absolute top-0 left-0 h-full w-12 md:w-24 bg-gradient-to-r from-brand-secondary to-transparent z-10 pointer-events-none"></div>
-       <div className="absolute top-0 right-0 h-full w-12 md:w-24 bg-gradient-to-l from-brand-secondary to-transparent z-10 pointer-events-none"></div>
+       <div className="absolute top-0 left-0 h-full w-12 md:w-24 bg-gradient-to-r from-brand-secondary/90 to-transparent z-10 pointer-events-none"></div>
+       <div className="absolute top-0 right-0 h-full w-12 md:w-24 bg-gradient-to-l from-brand-secondary/90 to-transparent z-10 pointer-events-none"></div>
 
-       <div className="container mx-auto px-6 mb-8 text-center">
+       <div className="container mx-auto px-6 mb-6 text-center">
           <p className="text-brand-muted uppercase tracking-widest text-xs md:text-sm font-bold">Powered By Industry-Leading Technologies & Trusted Partners</p>
        </div>
 
       <div 
-        className="flex w-full overflow-hidden focus-within:[&>div]:[animation-play-state:paused]"
+        className="flex w-full overflow-hidden [&:hover>div]:[animation-play-state:paused]"
         aria-label="Technology partners slider"
         role="region"
       >
-        {/* Inner container for scrolling */}
-        <div className="flex animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
+        {/* Inner container for scrolling - hover pause applied via parent */}
+        <div className="flex animate-[marquee_30s_linear_infinite]">
           {/* First set of brands */}
           {brands.map((brand, index) => (
             <div key={`brand-${index}`} className="flex flex-col items-center justify-center mx-8 md:mx-12 group min-w-[80px] md:min-w-[100px]" tabIndex={0} role="img" aria-label={brand.name}>
-              {/* Removed text-brand-muted to show original colors, added brightness hover effect */}
-              <div className="transition-all duration-300 transform group-hover:scale-110 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100">
+              {/* Removed grayscale filter so icons are always visible, removed transform scale on hover to keep it stable */}
+              <div className="transition-opacity duration-300 opacity-90 group-hover:opacity-100">
                 {brand.icon}
               </div>
               <span className="mt-3 text-xs font-medium text-brand-muted group-hover:text-brand-accent-middle transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300">
@@ -147,7 +148,7 @@ const TechStackSlider: React.FC = () => {
           {/* Duplicate set for seamless loop */}
           {brands.map((brand, index) => (
             <div key={`brand-dup-${index}`} className="flex flex-col items-center justify-center mx-8 md:mx-12 group min-w-[80px] md:min-w-[100px]" aria-hidden="true">
-               <div className="transition-all duration-300 transform group-hover:scale-110 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100">
+               <div className="transition-opacity duration-300 opacity-90 group-hover:opacity-100">
                 {brand.icon}
               </div>
               <span className="mt-3 text-xs font-medium text-brand-muted group-hover:text-brand-accent-middle transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300">

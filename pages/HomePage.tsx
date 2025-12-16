@@ -37,13 +37,13 @@ const PricingHighlight: React.FC = () => {
          <div className="text-center mt-10 md:mt-16">
             <Link 
               to="/services/website-packages" 
-              className="inline-block relative overflow-hidden group bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 px-12 rounded-full text-lg shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:shadow-[0_0_40px_rgba(34,211,238,0.6)] transition-all duration-300 transform hover:-translate-y-1"
+              className="inline-block relative overflow-hidden group py-4 px-12 rounded-full text-lg font-bold text-white bg-brand-secondary/80 backdrop-blur-md gradient-border-mask shadow-none hover:shadow-[0_0_40px_rgba(172,73,176,0.6)] transition-all duration-300 transform hover:-translate-y-1"
             >
               <span className="relative z-10 flex items-center gap-2">
                 View All Website Packages
                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </span>
-              <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
+              <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-[#AC49B0] to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%] opacity-80"></div>
             </Link>
           </div>
       </div>
@@ -149,7 +149,7 @@ const WhyChooseUs: React.FC = () => {
              const titleRef = useScrollAnimation('slide-in-up');
              const descRef = useScrollAnimation('slide-in-up');
              return (
-              <div ref={cardRef} key={index} className="bg-brand-secondary p-6 md:p-8 rounded-lg text-center animate-on-scroll border border-transparent hover:border-brand-accent-start transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-accent-start/20" style={{ transitionDelay: `${index * 150}ms`}}>
+              <div ref={cardRef} key={index} className="glass-panel p-6 md:p-8 rounded-lg text-center animate-on-scroll transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-accent-start/20" style={{ transitionDelay: `${index * 150}ms`}}>
                 <div ref={iconRef} className="flex justify-center mb-4 md:mb-6 animate-on-scroll transform transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${index * 150 + 150}ms`}}>{feature.icon}</div>
                 <h3 ref={titleRef} className="text-xl font-bold text-white mb-2 animate-on-scroll" style={{ transitionDelay: `${index * 150 + 250}ms`}}>{feature.title}</h3>
                 <p ref={descRef} className="text-brand-muted text-sm md:text-base animate-on-scroll" style={{ transitionDelay: `${index * 150 + 350}ms`}}>{feature.description}</p>

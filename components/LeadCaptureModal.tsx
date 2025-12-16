@@ -108,7 +108,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
 
   return (
     <div 
-        className={`fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-300 ${isOpen ? 'opacity-100 bg-black/60 backdrop-blur-sm' : 'opacity-0'}`} 
+        className={`fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-300 ${isOpen ? 'opacity-100 bg-black/40 backdrop-blur-[2px]' : 'opacity-0'}`} 
         onClick={onClose}
         role="dialog"
         aria-modal="true"
@@ -117,9 +117,13 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
       <div 
         ref={modalRef}
         style={{
-            boxShadow: '0 0 25px rgba(139, 92, 246, 0.3), 0 0 50px rgba(236, 72, 153, 0.3)'
+            boxShadow: '0 0 50px rgba(139, 92, 246, 0.1), 0 0 100px rgba(236, 72, 153, 0.08)',
+            backgroundColor: 'rgba(2, 2, 5, 0.25)', /* Highly transparent */
+            backdropFilter: 'blur(30px)', /* Significant blur to ensure text readability over background */
+            WebkitBackdropFilter: 'blur(30px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
         }}
-        className={`bg-brand-secondary p-8 rounded-2xl w-full max-w-md mx-4 transform transition-all duration-300 border border-brand-accent-start/30 outline-none ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        className={`p-8 rounded-2xl w-full max-w-md mx-4 transform transition-all duration-300 outline-none focus:outline-none focus-visible:outline-none ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
         onClick={(e) => e.stopPropagation()}
         tabIndex={-1}
       >
@@ -127,7 +131,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
             <h2 id="modal-title" className="text-2xl font-bold text-white">Get a <span className="gradient-text">Free Consultation</span></h2>
             <button onClick={onClose} className="text-brand-muted hover:text-white text-2xl focus:outline-none focus:ring-2 focus:ring-brand-accent-end rounded" aria-label="Close modal">&times;</button>
         </div>
-        <p className="text-brand-muted mb-6">Leave your details below, and one of our experts will contact you to discuss how we can help your business grow.</p>
+        <p className="text-gray-200 mb-6 font-light">Leave your details below, and one of our experts will contact you to discuss how we can help your business grow.</p>
         {!status.startsWith('Thank') ? (
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                <input type="hidden" name="countryCode" value={country.code} />
@@ -138,7 +142,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
                 type="text"
                 name="name"
                 placeholder="Enter your full name"
-                className="w-full bg-brand-primary border border-gray-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
+                className="w-full bg-brand-secondary/40 border border-white/10 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end placeholder-gray-400 backdrop-blur-sm transition-colors focus:bg-brand-secondary/60"
                 required
               />
               <label htmlFor="modal-email" className="sr-only">Email Address</label>
@@ -147,7 +151,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
                 type="email"
                 name="email"
                 placeholder="Enter your email address"
-                className="w-full bg-brand-primary border border-gray-600 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
+                className="w-full bg-brand-secondary/40 border border-white/10 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end placeholder-gray-400 backdrop-blur-sm transition-colors focus:bg-brand-secondary/60"
                 required
               />
                <div className="flex items-center">
@@ -155,7 +159,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
                     value={country.code}
                     countryName={country.name}
                     onChange={handleCountryChange}
-                    heightClass="h-[50px]"
+                    heightClass="h-[50px] bg-brand-secondary/40 border-white/10"
                  />
                 <label htmlFor="modal-phone" className="sr-only">Phone Number</label>
                 <input
@@ -163,7 +167,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
                     type="tel"
                     name="phone"
                     placeholder="Your number"
-                    className="w-full bg-brand-primary border border-gray-600 rounded-r-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end h-[50px]"
+                    className="w-full bg-brand-secondary/40 border border-white/10 rounded-r-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end h-[50px] placeholder-gray-400 backdrop-blur-sm transition-colors focus:bg-brand-secondary/60"
                     required
                 />
                </div>

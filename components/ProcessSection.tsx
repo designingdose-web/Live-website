@@ -29,11 +29,8 @@ const ProcessSection: React.FC = () => {
   ];
 
   return (
-    <div className="relative py-12 md:py-20 bg-brand-secondary overflow-hidden">
-      <video autoPlay loop muted playsInline className="absolute z-0 w-auto min-w-full min-h-full max-w-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover opacity-20">
-          <source src="https://cdn.pixabay.com/video/2022/10/24/134449-766157541_large.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary via-brand-secondary/80 to-brand-secondary"></div>
+    <div className="relative py-12 md:py-20 bg-brand-primary overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-primary via-brand-primary/90 to-brand-primary"></div>
       <div className="relative z-10 container mx-auto px-4 md:px-6">
           <div ref={approachHeaderRef} className="text-center mb-8 md:mb-12 animate-on-scroll">
               <h2 className="text-3xl md:text-4xl font-extrabold text-white">Our Streamlined Process</h2>
@@ -43,10 +40,17 @@ const ProcessSection: React.FC = () => {
               {approachSteps.map((step, index) => {
                   const stepRef = useScrollAnimation('slide-in-up');
                   return (
-                      <div ref={stepRef} key={index} className="bg-brand-primary/50 p-6 md:p-8 rounded-lg text-center animate-on-scroll border border-brand-accent-start/20 backdrop-blur-md transition-all duration-300 hover:border-brand-accent-start hover:scale-105" style={{ transitionDelay: `${index * 150}ms`}}>
-                          <div className="text-4xl md:text-5xl mb-4">{step.icon}</div>
-                          <h3 className="text-lg md:text-xl font-bold text-white mb-2">{step.title}</h3>
-                          <p className="text-sm md:text-base text-brand-muted">{step.description}</p>
+                      <div 
+                        ref={stepRef} 
+                        key={index} 
+                        className="glass-panel bg-brand-secondary/90 border border-white/20 p-6 md:p-8 rounded-2xl text-center animate-on-scroll transition-all duration-300 hover:border-brand-accent-start hover:scale-105 hover:shadow-2xl hover:shadow-brand-accent-start/20 backface-hidden transform-gpu group" 
+                        style={{ transitionDelay: `${index * 150}ms`}}
+                      >
+                          <div className="mb-6 relative inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/5 border border-white/10 shadow-[0_0_20px_rgba(139,92,246,0.15)] mx-auto transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/10 group-hover:border-brand-accent-start/30">
+                             <span className="text-3xl md:text-4xl drop-shadow-md">{step.icon}</span>
+                          </div>
+                          <h3 className="text-lg md:text-xl font-bold text-white mb-3">{step.title}</h3>
+                          <p className="text-sm md:text-base text-gray-200 font-medium leading-relaxed">{step.description}</p>
                       </div>
                   )
               })}

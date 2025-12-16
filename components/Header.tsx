@@ -5,17 +5,16 @@ import Logo from './Logo';
 
 const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick?: () => void }> = ({ to, children, onClick }) => {
   const location = useLocation();
-  // Handle partial matching for blog routes so "Blog" stays active when viewing a post
   const isActive = location.pathname === to || (to === '/blog' && location.pathname.startsWith('/blog'));
   return (
     <NavLink
       to={to}
       onClick={onClick}
       className={
-        `block py-2 px-3 rounded-md transition-colors duration-200 text-base ${
+        `block py-1.5 px-3 rounded-md transition-all duration-300 text-sm font-medium ${
           isActive
-            ? 'text-white bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end'
-            : 'text-brand-muted hover:text-white hover:bg-brand-secondary focus-visible:text-white focus-visible:bg-brand-secondary focus:outline-none'
+            ? 'text-white bg-white/10 backdrop-blur-md border border-white/10 shadow-[0_0_10px_rgba(139,92,246,0.2)]'
+            : 'text-brand-muted hover:text-white hover:bg-white/5 hover:backdrop-blur-sm focus-visible:text-white focus-visible:bg-white/10 focus:outline-none'
         }`
       }
     >
@@ -77,7 +76,6 @@ const Header: React.FC = () => {
     }
   }, [isServicesOpen]);
 
-  // Handle escape key to close dropdown
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
@@ -91,11 +89,21 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header ref={headerRef} className="bg-brand-primary/80 backdrop-blur-sm sticky top-0 border-b border-brand-secondary/50 transition-all duration-300" role="banner">
+      <header 
+        ref={headerRef} 
+        className="fixed top-0 w-full z-50 transition-all duration-300"
+        style={{
+            background: 'rgba(2, 2, 4, 0.85)', // Darker background to match body
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+        }}
+        role="banner"
+      >
+        {/* Main Nav Content - Increased padding from py-3 to py-4 */}
         <nav className="container mx-auto px-6 py-4" aria-label="Main Navigation">
           <div className="flex items-center justify-between">
             <Link to="/" onClick={closeMenu} className="transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-brand-accent-start rounded-md" aria-label="Designing Dose Home">
-              <Logo className="h-9 w-auto" />
+              <Logo className="h-9 w-auto" /> {/* Restored logo size slightly */}
             </Link>
             <div className="hidden md:flex items-center space-x-2">
               <NavItem to="/">Home</NavItem>
@@ -110,10 +118,10 @@ const Header: React.FC = () => {
                   aria-expanded={isServicesOpen}
                   aria-haspopup="true"
                   aria-controls="services-dropdown"
-                  className={`flex items-center py-2 px-3 rounded-md transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end ${isServicesOpen ? 'text-white' : 'text-brand-muted hover:text-white'}`}
+                  className={`flex items-center py-1.5 px-3 rounded-md transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end font-medium text-sm ${isServicesOpen ? 'text-white bg-white/10 backdrop-blur-md' : 'text-brand-muted hover:text-white hover:bg-white/5'}`}
                 >
                   Pricing
-                  <svg className={`w-4 h-4 ml-1 transition-transform duration-200 ${isServicesOpen ? 'transform rotate-180 text-brand-accent-middle' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  <svg className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 ${isServicesOpen ? 'transform rotate-180 text-brand-accent-middle' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
               </div>
               <NavItem to="/blog">Blog</NavItem>
@@ -134,16 +142,16 @@ const Header: React.FC = () => {
             </div>
           </div>
           {isMenuOpen && (
-            <div id="mobile-menu" className="md:hidden mt-4 space-y-2 bg-brand-primary animate-fade-in-up" role="menu">
+            <div id="mobile-menu" className="md:hidden mt-4 space-y-2 glass-panel rounded-xl p-4 animate-fade-in-up" role="menu">
               <NavItem to="/" onClick={closeMenu}>Home</NavItem>
               <NavItem to="/about" onClick={closeMenu}>About Us</NavItem>
-              <h3 className="px-3 pt-2 text-sm font-semibold text-brand-muted uppercase">Pricing</h3>
+              <h3 className="px-3 pt-2 text-xs font-semibold text-brand-muted uppercase tracking-wider">Pricing</h3>
               {servicesLinks.map(link => (
                 <NavLink 
                     key={link.to} 
                     to={link.to} 
                     onClick={closeMenu} 
-                    className="block pl-6 pr-3 py-2 text-brand-muted hover:text-white hover:bg-brand-secondary rounded-md focus:outline-none focus:bg-brand-secondary focus:text-white"
+                    className="block pl-6 pr-3 py-2 text-sm text-brand-muted hover:text-white hover:bg-white/10 rounded-md focus:outline-none focus:bg-white/10 focus:text-white transition-all"
                     role="menuitem"
                 >
                     {link.label}
@@ -154,7 +162,13 @@ const Header: React.FC = () => {
             </div>
           )}
         </nav>
+        
+        {/* Neon Gradient Border at Bottom */}
+        <div className="h-[1px] w-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end opacity-70"></div>
       </header>
+      
+      {/* Spacer removed intentionally to eliminate gap between header and banner */}
+
        {/* Dropdown Menu & Overlay */}
       <div 
         id="services-dropdown"
@@ -163,7 +177,7 @@ const Header: React.FC = () => {
       >
         {/* Overlay - closes menu when hovered */}
         <div 
-          className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           onMouseEnter={handleMouseLeave}
           onClick={closeMenu}
         ></div>
@@ -176,31 +190,20 @@ const Header: React.FC = () => {
           className={`absolute top-[75px] left-1/2 -translate-x-1/2 transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${isServicesOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}
         >
           <div 
-            className="rounded-xl w-[90vw] max-w-[600px] p-8 overflow-hidden relative"
-            style={{
-              // Reverted to darker, more transparent glassy look
-              background: 'linear-gradient(145deg, rgba(13, 17, 23, 0.6) 0%, rgba(22, 27, 34, 0.4) 100%)',
-              backdropFilter: 'blur(20px)', 
-              border: '1px solid rgba(139, 92, 246, 0.15)', 
-              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(139, 92, 246, 0.1)'
-            }}
+            className="rounded-xl w-[90vw] max-w-[600px] p-8 overflow-hidden relative glass-panel"
           >
-              {/* Subtle internal gradient glow for depth */}
-               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-accent-start/10 to-brand-accent-end/5 pointer-events-none"></div>
-
               <div className="relative grid grid-cols-2 gap-4 z-10">
                 {servicesLinks.map(link => (
                   <NavLink
                     key={link.to}
                     to={link.to}
                     onClick={closeMenu}
-                    className="group flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-brand-accent-start/20 focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
+                    className="group flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-brand-accent-start/30 focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
                   >
-                    {/* Increased vibrancy: bolder, larger text with neon glow shadow on hover */}
-                    <span className="text-white font-bold text-lg tracking-wide transition-all duration-300 group-hover:translate-x-1 inline-block group-hover:text-brand-accent-end group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
+                    <span className="text-white font-bold text-base tracking-wide transition-all duration-300 group-hover:translate-x-1 inline-block group-hover:text-brand-accent-end group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
                       {link.label}
                     </span>
-                    <svg className="w-5 h-5 text-brand-accent-end opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ml-auto drop-shadow-[0_0_5px_rgba(34,211,238,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-brand-accent-end opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ml-auto drop-shadow-[0_0_5px_rgba(34,211,238,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                     </svg>
                   </NavLink>

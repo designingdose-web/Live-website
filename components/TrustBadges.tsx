@@ -14,7 +14,7 @@ const Star: React.FC<StarProps> = ({ className, fill = "currentColor" }) => (
 
 const TrustBadges: React.FC<{ className?: string }> = ({ className = '' }) => {
   return (
-    <div className={`w-full bg-brand-secondary/40 backdrop-blur-md border-y border-brand-accent-start/10 py-6 overflow-hidden ${className}`}>
+    <div className={`w-full bg-brand-secondary/40 backdrop-blur-md border-y border-white/20 py-4 overflow-hidden ${className}`}>
       <div className="container mx-auto px-6">
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-90">
           

@@ -13,14 +13,14 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const remainingFeatures = plan.features.length - MAX_FEATURES;
 
   const cardClasses = plan.isPopular
-    ? 'border-brand-accent-middle scale-105 shadow-2xl shadow-brand-accent-middle/20 z-10'
-    : 'border-gray-700 hover:border-brand-accent-start/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-accent-start/10';
+    ? 'border-brand-accent-middle shadow-2xl shadow-brand-accent-middle/20 z-10 hover:shadow-[0_10px_40px_rgba(236,72,153,0.4)]'
+    : 'border-white/10 hover:border-brand-accent-start/50 hover:shadow-xl hover:shadow-brand-accent-start/10 hover:-translate-y-1';
 
   return (
     <Link 
       to={`/services/website-packages#${plan.name}`} 
       aria-label={`View details for the ${plan.name} website package`}
-      className={`bg-brand-secondary p-8 rounded-2xl border transition-all duration-300 flex flex-col h-full relative ${cardClasses} group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-secondary focus-visible:ring-brand-accent-middle`}
+      className={`glass-panel p-8 rounded-2xl flex flex-col h-full relative transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-secondary focus-visible:ring-brand-accent-middle shadow-none ${cardClasses}`}
     >
         {plan.isPopular && (
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(236,72,153,0.5)]">
@@ -52,7 +52,7 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
       </ul>
       
       {/* Stylish Minimal CTA Button */}
-      <div className="mt-8 relative rounded-full overflow-hidden group/btn shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] transition-all duration-300">
+      <div className="mt-8 relative rounded-full overflow-hidden group/btn shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] transition-all duration-300 transform group-hover:translate-y-[-2px]">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
         <div className="relative py-4 text-center text-white font-bold flex justify-center items-center gap-2">
            View Details 

@@ -18,11 +18,11 @@ const InfoIcon: React.FC = () => (
 
 const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const cardClasses = plan.isPopular
-    ? 'border-brand-accent-middle scale-105 shadow-2xl shadow-brand-accent-middle/20 z-10'
-    : 'border-gray-700 hover:border-brand-accent-start/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-accent-start/10';
+    ? 'border-brand-accent-middle shadow-2xl shadow-brand-accent-middle/20 z-10'
+    : 'border-white/10 hover:border-brand-accent-start/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-accent-start/10';
 
   return (
-    <div id={plan.name} className={`bg-brand-secondary p-6 md:p-8 rounded-2xl border transition-all duration-300 flex flex-col h-full relative w-full ${cardClasses}`}>
+    <div id={plan.name} className={`glass-panel p-6 md:p-8 rounded-2xl flex flex-col h-full relative w-full transition-all duration-300 ${cardClasses}`}>
       {plan.isPopular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(236,72,153,0.5)]">
           Most Popular

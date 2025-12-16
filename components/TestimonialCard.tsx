@@ -14,11 +14,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
   return (
     <div className={`
         relative overflow-hidden w-full h-full
-        bg-gradient-to-br from-[#161B22]/95 to-[#0D1117]/95 
-        backdrop-blur-2xl
+        glass-panel
+        bg-brand-secondary/40
         p-6 md:p-10 rounded-2xl 
         flex flex-col justify-between
-        border transition-all duration-500
+        transition-all duration-500
         group
         ${isActive 
             ? 'border-brand-accent-middle/40 shadow-[0_8px_32px_0_rgba(236,72,153,0.2)] scale-100 z-20 opacity-100' 
@@ -46,8 +46,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
 
          <h3 className="font-bold text-white text-lg md:text-2xl mb-3 md:mb-4 line-clamp-2 pr-8 leading-tight">{testimonial.heading}</h3>
          
-         {/* Scrollable text area with custom scrollbar */}
-         <div className="overflow-y-auto max-h-[240px] md:max-h-[160px] pr-2 scrollbar-thin scrollbar-thumb-brand-muted/30 scrollbar-track-transparent overscroll-contain">
+         {/* Scrollable text area with custom scrollbar. max-h ensures it doesn't overflow mobile screens. */}
+         <div className="overflow-y-auto max-h-[240px] md:max-h-[200px] pr-2 scrollbar-thin scrollbar-thumb-brand-muted/30 scrollbar-track-transparent overscroll-contain">
              <p className="text-brand-light/90 italic leading-relaxed text-base md:text-lg font-light">"{testimonial.review}"</p>
          </div>
       </div>
@@ -63,19 +63,19 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
             </div>
         </div>
         
-        {/* Navigation Buttons - Hidden on very small screens if needed, but keeping for accessibility */}
+        {/* Navigation Buttons */}
         <div className={`flex items-center gap-2 md:gap-3 transition-opacity duration-300 ${isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
             <button 
                 onClick={(e) => { e.preventDefault(); onPrev(); }} 
                 aria-label="Previous testimonial"
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-start hover:bg-brand-accent-start/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation"
+                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-start hover:bg-brand-accent-start/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
             </button>
             <button 
                 onClick={(e) => { e.preventDefault(); onNext(); }} 
                 aria-label="Next testimonial"
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-start hover:bg-brand-accent-start/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation"
+                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-start hover:bg-brand-accent-start/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
             </button>
@@ -115,6 +115,20 @@ const TestimonialsSection: React.FC = () => {
     const prev = useCallback(() => {
       setCurrentIndex(prev => (prev - 1 + totalTestimonials) % totalTestimonials);
     }, [totalTestimonials]);
+
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'ArrowRight') {
+                next();
+            } else if (event.key === 'ArrowLeft') {
+                prev();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [next, prev]);
 
     useEffect(() => {
         const interval = setInterval(next, 8000); 
@@ -159,7 +173,7 @@ const TestimonialsSection: React.FC = () => {
                 </div>
                 
                 {/* 
-                   Increased mobile height to 600px to ensure absolutely no overlap regardless of content length.
+                   Height adjustment for responsiveness.
                    Added touch handlers to the container.
                 */}
                 <div 

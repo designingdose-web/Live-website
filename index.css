@@ -1,0 +1,159 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+html, body {
+  background-color: #020204; /* Deepest Midnight Black */
+  color: #E6EDF3;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* "Diamond Cut" Glassmorphism Utility - Refined for Elegance */
+.glass-panel {
+  /* Updated background to blend with brand-primary (#020204) */
+  background: rgba(2, 2, 4, 0.7); 
+  backdrop-filter: blur(20px);        
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Finer border */
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Removed background-color from transition */
+  /* Hardware acceleration base */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Premium Glass Hover Effect - BACKGROUND COLOR DOES NOT CHANGE */
+.glass-panel:hover {
+  /* background: rgba(30, 30, 40, 0.5);  <-- REMOVED to prevent color shift */
+  border-color: rgba(255, 255, 255, 0.25); /* Only border gets brighter */
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.7); /* Deepen shadow for lift */
+}
+
+/* Utility to fix blurry text during transforms/scaling */
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* Ensures subpixel rendering remains active during transform */
+  -webkit-font-smoothing: subpixel-antialiased; 
+  /* Forces a 3D context to prevent rasterization artifacts */
+  transform: perspective(1px) translateZ(0);
+}
+
+/* Gradient Border Utility */
+.gradient-border-mask {
+  position: relative;
+  background: padding-box linear-gradient(#0A0A0C, #0A0A0C), border-box linear-gradient(to right, #8B5CF6, #EC4899, #22D3EE);
+  border: 1px solid transparent;
+}
+
+/* Failsafe for form input styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  background-color: #0A0A0C !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  caret-color: #FFFFFF !important;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #8D96A0 !important;
+  opacity: 1;
+}
+
+/* Scroll-triggered animations */
+.animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.slide-in-up { transform: translateY(30px); }
+.slide-in-left { transform: translateX(-30px); }
+.slide-in-right { transform: translateX(30px); }
+.fade-in { transition-duration: 1.2s; }
+.is-visible { opacity: 1; transform: translate(0, 0); }
+
+/* Gradient text */
+.gradient-text {
+  background-image: linear-gradient(to right, #8B5CF6, #EC4899, #22D3EE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Autofill fixes */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #0A0A0C inset !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  caret-color: #FFFFFF !important;
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 2px solid #22D3EE;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #8B5CF6;
+  color: white;
+  padding: 12px 20px;
+  z-index: 9999;
+  text-decoration: none;
+  font-weight: bold;
+  transition: top 0.3s ease;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #22D3EE;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scrollbar Utility */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

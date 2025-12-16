@@ -112,9 +112,23 @@ const Banner: React.FC = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   }, []);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-  };
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowRight') {
+        nextSlide();
+      } else if (event.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [nextSlide, prevSlide]);
 
   useEffect(() => {
     if (isPaused) return;
@@ -177,8 +191,8 @@ const Banner: React.FC = () => {
     }));
 
   return (
-    // Changed height from h-[65vh] to h-[65svh] to fix Cumulative Layout Shift (CLS) on mobile
-    <div className="relative w-full h-[65svh] md:h-[80svh] overflow-hidden bg-brand-primary group" aria-roledescription="carousel" aria-label="Highlighted Services">
+    // Ideal responsive height: 65vh for mobile, 80vh for desktop.
+    <div className="relative w-full h-[65vh] md:h-[80vh] overflow-hidden bg-brand-primary group border-b border-white/20" aria-roledescription="carousel" aria-label="Highlighted Services">
       {/* JSON-LD Schema for Videos */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(videoSchemas)}} />
 
@@ -190,18 +204,42 @@ const Banner: React.FC = () => {
       {slides.map((slide, index) => {
         // Only render the image/video tag if it is the first slide OR if we have passed the defer delay
         const shouldRenderMedia = index === 0 || loadOthers;
+        
         const isLcpSlide = index === 0;
+        const isActive = index === currentIndex;
+
+        // Base classes for elements
+        const h1Base = "text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight mb-3 md:mb-4";
+        const pBase = "text-base sm:text-lg md:text-2xl text-brand-light max-w-3xl mx-auto mb-6 md:mb-8";
+        const btnBase = "flex flex-col sm:flex-row items-center justify-center gap-4";
+
+        // Dynamic classes based on slide index
+        const h1Class = isLcpSlide 
+            ? `${h1Base} opacity-100 translate-y-0` 
+            : `${h1Base} transition-all duration-700 ease-out ${isActive ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-10'}`;
+            
+        const pClass = isLcpSlide 
+            ? `${pBase} opacity-100 translate-y-0` 
+            : `${pBase} transition-all duration-700 ease-out ${isActive ? 'opacity-100 translate-y-0 delay-400' : 'opacity-0 translate-y-10'}`;
+            
+        const btnClass = isLcpSlide 
+            ? `${btnBase} opacity-100 translate-y-0` 
+            : `${btnBase} transition-all duration-700 ease-out ${isActive ? 'opacity-100 translate-y-0 delay-600' : 'opacity-0 translate-y-10'}`;
+
+        // SEO Fix: Only the first slide gets an H1 tag. Subsequent slides use H2.
+        // This prevents the "More than one H1 tag" error while keeping visual design identical.
+        const HeadingTag = index === 0 ? 'h1' : 'h2';
 
         return (
           <div
             key={index}
             className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-              index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+              isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
             role="group"
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${slides.length}`}
-            aria-hidden={index !== currentIndex}
+            aria-hidden={!isActive}
           >
             {shouldRenderMedia && (
                 slide.type === 'video' ? (
@@ -222,37 +260,22 @@ const Banner: React.FC = () => {
             )}
             
             <div className="absolute inset-0 bg-black bg-opacity-60 z-20"></div>
-            <div className="absolute inset-0 flex items-center justify-center text-center z-30">
+            <div className="absolute inset-0 flex items-center justify-center text-center z-30 pt-16">
               <div className="container mx-auto px-4 md:px-6">
-                <h1
-                  // Removed animation delay for index 0 to improve Largest Contentful Paint (LCP)
-                  className={`text-3xl sm:text-4xl md:text-6xl font-extrabold text-white leading-tight mb-3 md:mb-4 transition-all duration-700 ease-out ${
-                    index === currentIndex 
-                      ? `opacity-100 translate-y-0 ${isLcpSlide ? '' : 'delay-200'}` 
-                      : 'opacity-0 translate-y-10'
-                  }`}
+                <HeadingTag
+                  className={h1Class}
                   style={{textShadow: '2px 2px 8px rgba(0,0,0,0.7)'}}
                 >
                   {slide.tagline}
-                </h1>
+                </HeadingTag>
                 <p
-                  // Removed animation delay for index 0 to improve LCP
-                  className={`text-base sm:text-lg md:text-2xl text-brand-light max-w-3xl mx-auto mb-6 md:mb-8 transition-all duration-700 ease-out ${
-                    index === currentIndex 
-                      ? `opacity-100 translate-y-0 ${isLcpSlide ? '' : 'delay-400'}`
-                      : 'opacity-0 translate-y-10'
-                  }`}
+                  className={pClass}
                   style={{textShadow: '1px 1px 4px rgba(0,0,0,0.7)'}}
                 >
                   {slide.subTagline}
                 </p>
                 <div
-                  // Removed animation delay for index 0 to improve LCP
-                  className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 ease-out ${
-                    index === currentIndex 
-                      ? `opacity-100 translate-y-0 ${isLcpSlide ? '' : 'delay-600'}`
-                      : 'opacity-0 translate-y-10'
-                  }`}
+                  className={btnClass}
                 >
                    {/* Stylish Primary CTA */}
                    <button 
