@@ -121,11 +121,9 @@ const brands = [
 
 const TechStackSlider: React.FC = () => {
   return (
-    // Reduced vertical padding to decrease height as requested (py-8 md:py-10)
-    // REMOVED 'glass-panel' to eliminate the vertical box borders and the hover shadow effect causing the black shade.
-    // ADDED 'border-y border-white/10' for elegant, classy horizontal lines only.
-    // ADDED 'bg-brand-secondary/20 backdrop-blur-md' to maintain the subtle translucent feel without the box border.
-    <div className="py-8 md:py-10 border-y border-white/10 overflow-hidden relative z-10 bg-brand-secondary/20 backdrop-blur-md">
+    // Updated: Re-introduced 'md:backdrop-blur-md' to keep blur on desktop but remove it on mobile
+    // This allows the marquee animation to run without GPU-heavy per-pixel blur calculations on phones.
+    <div className="py-8 md:py-10 border-y border-white/10 overflow-hidden relative z-10 bg-brand-secondary/20 md:backdrop-blur-md">
        {/* Fade Overlay for seamless look - using brand-primary to fade into the page background */}
        <div className="absolute top-0 left-0 h-full w-12 md:w-24 bg-gradient-to-r from-brand-primary to-transparent z-10 pointer-events-none"></div>
        <div className="absolute top-0 right-0 h-full w-12 md:w-24 bg-gradient-to-l from-brand-primary to-transparent z-10 pointer-events-none"></div>

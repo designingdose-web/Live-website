@@ -46,9 +46,15 @@ const ProcessSection: React.FC = () => {
                         className="animate-on-scroll"
                         style={{ transitionDelay: `${index * 150}ms`}}
                       >
-                          {/* Inner container handles hover/scale without conflicting with entrance transform */}
+                          {/* 
+                             Performance Optimization (Scale-to-Native):
+                             1. Mobile: Added 'hover:-translate-y-2' to restore the lift effect on touch/hover.
+                             2. Desktop: Added 'md:hover:translate-y-0' to explicitly disable translation on desktop.
+                                This ensures the desktop animation relies ONLY on 'md:scale-95' -> 'md:hover:scale-100',
+                                maintaining the crisp text rendering achieved in the previous fix.
+                          */}
                           <div 
-                            className="glass-panel bg-brand-secondary/90 border border-white/20 p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-brand-accent-start hover:scale-105 hover:shadow-2xl hover:shadow-brand-accent-start/20 backface-hidden transform-gpu group h-full" 
+                            className="glass-panel p-6 md:p-8 rounded-2xl text-center transition-all duration-300 hover:border-brand-accent-start transform-gpu hover:-translate-y-2 md:hover:translate-y-0 md:scale-95 md:hover:scale-100 hover:shadow-2xl hover:shadow-brand-accent-start/20 group h-full flex flex-col items-center" 
                           >
                               <div className="mb-6 relative inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/5 border border-white/10 shadow-[0_0_20px_rgba(139,92,246,0.15)] mx-auto transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/10 group-hover:border-brand-accent-start/30">
                                  <span className="text-3xl md:text-4xl drop-shadow-md">{step.icon}</span>

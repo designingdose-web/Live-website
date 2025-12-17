@@ -76,13 +76,7 @@ textarea::placeholder {
 .fade-in { transition-duration: 1.2s; }
 .is-visible { opacity: 1; transform: translate(0, 0); }
 
-/* MOBILE PERFORMANCE OVERRIDE: 
-   Disable complex scroll animations on mobile to reduce Main Thread blocking (TBT).
-   Elements will appear instantly.
-   
-   UPDATED LOGIC: We use :not(.is-visible) so the override only applies BEFORE the element loads.
-   Once loaded (is-visible added), the override is removed, allowing hover effects/transforms to work.
-*/
+/* MOBILE PERFORMANCE OVERRIDE - UPDATED */
 @media (max-width: 768px) {
   .animate-on-scroll:not(.is-visible) {
     opacity: 1 !important;
@@ -90,6 +84,14 @@ textarea::placeholder {
     transition: none !important;
     animation: none !important;
     content-visibility: visible !important;
+  }
+
+  /* GPU Optimization: Reduce blur radius on mobile. 
+     20px blur is very expensive to calculate per-pixel during scroll. 
+     10px looks similar on small screens but is much faster. */
+  .glass-panel {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
 

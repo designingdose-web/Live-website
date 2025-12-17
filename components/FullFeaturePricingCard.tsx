@@ -17,9 +17,13 @@ const InfoIcon: React.FC = () => (
 
 
 const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
+  // Updates:
+  // 1. Added '!important' to borders to override glass-panel defaults.
+  // 2. Added hover effects (lift and glow) to Popular plans.
+  // 3. Matched shadow styles with Homepage Highlight cards.
   const cardClasses = plan.isPopular
-    ? 'border-brand-accent-middle shadow-2xl shadow-brand-accent-middle/20 z-10'
-    : 'border-white/10 hover:border-brand-accent-start/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-accent-start/10';
+    ? '!border-brand-accent-middle shadow-[0_0_30px_-5px_rgba(236,72,153,0.3)] z-10 hover:shadow-[0_0_50px_-5px_rgba(236,72,153,0.5)] hover:-translate-y-1'
+    : '!border-white/10 hover:!border-brand-accent-start/50 hover:-translate-y-1 hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.2)]';
 
   return (
     <div id={plan.name} className={`glass-panel p-6 md:p-8 rounded-2xl flex flex-col h-full relative w-full transition-all duration-300 ${cardClasses}`}>

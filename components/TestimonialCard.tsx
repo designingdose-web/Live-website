@@ -27,9 +27,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
             : 'border-white/5 shadow-none scale-95 opacity-40 blur-[1px] z-10'
         }
     `}>
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-40 h-40 bg-brand-accent-start/10 rounded-full blur-[50px] -mr-10 -mt-10 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-40 h-40 bg-brand-accent-end/10 rounded-full blur-[50px] -ml-10 -mb-10 pointer-events-none"></div>
+      {/* Decorative Background Elements - Hidden on mobile to fix scroll lag caused by nested blurs */}
+      <div className="hidden md:block absolute top-0 right-0 w-40 h-40 bg-brand-accent-start/10 rounded-full blur-[50px] -mr-10 -mt-10 pointer-events-none"></div>
+      <div className="hidden md:block absolute bottom-0 left-0 w-40 h-40 bg-brand-accent-end/10 rounded-full blur-[50px] -ml-10 -mb-10 pointer-events-none"></div>
       
       {/* Quote Icon - Smaller on mobile */}
       <div className="absolute top-4 right-4 md:top-6 md:right-6 text-brand-accent-start/10 pointer-events-none">

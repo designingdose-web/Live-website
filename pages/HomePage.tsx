@@ -161,10 +161,21 @@ const WhyChooseUs: React.FC = () => {
              const titleRef = useScrollAnimation('slide-in-up');
              const descRef = useScrollAnimation('slide-in-up');
              return (
-              <div ref={cardRef} key={index} className="glass-panel p-6 md:p-8 rounded-lg text-center animate-on-scroll transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-accent-start/20" style={{ transitionDelay: `${index * 150}ms`}}>
-                <div ref={iconRef} className="flex justify-center mb-4 md:mb-6 animate-on-scroll transform transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${index * 150 + 150}ms`}}>{feature.icon}</div>
-                <h3 ref={titleRef} className="text-xl font-bold text-white mb-2 animate-on-scroll" style={{ transitionDelay: `${index * 150 + 250}ms`}}>{feature.title}</h3>
-                <p ref={descRef} className="text-brand-muted text-sm md:text-base animate-on-scroll" style={{ transitionDelay: `${index * 150 + 350}ms`}}>{feature.description}</p>
+              // Refactoring: Use a wrapper for the entrance animation ref.
+              // The inner div maintains the hover effects.
+              // This prevents the entrance animation class (.is-visible with transform: translate(0,0))
+              // from overriding the hover transform (-translate-y-2).
+              <div 
+                ref={cardRef} 
+                key={index} 
+                className="animate-on-scroll h-full"
+                style={{ transitionDelay: `${index * 150}ms`}}
+              >
+                <div className="glass-panel p-6 md:p-8 rounded-lg text-center transition-all duration-300 group hover:-translate-y-2 hover:shadow-lg hover:shadow-brand-accent-start/20 h-full flex flex-col items-center">
+                  <div ref={iconRef} className="flex justify-center mb-4 md:mb-6 animate-on-scroll transform transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${index * 150 + 150}ms`}}>{feature.icon}</div>
+                  <h3 ref={titleRef} className="text-xl font-bold text-white mb-2 animate-on-scroll" style={{ transitionDelay: `${index * 150 + 250}ms`}}>{feature.title}</h3>
+                  <p ref={descRef} className="text-brand-muted text-sm md:text-base animate-on-scroll" style={{ transitionDelay: `${index * 150 + 350}ms`}}>{feature.description}</p>
+                </div>
               </div>
             )
           })}

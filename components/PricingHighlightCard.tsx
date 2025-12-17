@@ -12,15 +12,19 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const featuresToShow = plan.features.slice(0, MAX_FEATURES);
   const remainingFeatures = plan.features.length - MAX_FEATURES;
 
+  // Updates:
+  // 1. Used '!' on border classes (e.g. !border-brand-accent-middle) to strictly override the default .glass-panel border.
+  // 2. For Popular plans: Replaced default shadow with a specific pink glow to avoid black background shadow.
+  // 3. For Standard plans: Added 'md:shadow-none' to explicitly remove the .glass-panel black shadow on desktop as requested.
   const cardClasses = plan.isPopular
-    ? 'border-brand-accent-middle shadow-2xl shadow-brand-accent-middle/20 z-10 hover:shadow-[0_10px_40px_rgba(236,72,153,0.4)]'
-    : 'border-white/10 hover:border-brand-accent-start/50 hover:shadow-xl hover:shadow-brand-accent-start/10 hover:-translate-y-1';
+    ? '!border-brand-accent-middle shadow-[0_0_30px_-5px_rgba(236,72,153,0.3)] z-10 hover:shadow-[0_0_50px_-5px_rgba(236,72,153,0.5)]'
+    : '!border-white/10 md:shadow-none hover:!border-brand-accent-start/50 hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.2)] hover:-translate-y-1';
 
   return (
     <Link 
       to={`/services/website-packages#${plan.name}`} 
       aria-label={`View details for the ${plan.name} website package`}
-      className={`glass-panel p-8 rounded-2xl flex flex-col h-full relative transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-secondary focus-visible:ring-brand-accent-middle shadow-none ${cardClasses}`}
+      className={`glass-panel p-8 rounded-2xl flex flex-col h-full relative transition-all duration-300 group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-secondary focus-visible:ring-brand-accent-middle ${cardClasses}`}
     >
         {plan.isPopular && (
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(236,72,153,0.5)]">

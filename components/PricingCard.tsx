@@ -8,19 +8,20 @@ interface PricingCardProps {
 }
 
 const CheckIcon: React.FC = () => (
-    <svg className="w-5 h-5 text-brand-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+    <svg className="w-5 h-5 text-brand-accent-end flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
 
 
 const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
+  // Updates: Fixed missing 'brand-accent' class by using 'brand-accent-middle' and added important flags/hover effects.
   const cardClasses = plan.isPopular
-    ? 'border-brand-accent scale-105 shadow-2xl shadow-brand-accent/20 z-10'
-    : 'border-white/10 hover:border-brand-accent/50';
+    ? '!border-brand-accent-middle shadow-[0_0_30px_-5px_rgba(236,72,153,0.3)] z-10 hover:shadow-[0_0_50px_-5px_rgba(236,72,153,0.5)] hover:-translate-y-1'
+    : '!border-white/10 hover:!border-brand-accent-start/50 hover:-translate-y-1 hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.2)]';
 
   return (
     <div className={`glass-panel p-8 rounded-2xl flex flex-col h-full relative transition-all duration-300 ${cardClasses}`}>
         {plan.isPopular && (
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-accent text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-accent-middle text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(236,72,153,0.5)]">
             Most Popular
             </div>
         )}
@@ -49,7 +50,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
         to="/contact" 
         state={{ subject: `Inquiry about: ${plan.name} package` }}
         aria-label={`Get started with the ${plan.name} plan`}
-        className="block w-full text-center mt-8 bg-brand-accent text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent focus:ring-offset-brand-secondary"
+        className="block w-full text-center mt-8 bg-brand-accent-middle text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-middle focus:ring-offset-brand-secondary"
       >
         Get Started
       </Link>

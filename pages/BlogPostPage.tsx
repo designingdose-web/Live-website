@@ -146,8 +146,9 @@ const BlogPostPage: React.FC = () => {
         description={post.excerpt}
         image={defaultHeroSrc}
         keywords={`${post.category}, Designing Dose, Blog, ${post.title.split(' ').slice(0, 5).join(', ')}`}
-        // NOTE: We removed preloadSrcSet. We rely on the <img> tag below with fetchPriority="high".
-        // Manually preloading via JS can sometimes conflict with the browser's native scanner or cause double-fetch on some browsers.
+        // Preload LCP Image for instant paint on mobile networks
+        preloadSrcSet={heroSrcSet}
+        preloadSizes={heroSizes}
       />
       <div className="bg-brand-primary min-h-screen flex flex-col">
           {/* SEO Schema */}
@@ -161,7 +162,7 @@ const BlogPostPage: React.FC = () => {
               <div className="absolute inset-0">
                   {/* 
                     PERFORMANCE FIX: 
-                    1. decoding="async" prevents the image from blocking the main thread (stops the UI freeze).
+                    1. decoding="sync" (was async) ensures immediate painting of the hero image (LCP element).
                     2. fetchPriority="high" tells the browser this is the most important image.
                     3. No transition class on the hero itself to ensure it paints as fast as possible.
                   */}
@@ -173,7 +174,7 @@ const BlogPostPage: React.FC = () => {
                       className="w-full h-full object-cover opacity-60"
                       loading="eager"
                       fetchPriority="high"
-                      decoding="async" 
+                      decoding="sync" 
                   />
               </div>
               {/* Gradient Overlay for text readability */}
