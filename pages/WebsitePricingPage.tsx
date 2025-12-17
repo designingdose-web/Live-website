@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { servicesData } from '../data/servicesData';
+// Removed unused useScrollAnimation import for top sections
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
 import FaqSection from '../components/FaqSection';
@@ -17,9 +18,7 @@ const WebsitePricingPage: React.FC = () => {
   const [isCompareModalOpen, setIsCompareModalOpen] = React.useState(false);
   const websiteService = servicesData.find(service => service.id === 'website');
 
-  const headerRef = useScrollAnimation('slide-in-up');
-  const tabsRef = useScrollAnimation('slide-in-up');
-  const controlsRef = useScrollAnimation('slide-in-up');
+  // Removed useScrollAnimation refs for above-the-fold content to prevent loading delays
   const gridRef = useRef<HTMLDivElement>(null);
 
   // Helper to create URL-friendly tab names (e.g., "Logo Design" -> "logo-design")
@@ -171,14 +170,16 @@ const WebsitePricingPage: React.FC = () => {
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
       )}
-      <div className="pt-28 md:pt-36 pb-8 md:pb-12 bg-brand-primary overflow-x-hidden">
+      <div className="pt-28 md:pt-36 pb-8 md:pb-6 bg-brand-primary overflow-x-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <div ref={headerRef} className="text-center mb-8 md:mb-12 animate-on-scroll">
+          {/* Header - Immediate Load */}
+          <div className="text-center mb-8 md:mb-12 animate-fade-in-up">
             <h1 className="text-3xl md:text-5xl font-extrabold text-white">{websiteService.title}</h1>
             <p className="mt-4 text-base md:text-lg max-w-3xl mx-auto text-brand-muted">{websiteService.description}</p>
           </div>
 
-          <div ref={tabsRef} className="w-full max-w-full overflow-x-auto pb-2 mb-8 relative z-20 animate-on-scroll scrollbar-thin scrollbar-thumb-brand-secondary scrollbar-track-transparent md:flex md:justify-center md:pb-0" style={{ transitionDelay: '200ms'}}>
+          {/* Tabs - Immediate Load with slight delay */}
+          <div className="w-full max-w-full overflow-x-auto pb-2 mb-8 relative z-20 animate-fade-in-up scrollbar-thin scrollbar-thumb-brand-secondary scrollbar-track-transparent md:flex md:justify-center md:pb-0" style={{ animationDelay: '100ms' }}>
             <div className="bg-brand-secondary p-1.5 md:p-2 rounded-lg flex space-x-2 whitespace-nowrap min-w-min mx-auto w-fit">
               {websiteService.tabs.map((tab, index) => (
                 <button
@@ -196,9 +197,12 @@ const WebsitePricingPage: React.FC = () => {
             </div>
           </div>
           
-           {/* Combined Controls Section: Anchors + Action Buttons */}
+           {/* Combined Controls Section: Anchors + Action Buttons - Immediate Load */}
            {activePlans.length > 0 && (
-             <div ref={controlsRef} className="flex flex-col items-center mb-16 animate-on-scroll relative z-20" style={{ transitionDelay: '300ms' }}>
+             <div 
+                className="flex flex-col items-center mb-16 animate-fade-in-up relative z-20 pb-10" 
+                style={{ animationDelay: '200ms', contentVisibility: 'visible' }}
+             >
                 
                 {/* Available Plans Anchors (Subtle) */}
                 <div className="flex flex-wrap justify-center items-center gap-2 mb-6 max-w-4xl px-4">

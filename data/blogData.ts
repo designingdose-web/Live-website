@@ -30,13 +30,10 @@ const optimizeImage = (url: string) => {
     return `${baseUrl}?auto=format&fit=crop&q=70&w=1200`;
   }
   
-  if (url.includes('res.cloudinary.com')) {
-    // Inject f_auto,q_auto for Cloudinary images if not already present
-    if (!url.includes('/f_auto,q_auto/')) {
-        return url.replace('/upload/', '/upload/f_auto,q_auto/');
-    }
-  }
-  
+  // For Cloudinary, we return the raw URL here.
+  // We allow the specific pages (BlogPage, BlogPostPage) to inject 
+  // the exact dimensions and quality modes (Eco vs Good) they need.
+  // This prevents URL corruption from double-optimization.
   return url;
 };
 

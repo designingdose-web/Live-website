@@ -11,7 +11,7 @@ const CheckIcon: React.FC = () => (
 const InfoIcon: React.FC = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-brand-muted inline-block opacity-50 hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.083.082.38-.29.287-.082.38.29.287.082.38.29.287l.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.083.082.38-.29.287-.082.38zM8 4.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.083.082.38-.29.287-.082.38.29.287.082.38.29.287.082.38.29.287l.45.083c.294.07.352.176.288.469l-.738 3.468c-.064.293.006.399.287.47l.45.083.082.38-.29.287-.082.38zM8 4.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
   </svg>
 );
 
@@ -19,7 +19,7 @@ const InfoIcon: React.FC = () => (
 const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const cardClasses = plan.isPopular
     ? 'border-brand-accent-middle shadow-2xl shadow-brand-accent-middle/20 z-10'
-    : 'border-white/10 hover:border-brand-accent-start/50 md:hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-accent-start/10';
+    : 'border-white/10 hover:border-brand-accent-start/50 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-accent-start/10';
 
   return (
     <div id={plan.name} className={`glass-panel p-6 md:p-8 rounded-2xl flex flex-col h-full relative w-full transition-all duration-300 ${cardClasses}`}>
@@ -65,7 +65,7 @@ const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
         to="/contact" 
         state={{ subject: `Inquiry about: ${plan.name} package` }} 
         aria-label={`Get started with the ${plan.name} plan`}
-        className="mt-6 md:mt-8 relative overflow-hidden group rounded-full block w-full shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-all duration-300 md:hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-end focus:ring-offset-brand-secondary"
+        className="mt-6 md:mt-8 relative overflow-hidden group rounded-full block w-full shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-end focus:ring-offset-brand-secondary"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end transition-opacity opacity-100"></div>
         {/* Add a subtle overlay on hover to brighten */}

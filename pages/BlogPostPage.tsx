@@ -1,29 +1,55 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { blogPosts } from '../data/blogData';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import SEO from '../components/SEO';
 
 // Helper to generate optimized URLs for specific widths
-const getOptimizedUrl = (url: string, width: number) => {
+// qualityMode allows switching between 'good' (Hero) and 'eco' (Body)
+const getOptimizedUrl = (url: string, width: number, qualityMode: 'good' | 'eco' = 'eco') => {
   if (!url) return '';
   
   if (url.includes('unsplash.com')) {
     const cleanUrl = url.split('?')[0];
-    return `${cleanUrl}?auto=format&fit=crop&q=75&w=${width}`;
+    const qValue = qualityMode === 'good' ? 75 : 60; // Lower quality for eco
+    return `${cleanUrl}?auto=format&fit=crop&q=${qValue}&w=${width}`;
   }
   
-  if (url.includes('res.cloudinary.com')) {
+  // Safe Cloudinary Optimization
+  if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
     const parts = url.split('/upload/');
     if (parts.length === 2) {
-      let suffix = parts[1];
-      suffix = suffix.replace(/f_auto,q_auto\/?/, '');
-      return `${parts[0]}/upload/w_${width},f_auto,q_auto/${suffix}`;
+      // Remove any existing transformations from the start of the path
+      let tail = parts[1].replace(/^(f_auto|q_auto(:[a-z]+)?|w_\d+|c_scale)(,[^/]+)*\//, '');
+      
+      // Inject smart optimizations:
+      // w_{width}: Resize
+      // f_auto: Best format
+      // q_auto:{mode}: Adaptive quality based on context (Hero vs Body)
+      return `${parts[0]}/upload/w_${width},f_auto,q_auto:${qualityMode}/${tail}`;
     }
   }
   
+  // Fail-safe: Return original URL if no pattern matches
   return url;
+};
+
+// Internal Component: Smooth Fade-In Image for Interior Content
+// Solves "sluggish" feel by hiding the image until it is fully decoded and ready to paint.
+const FadeInImage: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({ className, ...props }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <img
+      {...props}
+      className={`${className} transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      onLoad={(e) => {
+        setIsLoaded(true);
+        if (props.onLoad) props.onLoad(e);
+      }}
+      decoding="async" // Critical for smooth scrolling
+    />
+  );
 };
 
 // Helper to parse text with internal links formatted as [text](/url)
@@ -55,8 +81,6 @@ const BlogPostPage: React.FC = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const contentRef = useScrollAnimation('fade-in');
-
   if (!post) {
     return (
       <div className="min-h-screen bg-brand-primary flex flex-col items-center justify-center px-6 text-center">
@@ -77,13 +101,16 @@ const BlogPostPage: React.FC = () => {
   // Determine CTA Link - defaults to contact if not specified in post data
   const ctaLink = post.serviceLink || "/contact";
   
+  // Hero Image Strategy: 'eco' quality for performance speed
   const heroSrcSet = `
-    ${getOptimizedUrl(post.image, 600)} 600w,
-    ${getOptimizedUrl(post.image, 1200)} 1200w,
-    ${getOptimizedUrl(post.image, 1600)} 1600w
+    ${getOptimizedUrl(post.image, 600, 'eco')} 600w,
+    ${getOptimizedUrl(post.image, 1200, 'eco')} 1200w,
+    ${getOptimizedUrl(post.image, 1600, 'eco')} 1600w
   `;
-
-  const defaultHeroSrc = getOptimizedUrl(post.image, 1200);
+  const defaultHeroSrc = getOptimizedUrl(post.image, 1200, 'eco');
+  
+  // Strictly constrain sizes to prevent mobile from downloading desktop images
+  const heroSizes = "(max-width: 768px) 100vw, 100vw";
 
   // Schema.org JSON-LD for SEO
   const schemaData = {
@@ -119,6 +146,8 @@ const BlogPostPage: React.FC = () => {
         description={post.excerpt}
         image={defaultHeroSrc}
         keywords={`${post.category}, Designing Dose, Blog, ${post.title.split(' ').slice(0, 5).join(', ')}`}
+        // NOTE: We removed preloadSrcSet. We rely on the <img> tag below with fetchPriority="high".
+        // Manually preloading via JS can sometimes conflict with the browser's native scanner or cause double-fetch on some browsers.
       />
       <div className="bg-brand-primary min-h-screen flex flex-col">
           {/* SEO Schema */}
@@ -128,17 +157,23 @@ const BlogPostPage: React.FC = () => {
           <div className="fixed top-0 left-0 h-1 bg-brand-accent-start z-50 w-full origin-left scale-x-0 animate-[scrollProgress_linear_1s_both] [animation-timeline:scroll()]"></div>
 
           {/* Hero Header */}
-          <div className="relative w-full h-[45vh] min-h-[400px] md:h-[60vh] md:min-h-[500px] overflow-hidden">
-              <div className="absolute inset-0 bg-gray-900">
+          <div className="relative w-full h-[45vh] min-h-[400px] md:h-[60vh] md:min-h-[500px] overflow-hidden bg-gray-900">
+              <div className="absolute inset-0">
+                  {/* 
+                    PERFORMANCE FIX: 
+                    1. decoding="async" prevents the image from blocking the main thread (stops the UI freeze).
+                    2. fetchPriority="high" tells the browser this is the most important image.
+                    3. No transition class on the hero itself to ensure it paints as fast as possible.
+                  */}
                   <img 
                       src={defaultHeroSrc} 
                       srcSet={heroSrcSet}
-                      sizes="100vw"
+                      sizes={heroSizes}
                       alt={post.title} 
                       className="w-full h-full object-cover opacity-60"
                       loading="eager"
                       fetchPriority="high"
-                      decoding="async"
+                      decoding="async" 
                   />
               </div>
               {/* Gradient Overlay for text readability */}
@@ -183,7 +218,7 @@ const BlogPostPage: React.FC = () => {
           <div className="flex-grow container mx-auto px-4 md:px-6 py-12 md:py-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
                   {/* Main Article */}
-                  <article ref={contentRef} className="lg:col-span-8 animate-on-scroll min-w-0">
+                  <article className="lg:col-span-8 min-w-0">
                       <div className="prose prose-base md:prose-lg prose-invert max-w-none break-words">
                           {/* Lead Excerpt */}
                           <p className="text-lg md:text-2xl text-brand-light leading-relaxed font-medium mb-8 md:mb-12 border-l-4 border-brand-accent-start pl-4 md:pl-6 italic">
@@ -230,13 +265,16 @@ const BlogPostPage: React.FC = () => {
                                       case 'image':
                                           return (
                                               <div key={idx} className="my-8 md:my-12">
-                                                {/* Responsive Image Handling */}
+                                                {/* 
+                                                  PERFORMANCE FIX: Use FadeInImage to prevent sluggishness.
+                                                  Optimization: 'eco' mode + responsive srcSet + async decoding.
+                                                */}
                                                 {block.src && (
-                                                  <img 
-                                                      src={getOptimizedUrl(block.src, 1000)}
+                                                  <FadeInImage 
+                                                      src={getOptimizedUrl(block.src, 1000, 'eco')}
                                                       srcSet={`
-                                                          ${getOptimizedUrl(block.src, 600)} 600w,
-                                                          ${getOptimizedUrl(block.src, 1000)} 1000w
+                                                          ${getOptimizedUrl(block.src, 600, 'eco')} 600w,
+                                                          ${getOptimizedUrl(block.src, 1000, 'eco')} 1000w
                                                       `}
                                                       sizes="(max-width: 768px) 100vw, 800px"
                                                       alt={block.alt || post.title} 
@@ -296,11 +334,12 @@ const BlogPostPage: React.FC = () => {
                               <h3 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6 border-l-4 border-brand-accent-end pl-4">Related Articles</h3>
                               <div className="space-y-4 md:space-y-6">
                                   {relatedPosts.map(rp => {
-                                      const rpSrc = getOptimizedUrl(rp.image, 200);
+                                      const rpSrc = getOptimizedUrl(rp.image, 200, 'eco');
                                       return (
                                           <Link key={rp.id} to={`/blog/${rp.id}`} className="flex gap-4 group bg-brand-secondary/40 p-3 md:p-4 rounded-2xl hover:bg-brand-secondary transition-all border border-transparent hover:border-gray-700 hover:shadow-lg">
                                               <div className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 rounded-xl overflow-hidden relative">
-                                                  <img src={rpSrc} alt={rp.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                                  {/* Interior thumbnails also get FadeInImage treatment */}
+                                                  <FadeInImage src={rpSrc} alt={rp.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
                                               </div>
                                               <div className="flex flex-col justify-center">
                                                   <h4 className="text-sm font-bold text-white group-hover:text-brand-accent-start transition-colors line-clamp-2 leading-snug mb-1 md:mb-2">

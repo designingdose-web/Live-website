@@ -8,25 +8,49 @@ interface SEOProps {
   keywords?: string;
   image?: string;
   url?: string;
+  preloadImage?: string; // Fallback for simple preload
+  preloadSrcSet?: string; // New: For responsive image preloading
+  preloadSizes?: string;  // New: For responsive image sizing
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, preloadImage, preloadSrcSet, preloadSizes }) => {
   const location = useLocation();
-  // Ensure we have a clean canonical URL
   const baseUrl = "https://designingdose.com";
   const canonicalUrl = url || `${baseUrl}${location.pathname}`;
   const defaultImage = "https://res.cloudinary.com/dmaqptknc/image/upload/v1765127202/new_web2_lbyr0c.webp";
 
-  useEffect(() => {
-    // 1. Logic to prevent double branding
-    // If the title already contains "Designing Dose", don't append it again.
-    const brandName = "Designing Dose";
-    const finalTitle = title.includes(brandName) ? title : `${title} | ${brandName}`;
+  // SEO Standards
+  const MAX_TITLE_LENGTH = 60;
+  const MAX_DESC_LENGTH = 160;
 
-    // 2. Update Document Title
+  // Helper to truncate text intelligently (at word boundaries)
+  const truncate = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substr(0, text.lastIndexOf(' ', maxLength)) + '...';
+  };
+
+  useEffect(() => {
+    const brandName = "Designing Dose";
+    let finalTitle = title;
+
+    // Logic: Only append brand name if there is room.
+    // If the provided title is short (< 40 chars), append brand.
+    // If it's long, leave it alone to prioritize keywords.
+    if (!title.includes(brandName)) {
+        if (title.length + brandName.length + 3 <= MAX_TITLE_LENGTH) {
+            finalTitle = `${title} | ${brandName}`;
+        }
+    }
+
+    // Ensure title doesn't exceed 60 chars
+    finalTitle = truncate(finalTitle, MAX_TITLE_LENGTH);
+    
+    // Ensure description doesn't exceed 160 chars
+    const finalDescription = truncate(description, MAX_DESC_LENGTH);
+
+    // Update Document Title
     document.title = finalTitle;
 
-    // 3. Helper to update or create meta tags
     const updateMeta = (name: string, content: string, attribute = 'name') => {
       let element = document.querySelector(`meta[${attribute}="${name}"]`);
       if (!element) {
@@ -37,25 +61,22 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) =
       element.setAttribute('content', content);
     };
 
-    // 4. Update Standard SEO Tags
-    updateMeta('description', description);
-    updateMeta('keywords', keywords || "Web Development, SEO, Mobile Apps, Designing Dose, Digital Marketing, Ireland, USA, UK, Europe, Australia, Canada, Pakistan");
+    updateMeta('description', finalDescription);
+    updateMeta('keywords', keywords || "Web Development, SEO, Mobile Apps, Designing Dose, Digital Marketing, Ireland, USA");
 
-    // 5. Update Open Graph Tags
     updateMeta('og:title', finalTitle, 'property');
-    updateMeta('og:description', description, 'property');
+    updateMeta('og:description', finalDescription, 'property');
     updateMeta('og:url', canonicalUrl, 'property');
     updateMeta('og:image', image || defaultImage, 'property');
     updateMeta('og:type', 'website', 'property');
     updateMeta('og:site_name', 'Designing Dose', 'property');
 
-    // 6. Update Twitter Tags
     updateMeta('twitter:card', 'summary_large_image', 'property');
     updateMeta('twitter:title', finalTitle, 'property');
-    updateMeta('twitter:description', description, 'property');
+    updateMeta('twitter:description', finalDescription, 'property');
     updateMeta('twitter:image', image || defaultImage, 'property');
 
-    // 7. Update Canonical Link
+    // Canonical Link
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (!linkCanonical) {
       linkCanonical = document.createElement('link');
@@ -64,7 +85,30 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) =
     }
     linkCanonical.setAttribute('href', canonicalUrl);
 
-  }, [title, description, keywords, image, canonicalUrl]);
+    // Image Preloading Logic (LCP Optimization)
+    // Removes old preloads to prevent bloat, adds new one if requested
+    const existingPreload = document.querySelector('link[rel="preload"][as="image"]');
+    if (existingPreload) {
+        document.head.removeChild(existingPreload);
+    }
+
+    if (preloadImage || preloadSrcSet) {
+        const linkPreload = document.createElement('link');
+        linkPreload.setAttribute('rel', 'preload');
+        linkPreload.setAttribute('as', 'image');
+        linkPreload.setAttribute('fetchpriority', 'high');
+        
+        if (preloadSrcSet) {
+            linkPreload.setAttribute('imagesrcset', preloadSrcSet);
+            if (preloadSizes) linkPreload.setAttribute('imagesizes', preloadSizes);
+        } else if (preloadImage) {
+            linkPreload.setAttribute('href', preloadImage);
+        }
+        
+        document.head.appendChild(linkPreload);
+    }
+
+  }, [title, description, keywords, image, canonicalUrl, preloadImage, preloadSrcSet, preloadSizes]);
 
   return null;
 };

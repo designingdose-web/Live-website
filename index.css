@@ -11,47 +11,34 @@ html, body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  /* Removed scroll-behavior: smooth to prevent UI locking during route transitions */
+  /* Optimized touch behavior for mobile responsiveness */
+  touch-action: manipulation;
 }
 
 /* "Diamond Cut" Glassmorphism Utility - Refined for Elegance */
 .glass-panel {
-  /* Updated background to blend with brand-primary (#020204) */
   background: rgba(2, 2, 4, 0.7); 
   backdrop-filter: blur(20px);        
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08); /* Finer border */
-  box-shadow: 
-    0 4px 30px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Removed background-color from transition */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; 
   /* Hardware acceleration base */
   transform: translateZ(0);
   will-change: transform;
 }
 
-/* Fix for mobile stacking contexts: Disable transform on mobile to allow fixed tooltips */
-@media (max-width: 768px) {
-  .glass-panel {
-    transform: none !important;
-    will-change: auto !important;
-  }
-}
-
-/* Premium Glass Hover Effect - BACKGROUND COLOR DOES NOT CHANGE */
+/* Premium Glass Hover Effect */
 .glass-panel:hover {
-  /* background: rgba(30, 30, 40, 0.5);  <-- REMOVED to prevent color shift */
-  border-color: rgba(255, 255, 255, 0.25); /* Only border gets brighter */
-  box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.7); /* Deepen shadow for lift */
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
 }
 
 /* Utility to fix blurry text during transforms/scaling */
 .backface-hidden {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  /* Ensures subpixel rendering remains active during transform */
   -webkit-font-smoothing: subpixel-antialiased; 
-  /* Forces a 3D context to prevent rasterization artifacts */
   transform: perspective(1px) translateZ(0);
 }
 
@@ -79,12 +66,32 @@ textarea::placeholder {
 }
 
 /* Scroll-triggered animations */
-.animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.animate-on-scroll { 
+    opacity: 0; 
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+}
 .slide-in-up { transform: translateY(30px); }
 .slide-in-left { transform: translateX(-30px); }
 .slide-in-right { transform: translateX(30px); }
 .fade-in { transition-duration: 1.2s; }
 .is-visible { opacity: 1; transform: translate(0, 0); }
+
+/* MOBILE PERFORMANCE OVERRIDE: 
+   Disable complex scroll animations on mobile to reduce Main Thread blocking (TBT).
+   Elements will appear instantly.
+   
+   UPDATED LOGIC: We use :not(.is-visible) so the override only applies BEFORE the element loads.
+   Once loaded (is-visible added), the override is removed, allowing hover effects/transforms to work.
+*/
+@media (max-width: 768px) {
+  .animate-on-scroll:not(.is-visible) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    content-visibility: visible !important;
+  }
+}
 
 /* Gradient text */
 .gradient-text {

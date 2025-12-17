@@ -46,11 +46,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
             ))}
          </div>
 
-         <h3 className="font-bold text-white text-lg md:text-2xl mb-3 md:mb-4 line-clamp-2 pr-8 leading-tight">{testimonial.heading}</h3>
+         {/* Added shadow to text for accessibility */}
+         <h3 className="font-bold text-white text-lg md:text-2xl mb-3 md:mb-4 line-clamp-2 pr-8 leading-tight drop-shadow-md">{testimonial.heading}</h3>
          
-         {/* Scrollable text area with custom scrollbar. max-h ensures it doesn't overflow mobile screens. */}
          <div className="overflow-y-auto max-h-[240px] md:max-h-[240px] pr-2 scrollbar-thin scrollbar-thumb-brand-muted/30 scrollbar-track-transparent overscroll-contain">
-             <p className="text-brand-light/90 italic leading-relaxed text-base md:text-lg font-light">"{testimonial.review}"</p>
+             <p className="text-brand-light/90 italic leading-relaxed text-base md:text-lg font-light drop-shadow-sm">"{testimonial.review}"</p>
          </div>
       </div>
       
@@ -60,7 +60,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
                 {testimonial.name.charAt(0)}
             </div>
             <div className="min-w-0">
-                <p className="font-bold text-white text-sm md:text-lg leading-tight truncate">{testimonial.name}</p>
+                <p className="font-bold text-white text-sm md:text-lg leading-tight truncate drop-shadow-sm">{testimonial.name}</p>
                 <p className="text-xs md:text-sm text-brand-muted font-medium mt-0.5 truncate">{testimonial.title}</p>
             </div>
         </div>
@@ -115,9 +115,7 @@ const TestimonialsSection: React.FC = () => {
     const touchEndX = useRef(0);
 
     useEffect(() => {
-        // Initial check
         setIsMobileOrTablet(window.innerWidth < 1024);
-        
         const handleResize = () => {
             setIsMobileOrTablet(window.innerWidth < 1024);
         };
@@ -137,17 +135,14 @@ const TestimonialsSection: React.FC = () => {
         setIsPaused(prev => !prev);
     }, []);
 
-    // Keyboard navigation
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'ArrowRight') {
                 next();
-                // Removed setIsPaused(true) to keep auto-slide running after manual nav
             } else if (event.key === 'ArrowLeft') {
                 prev();
-                // Removed setIsPaused(true) to keep auto-slide running after manual nav
             } else if (event.key === ' ' || event.code === 'Space') {
-                event.preventDefault(); // Prevent scrolling
+                event.preventDefault(); 
                 togglePause();
             }
         };
@@ -159,17 +154,12 @@ const TestimonialsSection: React.FC = () => {
     useEffect(() => {
         if (isPaused) return;
         
-        // Interval now depends on currentIndex.
-        // This ensures the timer resets whenever the slide changes (manually or automatically),
-        // preventing a "double jump" right after a user clicks.
         const interval = setInterval(next, 5000); 
         return () => clearInterval(interval);
     }, [next, isPaused, currentIndex]);
 
-    // Touch Handlers for Swipe
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.targetTouches[0].clientX;
-        // Removed setIsPaused(true) - Swipe should not permanently pause
     };
 
     const handleTouchMove = (e: React.TouchEvent) => {
@@ -188,14 +178,12 @@ const TestimonialsSection: React.FC = () => {
             prev(); // Swipe Right -> Prev
         }
         
-        // Reset
         touchStartX.current = 0;
         touchEndX.current = 0;
     };
 
     return (
         <section ref={sectionRef} className="py-16 md:py-20 bg-brand-primary animate-on-scroll overflow-hidden relative z-0">
-            {/* Background enhancement */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-[500px] bg-brand-accent-middle/5 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -204,11 +192,6 @@ const TestimonialsSection: React.FC = () => {
                     <p className="mt-3 md:mt-4 text-base md:text-lg text-brand-muted">Real stories from businesses we've helped succeed.</p>
                 </div>
                 
-                {/* 
-                   Height adjustment: 
-                   Mobile stays 600px to ensure nothing is cut. 
-                   Desktop increased to 550px to fit larger reviews like Amber's.
-                */}
                 <div 
                     className="relative h-[600px] md:h-[550px] w-full touch-pan-y"
                     onTouchStart={handleTouchStart}
@@ -229,7 +212,6 @@ const TestimonialsSection: React.FC = () => {
                         let display = 'block';
                         
                         if (isMobileOrTablet) {
-                            // Mobile/Tablet: Show only center card, hide others completely to avoid rendering overhead/ghost clicks
                             if (isCenter) {
                                 opacity = 1;
                                 transform = 'translateX(-50%) scale(1)';
@@ -240,10 +222,9 @@ const TestimonialsSection: React.FC = () => {
                                 opacity = 0;
                                 transform = 'translateX(-50%) scale(0.9)';
                                 zIndex = 10;
-                                display = 'none'; // Ensure hidden cards don't take layout calculation or events
+                                display = 'none'; 
                             }
                         } else {
-                           // Desktop: Show center + 2 side previews
                            if (isCenter) {
                                 opacity = 1;
                                 transform = 'translateX(-50%) scale(1)';
@@ -289,7 +270,6 @@ const TestimonialsSection: React.FC = () => {
                     })}
                 </div>
                 
-                {/* Mobile Dot Indicators for better UX */}
                 <div className="flex justify-center gap-2 mt-2 md:hidden">
                     {testimonialData.map((_, idx) => (
                         <button

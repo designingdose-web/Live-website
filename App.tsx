@@ -24,6 +24,8 @@ const ContactPage = lazy(() => import('./pages/ContactPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const RefundPolicyPage = lazy(() => import('./pages/RefundPolicyPage'));
 const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
+// Import 404 page
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Minimalist Loader for page transitions
 const PageLoader = () => (
@@ -127,6 +129,8 @@ const App: React.FC = () => {
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/refund-policy" element={<RefundPolicyPage />} />
               <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+              {/* Catch-all route for 404s */}
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
         </main>

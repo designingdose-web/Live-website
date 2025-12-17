@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import type { ServiceCategory, Plan } from '../types';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+// Removed unused useScrollAnimation import for top sections
 import FullFeaturePricingCard from '../components/FullFeaturePricingCard';
 import FaqSection from '../components/FaqSection';
 import ComparisonModal from '../components/ComparisonModal';
@@ -38,9 +38,6 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const [isCompareModalOpen, setIsCompareModalOpen] = React.useState(false);
-  const headerRef = useScrollAnimation('slide-in-up');
-  const controlsRef = useScrollAnimation('slide-in-up');
-  const tabsRef = useScrollAnimation('slide-in-up');
   
   // Helper to create URL-friendly tab names
   const getTabSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-');
@@ -194,16 +191,16 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />
       )}
-      <div className="pt-28 md:pt-36 pb-8 md:pb-12 bg-brand-primary overflow-x-hidden">
+      <div className="pt-28 md:pt-36 pb-8 md:pb-6 bg-brand-primary overflow-x-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <div ref={headerRef} className="text-center mb-8 animate-on-scroll">
+          <div className="text-center mb-8 animate-fade-in-up">
             <h1 className="text-3xl md:text-5xl font-extrabold text-white">{service.title}</h1>
             <p className="mt-4 text-base md:text-lg max-w-3xl mx-auto text-brand-muted">{service.description}</p>
           </div>
           
           {/* Tab Navigation (if applicable) */}
           {hasTabs && service.tabs && (
-            <div ref={tabsRef} className="w-full max-w-full overflow-x-auto pb-2 mb-8 relative z-20 animate-on-scroll scrollbar-thin scrollbar-thumb-brand-secondary scrollbar-track-transparent md:flex md:justify-center md:pb-0" style={{ transitionDelay: '200ms'}}>
+            <div className="w-full max-w-full overflow-x-auto pb-2 mb-8 relative z-20 animate-fade-in-up scrollbar-thin scrollbar-thumb-brand-secondary scrollbar-track-transparent md:flex md:justify-center md:pb-0" style={{ animationDelay: '100ms' }}>
               <div className="bg-brand-secondary p-1.5 md:p-2 rounded-lg flex space-x-2 whitespace-nowrap min-w-min mx-auto w-fit">
                 {service.tabs.map((tab, index) => (
                   <button
@@ -224,7 +221,11 @@ const GenericServicePage: React.FC<{ service: ServiceCategory; children?: React.
           
           {/* Combined Controls Section: Anchors + Action Buttons */}
           {plansToShow.length > 0 && (
-             <div ref={controlsRef} className="flex flex-col items-center mb-16 animate-on-scroll relative z-20" style={{ transitionDelay: '100ms' }}>
+             <div 
+                key={activeCategoryTitle}
+                className="flex flex-col items-center mb-16 animate-fade-in-up relative z-20 pb-10" 
+                style={{ animationDelay: '200ms', contentVisibility: 'visible' }}
+             >
                 
                 {/* Available Plans Anchors */}
                 <div className="flex flex-wrap justify-center items-center gap-2 mb-6 max-w-4xl px-4">

@@ -30,7 +30,19 @@ const PricingHighlight: React.FC = () => {
           {websitePlans?.map((plan, index) => {
             const cardRef = useScrollAnimation('slide-in-up');
             return (
-              plan && <div ref={cardRef} key={index} className="animate-on-scroll" style={{ transitionDelay: `${index * 150}ms`}}><PricingHighlightCard plan={plan} /></div>
+              plan && (
+                <div 
+                  ref={cardRef} 
+                  key={index} 
+                  className="animate-on-scroll pt-6 pb-2" // Added padding to prevent clipping of the badge and shadows
+                  style={{ 
+                    transitionDelay: `${index * 150}ms`,
+                    contentVisibility: 'visible' // Overrides CSS containment to allow the badge to overflow correctly
+                  }}
+                >
+                  <PricingHighlightCard plan={plan} />
+                </div>
+              )
             )
           })}
         </div>

@@ -1202,7 +1202,6 @@ export const servicesData: ServiceCategory[] = [
     description: 'From clickable prototypes to enterprise-grade ecosystems. We build intuitive, high-performance mobile applications for iOS and Android tailored to the Irish and global market.',
     plans: [
       { name: 'App Prototype', price: '€2,499', features: [
-          'Includes all features from Previous Plan',
           'Discovery Workshop & Idea Validation',
           { feature: 'User Flow & Journey Mapping', tooltip: 'Visualizing the path a user takes through your app to achieve their goal.' },
           { feature: 'Low-Fidelity Wireframing', tooltip: 'Blueprint sketches of your app layout without colors or images.' },
@@ -1451,7 +1450,6 @@ export const servicesData: ServiceCategory[] = [
     description: 'Launch your e-commerce empire without the hassle of inventory. We build and optimize dropshipping stores for maximum profitability.',
     plans: [
       { name: 'Micro', price: '€999', features: [
-          { feature: 'Includes all features from Previous Plan', tooltip: 'Includes all features from the plan below this one.' },
           { feature: 'Niche Selection Guidance', tooltip: 'We help you identify a profitable market segment with high demand and low competition.' },
           'Supplier & Product Category Research',
           'Customized Website design & development',
