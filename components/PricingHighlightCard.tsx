@@ -2,20 +2,18 @@
 import React from 'react';
 import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
+import { useCurrency } from '../context/CurrencyContext';
 
 const CheckIcon: React.FC = () => (
     <svg className="w-5 h-5 text-brand-accent-end flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
 );
 
 const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
+  const { formatPrice } = useCurrency();
   const MAX_FEATURES = 5;
   const featuresToShow = plan.features.slice(0, MAX_FEATURES);
   const remainingFeatures = plan.features.length - MAX_FEATURES;
 
-  // Updates:
-  // 1. Used '!' on border classes (e.g. !border-brand-accent-middle) to strictly override the default .glass-panel border.
-  // 2. For Popular plans: Replaced default shadow with a specific pink glow to avoid black background shadow.
-  // 3. For Standard plans: Added 'md:shadow-none' to explicitly remove the .glass-panel black shadow on desktop as requested.
   const cardClasses = plan.isPopular
     ? '!border-brand-accent-middle shadow-[0_0_30px_-5px_rgba(236,72,153,0.3)] z-10 hover:shadow-[0_0_50px_-5px_rgba(236,72,153,0.5)]'
     : '!border-white/10 md:shadow-none hover:!border-brand-accent-start/50 hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.2)] hover:-translate-y-1';
@@ -34,7 +32,7 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
       <div className="text-center">
         <h3 className="text-2xl font-bold text-white">{plan.name}</h3>
         <p className="mt-4">
-          <span className="text-3xl sm:text-4xl font-extrabold text-white">{plan.price}</span>
+          <span className="text-3xl sm:text-4xl font-extrabold text-white">{formatPrice(plan.price)}</span>
           {plan.priceDetails && <span className="text-brand-muted">{plan.priceDetails}</span>}
         </p>
       </div>
@@ -55,14 +53,12 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
         )}
       </ul>
       
-      {/* Stylish Minimal CTA Button */}
       <div className="mt-8 relative rounded-full overflow-hidden group/btn shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] transition-all duration-300 transform group-hover:translate-y-[-2px]">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end opacity-90 group-hover/btn:opacity-100 transition-opacity"></div>
         <div className="relative py-4 text-center text-white font-bold flex justify-center items-center gap-2">
            View Details 
            <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
         </div>
-        {/* Sheen */}
         <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover/btn:left-[100%]"></div>
       </div>
     </Link>

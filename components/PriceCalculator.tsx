@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface PriceCalculatorProps {
   serviceId: string;
@@ -104,7 +105,7 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
       { label: 'Reels / TikTok Video Editing (Per Video)', price: 199 },
       { label: 'Daily Community Management', price: 599 },
       { label: 'Paid Ad Campaign Setup', price: 699 },
-      { label: 'Influencer Outreach List (10)', price: 499 }, // Increased
+      { label: 'Influencer Outreach List (10)', price: 499 }, 
       { label: 'Monthly Strategy Consultation', price: 299 },
       { label: 'Custom Story Highlight Covers', price: 179 },
       { label: 'LinkedIn Profile Optimization', price: 349 },
@@ -117,7 +118,7 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
   else if (id === 'logo-design') {
     if(cat.includes('logo')) {
         unitName = 'Additional Concepts';
-        unitPrice = 49; // Reduced to €49
+        unitPrice = 49; 
         max = 5;
         addOns = [
           { label: 'Social Media Kit (Covers/Profiles)', price: 179 },
@@ -133,7 +134,7 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
         ];
     } else if (cat.includes('brochure')) {
         unitName = 'Additional Panels/Pages';
-        unitPrice = 49; // Reduced to €49
+        unitPrice = 49;
         max = 12;
         addOns = [
             { label: 'Editable Source Files (AI/InDesign)', price: 199 },
@@ -150,34 +151,32 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
         unitPrice = 70;
         max = 5;
         addOns = [
-            { label: 'Editable Source Files (PSD/AI)', price: 299 }, // Increased
-            { label: 'Social Media Resizing Pack (3 Sizes)', price: 249 }, // Increased
-            { label: 'Double-Sided Design Upgrade', price: 249 }, // Increased
-            { label: 'QR Code Tracking Integration', price: 199 }, // Increased
-            { label: 'Animated Digital Version', price: 399 }, // Increased
-            { label: 'Express Delivery (24h)', price: 399 }, // Increased
-            { label: 'A/B Testing Designs (2)', price: 299 } // Increased
+            { label: 'Editable Source Files (PSD/AI)', price: 299 },
+            { label: 'Social Media Resizing Pack (3 Sizes)', price: 249 },
+            { label: 'Double-Sided Design Upgrade', price: 249 },
+            { label: 'QR Code Tracking Integration', price: 199 },
+            { label: 'Animated Digital Version', price: 399 },
+            { label: 'Express Delivery (24h)', price: 399 },
+            { label: 'A/B Testing Designs (2)', price: 299 }
         ];
     } else {
-        // Digital Creatives
         unitName = 'Additional Assets';
-        unitPrice = 49; // Reduced to €49
+        unitPrice = 49;
         max = 20;
         addOns = [
-            { label: 'Source Files (PSD/Figma)', price: 349 }, // Increased
-            { label: 'Animation / Motion Effects', price: 499 }, // Increased
-            { label: 'All-Platform Resizing', price: 449 }, // Increased
-            { label: 'Stock Video Licensing', price: 349 }, // Increased
-            { label: 'Custom Iconography', price: 299 }, // Increased
-            { label: 'Rapid Delivery (24h)', price: 399 }, // Increased
-            { label: 'Carousel Sequence Design', price: 349 } // Increased
+            { label: 'Source Files (PSD/Figma)', price: 349 },
+            { label: 'Animation / Motion Effects', price: 499 },
+            { label: 'All-Platform Resizing', price: 449 },
+            { label: 'Stock Video Licensing', price: 349 },
+            { label: 'Custom Iconography', price: 299 },
+            { label: 'Rapid Delivery (24h)', price: 399 },
+            { label: 'Carousel Sequence Design', price: 349 }
         ];
     }
   } 
-  // --- Mobile App ---
   else if (id === 'mobile-app') {
     unitName = 'Additional Functional Screens';
-    unitPrice = 500; // Reduced to €500
+    unitPrice = 500;
     max = 20;
     addOns = [
       { label: 'Web Admin Panel', price: 2999 },
@@ -194,10 +193,9 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
       { label: 'Offline Mode Functionality', price: 1999 }
     ];
   } 
-  // --- Dropshipping ---
   else if (id === 'dropshipping') {
     unitName = 'Additional Products';
-    unitPrice = 2; // Reduced to €2
+    unitPrice = 2;
     max = 200;
     step = 20;
     addOns = [
@@ -211,7 +209,6 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
       { label: 'SEO Optimization Package', price: 499 },
       { label: 'Blog Content (3 Articles)', price: 349 },
       { label: 'Trust Badge Integration', price: 99 },
-      // New Add-ons for variety
       { label: 'User Generated Content (UGC) Video Pack (3 Videos)', price: 499 },
       { label: 'Competitor Ad Spy Report', price: 199 },
       { label: 'Private Agent Introduction (Faster Shipping)', price: 599 },
@@ -219,30 +216,28 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
       { label: 'TikTok Ad Account Setup & Pixel', price: 299 }
     ];
   } 
-  // --- Video Animation ---
   else if (id === 'video-animation') {
     unitName = 'Additional Duration (10s)';
-    unitPrice = 199; // Reduced to €199
-    max = 12; // 120 seconds max extra
+    unitPrice = 199;
+    max = 12;
     step = 1; 
     addOns = [
-      { label: 'Professional Scriptwriting', price: 499 }, // Increased
-      { label: 'Premium Human Voiceover', price: 599 }, // Increased
-      { label: 'Background Music License', price: 299 }, // Increased
-      { label: 'Advanced Sound Effects (SFX)', price: 399 }, // Increased
-      { label: '4K Ultra HD Render', price: 599 }, // Increased
-      { label: 'Source Files (After Effects)', price: 799 }, // Increased
-      { label: 'Subtitles / Captions', price: 249 }, // Increased
-      { label: 'Expedited Delivery (5 Days)', price: 999 }, // Increased
-      { label: 'Social Media Resizing (Square/Vertical)', price: 399 }, // Increased
-      { label: 'Character Design Customization', price: 699 } // Increased
+      { label: 'Professional Scriptwriting', price: 499 },
+      { label: 'Premium Human Voiceover', price: 599 },
+      { label: 'Background Music License', price: 299 },
+      { label: 'Advanced Sound Effects (SFX)', price: 399 },
+      { label: '4K Ultra HD Render', price: 599 },
+      { label: 'Source Files (After Effects)', price: 799 },
+      { label: 'Subtitles / Captions', price: 249 },
+      { label: 'Expedited Delivery (5 Days)', price: 999 },
+      { label: 'Social Media Resizing (Square/Vertical)', price: 399 },
+      { label: 'Character Design Customization', price: 699 }
     ];
   } 
-  // --- Illustration ---
   else if (id === 'illustration') {
     if (cat.includes('book cover')) {
         unitName = 'Additional Concepts';
-        unitPrice = 49; // Reduced to €49
+        unitPrice = 49;
         max = 5;
         addOns = [
             { label: 'Full Wrap (Spine + Back) Upgrade', price: 249 },
@@ -255,7 +250,7 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
         ];
     } else if (cat.includes('children')) {
         unitName = 'Additional Illustrations';
-        unitPrice = 120; // Reduced to €120
+        unitPrice = 120;
         max = 15;
         addOns = [
             { label: 'Character Design Sheet', price: 399 },
@@ -268,9 +263,8 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
             { label: 'Source Files', price: 599 }
         ];
     } else {
-        // Ebook / General Illustration
         unitName = 'Additional Illustrations';
-        unitPrice = 79; // Reduced to €79
+        unitPrice = 79;
         max = 10;
         addOns = [
             { label: 'Source Files (PSD/AI)', price: 299 },
@@ -289,14 +283,13 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
 };
 
 const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTitle, plans }) => {
+  const { symbol, formatPrice } = useCurrency();
   const config = useMemo(() => getCalculatorConfig(serviceId, categoryTitle), [serviceId, categoryTitle]);
   
-  // Use the first plan as default if available
   const [selectedPlanIndex, setSelectedPlanIndex] = useState(0);
   const [sliderValue, setSliderValue] = useState(0);
   const [selectedAddons, setSelectedAddons] = useState<number[]>([]);
 
-  // Reset logic when service changes
   useEffect(() => {
     setSliderValue(0);
     setSelectedAddons([]);
@@ -326,10 +319,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 max-w-7xl mx-auto">
-          {/* Controls Column */}
           <div className="lg:col-span-8 space-y-8">
-            
-            {/* 1. Select Base Plan */}
             <div className="bg-brand-primary p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg">
               <h3 className="text-xl font-bold text-white mb-6 flex items-center">
                 <span className="w-8 h-8 rounded-full bg-brand-accent-start/20 text-brand-accent-start flex items-center justify-center text-sm mr-3 border border-brand-accent-start/50 font-bold">1</span>
@@ -353,13 +343,12 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                         </div>
                     )}
                     <div className={`font-bold text-lg mb-1 transition-colors ${selectedPlanIndex === index ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>{plan.name}</div>
-                    <div className="text-brand-muted text-sm">{plan.price}</div>
+                    <div className="text-brand-muted text-sm">{formatPrice(plan.price)}</div>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* 2. Customize Quantity */}
             <div className="bg-brand-primary p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg">
               <h3 className="text-xl font-bold text-white mb-8 flex items-center">
                 <span className="w-8 h-8 rounded-full bg-brand-accent-middle/20 text-brand-accent-middle flex items-center justify-center text-sm mr-3 border border-brand-accent-middle/50 font-bold">2</span>
@@ -387,12 +376,11 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                     />
                 </div>
                 <p className="text-sm text-brand-muted mt-4 text-center bg-brand-secondary/30 py-2 rounded-lg border border-gray-800">
-                    Adding <span className="text-white font-bold">{sliderValue}</span> extra units at <span className="text-white font-bold">€{config.unitPrice}</span> each.
+                    Adding <span className="text-white font-bold">{sliderValue}</span> extra units at <span className="text-white font-bold">{symbol}{config.unitPrice}</span> each.
                 </p>
               </div>
             </div>
 
-            {/* 3. Add-ons */}
             <div className="bg-brand-primary p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg">
               <h3 className="text-xl font-bold text-white mb-6 flex items-center">
                 <span className="w-8 h-8 rounded-full bg-brand-accent-end/20 text-brand-accent-end flex items-center justify-center text-sm mr-3 border border-brand-accent-end/50 font-bold">3</span>
@@ -423,16 +411,14 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                     />
                     <div className="flex-grow flex justify-between items-center">
                         <span className={`text-sm font-medium transition-colors ${selectedAddons.includes(index) ? 'text-white' : 'text-gray-300'}`}>{addon.label}</span>
-                        <span className={`text-xs font-bold ml-2 ${selectedAddons.includes(index) ? 'text-brand-accent-end' : 'text-brand-muted'}`}>+€{addon.price}</span>
+                        <span className={`text-xs font-bold ml-2 ${selectedAddons.includes(index) ? 'text-brand-accent-end' : 'text-brand-muted'}`}>+{symbol}{addon.price}</span>
                     </div>
                   </label>
                 ))}
               </div>
             </div>
-
           </div>
 
-          {/* Summary Column */}
           <div className="lg:col-span-4">
             <div className="bg-brand-secondary/80 backdrop-blur-xl p-6 md:p-8 rounded-2xl border border-brand-accent-start/30 sticky top-24 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end rounded-t-2xl"></div>
@@ -445,7 +431,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                 <div className="space-y-4 mb-8 text-sm max-h-[40vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-brand-muted scrollbar-track-transparent">
                     <div className="flex justify-between items-center text-white font-medium pb-4 border-b border-gray-700">
                         <span>Base Plan ({plans[selectedPlanIndex]?.name})</span>
-                        <span>€{basePrice}</span>
+                        <span>{symbol}{basePrice}</span>
                     </div>
                     
                     {sliderValue > 0 && (
@@ -454,7 +440,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                                 <span className="w-1.5 h-1.5 rounded-full bg-brand-accent-middle mr-2"></span>
                                 {sliderValue} x {config.unitName.split(' ').slice(1).join(' ')}
                             </span>
-                            <span className="text-white">€{sliderCost}</span>
+                            <span className="text-white">{symbol}{sliderCost}</span>
                         </div>
                     )}
                     
@@ -466,7 +452,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                                         <span className="w-1.5 h-1.5 rounded-full bg-brand-accent-end mr-2 mt-1.5 flex-shrink-0"></span>
                                         <span className="text-gray-400">{config.addOns[idx].label}</span>
                                     </span>
-                                    <span className="text-white ml-2">€{config.addOns[idx].price}</span>
+                                    <span className="text-white ml-2">{symbol}{config.addOns[idx].price}</span>
                                 </div>
                             ))}
                         </div>
@@ -476,7 +462,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                 <div className="border-t border-gray-700 pt-6 mb-8">
                     <div className="flex justify-between items-end">
                         <span className="text-brand-muted font-medium uppercase tracking-wider text-xs">Total Estimated</span>
-                        <span className="text-4xl font-extrabold text-white tracking-tight">€{totalCost.toLocaleString()}</span>
+                        <span className="text-4xl font-extrabold text-white tracking-tight">{symbol}{totalCost.toLocaleString()}</span>
                     </div>
                 </div>
 
@@ -484,7 +470,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({ serviceId, categoryTi
                     to="/contact" 
                     state={{ 
                         subject: `Custom Quote Request: ${plans[selectedPlanIndex]?.name} + ${sliderValue} Extras`,
-                        messageBody: `I am interested in a custom package based on the ${plans[selectedPlanIndex]?.name} plan.\n\nConfiguration:\n- Service: ${categoryTitle}\n- Base Plan: ${plans[selectedPlanIndex]?.name} (€${basePrice})\n- Customization: ${sliderValue} ${config.unitName} (€${sliderCost})\n\nSelected Add-ons:\n${selectedAddons.map(i => `- ${config.addOns[i].label} (€${config.addOns[i].price})`).join('\n')}\n\nTotal Estimated Price: €${totalCost}`
+                        messageBody: `I am interested in a custom package based on the ${plans[selectedPlanIndex]?.name} plan.\n\nConfiguration:\n- Service: ${categoryTitle}\n- Base Plan: ${plans[selectedPlanIndex]?.name} (${symbol}${basePrice})\n- Customization: ${sliderValue} ${config.unitName} (${symbol}${sliderCost})\n\nSelected Add-ons:\n${selectedAddons.map(i => `- ${config.addOns[i].label} (${symbol}${config.addOns[i].price})`).join('\n')}\n\nTotal Estimated Price: ${symbol}${totalCost}`
                     }}
                     aria-label={`Request custom quote for ${plans[selectedPlanIndex]?.name} plan with selected options`}
                     className="relative overflow-hidden group block w-full py-4 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold text-center rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] hover:scale-[1.02] transition-all duration-300 text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-middle"

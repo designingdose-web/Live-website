@@ -10,6 +10,7 @@ const NotFoundPage: React.FC = () => {
         title="Page Not Found | Designing Dose"
         description="The page you are looking for doesn't exist. Return to Designing Dose home."
         keywords="404, Page Not Found, Designing Dose"
+        noindex={true}
       />
       <div className="min-h-screen bg-brand-primary flex flex-col items-center justify-center px-4 text-center">
         <h1 className="text-6xl md:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end mb-4">

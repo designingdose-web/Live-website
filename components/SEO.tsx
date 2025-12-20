@@ -11,9 +11,10 @@ interface SEOProps {
   preloadImage?: string; // Fallback for simple preload
   preloadSrcSet?: string; // New: For responsive image preloading
   preloadSizes?: string;  // New: For responsive image sizing
+  noindex?: boolean;      // New: For 404 pages or private content
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, preloadImage, preloadSrcSet, preloadSizes }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, preloadImage, preloadSrcSet, preloadSizes, noindex }) => {
   const location = useLocation();
   const baseUrl = "https://designingdose.com";
   const canonicalUrl = url || `${baseUrl}${location.pathname}`;
@@ -34,21 +35,15 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, pre
     let finalTitle = title;
 
     // Logic: Only append brand name if there is room.
-    // If the provided title is short (< 40 chars), append brand.
-    // If it's long, leave it alone to prioritize keywords.
     if (!title.includes(brandName)) {
         if (title.length + brandName.length + 3 <= MAX_TITLE_LENGTH) {
             finalTitle = `${title} | ${brandName}`;
         }
     }
 
-    // Ensure title doesn't exceed 60 chars
     finalTitle = truncate(finalTitle, MAX_TITLE_LENGTH);
-    
-    // Ensure description doesn't exceed 160 chars
     const finalDescription = truncate(description, MAX_DESC_LENGTH);
 
-    // Update Document Title
     document.title = finalTitle;
 
     const updateMeta = (name: string, content: string, attribute = 'name') => {
@@ -63,6 +58,11 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, pre
 
     updateMeta('description', finalDescription);
     updateMeta('keywords', keywords || "Web Development, SEO, Mobile Apps, Designing Dose, Digital Marketing, Ireland, USA");
+
+    // Robots Logic: Force noindex for 404s to satisfy SEO audit tools
+    const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
+    updateMeta('robots', robotsContent);
+    updateMeta('googlebot', robotsContent);
 
     updateMeta('og:title', finalTitle, 'property');
     updateMeta('og:description', finalDescription, 'property');
@@ -85,8 +85,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, pre
     }
     linkCanonical.setAttribute('href', canonicalUrl);
 
-    // Image Preloading Logic (LCP Optimization)
-    // Removes old preloads to prevent bloat, adds new one if requested
+    // Image Preloading Logic
     const existingPreload = document.querySelector('link[rel="preload"][as="image"]');
     if (existingPreload) {
         document.head.removeChild(existingPreload);
@@ -108,7 +107,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, pre
         document.head.appendChild(linkPreload);
     }
 
-  }, [title, description, keywords, image, canonicalUrl, preloadImage, preloadSrcSet, preloadSizes]);
+  }, [title, description, keywords, image, canonicalUrl, preloadImage, preloadSrcSet, preloadSizes, noindex]);
 
   return null;
 };

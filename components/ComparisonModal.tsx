@@ -1,6 +1,7 @@
 
 import React, { useMemo, useEffect } from 'react';
 import type { Plan } from '../types';
+import { useCurrency } from '../context/CurrencyContext';
 
 const CheckIcon: React.FC = () => (
     <svg className="w-5 h-5 md:w-6 md:h-6 text-brand-accent-end mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -19,6 +20,8 @@ interface ComparisonModalProps {
 }
 
 const ComparisonModal: React.FC<ComparisonModalProps> = ({ isOpen, onClose, plans, categoryTitle }) => {
+  const { formatPrice } = useCurrency();
+
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -88,7 +91,7 @@ const ComparisonModal: React.FC<ComparisonModalProps> = ({ isOpen, onClose, plan
                 {plans.map(plan => (
                   <th key={plan.name} className="p-3 md:p-4 text-center font-semibold text-white bg-brand-secondary border-b border-r border-brand-secondary/50 w-1/6 min-w-[120px]">
                     <div className="text-base md:text-lg whitespace-nowrap">{plan.name}</div>
-                    <div className="text-lg md:text-2xl font-extrabold">{plan.price}</div>
+                    <div className="text-lg md:text-2xl font-extrabold">{formatPrice(plan.price)}</div>
                     {plan.priceDetails && <div className="text-[10px] md:text-xs text-brand-muted">{plan.priceDetails}</div>}
                   </th>
                 ))}

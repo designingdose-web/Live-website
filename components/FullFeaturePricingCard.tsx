@@ -3,6 +3,7 @@ import React from 'react';
 import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
 import Tooltip from './Tooltip';
+import { useCurrency } from '../context/CurrencyContext';
 
 const CheckIcon: React.FC = () => (
     <svg className="w-5 h-5 text-brand-accent-end flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -17,10 +18,8 @@ const InfoIcon: React.FC = () => (
 
 
 const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
-  // Updates:
-  // 1. Added '!important' to borders to override glass-panel defaults.
-  // 2. Added hover effects (lift and glow) to Popular plans.
-  // 3. Matched shadow styles with Homepage Highlight cards.
+  const { formatPrice } = useCurrency();
+  
   const cardClasses = plan.isPopular
     ? '!border-brand-accent-middle shadow-[0_0_30px_-5px_rgba(236,72,153,0.3)] z-10 hover:shadow-[0_0_50px_-5px_rgba(236,72,153,0.5)] hover:-translate-y-1'
     : '!border-white/10 hover:!border-brand-accent-start/50 hover:-translate-y-1 hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.2)]';
@@ -35,7 +34,7 @@ const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
       <div className="text-center">
         <h3 className="text-xl md:text-2xl font-bold text-white">{plan.name}</h3>
         <p className="mt-4">
-          <span className="text-3xl md:text-4xl font-extrabold text-white">{plan.price}</span>
+          <span className="text-3xl md:text-4xl font-extrabold text-white">{formatPrice(plan.price)}</span>
           {plan.priceDetails && <span className="text-brand-muted">{plan.priceDetails}</span>}
         </p>
       </div>
@@ -72,13 +71,11 @@ const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
         className="mt-6 md:mt-8 relative overflow-hidden group rounded-full block w-full shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-end focus:ring-offset-brand-secondary"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end transition-opacity opacity-100"></div>
-        {/* Add a subtle overlay on hover to brighten */}
         <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
         <div className="relative py-4 px-6 text-center text-white font-bold text-sm md:text-base flex items-center justify-center gap-2">
             Get Started
             <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
         </div>
-        {/* Sheen */}
         <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
       </Link>
     </div>
