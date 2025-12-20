@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import ProcessSection from '../components/ProcessSection';
@@ -9,12 +8,11 @@ import SEO from '../components/SEO';
 const AboutPage: React.FC = () => {
     const heroRef = useScrollAnimation('slide-in-up');
     const storyRef = useScrollAnimation('fade-in');
-    const storyImageRef = useScrollAnimation('slide-in-right'); // Added ref for the image
+    const storyImageRef = useScrollAnimation('slide-in-right');
     const successRef = useScrollAnimation('slide-in-up');
     const missionRef = useScrollAnimation('slide-in-left');
     const visionRef = useScrollAnimation('slide-in-right');
 
-    // Updated with user provided images
     const ourJourneyImage = "https://res.cloudinary.com/dmaqptknc/image/upload/v1765158192/success_story_jqg375.webp";
     const successStoryImage = "https://res.cloudinary.com/dmaqptknc/image/upload/v1765158640/ABS2GSmTuj-U9bayKHm5CzZ0gyBU6BrE_nqsdqp.webp";
     const missionVisionImage = "https://res.cloudinary.com/dmaqptknc/image/upload/v1765160587/mv2_kv4cfp.webp";
@@ -27,9 +25,7 @@ const AboutPage: React.FC = () => {
         keywords="About Designing Dose, Digital Agency Team, Our Mission, Tech Innovators, Business Growth Partners"
       />
       <div className="bg-brand-primary text-white overflow-x-hidden">
-        {/* Hero Section */}
         <div ref={heroRef} className="pt-28 pb-20 md:pt-40 md:pb-32 bg-brand-secondary animate-on-scroll relative overflow-hidden">
-          {/* Background Element */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-accent-start/5 to-transparent pointer-events-none"></div>
           
           <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
@@ -40,10 +36,8 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
         <StatsSection />
 
-        {/* Our Story & Background */}
         <section className="py-16 md:py-24 bg-brand-primary relative">
           <div className="container mx-auto px-4 md:px-6">
               <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
@@ -62,20 +56,21 @@ const AboutPage: React.FC = () => {
                           </p>
                       </div>
                   </div>
-                  <div ref={storyImageRef} className="relative animate-on-scroll h-full min-h-[400px]" style={{ transitionDelay: '200ms' }}>
+                  <div ref={storyImageRef} className="relative animate-on-scroll aspect-video md:aspect-[4/3]" style={{ transitionDelay: '200ms' }}>
                       <div className="absolute inset-0 bg-gradient-to-tr from-brand-accent-start to-brand-accent-end rounded-2xl transform rotate-3 opacity-20 blur-lg"></div>
                       <img 
                           src={ourJourneyImage} 
                           alt="Designing Dose team collaborating on digital innovation projects over the last decade" 
                           className="relative rounded-2xl shadow-2xl border border-gray-800 w-full h-full object-cover"
                           loading="lazy"
+                          width="800"
+                          height="600"
                       />
                   </div>
               </div>
           </div>
         </section>
 
-        {/* Success Story / Big Players */}
         <section ref={successRef} className="py-16 md:py-24 bg-brand-secondary border-y border-gray-800 animate-on-scroll">
           <div className="container mx-auto px-4 md:px-6">
               <div className="text-center mb-12">
@@ -86,7 +81,6 @@ const AboutPage: React.FC = () => {
               </div>
 
               <div className="bg-gradient-to-br from-brand-primary to-[#161B22] border border-brand-accent-start/20 rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(139,92,246,0.1)] relative overflow-hidden">
-                  {/* Decorative background blob */}
                   <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent-middle/10 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
                   <div className="grid md:grid-cols-2 gap-10 items-center relative z-10">
@@ -117,11 +111,13 @@ const AboutPage: React.FC = () => {
                               </li>
                           </ul>
                       </div>
-                      <div className="relative h-64 md:h-full min-h-[300px] rounded-xl overflow-hidden shadow-2xl border border-gray-700 group">
+                      <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border border-gray-700 group">
                           <img 
                               src={successStoryImage} 
                               alt="Enterprise e-commerce mobile app interface showing increased conversion rates" 
                               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                              width="800"
+                              height="450"
                           />
                           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
                       </div>
@@ -132,7 +128,6 @@ const AboutPage: React.FC = () => {
 
         <TrustBadges className="bg-brand-primary/50" />
 
-        {/* Mission & Vision */}
         <div className="py-16 md:py-24 bg-brand-primary relative">
           <div className="container mx-auto px-4 md:px-6">
               <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
@@ -156,14 +151,15 @@ const AboutPage: React.FC = () => {
                           </p>
                       </div>
                   </div>
-                  <div className="block sticky top-24">
+                  <div className="block sticky top-24 aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl border border-gray-800">
                       <img 
                           src={missionVisionImage} 
                           alt="Futuristic digital landscape representing Designing Dose's vision for marketing innovation" 
-                          className="rounded-2xl shadow-2xl border border-gray-800 object-cover w-full h-[600px] filter saturate-[.85]"
+                          className="w-full h-full object-cover filter saturate-[.85]"
                           loading="lazy"
+                          width="600"
+                          height="800"
                       />
-                      {/* Floating Badge */}
                       <div className="absolute -bottom-6 -left-6 bg-brand-secondary p-6 rounded-xl border border-brand-accent-middle/30 shadow-xl max-w-xs hidden md:block">
                           <p className="text-brand-accent-middle font-bold text-4xl mb-1">10+</p>
                           <p className="text-white font-semibold">Years of redefining digital standards.</p>
@@ -173,7 +169,6 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Our Approach Section */}
         <ProcessSection />
       </div>
     </>

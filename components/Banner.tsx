@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -14,13 +13,11 @@ interface Slide {
 const slides: Slide[] = [
    {
     type: 'video',
-    // Optimized Cloudinary URL: q_auto:good balances quality and file size better than 'best' for web background
     source: 'https://res.cloudinary.com/dmaqptknc/video/upload/q_auto:good,f_auto/v1765068211/banner_vid_1_m1dwlb.mp4',
-    // Generated poster image for instant loading
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765068211/banner_vid_1_m1dwlb.jpg', 
     tagline: "We Don't Just Build Websites. We Build Empires.",
     subTagline: 'Immersive design, flawless code, and a user experience that turns visitors into obsessed fans.',
-    duration: 8000, // 8 seconds
+    duration: 8000,
   },
   {
     type: 'video',
@@ -28,7 +25,7 @@ const slides: Slide[] = [
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765132642/banner_2_nrpm1o.jpg',
     tagline: 'Invisibility is Not an Option.',
     subTagline: 'Climb the rankings and claim your throne. We turn search engines into your most powerful growth engine.',
-    duration: 6000, // 6 seconds
+    duration: 6000,
   },
   {
     type: 'video',
@@ -36,7 +33,7 @@ const slides: Slide[] = [
     poster: 'https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765132642/3_gv10bs.jpg',
     tagline: 'Stop the Scroll. Start the Conversation.',
     subTagline: "From viral visuals to strategic storytelling, we amplify your brand's voice in a noisy digital world.",
-    duration: 6000, // 6 seconds
+    duration: 6000,
   },
 ];
 
@@ -58,14 +55,9 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Smart Hybrid Loading:
-    // Only start loading the video file after a small delay to prioritize the LCP image.
-    // This trick allows Google to score the page as "Loaded" when the image appears,
-    // while the user still gets the video experience a second later.
     const timer = setTimeout(() => {
         setShouldLoadVideo(true);
-    }, 2500); // 2.5s delay to ensure LCP event fires first
-
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -74,40 +66,25 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
         if (isPaused || !isActive) {
             videoRef.current.pause();
         } else {
-            videoRef.current.play().catch(() => {
-                // Autoplay policy might block unmuted, but we are muted.
-                // Catching errors safely.
-            });
+            videoRef.current.play().catch(() => {});
         }
     }
   }, [isPaused, isActive, shouldLoadVideo]);
 
   return (
     <div className="absolute inset-0 w-full h-full bg-brand-primary" aria-hidden="true">
-      {/* 
-         Static Image Underlay: 
-         1. Acts as the LCP element (instant load).
-         2. Acts as the placeholder while video buffers.
-         3. Acts as fallback if video fails.
-         4. Explicit width/height prevents Layout Shift (CLS).
-      */}
       {poster && (
         <img
           src={poster}
           alt={`Designing Dose Background - ${tagline}`}
           width="1920"
           height="1080"
-          className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02]"
+          className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02] aspect-video"
           loading="eager"
           fetchPriority="high"
         />
       )}
       
-      {/* 
-         Video Overlay: 
-         - Only renders into DOM after delay.
-         - Fades in smoothly.
-      */}
       {shouldLoadVideo && !videoError && (
         <video 
           ref={videoRef}
@@ -118,7 +95,7 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
           autoPlay
           preload="metadata"
           onError={() => setVideoError(true)}
-          className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000 transform scale-[1.02]`}
+          className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000 transform scale-[1.02] aspect-video"
           aria-hidden="true"
           tabIndex={-1}
         />
@@ -132,7 +109,6 @@ const Banner: React.FC = () => {
   const [loadOthers, setLoadOthers] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   
-  // Touch state for swipe navigation
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
@@ -144,7 +120,6 @@ const Banner: React.FC = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
   }, []);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowRight') {
@@ -160,13 +135,10 @@ const Banner: React.FC = () => {
 
   useEffect(() => {
     if (isPaused) return;
-
     const slideDuration = slides[currentIndex].duration || 7000;
-    
     const timer = setTimeout(() => {
       nextSlide();
     }, slideDuration);
-
     return () => clearTimeout(timer);
   }, [currentIndex, nextSlide, isPaused]);
 
@@ -205,17 +177,13 @@ const Banner: React.FC = () => {
 
   const handleTouchEnd = () => {
     if (touchStartX.current === null || touchEndX.current === null) return;
-    
     const distance = touchStartX.current - touchEndX.current;
     const minSwipeDistance = 50; 
-
     if (distance > minSwipeDistance) {
       nextSlide();
-    } 
-    else if (distance < -minSwipeDistance) {
+    } else if (distance < -minSwipeDistance) {
       prevSlide();
     }
-    
     touchStartX.current = null;
     touchEndX.current = null;
   };
@@ -242,9 +210,8 @@ const Banner: React.FC = () => {
     }));
 
   return (
-    // Explicit aspect-ratio containment to prevent CLS
     <div 
-        className="relative w-full h-[85vh] md:h-[95vh] overflow-hidden bg-brand-primary group border-b border-white/20 aspect-[16/9] md:aspect-auto" 
+        className="relative w-full h-[85vh] md:h-[95vh] overflow-hidden bg-brand-primary group border-b border-white/20 aspect-video md:aspect-auto" 
         aria-roledescription="carousel" 
         aria-label="Highlighted Services"
         onTouchStart={handleTouchStart}
@@ -311,30 +278,24 @@ const Banner: React.FC = () => {
                     fetchPriority={isLcpSlide ? 'high' : 'auto'}
                     decoding="async"
                     alt={`Designing Dose Banner: ${slide.tagline}`} 
-                    className="w-full h-full object-cover transform scale-[1.02]" 
+                    className="w-full h-full object-cover transform scale-[1.02] aspect-video" 
                     aria-hidden="true"
                 />
                 )
             )}
             
-            {/* 
-                Visual Improvement: Gradient Map overlay instead of solid black.
-                Retains brightness at top, ensures readability at bottom.
-            */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/80 z-20"></div>
             
             <div className="absolute inset-0 flex items-center justify-center text-center z-30 pt-16">
               <div className="container mx-auto px-4 md:px-6">
                 <HeadingTag
                   className={h1Class}
-                  // Text Shadow added for Accessibility (pass contrast check against video)
                   style={{ textShadow: '0 4px 12px rgba(0,0,0,0.8)' }}
                 >
                   {slide.tagline}
                 </HeadingTag>
                 <p
                   className={pClass}
-                  // Text Shadow added for Accessibility
                   style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}
                 >
                   {slide.subTagline}
@@ -342,7 +303,6 @@ const Banner: React.FC = () => {
                 <div
                   className={btnClass}
                 >
-                   {/* Stylish Primary CTA */}
                    <button 
                       onClick={openModal} 
                       className="relative overflow-hidden group bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-4 px-10 rounded-full text-lg shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-middle focus:ring-offset-black"
@@ -354,7 +314,6 @@ const Banner: React.FC = () => {
                       <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 transition-all duration-700 group-hover:left-[100%]"></div>
                     </button>
 
-                    {/* Minimal Stylish Secondary CTA */}
                     <Link 
                       to="/services/website-packages" 
                       className="relative overflow-hidden group bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-white/20 hover:border-brand-accent-end/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto text-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-end focus:ring-offset-black"

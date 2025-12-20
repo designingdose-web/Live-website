@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { BrowserRouter, HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
@@ -7,7 +6,13 @@ import FloatingCTA from './components/FloatingCTA';
 import LeadCaptureModal from './components/LeadCaptureModal';
 import ScrollToTop from './components/ScrollToTop';
 
-// Lazy load pages to split the bundle size
+// Performance Fix: Import small pages directly to reduce the number of JS chunks/requests
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import RefundPolicyPage from './pages/RefundPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import NotFoundPage from './pages/NotFoundPage';
+
+// Keep large pages lazy-loaded to optimize initial load weight
 const HomePage = lazy(() => import('./pages/HomePage'));
 const WebsitePricingPage = lazy(() => import('./pages/WebsitePricingPage'));
 const SeoPage = lazy(() => import('./pages/SeoPage'));
@@ -21,11 +26,6 @@ const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
-const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
-const RefundPolicyPage = lazy(() => import('./pages/RefundPolicyPage'));
-const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
-// Import 404 page
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Minimalist Loader for page transitions
 const PageLoader = () => (
@@ -44,15 +44,12 @@ const ScrollManager = () => {
     if (hash) {
       const element = document.getElementById(hash.substring(1)); // remove the '#'
       if (element) {
-        // A slight delay ensures the page has rendered before scrolling
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
       }
     } else {
       window.scrollTo(0, 0);
-      // Accessibility: Move focus to the skip link or top of body on route change
-      // so keyboard users start from top
       document.body.focus();
     }
   }, [pathname, hash]);
@@ -60,9 +57,7 @@ const ScrollManager = () => {
   return null;
 };
 
-// Smart Router: Uses BrowserRouter for SEO on the live site, HashRouter for stability in previews
 const SmartRouter: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Check if the current hostname matches your live domain
   const isProduction = window.location.hostname === 'designingdose.com' || window.location.hostname === 'www.designingdose.com';
 
   return isProduction ? (
@@ -76,10 +71,20 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalOpenCount, setModalOpenCount] = useState(0);
 
+  // Performance Optimization: Lazy-load AdSense script after 2.5 seconds
   useEffect(() => {
-    // This allows the modal to appear a maximum of 2 times per session.
+    const timer = setTimeout(() => {
+        const script = document.createElement('script');
+        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5836918123045173";
+        script.async = true;
+        script.crossOrigin = "anonymous";
+        document.head.appendChild(script);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     if (modalOpenCount < 2) {
-      // 15 seconds for the first appearance, 90 seconds for the second.
       const delay = modalOpenCount === 0 ? 15000 : 90000;
       const timer = setTimeout(() => {
         setIsModalOpen(true);
@@ -98,18 +103,15 @@ const App: React.FC = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    // Increment count so the timer for the next appearance (if any) starts.
     setModalOpenCount(prev => prev + 1);
   };
 
   return (
     <SmartRouter>
       <ScrollManager />
-      {/* ADA Compliance: Skip to content link */}
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <div className="flex flex-col min-h-screen">
         <Header />
-        {/* ADA Compliance: Main landmark with ID */}
         <main id="main-content" className="flex-grow focus:outline-none" tabIndex={-1}>
           <Suspense fallback={<PageLoader />}>
             <Routes>
@@ -129,7 +131,6 @@ const App: React.FC = () => {
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/refund-policy" element={<RefundPolicyPage />} />
               <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-              {/* Catch-all route for 404s */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
