@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ContactForm from '../components/ContactForm';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
@@ -40,7 +39,6 @@ const ContactPage: React.FC = () => {
                 <div>
                   <h3 className="font-semibold text-white text-base md:text-lg mb-2">United States Office</h3>
                   <p className="flex items-start"><span className="mr-2 mt-1">📍</span> Herkimer Street. Brooklyn, NY 11213, United States</p>
-                  <a href="tel:+19295636983" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">📞</span> PHONE: (929) 563-6983</a>
                   <a href="mailto:info@designingdose.com" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">✉️</span> EMAIL: info@designingdose.com</a>
                 </div>
               </div>

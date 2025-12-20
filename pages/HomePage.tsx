@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Banner from '../components/Banner';
 import TestimonialsSection from '../components/TestimonialCard';
@@ -191,7 +190,7 @@ const HomePage: React.FC = () => {
     <>
       <SEO 
         title="Designing Dose - Web Development, SEO & Digital Marketing Agency"
-        description="Designing Dose is a global digital agency offering Web Development, SEO, Mobile Apps, and Social Media Marketing to help businesses scale online."
+        description="Designing Dose is a premier global digital agency specializing in Web Development, SEO, Mobile Apps, and Social Media Marketing. Scale your brand and dominate the digital landscape with our expert solutions."
         keywords="Web Design Ireland, SEO Company USA, Digital Marketing UK, Mobile App Developers Canada, E-commerce Experts Australia, Dropshipping Services Europe, Software House Pakistan, Designing Dose, Global Digital Agency, Professional Website Builder"
       />
       <Banner />

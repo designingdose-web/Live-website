@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
@@ -50,7 +49,6 @@ const Footer: React.FC = () => {
                  <div className="p-5 rounded-xl bg-brand-primary/30 border border-white/20">
                     <h5 className="font-bold text-gray-200 mb-2">United States Office</h5>
                     <p className="mb-3 text-gray-400">Herkimer Street. Brooklyn, NY 11213, United States</p>
-                    <a href="tel:+19295636983" className="block hover:text-brand-accent-end transition-colors py-1">PHONE: (929) 563-6983</a>
                      <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-1">EMAIL: info@designingdose.com</a>
                 </div>
             </div>
