@@ -4,6 +4,7 @@ type CurrencySymbol = '$' | '£' | '€';
 
 interface CurrencyContextType {
   symbol: CurrencySymbol;
+  countryCode: string;
   formatPrice: (priceStr: string) => string;
   isLoading: boolean;
 }
@@ -12,14 +13,18 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined
 
 export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [symbol, setSymbol] = useState<CurrencySymbol>('€');
+  const [countryCode, setCountryCode] = useState<string>('IE');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const detectCurrency = async () => {
       // 1. Check local storage first for instant retrieval
-      const cached = localStorage.getItem('user_currency_symbol');
-      if (cached) {
-        setSymbol(cached as CurrencySymbol);
+      const cachedSymbol = localStorage.getItem('user_currency_symbol');
+      const cachedCountry = localStorage.getItem('user_country_code');
+      
+      if (cachedSymbol && cachedCountry) {
+        setSymbol(cachedSymbol as CurrencySymbol);
+        setCountryCode(cachedCountry);
         setIsLoading(false);
         return;
       }
@@ -37,14 +42,20 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           const data = await response.json();
           
           let detectedSymbol: CurrencySymbol = '€';
-          if (data.country_code === 'US') detectedSymbol = '$';
-          else if (data.country_code === 'GB') detectedSymbol = '£';
+          let detectedCountry: string = data.country_code || 'IE';
+
+          if (detectedCountry === 'US') detectedSymbol = '$';
+          else if (detectedCountry === 'GB') detectedSymbol = '£';
 
           setSymbol(detectedSymbol);
+          setCountryCode(detectedCountry);
+          
           localStorage.setItem('user_currency_symbol', detectedSymbol);
+          localStorage.setItem('user_country_code', detectedCountry);
         } catch (error) {
-          console.warn('Currency detection failed or timed out, defaulting to EUR.');
+          console.warn('Currency detection failed or timed out, defaulting to IE/EUR.');
           setSymbol('€');
+          setCountryCode('IE');
         } finally {
           setIsLoading(false);
         }
@@ -62,7 +73,7 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   return (
-    <CurrencyContext.Provider value={{ symbol, formatPrice, isLoading }}>
+    <CurrencyContext.Provider value={{ symbol, countryCode, formatPrice, isLoading }}>
       {children}
     </CurrencyContext.Provider>
   );

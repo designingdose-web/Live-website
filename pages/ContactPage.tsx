@@ -31,14 +31,33 @@ const ContactPage: React.FC = () => {
               <div className="space-y-6 md:space-y-8 text-brand-muted text-sm md:text-base">
                 <div>
                   <h3 className="font-semibold text-white text-base md:text-lg mb-2">Ireland Office</h3>
-                  <p className="flex items-start"><span className="mr-2 mt-1">📍</span> 77 Camden Street Lower,Saint Kevin’s, Dublin, D02 XE80, Ireland</p>
+                  <p className="flex items-start"><span className="mr-2 mt-1">📍</span> 77 Camden Street Lower, Saint Kevin’s, Dublin, D02 XE80, Ireland</p>
                   <a href="tel:+35312548762" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">📞</span> PHONE: +353 1 254 8762</a>
-                  <a href="https://wa.me/35312548762" target="_blank" rel="noopener noreferrer" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">💬</span> WhatsApp</a>
+                  
+                  {/* Updated WhatsApp Link with Multi-layer Brand Icon for better visibility and centering */}
+                  <a 
+                    href="https://wa.me/35312548762" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center mt-2 text-[#25D366] hover:text-[#128C7E] transition-colors font-semibold"
+                  >
+                    <span className="mr-2 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            {/* Solid Green Bubble Background */}
+                            <path fill="#25D366" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/>
+                            {/* Crisp White Handset Layer (Centralized) */}
+                            <path fill="#FFF" d="M17.36 14.39c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.19-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.08-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.88 1.21 3.07.15.2 2.09 3.19 5.08 4.48.71.3 1.27.49 1.7.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.08-.13-.27-.2-.57-.35z"/>
+                        </svg>
+                    </span> 
+                    WhatsApp
+                  </a>
+
                   <a href="mailto:info@designingdose.com" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">✉️</span> EMAIL: info@designingdose.com</a>
                 </div>
                 <div>
                   <h3 className="font-semibold text-white text-base md:text-lg mb-2">United States Office</h3>
-                  <p className="flex items-start"><span className="mr-2 mt-1">📍</span> Herkimer Street. Brooklyn, NY 11213, United States</p>
+                  <p className="flex items-start"><span className="mr-2 mt-1">📍</span> 18952 MacArthur Blvd Suite 100, Irvine, CA 92612, USA</p>
+                  <a href="tel:+16572024472" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">📞</span> PHONE: +1 657 202 4472</a>
                   <a href="mailto:info@designingdose.com" className="flex items-center mt-2 hover:text-brand-accent-end transition-colors"><span className="mr-2">✉️</span> EMAIL: info@designingdose.com</a>
                 </div>
               </div>

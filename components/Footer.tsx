@@ -37,7 +37,6 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className="md:col-span-2">
-            {/* Removed 'border-b border-white/10 pb-2' as requested */}
             <h4 className="font-semibold text-white tracking-wider uppercase mb-6 text-sm inline-block">Contact Us</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
                 <div className="p-5 rounded-xl bg-brand-primary/30 border border-white/20">
@@ -48,7 +47,8 @@ const Footer: React.FC = () => {
                 </div>
                  <div className="p-5 rounded-xl bg-brand-primary/30 border border-white/20">
                     <h5 className="font-bold text-gray-200 mb-2">United States Office</h5>
-                    <p className="mb-3 text-gray-400">Herkimer Street. Brooklyn, NY 11213, United States</p>
+                    <p className="mb-3 text-gray-400">18952 MacArthur Blvd Suite 100, Irvine, CA 92612, USA</p>
+                     <a href="tel:+16572024472" className="block hover:text-brand-accent-end transition-colors py-1">PHONE: +1 657 202 4472</a>
                      <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-1">EMAIL: info@designingdose.com</a>
                 </div>
             </div>

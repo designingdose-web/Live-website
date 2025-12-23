@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { Plan } from '../types';
 import { Link } from 'react-router-dom';
@@ -14,8 +13,9 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const featuresToShow = plan.features.slice(0, MAX_FEATURES);
   const remainingFeatures = plan.features.length - MAX_FEATURES;
 
+  // Refined cardClasses to fix the shadow and hover lift issues
   const cardClasses = plan.isPopular
-    ? '!border-brand-accent-middle shadow-[0_0_30px_-5px_rgba(236,72,153,0.3)] z-10 hover:shadow-[0_0_50px_-5px_rgba(236,72,153,0.5)]'
+    ? '!border-brand-accent-middle bg-brand-secondary/90 !shadow-[0_0_40px_-10px_rgba(236,72,153,0.4)] z-10 hover:-translate-y-1 hover:!shadow-[0_0_60px_-10px_rgba(236,72,153,0.6)]'
     : '!border-white/10 md:shadow-none hover:!border-brand-accent-start/50 hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.2)] hover:-translate-y-1';
 
   return (
@@ -59,7 +59,7 @@ const PricingHighlightCard: React.FC<{ plan: Plan }> = ({ plan }) => {
            View Details 
            <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
         </div>
-        <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 transition-all duration-700 group-hover/btn:left-[100%]"></div>
+        <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 transition-all duration-700 group-hover/btn:left-[100%]"></div>
       </div>
     </Link>
   );

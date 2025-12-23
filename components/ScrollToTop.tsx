@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 const ScrollToTop: React.FC = () => {
@@ -39,7 +38,8 @@ const ScrollToTop: React.FC = () => {
           relative p-3 rounded-full 
           bg-brand-secondary/80 backdrop-blur-md
           text-white 
-          shadow-[0_8px_30px_rgba(0,0,0,0.5)] 
+          !shadow-[0_0_20px_rgba(34,211,238,0.15)]
+          hover:!shadow-[0_0_30px_rgba(34,211,238,0.3)]
           transition-transform duration-300 
           hover:scale-110 hover:-translate-y-1
           focus:outline-none focus:ring-2 focus:ring-brand-accent-middle
