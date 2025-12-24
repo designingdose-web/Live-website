@@ -27,9 +27,13 @@ const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 
-// Minimalist Loader for page transitions
+/**
+ * PageLoader - Optimized for CLS (Cumulative Layout Shift)
+ * We use min-h-[80vh] and pt-28 to simulate the space a standard page 
+ * takes, preventing the Footer from jumping up during transitions.
+ */
 const PageLoader = () => (
-  <div className="flex items-center justify-center min-h-[60vh] w-full bg-brand-primary">
+  <div className="flex items-center justify-center min-h-[80vh] pt-28 w-full bg-brand-primary">
     <div className="relative w-12 h-12">
         <div className="absolute top-0 left-0 w-full h-full border-4 border-brand-secondary rounded-full"></div>
         <div className="absolute top-0 left-0 w-full h-full border-4 border-brand-accent-start rounded-full border-t-transparent animate-spin"></div>
@@ -100,7 +104,8 @@ const App: React.FC = () => {
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main id="main-content" className="flex-grow focus:outline-none" tabIndex={-1}>
+        {/* Added min-h-[80vh] to main to prevent Footer jumps while lazy-loading pages */}
+        <main id="main-content" className="flex-grow focus:outline-none min-h-[80vh]" tabIndex={-1}>
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
