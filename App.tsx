@@ -71,18 +71,6 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalOpenCount, setModalOpenCount] = useState(0);
 
-  // Performance Optimization: Lazy-load AdSense script after 2.5 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-        const script = document.createElement('script');
-        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5836918123045173";
-        script.async = true;
-        script.crossOrigin = "anonymous";
-        document.head.appendChild(script);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, []);
-
   useEffect(() => {
     if (modalOpenCount < 2) {
       const delay = modalOpenCount === 0 ? 15000 : 90000;

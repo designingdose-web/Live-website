@@ -99,14 +99,16 @@ const BlogPostPage: React.FC = () => {
       <div className="bg-brand-primary min-h-screen flex flex-col">
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
           <div className="fixed top-0 left-0 h-1 bg-brand-accent-start z-50 w-full origin-left scale-x-0 animate-[scrollProgress_linear_1s_both] [animation-timeline:scroll()]"></div>
-          <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden bg-gray-900">
+          
+          {/* Hero Section - Refined for Mobile to prevent clipping */}
+          <div className="relative w-full min-h-[550px] md:min-h-0 md:aspect-[21/9] flex items-end overflow-hidden bg-gray-900">
               <div className="absolute inset-0">
                   <img 
                       src={defaultHeroSrc} 
                       srcSet={heroSrcSet}
                       sizes={heroSizes}
                       alt={post.title} 
-                      className="w-full h-full object-cover opacity-60 aspect-video md:aspect-[21/9]"
+                      className="w-full h-full object-cover opacity-60"
                       loading="eager"
                       fetchPriority="high"
                       decoding="sync" 
@@ -115,7 +117,8 @@ const BlogPostPage: React.FC = () => {
                   />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-brand-primary via-brand-primary/60 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 w-full p-4 md:p-12 lg:pb-20">
+              
+              <div className="relative z-10 w-full p-4 md:p-12 lg:pb-20">
                   <div className="container mx-auto max-w-5xl">
                       <Link to="/blog" className="inline-flex items-center text-brand-accent-end mb-4 md:mb-6 hover:text-white transition-colors font-semibold text-sm">
                           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -136,6 +139,7 @@ const BlogPostPage: React.FC = () => {
                   </div>
               </div>
           </div>
+
           <div className="flex-grow container mx-auto px-4 md:px-6 py-12 md:py-16">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
                   <article className="lg:col-span-8 min-w-0">
