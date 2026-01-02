@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { BrowserRouter, HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
@@ -15,7 +16,7 @@ import NotFoundPage from './pages/NotFoundPage';
 // Keep large pages lazy-loaded to optimize initial load weight
 const HomePage = lazy(() => import('./pages/HomePage'));
 const WebsitePricingPage = lazy(() => import('./pages/WebsitePricingPage'));
-const SeoPage = lazy(() => import('./pages/SeoPage'));
+const SearchEngineMarketingPage = lazy(() => import('./pages/SearchEngineMarketingPage'));
 const SocialMediaPage = lazy(() => import('./pages/SocialMediaPage'));
 const LogoDesignPage = lazy(() => import('./pages/LogoDesignPage'));
 const MobileAppPage = lazy(() => import('./pages/MobileAppPage'));
@@ -112,7 +113,9 @@ const App: React.FC = () => {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/services/website-packages" element={<WebsitePricingPage />} />
-              <Route path="/services/seo" element={<SeoPage />} />
+              <Route path="/services/search-engine-marketing-sem" element={<SearchEngineMarketingPage />} />
+              <Route path="/services/search-marketing" element={<SearchEngineMarketingPage />} /> {/* Legacy redirect */}
+              <Route path="/services/seo" element={<SearchEngineMarketingPage />} /> {/* Legacy redirect mapping */}
               <Route path="/services/social-media" element={<SocialMediaPage />} />
               <Route path="/services/logo-design" element={<LogoDesignPage />} />
               <Route path="/services/mobile-app-development" element={<MobileAppPage />} />

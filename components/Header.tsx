@@ -56,7 +56,7 @@ const Header: React.FC = () => {
   
   const servicesLinks = [
     { to: "/services/website-packages", label: "Web Development" },
-    { to: "/services/seo", label: "SEO Services" },
+    { to: "/services/search-engine-marketing-sem", label: "Search Engine Marketing (SEM)" },
     { to: "/services/social-media", label: "Social Media" },
     { to: "/services/logo-design", label: "Logo & Branding" },
     { to: "/services/mobile-app-development", label: "Mobile Apps" },
@@ -99,11 +99,10 @@ const Header: React.FC = () => {
         }}
         role="banner"
       >
-        {/* Main Nav Content - Increased padding from py-3 to py-4 */}
         <nav className="container mx-auto px-6 py-4" aria-label="Main Navigation">
           <div className="flex items-center justify-between">
             <Link to="/" onClick={closeMenu} className="transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-brand-accent-start rounded-md" aria-label="Designing Dose Home">
-              <Logo className="h-9 w-auto" /> {/* Restored logo size slightly */}
+              <Logo className="h-9 w-auto" />
             </Link>
             <div className="hidden md:flex items-center space-x-2">
               <NavItem to="/">Home</NavItem>
@@ -162,27 +161,18 @@ const Header: React.FC = () => {
             </div>
           )}
         </nav>
-        
-        {/* Neon Gradient Border at Bottom */}
         <div className="h-[1px] w-full bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end opacity-70"></div>
       </header>
-      
-      {/* Spacer removed intentionally to eliminate gap between header and banner */}
-
-       {/* Dropdown Menu & Overlay */}
       <div 
         id="services-dropdown"
         className={`fixed inset-0 top-0 left-0 z-30 transition-opacity duration-300 ${isServicesOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         aria-hidden={!isServicesOpen}
       >
-        {/* Overlay - closes menu when hovered */}
         <div 
           className="absolute inset-0 bg-black/60 backdrop-blur-sm"
           onMouseEnter={handleMouseLeave}
           onClick={closeMenu}
         ></div>
-        
-        {/* Menu - keeps menu open when hovered */}
         <div 
           ref={dropdownRef}
           onMouseEnter={handleMouseEnter}
@@ -192,7 +182,7 @@ const Header: React.FC = () => {
           <div 
             className="rounded-xl w-[90vw] max-w-[600px] p-8 overflow-hidden relative glass-panel"
           >
-              <div className="relative grid grid-cols-2 gap-4 z-10">
+              <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-4 z-10">
                 {servicesLinks.map(link => (
                   <NavLink
                     key={link.to}

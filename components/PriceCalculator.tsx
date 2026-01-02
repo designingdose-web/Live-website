@@ -10,19 +10,16 @@ interface PriceCalculatorProps {
   plans: Plan[];
 }
 
-// Helper to extract numeric price from string (e.g. "€199" -> 199)
 const parsePrice = (priceStr: string): number => {
   if (!priceStr) return 0;
   const numeric = priceStr.replace(/[^0-9.]/g, '');
   return numeric ? parseFloat(numeric) : 0;
 };
 
-// Configuration helper to tailor the calculator per service
 const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
   const id = serviceId.toLowerCase();
   const cat = categoryTitle.toLowerCase();
 
-  // Default values
   let unitName = 'Extra Units';
   let unitPrice = 50;
   let min = 0;
@@ -35,11 +32,10 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
     { label: 'Non-Disclosure Agreement (NDA)', price: 199 }
   ];
 
-  // --- Website Development ---
   if (id === 'website') {
     if (cat.includes('e-commerce') || cat.includes('store')) {
       unitName = 'Additional Products';
-      unitPrice = 2; // Reduced to €2
+      unitPrice = 2;
       max = 500;
       step = 10;
       addOns = [
@@ -57,9 +53,8 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
         { label: 'Live Chat Integration', price: 349 }
       ];
     } else {
-      // Informative / Custom Website
       unitName = 'Additional Pages';
-      unitPrice = 50; // Reduced to €50
+      unitPrice = 50;
       max = 20;
       addOns = [
         { label: 'Online Payment Integration', price: 299 },
@@ -77,29 +72,51 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
       ];
     }
   } 
-  // --- SEO Services ---
-  else if (id === 'seo') {
-    unitName = 'Additional Keywords';
-    unitPrice = 10; // Reduced to €10
-    max = 50;
-    step = 5;
-    addOns = [
-      { label: 'Extra Blog Article (1000 words)', price: 349 },
-      { label: 'High DA Backlink (DA 50+)', price: 499 },
-      { label: 'Local Citation Building (20 Listings)', price: 399 },
-      { label: 'Comprehensive Technical Audit', price: 799 },
-      { label: 'Competitor Analysis Report', price: 449 },
-      { label: 'Google My Business Optimization', price: 449 },
-      { label: 'Schema Markup Implementation', price: 499 },
-      { label: 'Video SEO Optimization', price: 399 },
-      { label: 'Conversion Rate Optimization (CRO)', price: 999 },
-      { label: 'Monthly Strategy Call', price: 399 }
-    ];
+  else if (id.includes('search-engine-marketing')) {
+    if (cat.includes('ppc')) {
+        unitName = 'Additional Platforms';
+        unitPrice = 199;
+        max = 5;
+        step = 1;
+        addOns = [
+            { label: 'Landing Page UX & Conversion Audit', price: 599 },
+            { label: 'Global Multi-Language Ad Translation', price: 649 },
+            { label: 'Negative Keyword Power-List (2,000+ entries)', price: 299 },
+            { label: 'Dynamic Creative Optimization (DCO) setup', price: 899 },
+            { label: 'Advanced Click Fraud Protection Sync', price: 349 },
+            { label: 'YouTube In-Stream Ad Sequence Strategy', price: 549 },
+            { label: 'Google Merchant Center Shopping Feed Mgmt', price: 449 },
+            { label: 'Call Tracking & Dynamic Number Integration', price: 399 },
+            { label: 'Weekly Performance Deep-Dive Visualization', price: 249 },
+            { label: 'LinkedIn Sales Navigator Audience Sync', price: 499 },
+            { label: 'Remarketing Lists for Search Ads (RLSA)', price: 399 },
+            { label: 'Dynamic Sitelink & Extension Personalization', price: 299 },
+            { label: 'Competitor Bidding Takeover Playbook', price: 749 },
+            { label: 'Custom Scripts for Bid & Budget Automation', price: 649 },
+            { label: 'Lead Magnet High-Conversion PDF Creation', price: 999 }
+        ];
+    } else {
+        unitName = 'Additional Keywords';
+        unitPrice = 10; 
+        max = 50;
+        step = 5;
+        addOns = [
+            { label: 'Extra Blog Article (1000 words)', price: 349 },
+            { label: 'High DA Backlink (DA 50+)', price: 499 },
+            { label: 'Local Citation Building (20 Listings)', price: 399 },
+            { label: 'Comprehensive Technical Audit', price: 799 },
+            { label: 'Competitor Analysis Report', price: 449 },
+            { label: 'Google My Business Optimization', price: 449 },
+            { label: 'Schema Markup Implementation', price: 499 },
+            { label: 'Video SEO Optimization', price: 399 },
+            { label: 'Conversion Rate Optimization (CRO)', price: 999 },
+            { label: 'Monthly Strategy Call', price: 399 }
+        ];
+    }
   } 
-  // --- Social Media ---
   else if (id === 'social-media') {
     unitName = 'Additional Posts/Month';
-    unitPrice = 25; // Reduced to €25
+    unitPrice = 25;
     max = 20;
     addOns = [
       { label: 'Reels / TikTok Video Editing (Per Video)', price: 199 },
@@ -114,7 +131,6 @@ const getCalculatorConfig = (serviceId: string, categoryTitle: string) => {
       { label: 'Crisis Management Plan', price: 499 }
     ];
   } 
-  // --- Logo & Branding ---
   else if (id === 'logo-design') {
     if(cat.includes('logo')) {
         unitName = 'Additional Concepts';

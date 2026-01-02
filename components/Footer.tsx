@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
@@ -19,7 +20,6 @@ const Footer: React.FC = () => {
               Designing Dose is a growth-focused digital marketing agency. We help businesses scale their revenue with our expertise in SEO, Web Development, and Social Media Marketing.
             </p>
             
-             {/* Trustpilot Mini Badge - Non-clickable */}
             <div className="mt-6 flex items-center gap-3 bg-brand-primary/50 p-3 rounded-lg border border-white/10 w-fit transition-colors group cursor-default shadow-lg">
                 <div className="bg-[#00b67a] p-1.5 rounded-md">
                     <Star className="w-5 h-5 text-white" fill="white" />
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
             <h4 className="font-semibold text-white tracking-wider uppercase mb-4 text-sm">Services</h4>
             <ul className="space-y-2 text-sm">
               <li><Link to="/services/website-packages" className="hover:text-brand-accent-end transition-colors">Web Development</Link></li>
-              <li><Link to="/services/seo" className="hover:text-brand-accent-end transition-colors">SEO Services</Link></li>
+              <li><Link to="/services/search-engine-marketing-sem" className="hover:text-brand-accent-end transition-colors">Search Engine Marketing (SEM)</Link></li>
               <li><Link to="/services/social-media" className="hover:text-brand-accent-end transition-colors">Social Media</Link></li>
               <li><Link to="/services/logo-design" className="hover:text-brand-accent-end transition-colors">Logo & Branding</Link></li>
               <li><Link to="/services/mobile-app-development" className="hover:text-brand-accent-end transition-colors">Mobile Apps</Link></li>
