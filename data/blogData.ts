@@ -23,6 +23,12 @@ export interface BlogPost {
 const optimizeImage = (url: string) => {
   if (!url) return url;
   
+  // Specific check for the TikTok blog images provided by user to bypass manipulation
+  // These are already WebP and versioned correctly by Cloudinary
+  if (url.includes('ti1_npsvbh') || url.includes('ti2_t338ll') || url.includes('ti3_aswq3j') || url.includes('ti4_i65q7w')) {
+    return url;
+  }
+
   if (url.includes('unsplash.com')) {
     // Strip existing params to ensure fresh optimization
     const baseUrl = url.split('?')[0];
@@ -30,7 +36,7 @@ const optimizeImage = (url: string) => {
     return `${baseUrl}?auto=format&fit=crop&q=70&w=1200`;
   }
   
-  // For Cloudinary, we return the raw URL here.
+  // For Cloudinary, we return the raw URL here unless it needs specific resizing
   return url;
 };
 
@@ -446,14 +452,19 @@ export const blogPosts: BlogPost[] = [
       { type: 'paragraph', text: `Deciding where to invest your time depends on your target audience, your brand voice, and your content style. Let's compare them head-to-head.` },
       { type: 'heading', text: 'The Audience Demographics' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865528/ti1_npsvbh.webp'), alt: 'Demographic chart comparing TikTok and Instagram user age groups' },
-      { type: 'paragraph', text: `TikTok is the home of Gen Z. If your product targets the 16-24 demographic, TikTok is non-negotiable. However, Instagram Reels has a much broader, multi-generational reach. It captures Millennials, Gen X, and even Boomers who have migrated from Facebook. If you are selling high-ticket luxury items or B2B services, the older, more affluent audience on Instagram might be a better fit.` },
-      { type: 'heading', text: 'Algorithm and Reach' },
-      { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865528/ti2_shmrvu.webp'), alt: 'Algorithm reach comparison between TikTok and Instagram Reels' },
-      { type: 'paragraph', text: `TikTok's "For You Page" is purely interest-based. It doesn't matter how many followers you have; if your video is good, it can go viral. This makes it the best platform for organic growth from scratch. Instagram Reels is a hybrid—it leverages your existing follower base but also pushes content to new users. It is harder to go viral on Reels without an initial "spark" from your followers, but it offers better long-term brand loyalty.` },
-      { type: 'heading', text: 'Content Style and Brand Voice' },
-      { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865528/ti3_kvtgyc.webp'), alt: 'Aesthetic differences in content between TikTok and Instagram Reels' },
-      { type: 'paragraph', text: `TikTok rewards the raw, the unfiltered, and the lo-fi. High production value can actually be a deterrent on TikTok because it feels like an "ad." Instagram Reels, inheriting the "aesthetic" DNA of Instagram, favors polished, high-quality, and visually stunning content. Choose TikTok for behind-the-scenes authenticity and Reels for showcasing your brand's premium side.` },
-      { type: 'paragraph', text: `Ultimately, most successful brands repurpose content for both. At Designing Dose, we help you navigate the nuances of [Social Media Marketing](/services/social-media) to ensure your message hits the right note on every platform.` }
+      { type: 'paragraph', text: `TikTok skews younger. It is the domain of Gen Z and younger Millennials. If your target customer is under 25, TikTok is non-negotiable. However, the user base is aging up, with more users in their 30s joining every day.` },
+      { type: 'paragraph', text: `Instagram Reels reaches a slightly older, more affluent demographic. Millennials and Gen X are the power users here. If you are selling higher-ticket items, B2B services, or lifestyle products that appeal to people with disposable income, Instagram often yields a higher ROI.` },
+      { type: 'heading', text: 'The "Vibe": Aesthetic vs. Authentic' },
+      { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865528/ti2_t338ll.webp'), alt: 'Aesthetic differences in content between TikTok and Instagram Reels' },
+      { type: 'paragraph', text: `This is the biggest cultural difference. Instagram is "Aesthetic." It is polished, curated, and beautiful. Users expect high-quality visuals. Reels often feel like mini-commercials or stylized vlogs.` },
+      { type: 'paragraph', text: `TikTok is "Authentic" and chaotic. It rewards raw, unfiltered content. A video filmed in a messy bedroom with bad lighting can go viral if the content is funny or relatable. On TikTok, being too polished can actually hurt you because it looks like an ad. If your brand is gritty, funny, or real, go to TikTok. If your brand is aspirational, luxury, or visual, go to Reels.` },
+      { type: 'heading', text: 'The Algorithm: Discovery vs. Following' },
+      { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865527/ti3_aswq3j.webp'), alt: 'Algorithm reach comparison between TikTok and Instagram Reels' },
+      { type: 'paragraph', text: `TikTok is a "Discovery Engine." The For You Page (FYP) shows you content based on your interests, not just who you follow. You can have 0 followers and get 1 million views on your first video. It offers the highest potential for viral growth for new accounts.` },
+      { type: 'paragraph', text: `Instagram is a "Social Graph." While Reels has improved reach to non-followers, it still heavily prioritizes content from accounts people already follow. It is better for nurturing an existing community than for exploding overnight from scratch.` },
+      { type: 'heading', text: 'The Verdict' },
+      { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865496/ti4_i65q7w.webp'), alt: 'Final summary and platform selection guidance' },
+      { type: 'paragraph', text: `You don't necessarily have to choose one. You can repost content across both (just make sure to remove the watermarks!). But you should have a "Primary Platform" where you engage with comments and build community. Start where your customers are, not where you want to be. Designing Dose can help you craft a vertical video strategy that works for either platform.` }
     ]
   }
 ];

@@ -2,10 +2,7 @@
 import React, { useState, useRef, useLayoutEffect, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-interface TooltipProps {
-  text: string;
-  children: React.ReactNode;
-}
+interface TooltipProps { text: string; children: React.ReactNode; }
 
 const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,40 +23,21 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     
-    // Safety margin from screen edges
     const margin = 16;
-    // Desktop max width, mobile will be constrained by viewport
     const maxWidth = 320;
-    
-    // Calculate final width based on viewport
     const width = Math.min(viewportWidth - (margin * 2), maxWidth);
-    
     const iconCenter = rect.left + rect.width / 2;
     
-    // 1. Determine Horizontal Position (Clamped to viewport)
     let left = iconCenter - width / 2;
-    // Clamp to ensure tooltip doesn't go off-screen
     left = Math.max(margin, Math.min(left, viewportWidth - width - margin));
 
-    // 2. Determine Vertical Placement
-    // We prefer 'top' unless there's not enough room (approx 120px needed)
     const spaceAbove = rect.top;
     const spaceBelow = viewportHeight - rect.bottom;
     const placement = (spaceAbove < 120 && spaceBelow > spaceAbove) ? 'bottom' : 'top';
-    
     const top = placement === 'top' ? rect.top - 12 : rect.bottom + 12;
-
-    // 3. Determine Arrow Position (Relative to the tooltip box)
-    // The arrow should always point to iconCenter
     const arrowLeft = iconCenter - left;
 
-    setStyle({
-      top,
-      left,
-      width,
-      arrowLeft,
-      placement
-    });
+    setStyle({ top, left, width, arrowLeft, placement });
   }, []);
 
   useLayoutEffect(() => {
@@ -74,15 +52,15 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
     };
   }, [isOpen, updatePosition]);
 
-  // Global "click elsewhere" to close tooltip on mobile/touch
   useEffect(() => {
     if (!isOpen) return;
-    const handleGlobalClick = () => setIsOpen(false);
-    window.addEventListener('click', handleGlobalClick);
-    window.addEventListener('touchstart', handleGlobalClick);
+    const handleGlobalInteraction = () => setIsOpen(false);
+    // Use capture phase or just standard listeners; clicking anywhere else closes it.
+    window.addEventListener('click', handleGlobalInteraction);
+    window.addEventListener('touchstart', handleGlobalInteraction);
     return () => {
-      window.removeEventListener('click', handleGlobalClick);
-      window.removeEventListener('touchstart', handleGlobalClick);
+      window.removeEventListener('click', handleGlobalInteraction);
+      window.removeEventListener('touchstart', handleGlobalInteraction);
     };
   }, [isOpen]);
 
@@ -95,8 +73,11 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
     setIsOpen(false);
   };
 
-  const handleTouch = (e: React.TouchEvent) => {
-    e.stopPropagation(); // Prevent immediate closing from the global listener
+  // Improved Mobile interaction:
+  // Using onClick instead of onTouchStart ensures standard tap behavior.
+  // stopPropagation is CRITICAL so the global 'click' listener doesn't close it instantly.
+  const handleTriggerClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.stopPropagation();
     if (isOpen) {
       setIsOpen(false);
     } else {
@@ -108,10 +89,10 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
   return (
     <span 
       ref={triggerRef}
-      className="inline-flex cursor-pointer align-middle leading-none p-0.5 -m-0.5" // Slightly expanded hit area
+      className="inline-flex cursor-pointer align-middle leading-none p-0.5 -m-0.5"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onTouchStart={handleTouch}
+      onClick={handleTriggerClick}
     >
       {children}
       
@@ -134,15 +115,11 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
               text-white text-xs md:text-sm leading-relaxed whitespace-normal
               animate-dropdown-enter
             `}
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the tooltip itself
           >
             <span className="block drop-shadow-sm font-medium">{text}</span>
-            
-            {/* Precision Dynamic Arrow */}
             <svg 
-              className={`
-                absolute h-2.5 w-5 text-brand-secondary/95 fill-current drop-shadow-lg
-                ${style.placement === 'top' ? 'top-full' : 'bottom-full'}
-              `} 
+              className={`absolute h-2.5 w-5 text-brand-secondary/95 fill-current drop-shadow-lg ${style.placement === 'top' ? 'top-full' : 'bottom-full'}`} 
               style={{ 
                 left: `${style.arrowLeft}px`, 
                 transform: `translateX(-50%) ${style.placement === 'bottom' ? 'rotate(180deg)' : ''}` 
