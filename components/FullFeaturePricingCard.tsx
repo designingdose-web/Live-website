@@ -20,14 +20,16 @@ const InfoIcon: React.FC = () => (
 const FullFeaturePricingCard: React.FC<{ plan: Plan }> = ({ plan }) => {
   const { formatPrice } = useCurrency();
   
-  // FIX: Explicitly ensuring 'overflow-visible' and managing 'z-index' dynamically on hover
-  // to prevent tooltips from being clipped by the card container or the grid cell boundary.
   const cardClasses = plan.isPopular
     ? '!border-brand-accent-middle shadow-[0_0_30px_-5px_rgba(236,72,153,0.3)] z-10 hover:z-[60] hover:shadow-[0_0_50px_-5px_rgba(236,72,153,0.5)] hover:-translate-y-1'
     : '!border-white/10 hover:!border-brand-accent-start/50 hover:z-[60] hover:-translate-y-1 hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.2)]';
 
   return (
-    <div id={plan.name} className={`glass-panel p-6 md:p-8 rounded-2xl flex flex-col h-full relative w-full transition-all duration-300 overflow-visible ${cardClasses}`}>
+    <div 
+      id={plan.name} 
+      tabIndex={-1}
+      className={`glass-panel p-6 md:p-8 rounded-2xl flex flex-col h-full relative w-full transition-all duration-300 overflow-visible focus:outline-none ${cardClasses}`}
+    >
       {plan.isPopular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-[0_0_10px_rgba(236,72,153,0.5)] z-[70]">
           Most Popular

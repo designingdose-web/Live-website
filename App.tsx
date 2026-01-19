@@ -30,8 +30,6 @@ const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 /**
  * PageLoader - Optimized for CLS (Cumulative Layout Shift)
- * We use min-h-[80vh] and pt-28 to simulate the space a standard page 
- * takes, preventing the Footer from jumping up during transitions.
  */
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-[80vh] pt-28 w-full bg-brand-primary">
@@ -47,13 +45,33 @@ const ScrollManager = () => {
 
   useEffect(() => {
     if (hash) {
-      const element = document.getElementById(hash.substring(1)); // remove the '#'
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
+      const targetId = hash.substring(1);
+      
+      // Retry logic for lazy-loaded content
+      let attempts = 0;
+      const maxAttempts = 20; // 2 seconds max
+      
+      const scrollToElement = () => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          element.focus();
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(scrollToElement, 100);
+        }
+      };
+
+      scrollToElement();
     } else {
+      // Force scroll to top on every standard navigation or back button press
       window.scrollTo(0, 0);
       document.body.focus();
     }
@@ -105,7 +123,6 @@ const App: React.FC = () => {
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <div className="flex flex-col min-h-screen">
         <Header />
-        {/* Added min-h-[80vh] to main to prevent Footer jumps while lazy-loading pages */}
         <main id="main-content" className="flex-grow focus:outline-none min-h-[80vh]" tabIndex={-1}>
           <Suspense fallback={<PageLoader />}>
             <Routes>
@@ -114,8 +131,8 @@ const App: React.FC = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/services/website-packages" element={<WebsitePricingPage />} />
               <Route path="/services/search-engine-marketing-sem" element={<SearchEngineMarketingPage />} />
-              <Route path="/services/search-marketing" element={<SearchEngineMarketingPage />} /> {/* Legacy redirect */}
-              <Route path="/services/seo" element={<SearchEngineMarketingPage />} /> {/* Legacy redirect mapping */}
+              <Route path="/services/search-marketing" element={<SearchEngineMarketingPage />} />
+              <Route path="/services/seo" element={<SearchEngineMarketingPage />} />
               <Route path="/services/social-media" element={<SocialMediaPage />} />
               <Route path="/services/logo-design" element={<LogoDesignPage />} />
               <Route path="/services/mobile-app-development" element={<MobileAppPage />} />
