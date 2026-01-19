@@ -45,35 +45,38 @@ const ScrollManager = () => {
 
   useEffect(() => {
     if (hash) {
-      const targetId = hash.substring(1);
+      const targetId = decodeURIComponent(hash.substring(1));
       
-      // Retry logic for lazy-loaded content
       let attempts = 0;
-      const maxAttempts = 20; // 2 seconds max
+      const maxAttempts = 30;
       
       const scrollToElement = () => {
         const element = document.getElementById(targetId);
         if (element) {
-          const headerOffset = 100;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          // Precise calculation to land at the TOP of the card
+          // 120px offset to clear the sticky header
+          const headerOffset = 120;
+          const rect = element.getBoundingClientRect();
+          const topPosition = rect.top + window.pageYOffset - headerOffset;
 
           window.scrollTo({
-            top: offsetPosition,
+            top: topPosition,
             behavior: 'smooth'
           });
-          element.focus();
+          
+          // Focus the element for accessibility but don't let it scroll itself
+          element.focus({ preventScroll: true });
         } else if (attempts < maxAttempts) {
           attempts++;
           setTimeout(scrollToElement, 100);
         }
       };
 
-      scrollToElement();
+      // Initial small delay to let the lazy page start rendering
+      setTimeout(scrollToElement, 150);
     } else {
-      // Force scroll to top on every standard navigation or back button press
+      // Default: Scroll to top of page on standard navigation
       window.scrollTo(0, 0);
-      document.body.focus();
     }
   }, [pathname, hash]);
 
