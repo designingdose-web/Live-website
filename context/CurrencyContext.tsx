@@ -1,8 +1,8 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Added C$ and A$ to distinguish North American and Australian markets from US Dollars
-type CurrencySymbol = '$' | '£' | '€' | 'C$' | 'A$';
+// Simplified types to support the new universal strategy
+type CurrencySymbol = '$' | '£' | '€';
 
 interface CurrencyContextType {
   symbol: CurrencySymbol;
@@ -13,9 +13,15 @@ interface CurrencyContextType {
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
 
+// List of official Eurozone country codes for explicit detection
+const EUROZONE_COUNTRIES = [
+  'AT', 'BE', 'HR', 'CY', 'EE', 'FI', 'FR', 'DE', 'GR', 
+  'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PT', 'SK', 'SI', 'ES'
+];
+
 export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [symbol, setSymbol] = useState<CurrencySymbol>('€');
-  const [countryCode, setCountryCode] = useState<string>('IE');
+  const [symbol, setSymbol] = useState<CurrencySymbol>('$');
+  const [countryCode, setCountryCode] = useState<string>('US');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -42,29 +48,17 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           clearTimeout(timeoutId);
           
           const data = await response.json();
-          const detectedCountry: string = data.country_code || 'IE';
+          const detectedCountry: string = data.country_code || 'US';
           
-          let detectedSymbol: CurrencySymbol = '€'; // Default for Rest of World (Asia, Middle East, Europe, etc.)
+          let detectedSymbol: CurrencySymbol = '$'; // Default to Dollar for the Rest of the World
 
-          switch (detectedCountry) {
-            case 'US':
-              detectedSymbol = '$';
-              break;
-            case 'GB':
-              detectedSymbol = '£';
-              break;
-            case 'CA':
-              detectedSymbol = 'C$';
-              break;
-            case 'AU':
-              detectedSymbol = 'A$';
-              break;
-            case 'IE':
-              detectedSymbol = '€';
-              break;
-            default:
-              // Global Default remains Euro as requested
-              detectedSymbol = '€';
+          if (detectedCountry === 'GB') {
+            detectedSymbol = '£';
+          } else if (EUROZONE_COUNTRIES.includes(detectedCountry)) {
+            detectedSymbol = '€';
+          } else {
+            // All other regions (USA, Canada, Australia, Asia, Middle East, etc.) use Dollar
+            detectedSymbol = '$';
           }
 
           setSymbol(detectedSymbol);
@@ -73,9 +67,9 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           localStorage.setItem('user_currency_symbol', detectedSymbol);
           localStorage.setItem('user_country_code', detectedCountry);
         } catch (error) {
-          console.warn('Currency detection failed, defaulting to Global/Ireland (EUR).');
-          setSymbol('€');
-          setCountryCode('IE');
+          console.warn('Currency detection failed, defaulting to Global ($).');
+          setSymbol('$');
+          setCountryCode('US');
         } finally {
           setIsLoading(false);
         }
@@ -89,11 +83,12 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   /**
    * Replaces existing currency symbols in the data strings with the detected regional symbol.
-   * Handles multi-character symbols like C$ and A$ correctly.
+   * Now simplified for clean $, £, or € symbols.
    */
   const formatPrice = (priceStr: string): string => {
     if (!priceStr) return '';
-    // This regex looks for common currency symbols and swaps them for our current 'symbol' state
+    // This regex looks for common currency symbols (Euro, Dollar, Pound) 
+    // and swaps them for our current 'symbol' state
     return priceStr.replace(/[€$£]/g, symbol);
   };
 
