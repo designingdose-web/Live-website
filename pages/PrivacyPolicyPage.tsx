@@ -26,6 +26,9 @@ const PrivacyPolicyPage: React.FC = () => {
             
             <h2 className="text-2xl font-bold text-white">Use of Data</h2>
             <p>Designing Dose uses the collected data for various purposes: to provide and maintain the Service, to notify you about changes to our Service, to provide customer care and support, and to gather analysis or valuable information so that we can improve the Service.</p>
+
+            <h2 className="text-2xl font-bold text-white">Mobile Information</h2>
+            <p>No mobile information will be shared with third parties/affiliates for marketing/promotional purposes.</p>
             
             <h2 className="text-2xl font-bold text-white">Security of Data</h2>
             <p>The security of your data is important to us, but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
