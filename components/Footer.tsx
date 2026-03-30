@@ -38,18 +38,38 @@ const Footer: React.FC = () => {
           </div>
           <div className="md:col-span-2">
             <h4 className="font-semibold text-white tracking-wider uppercase mb-6 text-sm inline-block">Contact Us</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
-                <div className="p-5 rounded-xl bg-brand-primary/30 border border-white/20">
-                    <h5 className="font-bold text-gray-200 mb-2">Ireland Office</h5>
-                    <p className="mb-3 text-gray-400">77 Camden Street Lower, Saint Kevin’s, Dublin, D02 XE80, Ireland</p>
-                    <a href="tel:+35312548762" className="block hover:text-brand-accent-end transition-colors py-1">PHONE: +353 1 254 8762</a>
-                    <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-1">EMAIL: info@designingdose.com</a>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+                <div className="p-4 rounded-xl bg-brand-primary/30 border border-white/10 hover:border-brand-accent-start/30 transition-colors">
+                    <h5 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
+                        <span className="text-lg">🇮🇪</span> Ireland Office
+                    </h5>
+                    <p className="mb-3 text-gray-400 text-xs leading-relaxed">77 Camden Street Lower, Saint Kevin’s, Dublin, D02 XE80, Ireland</p>
+                    <a href="tel:+35312548762" className="block hover:text-brand-accent-end transition-colors py-0.5">PHONE: +353 1 254 8762</a>
+                    <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-0.5">EMAIL: info@designingdose.com</a>
                 </div>
-                 <div className="p-5 rounded-xl bg-brand-primary/30 border border-white/20">
-                    <h5 className="font-bold text-gray-200 mb-2">United States Office</h5>
-                    <p className="mb-3 text-gray-400">18952 MacArthur Blvd Suite 100, Irvine, CA 92612, USA</p>
-                     <a href="tel:+16572024472" className="block hover:text-brand-accent-end transition-colors py-1">PHONE: +1 657 202 4472</a>
-                     <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-1">EMAIL: info@designingdose.com</a>
+                <div className="p-4 rounded-xl bg-brand-primary/30 border border-white/10 hover:border-brand-accent-start/30 transition-colors">
+                    <h5 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
+                        <span className="text-lg">🇺🇸</span> United States Office
+                    </h5>
+                    <p className="mb-3 text-gray-400 text-xs leading-relaxed">18952 MacArthur Blvd Suite 100, Irvine, CA 92612, USA</p>
+                     <a href="tel:+19497043031" className="block hover:text-brand-accent-end transition-colors py-0.5">PHONE: +1 949 704 3031</a>
+                     <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-0.5">EMAIL: info@designingdose.com</a>
+                </div>
+                <div className="p-4 rounded-xl bg-brand-primary/30 border border-white/10 hover:border-brand-accent-start/30 transition-colors">
+                    <h5 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
+                        <span className="text-lg">🇨🇦</span> Canada Office
+                    </h5>
+                    <p className="mb-3 text-gray-400 text-xs leading-relaxed">331 1st Avenue North, Saskatoon, Saskatchewan, S7K 1X2, Canada</p>
+                    <a href="tel:+19497043031" className="block hover:text-brand-accent-end transition-colors py-0.5">PHONE: +1 949 704 3031</a>
+                    <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-0.5">EMAIL: info@designingdose.com</a>
+                </div>
+                <div className="p-4 rounded-xl bg-brand-primary/30 border border-white/10 hover:border-brand-accent-start/30 transition-colors">
+                    <h5 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
+                        <span className="text-lg">🇬🇧</span> UK Office
+                    </h5>
+                    <p className="mb-3 text-gray-400 text-xs leading-relaxed">Quadrant House, Broad Street Mall, Reading, Berkshire, RG1 7QE, UK</p>
+                    <a href="tel:+447916689613" className="block hover:text-brand-accent-end transition-colors py-0.5">PHONE: +44 7916689613</a>
+                    <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-0.5">EMAIL: info@designingdose.com</a>
                 </div>
             </div>
           </div>

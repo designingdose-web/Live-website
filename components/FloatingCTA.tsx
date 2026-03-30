@@ -4,8 +4,13 @@ import { useCurrency } from '../context/CurrencyContext';
 const FloatingCTA: React.FC = () => {
   const { countryCode } = useCurrency();
 
-  const phoneHref = countryCode === 'US' ? 'tel:+16572024472' : 'tel:+35312548762';
-  const whatsappHref = 'https://wa.me/35312548762'; // WhatsApp remains globally fixed to primary line
+  const phoneHref = (countryCode === 'US' || countryCode === 'CA') 
+    ? 'tel:+19497043031' 
+    : (countryCode === 'GB' ? 'tel:+447916689613' : 'tel:+35312548762');
+    
+  const whatsappHref = (countryCode === 'US' || countryCode === 'CA') 
+    ? 'https://wa.me/19497043031' 
+    : (countryCode === 'GB' ? 'https://wa.me/447916689613' : 'https://wa.me/35312548762');
 
   const ctaButtons = [
     {
