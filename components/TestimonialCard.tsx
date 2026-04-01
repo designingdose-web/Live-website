@@ -137,6 +137,14 @@ const TestimonialsSection: React.FC = () => {
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
+            // Check if the user is typing in an input, textarea, or contentEditable element
+            const isTyping = 
+                event.target instanceof HTMLInputElement || 
+                event.target instanceof HTMLTextAreaElement || 
+                (event.target as HTMLElement).isContentEditable;
+
+            if (isTyping) return;
+
             if (event.key === 'ArrowRight') {
                 next();
             } else if (event.key === 'ArrowLeft') {
