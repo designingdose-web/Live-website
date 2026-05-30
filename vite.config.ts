@@ -25,7 +25,8 @@ export default defineConfig(({ command, mode }) => {
               return html
                 .replace(/<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>/, '')
                 .replace(/<script>[\s\S]*?tailwind\.config[\s\S]*?<\/script>/, '')
-                .replace(/<style type="text\/tailwindcss">[\s\S]*?<\/style>/, '');
+                .replace(/<style type="text\/tailwindcss">[\s\S]*?<\/style>/, '')
+                .replace(/<script type="importmap">[\s\S]*?<\/script>/, '');
             }
             return html;
           }

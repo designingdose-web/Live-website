@@ -11,7 +11,7 @@
     <meta name="googlebot" content="index, follow" />
     
     <!-- Preload LCP Image -->
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765068211/banner_vid_1_m1dwlb.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dmaqptknc/video/upload/so_0,q_auto:eco,f_jpg/v1765068211/banner_vid_1_m1dwlb.jpg" fetchpriority="high" imagesrcset="https://res.cloudinary.com/dmaqptknc/video/upload/w_640,so_0,q_auto:eco,f_jpg/v1765068211/banner_vid_1_m1dwlb.jpg 640w, https://res.cloudinary.com/dmaqptknc/video/upload/w_1280,so_0,q_auto:eco,f_jpg/v1765068211/banner_vid_1_m1dwlb.jpg 1280w" imagesizes="100vw" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -232,6 +232,15 @@
   <body class="bg-brand-primary text-brand-light">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
-    <script src="//code.tidio.co/vnpbgskk6qw0yaxjmpb3s21w7ftpkctq.js" async></script>
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var s = document.createElement('script');
+          s.src = '//code.tidio.co/vnpbgskk6qw0yaxjmpb3s21w7ftpkctq.js';
+          s.async = true;
+          document.body.appendChild(s);
+        }, 4000);
+      });
+    </script>
   </body>
 </html>
