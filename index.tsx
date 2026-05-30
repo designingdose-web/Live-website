@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App, { SmartRouter } from './App';
 import './index.css';
 import { CurrencyProvider } from './context/CurrencyContext';
 
@@ -13,8 +13,10 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <CurrencyProvider>
-      <App />
-    </CurrencyProvider>
+    <SmartRouter>
+      <CurrencyProvider>
+        <App />
+      </CurrencyProvider>
+    </SmartRouter>
   </React.StrictMode>
 );

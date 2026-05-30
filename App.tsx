@@ -83,7 +83,7 @@ const ScrollManager = () => {
   return null;
 };
 
-const SmartRouter: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const SmartRouter: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isProduction = window.location.hostname === 'designingdose.com' || window.location.hostname === 'www.designingdose.com';
 
   return isProduction ? (
@@ -121,7 +121,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <SmartRouter>
+    <>
       <ScrollManager />
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <div className="flex flex-col min-h-screen">
@@ -156,8 +156,9 @@ const App: React.FC = () => {
         <ScrollToTop />
         <LeadCaptureModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
-    </SmartRouter>
+    </>
   );
 };
+
 
 export default App;
