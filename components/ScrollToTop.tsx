@@ -36,15 +36,14 @@ const ScrollToTop: React.FC = () => {
         onClick={scrollToTop}
         className={`
           relative p-3 rounded-full 
-          bg-brand-secondary/80 backdrop-blur-md
+          bg-gradient-to-br from-brand-accent-start via-brand-accent-middle to-brand-accent-end
           text-white 
-          !shadow-[0_0_20px_rgba(34,211,238,0.15)]
-          hover:!shadow-[0_0_30px_rgba(34,211,238,0.3)]
+          shadow-[0_0_20px_rgba(139,92,246,0.5)]
+          hover:shadow-[0_0_35px_rgba(236,72,153,0.7)]
           transition-transform duration-300 
           hover:scale-110 hover:-translate-y-1
           focus:outline-none focus:ring-2 focus:ring-brand-accent-middle
           group
-          gradient-border-mask
           flex items-center justify-center
         `}
         aria-label="Scroll to top"
