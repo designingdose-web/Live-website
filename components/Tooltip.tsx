@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useLayoutEffect, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 interface TooltipProps { text: string; children: React.ReactNode; }
@@ -40,7 +40,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
     setStyle({ top, left, width, arrowLeft, placement });
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       updatePosition();
       window.addEventListener('scroll', updatePosition, { passive: true });

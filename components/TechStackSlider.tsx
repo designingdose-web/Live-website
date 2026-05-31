@@ -133,7 +133,7 @@ const TechStackSlider: React.FC = () => {
        </div>
 
       <div 
-        className="flex w-full overflow-hidden [&:hover>div]:[animation-play-state:paused]"
+        className="flex w-full min-h-[64px] overflow-hidden [&:hover>div]:[animation-play-state:paused]"
         aria-label="Technology partners slider"
         role="region"
       >

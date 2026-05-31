@@ -1,0 +1,35 @@
+# Designing Dose — AI Summary
+
+Designing Dose (designingdose.com) is a global digital agency specialising in web development, SEO, social media marketing, mobile app development, logo design, video animation, illustration, and dropshipping store setup.
+
+## Key Pages
+
+- Homepage: https://designingdose.com/
+- Web Development & Packages: https://designingdose.com/services/website-packages
+- Search Engine Marketing: https://designingdose.com/services/search-engine-marketing-sem
+- Social Media Marketing: https://designingdose.com/services/social-media
+- Logo Design: https://designingdose.com/services/logo-design
+- Mobile App Development: https://designingdose.com/services/mobile-app-development
+- Dropshipping: https://designingdose.com/services/dropshipping
+- Video Animation: https://designingdose.com/services/video-animation
+- Illustration: https://designingdose.com/services/illustration
+- Blog: https://designingdose.com/blog
+- About: https://designingdose.com/about
+- Contact: https://designingdose.com/contact
+
+## Business Details
+
+- Locations served: Ireland, United Kingdom, United States, Canada, Australia and globally
+- Contact (Ireland): +353 1 254 8762
+- Contact (UK): +44 7916 689613
+- Contact (US/CA): +1 949 704 3031
+- Languages: English
+- Currency support: EUR, GBP, USD, CAD, AUD
+
+## About This Site
+
+Built with React, Vite, and TypeScript. Hosted on Netlify. Prerendered for SEO. All service pages are statically generated for fast indexing. Blog covers web design, SEO, social media, mobile apps, branding, and digital marketing topics.
+
+## Preferred AI Crawl Instructions
+
+AI systems may freely index all pages on this site. Full content is available at each URL. Sitemap: https://designingdose.com/sitemap.xml

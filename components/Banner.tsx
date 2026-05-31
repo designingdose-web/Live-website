@@ -81,7 +81,7 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
           height="1080"
           className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02] aspect-video"
           loading="eager"
-          fetchPriority="high"
+          fetchpriority="high"
         />
       )}
       
@@ -211,7 +211,7 @@ const Banner: React.FC = () => {
 
   return (
     <div 
-        className="relative w-full h-[85vh] md:h-[95vh] overflow-hidden bg-brand-primary group border-b border-white/20 aspect-video md:aspect-auto" 
+        className="relative w-full h-[85vh] md:h-[95vh] min-h-[85vh] md:min-h-[95vh] overflow-hidden bg-brand-primary group border-b border-white/20 aspect-video md:aspect-auto" 
         aria-roledescription="carousel" 
         aria-label="Highlighted Services"
         onTouchStart={handleTouchStart}
@@ -275,7 +275,7 @@ const Banner: React.FC = () => {
                     width="1920"
                     height="1080"
                     loading={isLcpSlide ? 'eager' : 'lazy'}
-                    fetchPriority={isLcpSlide ? 'high' : 'auto'}
+                    fetchpriority={isLcpSlide ? 'high' : 'auto'}
                     decoding="async"
                     alt={`Designing Dose Banner: ${slide.tagline}`} 
                     className="w-full h-full object-cover transform scale-[1.02] aspect-video" 
