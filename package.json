@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsx scripts/prerender.tsx",
+    "build": "vite build && tsx scripts/prerender.tsx && tsx scripts/indexnow.ts",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },
