@@ -14,7 +14,7 @@ const NavItem: React.FC<{ to: string; children: React.ReactNode; onClick?: () =>
         `block py-1.5 px-3 rounded-md transition-all duration-300 text-sm font-medium ${
           isActive
             ? 'text-white bg-white/10 backdrop-blur-md border border-white/10 shadow-[0_0_10px_rgba(139,92,246,0.2)]'
-            : 'text-brand-muted hover:text-white hover:bg-white/5 hover:backdrop-blur-sm focus-visible:text-white focus-visible:bg-white/10 focus:outline-none'
+            : 'text-[#A8B3BE] hover:text-white hover:bg-white/5 hover:backdrop-blur-sm focus-visible:text-white focus-visible:bg-white/10 focus:outline-none'
         }`
       }
     >
@@ -117,7 +117,7 @@ const Header: React.FC = () => {
                   aria-expanded={isServicesOpen}
                   aria-haspopup="true"
                   aria-controls="services-dropdown"
-                  className={`flex items-center py-1.5 px-3 rounded-md transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end font-medium text-sm ${isServicesOpen ? 'text-white bg-white/10 backdrop-blur-md' : 'text-brand-muted hover:text-white hover:bg-white/5'}`}
+                  className={`flex items-center py-1.5 px-3 rounded-md transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end font-medium text-sm ${isServicesOpen ? 'text-white bg-white/10 backdrop-blur-md' : 'text-[#A8B3BE] hover:text-white hover:bg-white/5'}`}
                 >
                   Pricing
                   <svg className={`w-3.5 h-3.5 ml-1 transition-transform duration-200 ${isServicesOpen ? 'transform rotate-180 text-brand-accent-middle' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -150,7 +150,7 @@ const Header: React.FC = () => {
                     key={link.to} 
                     to={link.to} 
                     onClick={closeMenu} 
-                    className="block pl-6 pr-3 py-2 text-sm text-brand-muted hover:text-white hover:bg-white/10 rounded-md focus:outline-none focus:bg-white/10 focus:text-white transition-all"
+                    className="block pl-6 pr-3 py-2 text-sm text-[#A8B3BE] hover:text-white hover:bg-white/10 rounded-md focus:outline-none focus:bg-white/10 focus:text-white transition-all"
                     role="menuitem"
                 >
                     {link.label}

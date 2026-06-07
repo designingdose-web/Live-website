@@ -42,7 +42,7 @@ const ScrollToTop: React.FC = () => {
           hover:shadow-[0_0_35px_rgba(236,72,153,0.7)]
           transition-transform duration-300 
           hover:scale-110 hover:-translate-y-1
-          focus:outline-none focus:ring-2 focus:ring-brand-accent-middle
+          focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-accent-end
           group
           flex items-center justify-center
         `}

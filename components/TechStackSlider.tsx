@@ -138,7 +138,10 @@ const TechStackSlider: React.FC = () => {
         role="region"
       >
         {/* Inner container for scrolling - hover pause applied via parent */}
-        <div className="flex animate-[marquee_30s_linear_infinite]">
+        <div 
+          className="flex animate-[marquee_30s_linear_infinite]"
+          style={{ willChange: 'transform' }}
+        >
           {/* First set of brands */}
           {brands.map((brand, index) => (
             <div key={`brand-${index}`} className="flex flex-col items-center justify-center mx-8 md:mx-12 group min-w-[80px] md:min-w-[100px]" tabIndex={0} role="img" aria-label={brand.name}>

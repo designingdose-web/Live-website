@@ -344,15 +344,16 @@ const Banner: React.FC = () => {
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-40">
         {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-brand-accent-end focus:ring-offset-1 focus:ring-offset-black ${
-              index === currentIndex ? 'bg-brand-accent-end w-8' : 'bg-white/30 hover:bg-white/70'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-            aria-current={index === currentIndex ? "true" : "false"}
-          ></button>
+          <div key={index} className="p-3 -m-3">
+            <button
+              onClick={() => goToSlide(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-brand-accent-end focus:ring-offset-1 focus:ring-offset-black ${
+                index === currentIndex ? 'bg-brand-accent-end w-8' : 'bg-white/30 hover:bg-white/70'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentIndex ? "true" : "false"}
+            ></button>
+          </div>
         ))}
       </div>
     </div>
