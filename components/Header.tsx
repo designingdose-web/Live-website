@@ -144,7 +144,7 @@ const Header: React.FC = () => {
             <div id="mobile-menu" className="md:hidden mt-4 space-y-2 glass-panel rounded-xl p-4 animate-fade-in-up" role="menu">
               <NavItem to="/" onClick={closeMenu}>Home</NavItem>
               <NavItem to="/about" onClick={closeMenu}>About Us</NavItem>
-              <h3 className="px-3 pt-2 text-xs font-semibold text-brand-muted uppercase tracking-wider">Pricing</h3>
+              <p className="px-3 pt-2 text-xs font-semibold text-brand-muted uppercase tracking-wider" role="presentation">Pricing</p>
               {servicesLinks.map(link => (
                 <NavLink 
                     key={link.to} 

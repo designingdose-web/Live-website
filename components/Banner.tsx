@@ -82,6 +82,7 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
           className="absolute inset-0 w-full h-full object-cover z-0 transform scale-[1.02] aspect-video"
           loading="eager"
           fetchpriority="high"
+          aria-hidden="true"
         />
       )}
       

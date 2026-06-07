@@ -70,7 +70,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
             <button 
                 onClick={(e) => { e.preventDefault(); onPrev(); }} 
                 aria-label="Previous testimonial"
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-start hover:bg-brand-accent-start/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
+                className="w-11 h-11 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-start hover:bg-brand-accent-start/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
             </button>
@@ -79,7 +79,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
             <button
                 onClick={(e) => { e.preventDefault(); onTogglePause(); }}
                 aria-label={isPaused ? "Resume rotation" : "Pause rotation"}
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-middle hover:bg-brand-accent-middle/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
+                className="w-11 h-11 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-middle hover:bg-brand-accent-middle/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
             >
                 {isPaused ? (
                     <svg className="h-4 w-4 md:h-5 md:w-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -91,7 +91,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, onNext, 
             <button 
                 onClick={(e) => { e.preventDefault(); onNext(); }} 
                 aria-label="Next testimonial"
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-start hover:bg-brand-accent-start/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
+                className="w-11 h-11 md:w-10 md:h-10 rounded-full bg-brand-primary/50 border border-white/10 hover:border-brand-accent-start hover:bg-brand-accent-start/10 text-brand-muted hover:text-white transition-all duration-300 flex items-center justify-center active:scale-95 touch-manipulation backdrop-blur-sm"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
             </button>
@@ -280,12 +280,13 @@ const TestimonialsSection: React.FC = () => {
                 
                 <div className="flex justify-center gap-2 mt-2 md:hidden">
                     {testimonialData.map((_, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => setCurrentIndex(idx)}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-6 bg-brand-accent-middle' : 'w-1.5 bg-gray-700'}`}
-                            aria-label={`Go to testimonial ${idx + 1}`}
-                        />
+                        <div key={idx} className="p-3 -m-3">
+                            <button
+                                onClick={() => setCurrentIndex(idx)}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-6 bg-brand-accent-middle' : 'w-1.5 bg-gray-700'}`}
+                                aria-label={`Go to testimonial ${idx + 1}`}
+                            />
+                        </div>
                     ))}
                 </div>
             </div>

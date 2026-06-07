@@ -14,14 +14,23 @@ export default defineConfig(({ command, mode }) => {
         port: 3000,
         host: '0.0.0.0',
       },
+      build: {
+        cssCodeSplit: true,
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              'react-vendor': ['react', 'react-dom'],
+              'router': ['react-router-dom'],
+            }
+          }
+        }
+      },
       plugins: [
         react(),
         {
           name: 'html-transform',
           transformIndexHtml(html) {
             if (command === 'build') {
-              // Smart Build: Remove the CDN script, inline config, and duplicate styles for production.
-              // This ensures the live site relies solely on the optimized, pre-built CSS bundle.
               return html
                 .replace(/<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>/, '')
                 .replace(/<script>[\s\S]*?tailwind\.config[\s\S]*?<\/script>/, '')

@@ -169,13 +169,6 @@ const TechStackSlider: React.FC = () => {
         </div>
       </div>
 
-      {/* Inline style for the keyframe since we can't easily modify global CSS files in this context without overwriting them entirely */}
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </div>
   );
 };

@@ -15,7 +15,9 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-brand-muted">
           <div className="md:col-span-1">
-            <Logo className="h-10 w-auto" />
+            <div className="h-10 w-48" aria-hidden="false">
+              <Logo className="h-10 w-auto" />
+            </div>
             <p className="mt-4 text-sm max-w-sm leading-relaxed">
               Designing Dose is a growth-focused digital marketing agency. We help businesses scale their revenue with our expertise in SEO, Web Development, and Social Media Marketing.
             </p>
@@ -37,36 +39,36 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className="md:col-span-2">
-            <h3 className="font-semibold text-white tracking-wider uppercase mb-6 text-sm inline-block">Contact Us</h3>
+            <h2 className="font-semibold text-white tracking-wider uppercase mb-6 text-sm inline-block">Contact Us</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
                 <div className="p-4 rounded-xl bg-brand-primary/30 border border-white/10 hover:border-brand-accent-start/30 transition-colors">
-                    <h5 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
+                    <h3 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
                         <span className="text-lg">🇮🇪</span> Ireland Office
-                    </h5>
+                    </h3>
                     <p className="mb-3 text-gray-400 text-xs leading-relaxed">77 Camden Street Lower, Saint Kevin’s, Dublin, D02 XE80, Ireland</p>
                     <a href="tel:+35312548762" className="block hover:text-brand-accent-end transition-colors py-2" aria-label="Call our Ireland office at +353 1 254 8762">PHONE: +353 1 254 8762</a>
                     <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-2" aria-label="Email our Ireland office">EMAIL: info@designingdose.com</a>
                 </div>
                 <div className="p-4 rounded-xl bg-brand-primary/30 border border-white/10 hover:border-brand-accent-start/30 transition-colors">
-                    <h5 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
+                    <h3 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
                         <span className="text-lg">🇺🇸</span> United States Office
-                    </h5>
+                    </h3>
                     <p className="mb-3 text-gray-400 text-xs leading-relaxed">18952 MacArthur Blvd Suite 100, Irvine, CA 92612, USA</p>
                      <a href="tel:+19497043031" className="block hover:text-brand-accent-end transition-colors py-2" aria-label="Call our United States office at +1 949 704 3031">PHONE: +1 949 704 3031</a>
                      <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-2" aria-label="Email our United States office">EMAIL: info@designingdose.com</a>
                 </div>
                 <div className="p-4 rounded-xl bg-brand-primary/30 border border-white/10 hover:border-brand-accent-start/30 transition-colors">
-                    <h5 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
+                    <h3 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
                         <span className="text-lg">🇨🇦</span> Canada Office
-                    </h5>
+                    </h3>
                     <p className="mb-3 text-gray-400 text-xs leading-relaxed">331 1st Avenue North, Saskatoon, Saskatchewan, S7K 1X2, Canada</p>
                     <a href="tel:+19497043031" className="block hover:text-brand-accent-end transition-colors py-2" aria-label="Call our Canada office at +1 949 704 3031">PHONE: +1 949 704 3031</a>
                     <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-2" aria-label="Email our Canada office">EMAIL: info@designingdose.com</a>
                 </div>
                 <div className="p-4 rounded-xl bg-brand-primary/30 border border-white/10 hover:border-brand-accent-start/30 transition-colors">
-                    <h5 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
+                    <h3 className="font-bold text-gray-200 mb-2 flex items-center gap-2">
                         <span className="text-lg">🇬🇧</span> UK Office
-                    </h5>
+                    </h3>
                     <p className="mb-3 text-gray-400 text-xs leading-relaxed">Quadrant House, Broad Street Mall, Reading, Berkshire, RG1 7QE, UK</p>
                     <a href="tel:+447916689613" className="block hover:text-brand-accent-end transition-colors py-2" aria-label="Call our UK office at +44 7916689613">PHONE: +44 7916689613</a>
                     <a href="mailto:info@designingdose.com" className="block hover:text-brand-accent-end transition-colors py-2" aria-label="Email our UK office">EMAIL: info@designingdose.com</a>
@@ -77,7 +79,7 @@ const Footer: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-brand-muted mt-10 pt-10 border-t border-white/10">
            <div>
-            <h3 className="font-semibold text-white tracking-wider uppercase mb-4 text-sm">Services</h3>
+            <h2 className="font-semibold text-white tracking-wider uppercase mb-4 text-sm">Services</h2>
             <ul className="space-y-2 text-sm">
               <li><Link to="/services/website-packages" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Web Development</Link></li>
               <li><Link to="/services/search-engine-marketing-sem" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Search Engine Marketing (SEM)</Link></li>
@@ -90,7 +92,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold text-white tracking-wider uppercase mb-4 text-sm">Company</h3>
+            <h2 className="font-semibold text-white tracking-wider uppercase mb-4 text-sm">Company</h2>
             <ul className="space-y-2 text-sm">
               <li><Link to="/about" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">About Us</Link></li>
               <li><Link to="/blog" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Blog & Articles</Link></li>
