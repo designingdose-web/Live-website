@@ -96,6 +96,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm">
               <li><Link to="/about" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">About Us</Link></li>
               <li><Link to="/blog" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Blog & Articles</Link></li>
+              <li><Link to="/faq" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">FAQ</Link></li>
               <li><Link to="/contact" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Contact Us</Link></li>
               <li><Link to="/privacy-policy" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Privacy Policy</Link></li>
               <li><Link to="/refund-policy" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Refund Policy</Link></li>

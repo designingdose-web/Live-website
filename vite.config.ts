@@ -35,7 +35,8 @@ export default defineConfig(({ command, mode }) => {
                 .replace(/<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>/, '')
                 .replace(/<script>[\s\S]*?tailwind\.config[\s\S]*?<\/script>/, '')
                 .replace(/<style type="text\/tailwindcss">[\s\S]*?<\/style>/, '')
-                .replace(/<script type="importmap">[\s\S]*?<\/script>/, '');
+                .replace(/<script type="importmap">[\s\S]*?<\/script>/, '')
+                .replace(/<link rel="stylesheet" crossorigin href="(\/assets\/[^"]+\.css)">/, '<link rel="stylesheet" href="$1" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="$1"></noscript>');
             }
             return html;
           }
