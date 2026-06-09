@@ -26,6 +26,7 @@ html, body {
   /* Hardware acceleration base */
   transform: translateZ(0);
   will-change: transform;
+  contain: layout style;
 }
 
 /* Premium Glass Hover Effect */

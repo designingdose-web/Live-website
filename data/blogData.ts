@@ -75,7 +75,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'paragraph', text: `From a branding perspective, dark mode exudes a premium, modern, and high-tech vibe. It allows vibrant accent colors—like neons, gradients, and metallics—to pop in ways they simply can't on a white background. We are seeing a "Dark Mode First" philosophy take over in SaaS, fintech, entertainment, and luxury e-commerce. If your website is blindingly white in 2025, you might be driving users away simply because looking at your site is physically uncomfortable.` },
       { type: 'heading', text: '4. Mobile-First is Now Mobile-Only' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764866319/wb4_kqoe5s.webp'), alt: 'Mobile-first navigation bar design optimized for the thumb zone on smartphones' },
-      { type: 'paragraph', text: `Google has been preaching "Mobile-First" indexing for years, but the reality has shifted even further. For many B2C businesses, desktop traffic is negligible. We are designing for a "Mobile-Only" mindset. This changes everything about the layout.` },
+      { type: 'paragraph', text: `Google has been preaching "Mobile-First" indexing for years, but the reality has shifted even further. For many B2C businesses, desktop traffic is negligible. We are designing for a "Mobile-Only" mindset. This changes everything about the layout, making a [responsive mobile-first website](/services/website-packages) absolute table stakes for business survival in 2025.` },
       { type: 'paragraph', text: `The "Thumb Zone" is the new golden ratio. Navigation bars are moving to the bottom of the screen (similar to apps) because phones are too large to reach the top comfortably with one hand. We are seeing the death of the "hamburger menu" in favor of swipe gestures and bottom tab bars. Content must be vertically stackable, legible without zooming, and buttons must be large enough to tap without error. If a user has to pinch-to-zoom, you have already lost the sale.` },
       { type: 'heading', text: '5. Immersive 3D and WebGL Experiences' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764866316/wb5_o90mek.webp'), alt: 'Immersive 3D WebGL product showcase allowing 360 degree view on a laptop screen' },
@@ -115,7 +115,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764716592/dp3_rrezmn.webp'), alt: 'Professional branding kit with logo, color palette, and custom packaging' },
       { type: 'paragraph', text: `In dropshipping, you don\'t own the product. Anyone can sell what you are selling. So why should they buy from you? The answer is your Brand.` },
       { type: 'list', items: [
-        'Visual Identity: A [professional logo](/services/logo-design), consistent color palette, and high-quality custom fonts.',
+        'Visual Identity: A [professional logo](/services/logo-design) and cohesive [logo design](/services/logo-design), consistent color palette, and high-quality custom fonts.',
         'Copywriting: Product descriptions that sell benefits, not features. Don\'t say "Plastic housing." Say "Durable, lightweight design built to last."',
         'Customer Experience: Custom packaging, thank you notes, and instant customer support responses.',
         'Social Proof: curated reviews, user-generated content, and influencer endorsements.'
@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: 'The Automation Advantage' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764717857/dp5_avgrhj.webp'), alt: 'Automated business systems linking inventory, chatbot support, and email marketing' },
       { type: 'paragraph', text: `One of the greatest benefits of the modern dropshipping ecosystem is the software stack. You can now automate almost every aspect of the business. Apps can automatically sync inventory levels so you never sell a product that is out of stock. AI chatbots can handle 80% of customer service queries like "Where is my order?" instantly. Email flows can automatically recover abandoned carts and upsell customers post-purchase. This allows a single person to run a business that generates 6-7 figures in revenue.` },
-      { type: 'paragraph', text: `Dropshipping is far from dead; it has just shed its amateur skin. It is now a serious business model for serious entrepreneurs. At Designing Dose, we build stores that adhere to these 2025 standards—branded, niche-focused, and automated for success.` }
+      { type: 'paragraph', text: `Dropshipping is far from dead; it has just shed its amateur skin. It is now a serious business model for serious entrepreneurs. At Designing Dose, we build stores that adhere to these 2025 standards—branded, niche-focused, and automated for success. Ready to launch your store? Explore our [dropshipping packages](/services/dropshipping) starting from €999 — fully built, branded, and automated from day one.` }
     ]
   },
   {
@@ -161,7 +161,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764770378/sm5_ogkap2.webp'), alt: 'Concept of reciprocity in community management and engaging with followers' },
       { type: 'paragraph', text: `The principle of reciprocity states that if you do something for me, I feel compelled to do something for you. In social media terms, this means you cannot just take; you must give. Brands that only broadcast ads fail.` },
       { type: 'paragraph', text: `Brands that reply to comments, answer DMs, and engage with their followers\' content create a debt of reciprocity. When you take the time to acknowledge a follower, they feel seen and valued. They are then far more likely to support you, buy from you, and defend you. Community management is not an administrative task; it is a relationship-building strategy.` },
-      { type: 'paragraph', text: `At Designing Dose, our social media strategies are built on these psychological pillars. We don\'t just post content; we engineer engagement.` }
+      { type: 'paragraph', text: `At Designing Dose, our social media strategies are built on these psychological pillars. We don\'t just post content; we engineer engagement. If you are ready to turn psychology into profit, view our [social media marketing packages](/services/social-media) and book a free strategy session.` }
     ]
   },
   {
@@ -193,6 +193,7 @@ export const blogPosts: BlogPost[] = [
         'Pros: One codebase for both platforms. This can reduce development time and cost by 30-50%. You only need one team. Feature parity is guaranteed across both platforms. Hot Reload allows developers to see changes instantly, speeding up the build process.',
         'Cons: There is still a slight performance overhead compared to pure Native, though it is imperceptible for 95% of apps. Accessing very specific, new device hardware might require writing some "bridge" code in native languages.'
       ]},
+      { type: 'paragraph', text: `Our [cross-platform app packages](/services/mobile-app-development) start from €6,499 for a functional MVP — built in Flutter, deployed to both iOS and Android simultaneously.` },
       { type: 'heading', text: 'Performance vs. Efficiency Trade-off' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764867075/app3_dnzemd.webp'), alt: 'Chart comparing performance and cost efficiency of native vs cross-platform apps' },
       { type: 'heading', text: 'The Verdict: What Should You Build?' },
@@ -225,6 +226,7 @@ export const blogPosts: BlogPost[] = [
         'Typography: Fonts have personalities. A Serif font (like Times New Roman) says "traditional, respectable, serious." A Sans-Serif font (like Helvetica) says "modern, clean, accessible." A Script font says "elegant, human, creative." Mixing them randomly dilutes your message.',
         'Imagery Style: Do you use dark, moody photography? Bright, airy lifestyle shots? Flat vector illustrations? The style of your imagery should be instantly recognizable as yours.'
       ]},
+      { type: 'paragraph', text: `Our [logo design packages](/services/logo-design) starting from €49 include vector files, brand colour palettes, and social media profile logos so your brand stays consistent everywhere.` },
       { type: 'heading', text: 'The Verbal Pillar: Voice and Tone' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764771666/logo2_ehrbrs.webp'), alt: 'Brand voice and tone guidelines document' },
       { type: 'paragraph', text: `How does your brand speak? If your brand were a person at a dinner party, who would they be? The intellectual professor? The funny best friend? The encouraging coach? This is your Brand Voice.` },
@@ -271,7 +273,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: 'Technical SEO is the Foundation' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764779499/seo4_gqmywt.webp'), alt: 'Technical SEO schema markup code snippet for structured data' },
       { type: 'paragraph', text: `With AI crawlers working overtime, your site\'s technical health is paramount. Core Web Vitals (speed, stability, responsiveness) must be green. Schema Markup (structured data) is now non-negotiable. Schema is the code that helps machines understand your content (e.g., telling Google "this is a recipe," "this is a review," "this is a video"). If you don\'t speak the robot\'s language via Schema, the robot won\'t feature you in the AI snapshot. (Need help with technical optimization? See our [Web Development packages](/services/website-packages)).` },
-      { type: 'paragraph', text: `SEO in 2025 is harder, but the rewards are higher for those who do it right. It is a shift from quantity to quality, from robots to humans. At Designing Dose, our [SEO strategies](/services/search-engine-marketing-sem) are built for this new reality.` }
+      { type: 'paragraph', text: `SEO in 2025 is harder, but the rewards are higher for those who do it right. It is a shift from quantity to quality, from robots to humans. At Designing Dose, our [SEO strategies](/services/search-engine-marketing-sem) are built for this new reality. Our [SEO packages](/services/search-engine-marketing-sem) starting from €299 per month are built specifically for this AI-first search environment — schema markup, topic clustering, and E-E-A-T signals included.` }
     ]
   },
   {
@@ -300,6 +302,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764781101/cb3_l6ilys.webp'), alt: 'Richly detailed background illustration for a children\'s fantasy story' },
       { type: 'paragraph', text: `The text of a picture book is sparse, often under 500 words. This leaves a massive gap for the illustrator to fill with "World Building." The text might simply say "Use your imagination," but the illustration can show a castle made of candy, a dragon flying a kite, and a river of lemonade.` },
       { type: 'paragraph', text: `These background details add "Re-readability." Parents know the pain of reading the same book 100 times. Rich, detailed illustrations give the child something new to spot on the 50th read—a ladybug hiding on every page, or a subplot happening with a squirrel in the background. This depth makes a book a favorite.` },
+      { type: 'paragraph', text: `Bring your story to life with our [children's book illustration packages](/services/illustration) starting from €1,699 — full colour, print-ready, and KDP-formatted.` },
       { type: 'paragraph', text: `At Designing Dose, we don\'t just draw pretty pictures. We are visual directors. We help authors translate their words into a visual language that captivates young minds and stands out on the bookshelf. Check out our [Illustration Packages](/services/illustration?tab=children-book-illustration) to see how we can bring your story to life.` }
     ]
   },
@@ -332,7 +335,8 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: '4. Social Media Dominance' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764858379/vk4_g3een3.webp'), alt: 'Social media video engagement metrics graph showing high reach' },
       { type: 'paragraph', text: `Social algorithms explicitly favor video. Instagram has openly stated they are no longer a photo-sharing app. LinkedIn posts with video get 5x more engagement. Facebook ads with video have significantly lower Cost Per Click (CPC) than static image ads. If you want reach on social media in 2025, you have no choice but to embrace video.` },
-      { type: 'paragraph', text: `You don\'t need a Hollywood budget. Authenticity beats production value. But you do need a strategy. Whether it's a polished 2D animation or a raw user-generated clip, video is the language of the modern internet. Designing Dose helps you speak it fluently.` }
+      { type: 'paragraph', text: `You don\'t need a Hollywood budget. Authenticity beats production value. But you do need a strategy. Whether it's a polished 2D animation or a raw user-generated clip, video is the language of the modern internet. Designing Dose helps you speak it fluently.` },
+      { type: 'paragraph', text: `Our [video animation packages](/services/video-animation) start at €399 for a branded intro and scale to full cinematic productions — every video includes commercial usage rights.` }
     ]
   },
   {
@@ -364,7 +368,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: 'Local SEO: The Goldmine' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764863286/web3_porilk.webp'), alt: 'Local SEO map pack results on mobile for service searches' },
       { type: 'paragraph', text: `Google searches for "near me" (e.g., "roofers near me") have exploded. To appear in these local searches, you need a website optimized for Local SEO. You need content that mentions your city, your service area, and your specific services. A Facebook page rarely ranks well for these commercial intent keywords. A properly built website puts you in front of people exactly at the moment they are ready to buy.` },
-      { type: 'paragraph', text: `In 2025, a website is not a luxury; it is a utility. It is as essential as a phone number or a bank account. Designing Dose specializes in getting local businesses online quickly and affordably, turning your digital presence into your best employee.` }
+      { type: 'paragraph', text: `In 2025, a website is not a luxury; it is a utility. It is as essential as a phone number or a bank account. Designing Dose specializes in getting local businesses online quickly and affordably, turning your digital presence into your best employee. Getting online does not have to be complicated. Our [website packages](/services/website-packages) start from €199 — built, deployed, and SEO-ready within 2 weeks.` }
     ]
   },
   {
@@ -396,7 +400,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: '4. A+ Content' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764863912/ebook4_jjagyv.webp'), alt: 'Amazon A+ content example showing rich graphics and book details' },
       { type: 'paragraph', text: `Amazon allows you to add "A+ Content"—graphics and text that appear in the "From the Publisher" section. This is your landing page. Use it to show interior spreads, author bio graphics, and comparison charts. It looks professional and keeps the reader on your page longer, increasing conversion rates.` },
-      { type: 'paragraph', text: `Self-publishing is a business. Treat your book like a product, and your writing career like a startup. Designing Dose helps authors with the visual side of this business—covers, illustrations, and marketing assets that sell.` }
+      { type: 'paragraph', text: `Self-publishing is a business. Treat your book like a product, and your writing career like a startup. Designing Dose helps authors with the visual side of this business—covers, illustrations, and marketing assets that sell. Our [e-book cover design packages](/services/illustration) start from €99 and our [full illustration packages](/services/illustration) can take your book from manuscript to publish-ready.` }
     ]
   },
   {
@@ -433,7 +437,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: '4. Poor Mobile Experience' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764864624/sales1_iyw5qm.webp'), alt: 'Mobile responsive e-commerce shopping cart and product page' },
       { type: 'paragraph', text: `Over 70% of e-commerce traffic is mobile. Yet many store owners build their site on a desktop and never check it on a phone. Buttons that are too small, pop-ups that cover the whole screen and can\'t be closed, text that is too small—these mobile UI failures kill conversions. Design for mobile first. (We specialize in [mobile-first e-commerce development](/services/website-packages?tab=e-commerce)).` },
-      { type: 'paragraph', text: `Fixing these friction points isn't just about design; it's about empathy. Walk through your own store as a stranger. Where do you get stuck? Where do you get annoyed? Fix that, and the sales will follow. Designing Dose builds high-converting stores that prioritize user experience above all else.` }
+      { type: 'paragraph', text: `Fixing these friction points isn't just about design; it's about empathy. Walk through your own store as a stranger. Where do you get stuck? Where do you get annoyed? Fix that, and the sales will follow. Designing Dose builds high-converting stores that prioritize user experience above all else. We build high-converting e-commerce stores that address every friction point from day one. See our [e-commerce packages](/services/website-packages) starting from €349.` }
     ]
   },
   {
@@ -464,7 +468,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'paragraph', text: `Instagram is a "Social Graph." While Reels has improved reach to non-followers, it still heavily prioritizes content from accounts people already follow. It is better for nurturing an existing community than for exploding overnight from scratch.` },
       { type: 'heading', text: 'The Verdict' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865496/ti4_i65q7w.webp'), alt: 'Final summary and platform selection guidance' },
-      { type: 'paragraph', text: `You don't necessarily have to choose one. You can repost content across both (just make sure to remove the watermarks!). But you should have a "Primary Platform" where you engage with comments and build community. Start where your customers are, not where you want to be. Designing Dose can help you craft a vertical video strategy that works for either platform.` }
+      { type: 'paragraph', text: `You don't necessarily have to choose one. You can repost content across both (just make sure to remove the watermarks!). But you should have a "Primary Platform" where you engage with comments and build community. Start where your customers are, not where you want to be. Designing Dose can help you craft a vertical video strategy that works for either platform. Need a team to manage your content strategy across both platforms? Our [social media packages](/services/social-media) start from €399 per month and include platform-specific content creation and ad management.` }
     ]
   }
 ];

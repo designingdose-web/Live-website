@@ -52,28 +52,26 @@ const ScrollManager = () => {
       const maxAttempts = 30;
       
       const scrollToElement = () => {
-        const element = document.getElementById(targetId);
-        if (element) {
-          // Precise calculation to land at the TOP of the card
-          // 120px offset to clear the sticky header
-          const headerOffset = 120;
-          const rect = element.getBoundingClientRect();
-          const topPosition = rect.top + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: topPosition,
-            behavior: 'smooth'
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const element = document.getElementById(targetId);
+            if (element) {
+              const headerOffset = 120;
+              const rect = element.getBoundingClientRect();
+              const topPosition = rect.top + window.pageYOffset - headerOffset;
+              window.scrollTo({
+                top: topPosition,
+                behavior: 'smooth'
+              });
+              element.focus({ preventScroll: true });
+            } else if (attempts < maxAttempts) {
+              attempts++;
+              setTimeout(scrollToElement, 100);
+            }
           });
-          
-          // Focus the element for accessibility but don't let it scroll itself
-          element.focus({ preventScroll: true });
-        } else if (attempts < maxAttempts) {
-          attempts++;
-          setTimeout(scrollToElement, 100);
-        }
+        });
       };
 
-      // Initial small delay to let the lazy page start rendering
       setTimeout(scrollToElement, 150);
     } else {
       // Default: Scroll to top of page on standard navigation
@@ -100,10 +98,16 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (modalOpenCount < 2) {
-      const delay = modalOpenCount === 0 ? 15000 : 90000;
-      const timer = setTimeout(() => {
-        setIsModalOpen(true);
-      }, delay);
+      const delay = modalOpenCount === 0 ? 20000 : 90000;
+      let timer: ReturnType<typeof setTimeout>;
+      const start = () => {
+        timer = setTimeout(() => setIsModalOpen(true), delay);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(start, { timeout: 3000 });
+      } else {
+        start();
+      }
       return () => clearTimeout(timer);
     }
   }, [modalOpenCount]);

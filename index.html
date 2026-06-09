@@ -36,7 +36,7 @@
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./favicon.svg" />
     
-    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin="anonymous" />
     
@@ -236,14 +236,23 @@
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
     <script>
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          var s = document.createElement('script');
-          s.src = '//code.tidio.co/vnpbgskk6qw0yaxjmpb3s21w7ftpkctq.js';
-          s.async = true;
-          document.body.appendChild(s);
-        }, 4000);
-      });
+      function loadTidio() {
+        var s = document.createElement('script');
+        s.src = '//code.tidio.co/vnpbgskk6qw0yaxjmpb3s21w7ftpkctq.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            requestIdleCallback(loadTidio, { timeout: 5000 });
+          }, 3000);
+        });
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(loadTidio, 7000);
+        });
+      }
     </script>
   </body>
 </html>
