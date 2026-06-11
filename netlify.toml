@@ -1,3 +1,49 @@
+# Netlify Configuration File
+# Optimized for Designing Dose (React SPA)
+
+# 1. Global Security Headers for all routes (/*)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # -------------------------------------------------------------------------
+    # Header 1: Content-Security-Policy (CSP)
+    # - Mitchell-based XSS, clickjacking, and DOM-based XSS mitigation.
+    # - Allows self, Tidio scripts, Tailwind inline styles, Cloudinary assets, and Formspree submissions.
+    # - Configures frame-ancestors 'none' to mitigate clickjacking.
+    # - Enforces Trusted Types with allow-duplicates to prevent DOM-based XSS in React.
+    # -------------------------------------------------------------------------
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://code.tidio.co https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://res.cloudinary.com https://code.tidio.co https://*.tidiochat.com; media-src 'self' https://res.cloudinary.com; connect-src 'self' https://formspree.io https://*.tidio.co wss://*.tidio.co; frame-src 'self' https://*.tidio.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; require-trusted-types-for 'script'; trusted-types default 'allow-duplicates';"
+
+    # -------------------------------------------------------------------------
+    # Header 2: Strict-Transport-Security (HSTS)
+    # - Enforces secure (HTTPS) connections for at least 1 year (31,536,000 seconds).
+    # - Applies to all subdomains (includeSubDomains) and requests inclusion in the HSTS preload list.
+    # -------------------------------------------------------------------------
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # -------------------------------------------------------------------------
+    # Header 3: Cross-Origin-Opener-Policy (COOP)
+    # - Directs browsers to safely isolate our document from cross-origin windows.
+    # - Prevents side-channel sniffing attacks (Spectre) and cross-window tracking.
+    # -------------------------------------------------------------------------
+    Cross-Origin-Opener-Policy = "same-origin"
+
+    # -------------------------------------------------------------------------
+    # Header 4: X-Frame-Options (XFO)
+    # - Prevents the document from being embedded in frames, iframes, or objects.
+    # - Eliminates clickjacking risks on older browsers that do not support CSP frame-ancestors.
+    # -------------------------------------------------------------------------
+    X-Frame-Options = "DENY"
+
+    # -------------------------------------------------------------------------
+    # Header 5: X-Content-Type-Options
+    # - Instructs the browser to strictly follow MIME types declared in the Content-Type header.
+    # - Blocks mime-sniffing exploits (such as executing image uploads as scripts).
+    # -------------------------------------------------------------------------
+    X-Content-Type-Options = "nosniff"
+
+
+# 2. Cache headers for static assets
 [[headers]]
   for = "/assets/*"
   [headers.values]

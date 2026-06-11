@@ -53,26 +53,75 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-        setShouldLoadVideo(true);
-    }, 2500);
-    return () => clearTimeout(timer);
+    let timer: ReturnType<typeof setTimeout>;
+    
+    // Check if device is mobile based on screen width
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+    const triggerLoad = () => {
+      setShouldLoadVideo(true);
+      cleanup();
+    };
+
+    const handleScroll = () => {
+      if (isMobile) {
+        if (window.scrollY >= 50) {
+          triggerLoad();
+        }
+      } else {
+        triggerLoad();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    if (!isMobile) {
+      timer = setTimeout(() => {
+        triggerLoad();
+      }, 5000);
+    }
+
+    const cleanup = () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (timer) clearTimeout(timer);
+    };
+
+    return cleanup;
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {
     if (videoRef.current && shouldLoadVideo) {
-        if (isPaused || !isActive) {
-            videoRef.current.pause();
-        } else {
-            videoRef.current.play().catch(() => {});
-        }
+      if (isPaused || !isActive || !isIntersecting) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch(() => {});
+      }
     }
-  }, [isPaused, isActive, shouldLoadVideo]);
+  }, [isPaused, isActive, shouldLoadVideo, isIntersecting]);
 
   return (
-    <div className="absolute inset-0 w-full h-full bg-brand-primary" aria-hidden="true">
+    <div ref={containerRef} className="absolute inset-0 w-full h-full bg-brand-primary" aria-hidden="true">
       {poster && (
         <img
           src={poster}
@@ -94,8 +143,12 @@ const VideoSlide: React.FC<{ source: string; poster?: string; isPaused?: boolean
           muted 
           playsInline
           autoPlay
-          preload="metadata"
-          onError={() => setVideoError(true)}
+          preload="none"
+          onError={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setVideoError(true);
+          }}
           className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-1000 transform scale-[1.02] aspect-video"
           aria-hidden="true"
           tabIndex={-1}
@@ -343,18 +396,21 @@ const Banner: React.FC = () => {
         )}
       </button>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-40">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center space-x-1 z-40">
         {slides.map((_, index) => (
-          <div key={index} className="p-3 -m-3">
-            <button
-              onClick={() => goToSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-brand-accent-end focus:ring-offset-1 focus:ring-offset-black ${
-                index === currentIndex ? 'bg-brand-accent-end w-8' : 'bg-white/30 hover:bg-white/70'
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className="w-11 h-11 flex items-center justify-center focus:outline-none group rounded-full focus-visible:ring-2 focus-visible:ring-brand-accent-end focus-visible:ring-offset-1 focus-visible:ring-offset-black"
+            aria-label={`Go to slide ${index + 1}`}
+            aria-current={index === currentIndex ? "true" : "false"}
+          >
+            <span
+              className={`h-2.5 rounded-full transition-all duration-500 ${
+                index === currentIndex ? 'bg-brand-accent-end w-8' : 'bg-white/30 group-hover:bg-white/70 w-2.5'
               }`}
-              aria-label={`Go to slide ${index + 1}`}
-              aria-current={index === currentIndex ? "true" : "false"}
-            ></button>
-          </div>
+            />
+          </button>
         ))}
       </div>
     </div>

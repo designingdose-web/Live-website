@@ -27,8 +27,14 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     const detectCurrency = async () => {
       // 1. Check local storage first for instant retrieval
-      const cachedSymbol = localStorage.getItem('user_currency_symbol');
-      const cachedCountry = localStorage.getItem('user_country_code');
+      let cachedSymbol: string | null = null;
+      let cachedCountry: string | null = null;
+      try {
+        cachedSymbol = localStorage.getItem('user_currency_symbol');
+        cachedCountry = localStorage.getItem('user_country_code');
+      } catch (e) {
+        // Silently ignore storage errors under strict/headless/private settings
+      }
       
       if (cachedSymbol && cachedCountry) {
         setSymbol(cachedSymbol as CurrencySymbol);
@@ -64,8 +70,12 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           setSymbol(detectedSymbol);
           setCountryCode(detectedCountry);
           
-          localStorage.setItem('user_currency_symbol', detectedSymbol);
-          localStorage.setItem('user_country_code', detectedCountry);
+          try {
+            localStorage.setItem('user_currency_symbol', detectedSymbol);
+            localStorage.setItem('user_country_code', detectedCountry);
+          } catch (e) {
+            // Silently ignore storage errors
+          }
         } catch (error) {
           console.warn('Currency detection failed, defaulting to Global ($).');
           setSymbol('$');
