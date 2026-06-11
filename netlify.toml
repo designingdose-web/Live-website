@@ -6,41 +6,45 @@
   for = "/*"
   [headers.values]
     # -------------------------------------------------------------------------
-    # Header 1: Content-Security-Policy (CSP)
-    # - Mitchell-based XSS, clickjacking, and DOM-based XSS mitigation.
-    # - Allows self, Tidio scripts, Tailwind inline styles, Cloudinary assets, and Formspree submissions.
-    # - Configures frame-ancestors 'none' to mitigate clickjacking.
-    # - Enforces Trusted Types with allow-duplicates to prevent DOM-based XSS in React.
-    # -------------------------------------------------------------------------
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://code.tidio.co https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://res.cloudinary.com https://code.tidio.co https://*.tidiochat.com; media-src 'self' https://res.cloudinary.com; connect-src 'self' https://formspree.io https://*.tidio.co wss://*.tidio.co; frame-src 'self' https://*.tidio.co; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; require-trusted-types-for 'script'; trusted-types default 'allow-duplicates';"
-
-    # -------------------------------------------------------------------------
-    # Header 2: Strict-Transport-Security (HSTS)
-    # - Enforces secure (HTTPS) connections for at least 1 year (31,536,000 seconds).
+    # Header 1: Strict-Transport-Security (HSTS)
+    # - Enforces secure (HTTPS) connections for 2 years (63,072,000 seconds).
     # - Applies to all subdomains (includeSubDomains) and requests inclusion in the HSTS preload list.
     # -------------------------------------------------------------------------
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
     # -------------------------------------------------------------------------
-    # Header 3: Cross-Origin-Opener-Policy (COOP)
+    # Header 2: Cross-Origin-Opener-Policy (COOP)
     # - Directs browsers to safely isolate our document from cross-origin windows.
     # - Prevents side-channel sniffing attacks (Spectre) and cross-window tracking.
     # -------------------------------------------------------------------------
     Cross-Origin-Opener-Policy = "same-origin"
 
     # -------------------------------------------------------------------------
-    # Header 4: X-Frame-Options (XFO)
+    # Header 3: X-Frame-Options (XFO)
     # - Prevents the document from being embedded in frames, iframes, or objects.
-    # - Eliminates clickjacking risks on older browsers that do not support CSP frame-ancestors.
+    # - Eliminates clickjacking risks on older browsers.
     # -------------------------------------------------------------------------
     X-Frame-Options = "DENY"
 
     # -------------------------------------------------------------------------
-    # Header 5: X-Content-Type-Options
+    # Header 4: X-Content-Type-Options
     # - Instructs the browser to strictly follow MIME types declared in the Content-Type header.
     # - Blocks mime-sniffing exploits (such as executing image uploads as scripts).
     # -------------------------------------------------------------------------
     X-Content-Type-Options = "nosniff"
+
+    # -------------------------------------------------------------------------
+    # Header 5: Referrer-Policy
+    # - Controls how much referrer information is sent with requests.
+    # - Protects privacy while maintaining safety for cross-origin navigations.
+    # -------------------------------------------------------------------------
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # -------------------------------------------------------------------------
+    # Header 6: Permissions-Policy
+    # - Disables access to sensitive browser features (camera, microphone, geolocation) to protect user privacy.
+    # -------------------------------------------------------------------------
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
 
 # 2. Cache headers for static assets
