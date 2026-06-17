@@ -26,7 +26,7 @@ const ScrollToTop: React.FC = () => {
   return (
     <div 
       className={`
-        fixed bottom-8 left-8 z-50 
+        fixed bottom-24 md:bottom-8 left-8 z-50 
         transition-all duration-300 ease-in-out
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}
       `}

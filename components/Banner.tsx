@@ -7,6 +7,10 @@ interface Slide {
   duration?: number;
   accent: string;
   eyebrow: string;
+  showStats?: boolean;
+  stats?: { num: string; label: string }[];
+  secondCtaText?: string;
+  secondCtaLink?: string;
 }
 
 const slides: Slide[] = [
@@ -15,32 +19,47 @@ const slides: Slide[] = [
     subTagline: 'Immersive design, flawless code, and a user experience that turns visitors into obsessed fans.',
     duration: 8000,
     accent: '#8B5CF6',
-    eyrow: 'Web & Digital'
-  } as any, // fallback for matching interface exactly
+    eyebrow: 'Web & Digital',
+    showStats: true,
+    stats: [
+      { num: '850+', label: 'Clients Served' },
+      { num: '10+', label: 'Years Experience' },
+      { num: '96.7%', label: 'Satisfaction Rate' },
+    ],
+    secondCtaText: 'Explore Packages',
+    secondCtaLink: '/services/website-packages',
+  },
   {
-    tagline: 'Invisibility is Not an Option.',
+    tagline: 'Your Competitors Are on Page 1. You Should Be Too.',
     subTagline: 'Climb the rankings and claim your throne. We turn search engines into your most powerful growth engine.',
     duration: 6000,
     accent: '#22D3EE',
-    eyrow: 'Search Engine Marketing'
-  } as any,
+    eyebrow: 'Search Engine Marketing',
+    showStats: true,
+    stats: [
+      { num: '3x', label: 'AVG TRAFFIC GROWTH' },
+      { num: 'Top 3', label: 'RANKING RESULTS' },
+      { num: '6mo', label: 'AVG TIME TO RANK' },
+    ],
+    secondCtaText: 'View SEO Plans',
+    secondCtaLink: '/services/search-engine-marketing-sem',
+  },
   {
     tagline: 'Stop the Scroll. Start the Conversation.',
     subTagline: "From viral visuals to strategic storytelling, we amplify your brand's voice in a noisy digital world.",
     duration: 6000,
     accent: '#EC4899',
-    eyrow: 'Social Media'
-  } as any
+    eyebrow: 'Social Media',
+    showStats: true,
+    stats: [
+      { num: '5x', label: 'AVG ENGAGEMENT LIFT' },
+      { num: '60+', label: 'POSTS PER MONTH' },
+      { num: 'All', label: 'MAJOR PLATFORMS' },
+    ],
+    secondCtaText: 'View Social Plans',
+    secondCtaLink: '/services/social-media',
+  },
 ];
-
-// Map slides to correct Slide shape to meet instruction interface exactly
-const slidesList: Slide[] = slides.map(s => ({
-  tagline: s.tagline,
-  subTagline: s.subTagline,
-  duration: s.duration,
-  accent: s.accent,
-  eyebrow: (s as any).eyrow
-}));
 
 const ACCENT_RGBS = [
   '139, 92, 246', // Purple
@@ -51,7 +70,7 @@ const ACCENT_RGBS = [
 const ArrowButton: React.FC<{ direction: 'left' | 'right'; onClick: () => void }> = ({ direction, onClick }) => (
   <button
     onClick={onClick}
-    className={`absolute top-1/2 -translate-y-1/2 z-40 p-2 md:p-3 bg-white/10 hover:bg-white/30 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 ${direction === 'left' ? 'left-2 md:left-5' : 'right-2 md:right-5'} group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end`}
+    className={`absolute top-1/2 -translate-y-1/2 z-40 p-2 md:p-3 bg-white/10 hover:bg-white/30 backdrop-blur-sm rounded-full transition-all duration-300 border border-white/20 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-end hidden md:flex items-center justify-center ${direction === 'left' ? 'left-3 md:left-4' : 'right-3 md:right-4'}`}
     aria-label={direction === 'left' ? 'Previous Slide' : 'Next Slide'}
   >
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
@@ -144,11 +163,11 @@ const Banner: React.FC = () => {
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slidesList.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   }, []);
 
   const prevSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + slidesList.length) % slidesList.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
   }, []);
 
   const goToSlide = (index: number) => {
@@ -221,10 +240,10 @@ const Banner: React.FC = () => {
           }
           @keyframes bannerFloatY {
             0%, 100% {
-              transform: translateY(0);
+              transform: translateY(0px);
             }
             50% {
-              transform: translateY(-10px);
+              transform: translateY(-14px);
             }
           }
           
@@ -262,6 +281,10 @@ const Banner: React.FC = () => {
           background-color: var(--ac);
           width: 0;
         }
+
+        @media (max-width: 767px) {
+          canvas#banner-bg-canvas { opacity: 0.7; }
+        }
       `;
       document.head.appendChild(styleTag);
     }
@@ -269,7 +292,7 @@ const Banner: React.FC = () => {
 
   // 1b. Update active color targets on slide change
   useEffect(() => {
-    targetColorRef.current = parseHexToRgb(slidesList[currentIndex].accent);
+    targetColorRef.current = parseHexToRgb(slides[currentIndex].accent);
   }, [currentIndex]);
 
   // 2. Class active list controller
@@ -287,7 +310,7 @@ const Banner: React.FC = () => {
   // 3. Slideshow auto-advance timing
   useEffect(() => {
     if (isPaused) return;
-    const slideDuration = slidesList[currentIndex].duration || 7000;
+    const slideDuration = slides[currentIndex].duration || 7000;
     const timer = setTimeout(() => {
       nextSlide();
     }, slideDuration);
@@ -571,7 +594,7 @@ const Banner: React.FC = () => {
     );
   };
 
-  const glowBackground = `radial-gradient(circle, ${hexToRgba(slidesList[currentIndex].accent, 0.35)} 0%, transparent 70%)`;
+  const glowBackground = `radial-gradient(circle, ${hexToRgba(slides[currentIndex].accent, 0.35)} 0%, transparent 70%)`;
 
   return (
     <div
@@ -583,11 +606,12 @@ const Banner: React.FC = () => {
       onTouchEnd={handleTouchEnd}
     >
       <div className="sr-only" aria-live="polite" aria-atomic="true">
-        Slide {currentIndex + 1} of {slidesList.length}: {slidesList[currentIndex].tagline}
+        Slide {currentIndex + 1} of {slides.length}: {slides[currentIndex].tagline}
       </div>
 
       {/* Layer 1 - Background grid */}
       <canvas
+        id="banner-bg-canvas"
         ref={canvasBgRef}
         className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
       />
@@ -600,33 +624,84 @@ const Banner: React.FC = () => {
         }}
       />
 
+      {/* Layer 3 - Mobile-only aurora orbs */}
+      <div className="absolute inset-0 z-[2] md:hidden pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: '280px',
+            height: '280px',
+            background: 'radial-gradient(circle, rgba(139,92,246,0.35) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+            top: '-60px',
+            left: '-80px',
+            animation: 'bannerFloatY 8s ease-in-out infinite',
+          }}
+        />
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: '220px',
+            height: '220px',
+            background: 'radial-gradient(circle, rgba(236,72,153,0.25) 0%, transparent 70%)',
+            filter: 'blur(50px)',
+            top: '30px',
+            right: '-60px',
+            animation: 'bannerFloatY 10s ease-in-out infinite 2s',
+          }}
+        />
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: '200px',
+            height: '200px',
+            background: 'radial-gradient(circle, rgba(34,211,238,0.2) 0%, transparent 70%)',
+            filter: 'blur(45px)',
+            bottom: '0px',
+            left: '20%',
+            animation: 'bannerFloatY 12s ease-in-out infinite 4s',
+          }}
+        />
+      </div>
+
       {/* Left Column Text Container */}
       <div className="absolute left-0 top-0 w-full md:w-[52%] h-full z-10">
-        {slidesList.map((slide, index) => {
+        {slides.map((slide, index) => {
           const isActive = index === currentIndex;
           const emWord = getLastWord(slide.tagline);
           return (
             <div
               key={index}
               ref={el => { slideRefs.current[index] = el; }}
-              className={`banner-slide absolute inset-0 flex flex-col justify-center px-6 md:px-0 md:pl-[52px] md:pr-12 transition-opacity duration-[700ms] ease-in-out ${
+              className={`banner-slide absolute inset-0 flex flex-col justify-center px-8 md:px-0 md:pl-[120px] md:pr-16 transition-opacity duration-[700ms] ease-in-out ${
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
               style={{ '--ac': slide.accent } as React.CSSProperties}
               role="group"
               aria-roledescription="slide"
-              aria-label={`${index + 1} of ${slidesList.length}`}
+              aria-label={`${index + 1} of ${slides.length}`}
               aria-hidden={!isActive}
             >
               {/* Decorative Eyebrow */}
-              <div className="flex items-center space-x-2 text-[10px] tracking-[0.2em] uppercase text-white/30 font-medium mb-4">
-                <span className="w-7 h-[0.5px]" style={{ backgroundColor: slide.accent }} />
-                <span className="px-2 py-0.5 rounded-full text-[9px] border"
+              <div className="flex items-center mb-4 self-start">
+                <span
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] tracking-[0.14em] uppercase font-medium"
                   style={{
-                    borderColor: hexToRgba(slide.accent, 0.4),
-                    color: hexToRgba(slide.accent, 0.8),
-                    borderWidth: '0.5px'
-                  }}>
+                    borderColor: hexToRgba(slide.accent, 0.25),
+                    color: hexToRgba(slide.accent, 0.85),
+                    border: `0.5px solid ${hexToRgba(slide.accent, 0.25)}`,
+                    background: hexToRgba(slide.accent, 0.06),
+                  }}
+                >
+                  <span
+                    className="inline-block rounded-full flex-shrink-0"
+                    style={{
+                      width: '5px',
+                      height: '5px',
+                      backgroundColor: hexToRgba(slide.accent, 0.9),
+                      boxShadow: `0 0 5px ${hexToRgba(slide.accent, 0.7)}`,
+                    }}
+                  />
                   {slide.eyebrow}
                 </span>
               </div>
@@ -643,9 +718,48 @@ const Banner: React.FC = () => {
               )}
 
               {/* Subheadline */}
-              <p className="text-[13px] text-brand-light/45 leading-[1.75] mt-4 max-w-[340px] font-light anim-fade-up anim-fade-up-2">
+              <p className="text-[15px] text-white/75 leading-relaxed mt-4 max-w-[440px] font-light anim-fade-up anim-fade-up-2">
                 {slide.subTagline}
               </p>
+
+              {/* CHANGE 1: Stats Row for Slide 0 inside active layout */}
+              {slide.showStats && slide.stats && (
+                <div 
+                  className="flex items-center justify-center md:justify-start gap-[32px] mt-[18px] mb-[24px]"
+                  style={{ display: 'flex', gap: '32px' }}
+                >
+                  {slide.stats.map((stat, sIdx) => (
+                    <React.Fragment key={sIdx}>
+                      {sIdx > 0 && (
+                        <div 
+                          className="w-[1px] h-[36px]" 
+                          style={{ backgroundColor: 'rgba(255,255,255,0.1)', width: '1px', height: '36px' }} 
+                        />
+                      )}
+                      <div className="flex flex-col items-center select-none">
+                        <span 
+                          className="text-[20px] font-[800] leading-none text-center"
+                          style={{
+                            background: `linear-gradient(135deg, ${slide.accent}, #fff)`,
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            fontSize: '20px',
+                            fontWeight: 800
+                          }}
+                        >
+                          {stat.num}
+                        </span>
+                        <span 
+                          className="text-[10px] tracking-[0.12em] uppercase font-medium mt-1 text-center whitespace-nowrap" 
+                          style={{ color: 'rgba(255,255,255,0.35)', fontSize: '10px', letterSpacing: '0.12em' }}
+                        >
+                          {stat.label}
+                        </span>
+                      </div>
+                    </React.Fragment>
+                  ))}
+                </div>
+              )}
 
               {/* Button Row */}
               <div className="flex flex-col sm:flex-row items-center gap-2.5 mt-[26px] anim-fade-up anim-fade-up-3 w-full sm:w-auto">
@@ -661,10 +775,10 @@ const Banner: React.FC = () => {
                 </button>
 
                 <Link
-                  to="/services/website-packages"
+                  to={slide.secondCtaLink || "/services/website-packages"}
                   className="relative overflow-hidden group bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold py-3 px-8 rounded-full text-sm hover:bg-white/20 hover:border-brand-accent-end/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto text-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-end focus:ring-offset-black"
                 >
-                  <span className="relative z-10" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>Explore Packages</span>
+                  <span className="relative z-10" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>{slide.secondCtaText || "Explore Packages"}</span>
                 </Link>
               </div>
             </div>
@@ -698,35 +812,37 @@ const Banner: React.FC = () => {
       <ArrowButton direction="left" onClick={prevSlide} />
       <ArrowButton direction="right" onClick={nextSlide} />
 
-      {/* Navigation & Controls */}
-      <button
-        onClick={togglePause}
-        className="absolute bottom-6 left-6 z-50 p-2 bg-black/30 hover:bg-black/50 rounded-full text-white backdrop-blur-sm transition-colors border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
-        aria-label={isPaused ? "Pause slideshow" : "Play slideshow"}
-      >
-        {isPaused ? (
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-        ) : (
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
-        )}
-      </button>
+      {/* CHANGE 3: Move pause button to sit beside the dot navigation */}
+      <div className="absolute bottom-5 left-0 right-0 z-40 flex items-center justify-center gap-3">
+        <button
+          onClick={togglePause}
+          className="p-2 bg-black/30 hover:bg-black/50 rounded-full text-white backdrop-blur-sm transition-colors border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent-end flex-shrink-0"
+          aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+        >
+          {isPaused ? (
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          ) : (
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          )}
+        </button>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center space-x-1 z-40">
-        {slidesList.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className="w-11 h-11 flex items-center justify-center focus:outline-none group rounded-full focus-visible:ring-2 focus-visible:ring-brand-accent-end focus-visible:ring-offset-1 focus-visible:ring-offset-black"
-            aria-label={`Go to slide ${index + 1}`}
-            aria-current={index === currentIndex ? "true" : "false"}
-          >
-            <span
-              className={`h-2.5 rounded-full transition-all duration-500 ${
-                index === currentIndex ? 'bg-brand-accent-end w-8' : 'bg-white/30 group-hover:bg-white/70 w-2.5'
-              }`}
-            />
-          </button>
-        ))}
+        <div className="flex items-center space-x-1">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className="w-10 h-10 flex items-center justify-center focus:outline-none group rounded-full focus-visible:ring-2 focus-visible:ring-brand-accent-end focus-visible:ring-offset-1 focus-visible:ring-offset-black"
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentIndex ? "true" : "false"}
+            >
+              <span
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  index === currentIndex ? 'bg-brand-accent-end w-7' : 'bg-white/30 group-hover:bg-white/70 w-2'
+                }`}
+              />
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
