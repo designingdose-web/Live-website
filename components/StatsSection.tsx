@@ -80,7 +80,7 @@ const StatCounter: React.FC<StatProps> = ({ end, label, suffix = '', duration = 
 
 const StatsSection: React.FC = () => {
     const stats = [
-        { end: 850, label: 'Clients Served', suffix: '+' },
+        { end: 1000, label: 'Clients Served', suffix: '+' },
         { end: 1000, label: 'Projects Completed', suffix: '+' },
         { end: 10, label: 'Years Experience', suffix: '+' },
         { end: 96.7, label: 'Satisfaction Rate', suffix: '%', decimals: 1 },

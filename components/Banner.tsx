@@ -22,7 +22,7 @@ const slides: Slide[] = [
     eyebrow: 'Web & Digital',
     showStats: true,
     stats: [
-      { num: '850+', label: 'Clients Served' },
+      { num: '1000+', label: 'Clients Served' },
       { num: '10+', label: 'Years Experience' },
       { num: '96.7%', label: 'Satisfaction Rate' },
     ],
@@ -152,6 +152,7 @@ const Banner: React.FC = () => {
 
   const canvasBgRef = useRef<HTMLCanvasElement>(null);
   const canvas3DRef = useRef<HTMLCanvasElement>(null);
+  const bannerContainerRef = useRef<HTMLDivElement>(null);
   const animationFrameIdRef = useRef<number | null>(null);
   const angleYRef = useRef<number>(0);
 
@@ -174,9 +175,9 @@ const Banner: React.FC = () => {
     setCurrentIndex(index);
   };
 
-  const togglePause = () => {
-    setIsPaused(!isPaused);
-  };
+  const togglePause = useCallback(() => {
+    setIsPaused((p) => !p);
+  }, []);
 
   const openModal = () => {
     window.dispatchEvent(new CustomEvent('open-lead-modal'));
@@ -317,18 +318,39 @@ const Banner: React.FC = () => {
     return () => clearTimeout(timer);
   }, [currentIndex, nextSlide, isPaused]);
 
-  // 4. Keyboard Listener
+  // 4. Keyboard Listener & Focus-on-mount
+  useEffect(() => {
+    // Force focus window and container on mount for immediate keyboard interaction
+    window.focus();
+    if (bannerContainerRef.current) {
+      bannerContainerRef.current.focus();
+    }
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // Disallow keyboard shortcuts if user is inside form elements
+      const target = event.target as HTMLElement;
+      if (
+        target?.tagName === 'INPUT' ||
+        target?.tagName === 'TEXTAREA' ||
+        target?.isContentEditable
+      ) {
+        return;
+      }
+
       if (event.key === 'ArrowRight') {
         nextSlide();
       } else if (event.key === 'ArrowLeft') {
         prevSlide();
+      } else if (event.key === ' ' || event.key === 'Spacebar') {
+        event.preventDefault();
+        togglePause();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide]);
+  }, [nextSlide, prevSlide, togglePause]);
 
   // 5. Unified Animation Loop Canvas background & 3D rotating wireframe icosahedron
   useEffect(() => {
@@ -598,7 +620,9 @@ const Banner: React.FC = () => {
 
   return (
     <div
-      className="relative w-full h-[85vh] md:h-[95vh] min-h-[500px] md:min-h-[660px] overflow-hidden bg-brand-primary group border-b border-white/20 aspect-video md:aspect-auto"
+      ref={bannerContainerRef}
+      tabIndex={0}
+      className="relative w-full h-[85vh] md:h-[95vh] min-h-[500px] md:min-h-[660px] overflow-hidden bg-brand-primary group border-b border-white/20 aspect-video md:aspect-auto outline-none"
       aria-roledescription="carousel"
       aria-label="Highlighted Services"
       onTouchStart={handleTouchStart}
@@ -725,33 +749,32 @@ const Banner: React.FC = () => {
               {/* CHANGE 1: Stats Row for Slide 0 inside active layout */}
               {slide.showStats && slide.stats && (
                 <div 
-                  className="flex items-center justify-center md:justify-start gap-[32px] mt-[12px] md:mt-[14px] mb-[18px] md:mb-[20px]"
-                  style={{ display: 'flex', gap: '32px' }}
+                  className="flex items-center justify-start gap-3 md:gap-8 mt-[12px] md:mt-[14px] mb-[18px] md:mb-[20px] w-full max-w-full overflow-visible"
                 >
                   {slide.stats.map((stat, sIdx) => (
                     <React.Fragment key={sIdx}>
                       {sIdx > 0 && (
                         <div 
-                          className="w-[1px] h-[36px]" 
-                          style={{ backgroundColor: 'rgba(255,255,255,0.1)', width: '1px', height: '36px' }} 
+                          className="w-[1px] h-[28px] md:h-[36px] flex-shrink-0" 
+                          style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} 
                         />
                       )}
-                      <div className="flex flex-col items-center select-none">
+                      <div className="flex flex-col items-center md:items-start select-none min-w-[70px] xs:min-w-[80px] max-w-[110px] md:max-w-none">
                         <span 
-                          className="text-[20px] font-[800] leading-none text-center"
+                          className="text-[18px] md:text-[20px] font-[800] leading-none text-center md:text-left"
                           style={{
                             background: `linear-gradient(135deg, ${slide.accent}, #fff)`,
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
-                            fontSize: '20px',
+                            fontSize: '18px',
                             fontWeight: 800
                           }}
                         >
                           {stat.num}
                         </span>
                         <span 
-                          className="text-[10px] tracking-[0.12em] uppercase font-medium mt-1 text-center whitespace-nowrap" 
-                          style={{ color: 'rgba(255,255,255,0.35)', fontSize: '10px', letterSpacing: '0.12em' }}
+                          className="text-[9px] md:text-[10px] tracking-[0.08em] md:tracking-[0.12em] uppercase font-medium mt-1 text-center md:text-left whitespace-normal leading-tight" 
+                          style={{ color: 'rgba(255,255,255,0.35)', fontSize: '9px' }}
                         >
                           {stat.label}
                         </span>
