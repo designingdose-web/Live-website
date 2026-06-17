@@ -598,7 +598,7 @@ const Banner: React.FC = () => {
 
   return (
     <div
-      className="relative w-full h-[85vh] md:h-[95vh] min-h-[85vh] md:min-h-[95vh] overflow-hidden bg-brand-primary group border-b border-white/20 aspect-video md:aspect-auto"
+      className="relative w-full h-[85vh] md:h-[95vh] min-h-[500px] md:min-h-[660px] overflow-hidden bg-brand-primary group border-b border-white/20 aspect-video md:aspect-auto"
       aria-roledescription="carousel"
       aria-label="Highlighted Services"
       onTouchStart={handleTouchStart}
@@ -673,7 +673,7 @@ const Banner: React.FC = () => {
             <div
               key={index}
               ref={el => { slideRefs.current[index] = el; }}
-              className={`banner-slide absolute inset-0 flex flex-col justify-center px-8 md:px-0 md:pl-[120px] md:pr-16 transition-opacity duration-[700ms] ease-in-out ${
+              className={`banner-slide absolute inset-0 flex flex-col justify-center px-8 md:px-0 md:pl-[120px] md:pr-16 md:pt-[36px] transition-opacity duration-[700ms] ease-in-out ${
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
               style={{ '--ac': slide.accent } as React.CSSProperties}
@@ -683,7 +683,7 @@ const Banner: React.FC = () => {
               aria-hidden={!isActive}
             >
               {/* Decorative Eyebrow */}
-              <div className="flex items-center mb-4 self-start">
+              <div className="flex items-center mb-2 md:mb-3 self-start">
                 <span
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] tracking-[0.14em] uppercase font-medium"
                   style={{
@@ -708,24 +708,24 @@ const Banner: React.FC = () => {
 
               {/* Headline */}
               {index === 0 ? (
-                <h1 className="text-white font-black leading-[1.1] tracking-tight mt-4 anim-fade-up anim-fade-up-1" style={{ fontSize: 'clamp(26px, 3.8vw, 42px)' }}>
+                <h1 className="text-white font-black leading-[1.1] tracking-tight mt-2 md:mt-3 anim-fade-up anim-fade-up-1" style={{ fontSize: 'clamp(26px, 3.8vw, 42px)' }}>
                   {renderTagline(slide.tagline, emWord)}
                 </h1>
               ) : (
-                <h2 className="text-white font-black leading-[1.1] tracking-tight mt-4 anim-fade-up anim-fade-up-1" style={{ fontSize: 'clamp(26px, 3.8vw, 42px)' }}>
+                <h2 className="text-white font-black leading-[1.1] tracking-tight mt-2 md:mt-3 anim-fade-up anim-fade-up-1" style={{ fontSize: 'clamp(26px, 3.8vw, 42px)' }}>
                   {renderTagline(slide.tagline, emWord)}
                 </h2>
               )}
 
               {/* Subheadline */}
-              <p className="text-[15px] text-white/75 leading-relaxed mt-4 max-w-[440px] font-light anim-fade-up anim-fade-up-2">
+              <p className="text-[15px] text-white/75 leading-relaxed mt-3 md:mt-4 max-w-[440px] font-light anim-fade-up anim-fade-up-2">
                 {slide.subTagline}
               </p>
 
               {/* CHANGE 1: Stats Row for Slide 0 inside active layout */}
               {slide.showStats && slide.stats && (
                 <div 
-                  className="flex items-center justify-center md:justify-start gap-[32px] mt-[18px] mb-[24px]"
+                  className="flex items-center justify-center md:justify-start gap-[32px] mt-[12px] md:mt-[14px] mb-[18px] md:mb-[20px]"
                   style={{ display: 'flex', gap: '32px' }}
                 >
                   {slide.stats.map((stat, sIdx) => (
@@ -762,7 +762,7 @@ const Banner: React.FC = () => {
               )}
 
               {/* Button Row */}
-              <div className="flex flex-col sm:flex-row items-center gap-2.5 mt-[26px] anim-fade-up anim-fade-up-3 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-center gap-2.5 mt-[18px] md:mt-[22px] anim-fade-up anim-fade-up-3 w-full sm:w-auto">
                 <button
                   onClick={openModal}
                   className="relative overflow-hidden group bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-sm shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-middle focus:ring-offset-black"
