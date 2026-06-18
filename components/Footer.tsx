@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from './Logo';
 
 const Star = ({ className, fill = "currentColor" }: { className?: string; fill?: string }) => (
   <svg viewBox="0 0 24 24" fill={fill} className={className} aria-hidden="true">
@@ -18,8 +17,9 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-brand-muted">
           <div className="md:col-span-1">
-            <div className="h-10 w-48" aria-hidden="false" style={{ minHeight: '40px', minWidth: '192px', display: 'block' }}>
-              <Logo className="h-10 w-auto" />
+            <div style={{ height: '40px', width: '192px', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+              <span style={{ fontSize: '1.5rem', fontWeight: 800, color: '#E6EDF3', letterSpacing: '-0.025em' }}>Designing</span>
+              <span style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.025em', background: 'linear-gradient(to right, #8B5CF6, #EC4899, #22D3EE)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Dose</span>
             </div>
             <p className="mt-4 text-sm max-w-sm leading-relaxed">
               Designing Dose is a growth-focused digital marketing agency. We help businesses scale their revenue with our expertise in SEO, Web Development, and Social Media Marketing.

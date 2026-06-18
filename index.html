@@ -238,7 +238,7 @@
       (function() {
         var tidioLoaded = false;
         var backupTimeout;
-        var events = ['scroll', 'mousemove', 'touchstart', 'keydown'];
+        var events = ['scroll', 'click', 'touchstart'];
 
         function loadTidio() {
           try {
@@ -270,7 +270,7 @@
         }
 
         // Backup timer to load Tidio after 8 seconds if no interaction occurs
-        backupTimeout = setTimeout(loadTidio, 8000);
+        backupTimeout = setTimeout(loadTidio, 15000);
 
         // Listen for first user interaction
         events.forEach(function(event) {
