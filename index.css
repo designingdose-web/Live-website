@@ -176,6 +176,24 @@ textarea:-webkit-autofill:active {
     scrollbar-width: none;
 }
 
+.marquee-container {
+  display: flex;
+  width: 100%;
+  height: 110px;
+  min-height: 110px;
+  aspect-ratio: 1200 / 110;
+  overflow: hidden;
+  contain: layout style;
+}
+
+.marquee {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  transform: translateZ(0);
+  animation: marquee 30s linear infinite;
+}
+
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
