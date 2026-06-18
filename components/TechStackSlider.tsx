@@ -136,11 +136,12 @@ const TechStackSlider: React.FC = () => {
         className="flex w-full min-h-[64px] overflow-hidden [&:hover>div]:[animation-play-state:paused]"
         aria-label="Technology partners slider"
         role="region"
+        style={{ contain: 'layout style' }}
       >
         {/* Inner container for scrolling - hover pause applied via parent */}
         <div 
           className="flex animate-[marquee_30s_linear_infinite]"
-          style={{ willChange: 'transform' }}
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         >
           {/* First set of brands */}
           {brands.map((brand, index) => (
