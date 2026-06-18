@@ -224,12 +224,8 @@ const Banner: React.FC = () => {
             }
           }
           @keyframes bannerDrawLine {
-            from {
-              width: 0;
-            }
-            to {
-              width: 100%;
-            }
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
           }
           @keyframes bannerGlowPulse {
             0%, 100% {
@@ -278,9 +274,11 @@ const Banner: React.FC = () => {
           bottom: -2px;
           left: 0;
           height: 3px;
+          width: 100%;
           border-radius: 2px;
           background-color: var(--ac);
-          width: 0;
+          transform: scaleX(0);
+          transform-origin: left;
         }
 
         @media (max-width: 767px) {
@@ -788,6 +786,7 @@ const Banner: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-center gap-2.5 mt-[18px] md:mt-[22px] anim-fade-up anim-fade-up-3 w-full sm:w-auto">
                 <button
                   onClick={openModal}
+                  tabIndex={isActive ? 0 : -1}
                   className="relative overflow-hidden group bg-gradient-to-r from-brand-accent-start via-brand-accent-middle to-brand-accent-end text-white font-bold py-3 px-8 rounded-full text-sm shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:shadow-[0_0_35px_rgba(236,72,153,0.6)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-middle focus:ring-offset-black"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
@@ -799,6 +798,7 @@ const Banner: React.FC = () => {
 
                 <Link
                   to={slide.secondCtaLink || "/services/website-packages"}
+                  tabIndex={isActive ? 0 : -1}
                   className="relative overflow-hidden group bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold py-3 px-8 rounded-full text-sm hover:bg-white/20 hover:border-brand-accent-end/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto text-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent-end focus:ring-offset-black"
                 >
                   <span className="relative z-10" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>{slide.secondCtaText || "Explore Packages"}</span>

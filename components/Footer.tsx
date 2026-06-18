@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-brand-muted">
           <div className="md:col-span-1">
-            <div className="h-10 w-48" aria-hidden="false">
+            <div className="h-10 w-48" aria-hidden="false" style={{ minHeight: '40px', minWidth: '192px' }}>
               <Logo className="h-10 w-auto" />
             </div>
             <p className="mt-4 text-sm max-w-sm leading-relaxed">

@@ -32,16 +32,15 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       try {
         cachedSymbol = localStorage.getItem('user_currency_symbol');
         cachedCountry = localStorage.getItem('user_country_code');
-      } catch (e) {
-        // Silently ignore storage errors under strict/headless/private settings
-      }
-      
-      if (cachedSymbol && cachedCountry) {
-        setSymbol(cachedSymbol as CurrencySymbol);
-        setCountryCode(cachedCountry);
-        setIsLoading(false);
-        return;
-      }
+        const cacheTime = localStorage.getItem('user_currency_time');
+        const sevenDays = 7 * 24 * 60 * 60 * 1000;
+        if (cachedSymbol && cachedCountry && cacheTime && Date.now() - parseInt(cacheTime) < sevenDays) {
+          setSymbol(cachedSymbol as CurrencySymbol);
+          setCountryCode(cachedCountry);
+          setIsLoading(false);
+          return;
+        }
+      } catch (e) {}
 
       // Performance Optimization: Defer network-based currency detection
       const delayTimer = setTimeout(async () => {
@@ -73,6 +72,7 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           try {
             localStorage.setItem('user_currency_symbol', detectedSymbol);
             localStorage.setItem('user_country_code', detectedCountry);
+            localStorage.setItem('user_currency_time', Date.now().toString());
           } catch (e) {
             // Silently ignore storage errors
           }

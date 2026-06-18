@@ -280,13 +280,14 @@ const TestimonialsSection: React.FC = () => {
                 
                 <div className="flex justify-center gap-2 mt-2 md:hidden">
                     {testimonialData.map((_, idx) => (
-                        <div key={idx} className="p-3 -m-3">
-                            <button
-                                onClick={() => setCurrentIndex(idx)}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-6 bg-brand-accent-middle' : 'w-1.5 bg-gray-700'}`}
-                                aria-label={`Go to testimonial ${idx + 1}`}
-                            />
-                        </div>
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentIndex(idx)}
+                        className="h-6 w-6 flex items-center justify-center focus:outline-none rounded-full"
+                        aria-label={`Go to testimonial ${idx + 1}`}
+                      >
+                        <span className={`rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-6 h-1.5 bg-brand-accent-middle' : 'w-1.5 h-1.5 bg-gray-700'}`} />
+                      </button>
                     ))}
                 </div>
             </div>

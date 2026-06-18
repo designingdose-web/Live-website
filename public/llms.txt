@@ -4,18 +4,18 @@ Designing Dose (designingdose.com) is a global digital agency specialising in we
 
 ## Key Pages
 
-- Homepage: https://designingdose.com/
-- Web Development & Packages: https://designingdose.com/services/website-packages
-- Search Engine Marketing: https://designingdose.com/services/search-engine-marketing-sem
-- Social Media Marketing: https://designingdose.com/services/social-media
-- Logo Design: https://designingdose.com/services/logo-design
-- Mobile App Development: https://designingdose.com/services/mobile-app-development
-- Dropshipping: https://designingdose.com/services/dropshipping
-- Video Animation: https://designingdose.com/services/video-animation
-- Illustration: https://designingdose.com/services/illustration
-- Blog: https://designingdose.com/blog
-- About: https://designingdose.com/about
-- Contact: https://designingdose.com/contact
+- [Homepage](https://designingdose.com/)
+- [Web Development & Packages](https://designingdose.com/services/website-packages)
+- [Search Engine Marketing](https://designingdose.com/services/search-engine-marketing-sem)
+- [Social Media Marketing](https://designingdose.com/services/social-media)
+- [Logo Design](https://designingdose.com/services/logo-design)
+- [Mobile App Development](https://designingdose.com/services/mobile-app-development)
+- [Dropshipping](https://designingdose.com/services/dropshipping)
+- [Video Animation](https://designingdose.com/services/video-animation)
+- [Illustration](https://designingdose.com/services/illustration)
+- [Blog](https://designingdose.com/blog)
+- [About](https://designingdose.com/about)
+- [Contact](https://designingdose.com/contact)
 
 ## Business Details
 

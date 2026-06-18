@@ -188,6 +188,7 @@ const Header: React.FC = () => {
                     key={link.to}
                     to={link.to}
                     onClick={closeMenu}
+                    tabIndex={isServicesOpen ? 0 : -1}
                     className="group flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-brand-accent-start/30 focus:outline-none focus:ring-2 focus:ring-brand-accent-end"
                   >
                     <span className="text-white font-bold text-base tracking-wide transition-all duration-300 group-hover:translate-x-1 inline-block group-hover:text-brand-accent-end group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.6)]">
