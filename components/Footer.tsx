@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
   return (
     <footer 
       className="relative bg-brand-secondary pt-10 overflow-hidden border-t border-white/10"
-      style={{ contentVisibility: 'auto', containIntrinsicSize: '0 800px' }}
+      style={{ minHeight: '800px' }}
     >
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-brand-muted">

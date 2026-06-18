@@ -248,8 +248,16 @@ const Banner: React.FC = () => {
             opacity: 0;
             will-change: transform, opacity;
           }
+
+          .banner-slide.slide-active .anim-fade-up-1:first-of-type {
+            opacity: 1;
+          }
           .banner-slide.slide-active .anim-fade-up-1 {
             animation: bannerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.15s;
+          }
+          .banner-slide[data-index="0"].slide-active .anim-fade-up-1 {
+            opacity: 1;
+            animation: bannerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0s;
           }
           .banner-slide.slide-active .anim-fade-up-2 {
             animation: bannerFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.25s;
@@ -292,18 +300,6 @@ const Banner: React.FC = () => {
   // 1b. Update active color targets on slide change
   useEffect(() => {
     targetColorRef.current = parseHexToRgb(slides[currentIndex].accent);
-  }, [currentIndex]);
-
-  // 2. Class active list controller
-  useEffect(() => {
-    slideRefs.current.forEach((el, idx) => {
-      if (!el) return;
-      el.classList.remove('slide-active');
-      if (idx === currentIndex) {
-        void el.offsetHeight; // Force reflow
-        el.classList.add('slide-active');
-      }
-    });
   }, [currentIndex]);
 
   // 3. Slideshow auto-advance timing
@@ -696,7 +692,7 @@ const Banner: React.FC = () => {
               key={index}
               ref={el => { slideRefs.current[index] = el; }}
               className={`banner-slide absolute inset-0 flex flex-col justify-center px-8 md:px-0 md:pl-[120px] md:pr-16 md:pt-[36px] transition-opacity duration-[700ms] ease-in-out ${
-                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                isActive ? 'opacity-100 z-10 slide-active' : 'opacity-0 z-0 pointer-events-none'
               }`}
               style={{ '--ac': slide.accent } as React.CSSProperties}
               role="group"
