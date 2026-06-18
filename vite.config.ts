@@ -180,6 +180,17 @@ export default defineConfig(({ command, mode }) => {
                   return `<link rel="preload" ${attrs} as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" ${attrs}></noscript>`;
                 });
                 
+                // Remove any duplicate preload links that may have been added
+                const seen = new Set<string>();
+                htmlContent = htmlContent.replace(/<link rel="preload"[^>]*as="style"[^>]*>/g, (match) => {
+                  const hrefMatch = match.match(/href="([^"]+)"/);
+                  if (hrefMatch) {
+                    if (seen.has(hrefMatch[1])) return '';
+                    seen.add(hrefMatch[1]);
+                  }
+                  return match;
+                });
+                
                 fileInfo.source = htmlContent;
               }
             }

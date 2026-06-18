@@ -726,7 +726,7 @@ const Banner: React.FC = () => {
 
               {/* Headline */}
               {index === 0 ? (
-                <h1 className="text-white font-black leading-[1.1] tracking-tight mt-2 md:mt-3 anim-fade-up anim-fade-up-1" style={{ fontSize: 'clamp(26px, 3.8vw, 42px)' }}>
+                <h1 className="text-white font-black leading-[1.1] tracking-tight mt-2 md:mt-3 anim-fade-up anim-fade-up-1" style={{ fontSize: 'clamp(26px, 3.8vw, 42px)', opacity: index === 0 ? 1 : undefined }}>
                   {renderTagline(slide.tagline, emWord)}
                 </h1>
               ) : (
