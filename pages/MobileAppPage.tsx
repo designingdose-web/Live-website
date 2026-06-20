@@ -14,8 +14,8 @@ const MobileAppPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Mobile App Development Services | iOS & Android | Designing Dose"
-        description="Build high-performance mobile apps for iOS and Android. Native and Cross-platform solutions (Flutter/React Native) tailored for business growth."
+        title="Mobile App Development Dublin | iOS & Android Apps | Designing Dose"
+        description="Custom iOS and Android app development in Dublin and Ireland. Flutter and React Native experts. From $999. Free consultation available."
         keywords="Mobile App Development Ireland, iOS App Developers USA, Android App Development UK, Flutter Development Agency, React Native Experts, Custom Mobile Apps"
       />
       <GenericServicePage service={service} />

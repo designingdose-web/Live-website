@@ -1,3 +1,49 @@
+# Designing Dose — robots.txt
+
+# Standard search engine crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# Google AI (Gemini, AI Overviews, AI Mode)
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Block CommonCrawl — training data only, no search or citation benefit
+User-agent: CCBot
+Disallow: /
+
+# Block all bots from admin/private paths
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+
 Sitemap: https://designingdose.com/sitemap.xml

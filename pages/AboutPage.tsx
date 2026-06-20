@@ -20,8 +20,8 @@ const AboutPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="About Designing Dose | Digital Marketing Agency"
-        description="Learn about our journey, mission, and the expert team behind Designing Dose. 10+ years of delivering digital excellence globally."
+        title="About Us | Digital Agency Dublin | Designing Dose"
+        description="Meet the team behind Designing Dose — Dublin's digital agency with 10+ years of experience, 1,000+ clients and offices in Ireland, USA, UK and Canada."
         keywords="About Designing Dose, Digital Agency Team, Our Mission, Tech Innovators, Business Growth Partners"
       />
       <div className="bg-brand-primary text-white overflow-x-hidden">

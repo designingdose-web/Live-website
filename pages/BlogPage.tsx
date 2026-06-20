@@ -45,7 +45,7 @@ const BlogCard: React.FC<{ post: typeof blogPosts[0]; index: number; priority?: 
           className={imageClasses}
           loading={priority ? "eager" : "lazy"}
           decoding={priority ? "sync" : "async"}
-          fetchPriority={priority ? "high" : "auto"}
+          fetchpriority={priority ? "high" : "auto"}
           width="600"
           height="338"
         />
@@ -92,8 +92,8 @@ const BlogPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Digital Insights & Tech Blog | Designing Dose"
-        description="Stay ahead with the latest trends in Web Development, SEO, Social Media, and Tech. Expert articles and guides from the Designing Dose team."
+        title="Digital Marketing Blog | Web Design & SEO Tips | Designing Dose"
+        description="Expert guides on SEO, web design, social media and digital marketing for Irish and global businesses. Updated weekly by the Designing Dose team."
         keywords="Digital Marketing Blog, Web Design Trends 2025, SEO Tips, Dropshipping Guides, Tech News, Business Growth Strategies"
       />
       <div className="bg-brand-primary min-h-screen overflow-x-hidden">
@@ -154,7 +154,7 @@ const BlogPage: React.FC = () => {
                       alt={`Featured article: ${featuredPost.title}`} 
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-video md:aspect-auto"
                       loading="eager"
-                      fetchPriority="high"
+                      fetchpriority="high"
                       decoding="sync"
                       width="1200"
                       height="480"

@@ -5,16 +5,16 @@ import { useLocation } from 'react-router-dom';
 interface SEOProps {
   title: string;
   description: string;
-  keywords?: string;
   image?: string;
   url?: string;
   preloadImage?: string; // Fallback for simple preload
   preloadSrcSet?: string; // New: For responsive image preloading
   preloadSizes?: string;  // New: For responsive image sizing
   noindex?: boolean;      // New: For 404 pages or private content
+  schema?: object | object[];
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, preloadImage, preloadSrcSet, preloadSizes, noindex }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, image, url, preloadImage, preloadSrcSet, preloadSizes, noindex, schema }) => {
   const location = useLocation();
   const baseUrl = "https://designingdose.com";
   const canonicalUrl = url || `${baseUrl}${location.pathname}`;
@@ -57,7 +57,6 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, pre
     };
 
     updateMeta('description', finalDescription);
-    updateMeta('keywords', keywords || "Web Development, SEO, Mobile Apps, Designing Dose, Digital Marketing, Ireland, USA");
 
     // Robots Logic: Force noindex for 404s to satisfy SEO audit tools
     const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
@@ -107,7 +106,20 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, pre
         document.head.appendChild(linkPreload);
     }
 
-  }, [title, description, keywords, image, canonicalUrl, preloadImage, preloadSrcSet, preloadSizes, noindex]);
+    // Schema injection
+    const existingSchema = document.querySelector('script[type="application/ld+json"][data-dd-schema]');
+    if (existingSchema) {
+      document.head.removeChild(existingSchema);
+    }
+    if (schema) {
+      const schemaScript = document.createElement('script');
+      schemaScript.setAttribute('type', 'application/ld+json');
+      schemaScript.setAttribute('data-dd-schema', 'true');
+      schemaScript.textContent = JSON.stringify(schema);
+      document.head.appendChild(schemaScript);
+    }
+
+  }, [title, description, image, canonicalUrl, preloadImage, preloadSrcSet, preloadSizes, noindex, schema]);
 
   return null;
 };

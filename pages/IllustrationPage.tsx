@@ -14,8 +14,8 @@ const IllustrationPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Book Illustration & Cover Design Services | Designing Dose"
-        description="Professional illustration services for authors and publishers. Children's book illustrations, e-book covers, and custom character design."
+        title="Book Illustration Services Ireland | Children's Book Art | Designing Dose"
+        description="Professional children's book illustration, e-book covers and custom character design. Trusted by authors across Ireland, UK and USA. Get a free quote."
         keywords="Book Illustration Services, Children's Book Illustrator, E-book Cover Design, Custom Illustrations Ireland, Digital Art Services USA, Book Cover Art"
       />
       <GenericServicePage service={service} />

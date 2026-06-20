@@ -11,8 +11,8 @@ const ContactPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Contact Designing Dose | Get a Free Quote"
-        description="Ready to scale? Contact Designing Dose today for a consultation on Web Development, SEO, or Mobile App projects. Offices in Ireland and USA."
+        title="Contact Us | Free Quote | Digital Agency Dublin | Designing Dose"
+        description="Get a free quote from Designing Dose today. Web design, SEO, mobile apps and more. Dublin office: +353 87 963 0583. Chat on WhatsApp anytime."
         keywords="Contact Designing Dose, Free Quote Web Design, Hire SEO Agency, Digital Marketing Consultation"
       />
       <div className="pt-28 pb-12 md:pt-36 md:pb-20 bg-brand-primary overflow-x-hidden">

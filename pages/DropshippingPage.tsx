@@ -14,8 +14,8 @@ const DropshippingPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Dropshipping Store Setup & Automation | Designing Dose"
-        description="Launch a profitable dropshipping business with our turnkey store setup services. Niche research, supplier sourcing, and automated Shopify solutions."
+        title="Dropshipping Store Setup Ireland | Shopify Experts | Designing Dose"
+        description="Launch a profitable Shopify dropshipping store with expert setup, niche research and supplier sourcing. Turnkey dropshipping packages from $499."
         keywords="Dropshipping Store Setup, Shopify Dropshipping Experts, Automated E-commerce Business, Dropshipping Ireland, Start Dropshipping USA, Winning Products Research"
       />
       <GenericServicePage service={service} />

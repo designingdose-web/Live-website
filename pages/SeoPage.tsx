@@ -14,8 +14,8 @@ const SeoPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="SEO Services - Boost Rankings & Traffic | Designing Dose"
-        description="Dominate search results with our data-driven SEO services. On-page, Off-page, and Technical SEO strategies tailored for Ireland, USA, UK, and Global markets."
+        title="SEO Agency Dublin | SEO Services Ireland & USA | Designing Dose"
+        description="Affordable SEO services from Dublin's top-rated agency. Rank on page 1 of Google with proven on-page, off-page and technical SEO. Plans from $299/month."
         keywords="SEO Services Ireland, Search Engine Optimization USA, Rank #1 Google, SEO Agency UK, Technical SEO Audit, Backlink Building, Local SEO Experts"
       />
       <GenericServicePage service={seoService} />

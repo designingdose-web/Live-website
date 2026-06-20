@@ -14,8 +14,8 @@ const SocialMediaPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Social Media Marketing Services | Designing Dose"
-        description="Engage your audience and grow your brand with our social media marketing strategies. Facebook, Instagram, LinkedIn, and TikTok management services."
+        title="Social Media Marketing Agency Dublin | Ireland & USA | Designing Dose"
+        description="Grow your brand on Instagram, Facebook, LinkedIn and TikTok. Social media management plans from Dublin's top-rated agency. From $199/month."
         keywords="Social Media Marketing Ireland, SMM Agency USA, Instagram Growth Strategy, Facebook Ads Management, LinkedIn Marketing UK, Content Creation for Social Media"
       />
       <GenericServicePage service={socialMediaService} />

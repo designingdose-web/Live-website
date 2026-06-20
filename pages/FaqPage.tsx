@@ -211,8 +211,8 @@ const FaqPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Frequently Asked Questions | Designing Dose"
-        description="Everything you need to know about our services, including web design, e-commerce, mobile apps, social media, dropshipping, video animation, and logo branding."
+        title="FAQ | Web Design & SEO Agency Questions | Designing Dose"
+        description="Answers to the most common questions about our web design, SEO, mobile app and digital marketing services. Transparent pricing, no hidden fees."
         keywords="Frequently Asked Questions, Designing Dose FAQs, Web Design Price Ireland, SEO Cost UK, Dropshipping Packages, Full Ownership App Code"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqPageSchema)}} />

@@ -14,8 +14,8 @@ const VideoAnimationPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Video Animation & Explainer Services | Designing Dose"
-        description="Captivate your audience with high-quality animated explainer videos, motion graphics, and corporate video production. Boost conversions with video marketing."
+        title="Video Animation Services Ireland | Explainer Videos | Designing Dose"
+        description="Explainer videos, motion graphics and corporate animations for Irish and global brands. Boost conversions with professional video marketing from $299."
         keywords="Video Animation Services, Explainer Video Production, Motion Graphics Studio, Corporate Video Makers Ireland, 2D Animation USA, Marketing Videos UK"
       />
       <GenericServicePage service={service} />

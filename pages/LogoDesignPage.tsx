@@ -14,8 +14,8 @@ const LogoDesignPage: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Logo Design & Branding Services | Designing Dose"
-        description="Create a memorable brand identity with our professional logo design services. Custom logos, brand guidelines, and brochures designed to captivate."
+        title="Logo Design Ireland | Brand Identity Services | Designing Dose"
+        description="Professional logo design and brand identity packages for Irish and international businesses. Unique, custom logos from $99. Delivered in 5 days."
         keywords="Logo Design Ireland, Branding Agency USA, Custom Logo Maker, Corporate Identity Design UK, Brochure Design Services, Professional Graphic Design"
       />
       <GenericServicePage service={service} />
