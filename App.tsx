@@ -28,6 +28,7 @@ const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
+const DublinPage = lazy(() => import('./pages/DublinPage'));
 
 /**
  * PageLoader - Optimized for CLS (Cumulative Layout Shift)
@@ -150,6 +151,7 @@ const App: React.FC = () => {
               <Route path="/services/illustration" element={<IllustrationPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:id" element={<BlogPostPage />} />
+              <Route path="/digital-agency-dublin" element={<DublinPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/refund-policy" element={<RefundPolicyPage />} />
               <Route path="/terms-of-service" element={<TermsOfServicePage />} />

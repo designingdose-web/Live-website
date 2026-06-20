@@ -155,6 +155,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- LOCATION PAGES -->
+  <url>
+    <loc>https://designingdose.com/digital-agency-dublin</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- BLOG -->
   <url>
     <loc>https://designingdose.com/blog</loc>

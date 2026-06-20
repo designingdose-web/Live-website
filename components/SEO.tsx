@@ -60,6 +60,11 @@ const SEO: React.FC<SEOProps> = ({ title, description, image, url, preloadImage,
 
     // Robots Logic: Force noindex for 404s to satisfy SEO audit tools
     const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
+
+    // Actively remove obsolete keywords meta tag
+    const keywordsMeta = document.querySelector('meta[name="keywords"]');
+    if (keywordsMeta) keywordsMeta.parentNode?.removeChild(keywordsMeta);
+
     updateMeta('robots', robotsContent);
     updateMeta('googlebot', robotsContent);
 
