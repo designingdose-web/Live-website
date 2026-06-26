@@ -98,6 +98,9 @@ const Footer: React.FC = () => {
             <h2 className="font-semibold text-white tracking-wider uppercase mb-4 text-sm">Locations</h2>
             <ul className="space-y-1 text-brand-muted text-sm">
               <li><Link to="/digital-agency-dublin" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Digital Agency Dublin</Link></li>
+              <li><Link to="/digital-agency-london" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Digital Agency London</Link></li>
+              <li><Link to="/digital-agency-usa" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Digital Agency USA</Link></li>
+              <li><Link to="/digital-agency-canada" className="block py-2 -my-2 hover:text-brand-accent-end transition-colors">Digital Agency Canada</Link></li>
             </ul>
             </div>
           <div>

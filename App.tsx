@@ -12,6 +12,9 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import RefundPolicyPage from './pages/RefundPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import NotFoundPage from './pages/NotFoundPage';
+import LondonPage from './pages/LondonPage';
+import USAPage from './pages/USAPage';
+import CanadaPage from './pages/CanadaPage';
 
 // Keep large pages lazy-loaded to optimize initial load weight
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -152,6 +155,9 @@ const App: React.FC = () => {
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:id" element={<BlogPostPage />} />
               <Route path="/digital-agency-dublin" element={<DublinPage />} />
+              <Route path="/digital-agency-london" element={<LondonPage />} />
+              <Route path="/digital-agency-usa" element={<USAPage />} />
+              <Route path="/digital-agency-canada" element={<CanadaPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/refund-policy" element={<RefundPolicyPage />} />
               <Route path="/terms-of-service" element={<TermsOfServicePage />} />

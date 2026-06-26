@@ -43,21 +43,21 @@ const optimizeImage = (url: string) => {
 export const blogPosts: BlogPost[] = [
   {
     id: 'future-of-web-design-2025',
-    title: 'The Future of Web Design: 5 Trends Dominating 2025',
+    title: 'The Future of Web Design: 5 Trends Dominating 2026',
     excerpt: 'From AI-driven layouts to immersive 3D experiences, discover the web design trends that are redefining how businesses connect with customers online.',
     category: 'Web Development',
     author: 'James Carter',
     role: 'Senior UI/UX Designer',
-    date: 'January 12, 2025',
+    date: 'January 12, 2026',
     readTime: '12 min read',
     image: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1765127202/new_web2_lbyr0c.webp'),
     serviceLink: '/services/website-packages',
     content: [
-      { type: 'paragraph', text: `The digital landscape is shifting rapidly. As we move deeper into 2025, the concept of a website has fundamentally changed. It is no longer just a digital brochure or a static collection of pages; it is a dynamic, living entity that interacts with users in real-time. For businesses, keeping up with these changes is not just about aesthetics—it is about survival. A [website that looks like it was built in 2020](/services/website-packages) feels ancient to a user in 2025, and that perception directly impacts trust and conversion rates.` },
+      { type: 'paragraph', text: `The digital landscape is shifting rapidly. As we move deeper into 2026, the concept of a website has fundamentally changed. It is no longer just a digital brochure or a static collection of pages; it is a dynamic, living entity that interacts with users in real-time. For businesses, keeping up with these changes is not just about aesthetics—it is about survival. A [website that looks like it was built in 2020](/services/website-packages) feels ancient to a user in 2026, and that perception directly impacts trust and conversion rates.` },
       { type: 'paragraph', text: `In this comprehensive guide, we are going to explore the five most transformative trends shaping web design today. These aren't just passing fads; they are the new standards for user experience (UX), performance, and engagement. Whether you are a small local business or a large enterprise, integrating these elements into your digital presence is crucial for staying competitive.` },
       { type: 'heading', text: '1. AI-Generated Imagery and Dynamic Layouts' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764866330/wb1_leefm3.webp'), alt: 'Comparison of standard static website vs AI-generated dynamic website layouts tailored to user behavior' },
-      { type: 'paragraph', text: `Artificial Intelligence has graduated from a novelty to a core design tool. In 2025, we are moving away from generic stock photography that everyone ignores. Instead, designers are leveraging generative AI to create bespoke, hyper-relevant imagery that perfectly matches a brand’s color palette, tone, and message.` },
+      { type: 'paragraph', text: `Artificial Intelligence has graduated from a novelty to a core design tool. In 2026, we are moving away from generic stock photography that everyone ignores. Instead, designers are leveraging generative AI to create bespoke, hyper-relevant imagery that perfectly matches a brand’s color palette, tone, and message.` },
       { type: 'paragraph', text: `But it goes beyond just images. We are seeing the rise of "Dynamic Layouts." Traditional websites serve the exact same page to every visitor. AI-driven websites can now subtly shift layouts based on user behavior. If a user prefers reading, the site might emphasize typography and minimize distractions. If a user is visual, the site might prioritize video content and galleries. This level of personalization increases dwell time and significantly boosts conversion rates because the website feels tailor-made for the individual.` },
       { type: 'heading', text: '2. Micro-Interactions & Motion UI' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764866327/wb2_fi88mu.webp'), alt: 'Micro-interactions UI showing button hover states and immediate visual feedback' },
@@ -72,22 +72,22 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: '3. Dark Mode is the Default' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764866327/wb3_pkutgh.webp'), alt: 'Modern dark mode website interface design reducing eye strain and highlighting neon accents' },
       { type: 'paragraph', text: `Dark mode is no longer an optional toggle tucked away in settings; for many industries, it is the default design language. With users spending 10+ hours a day on screens, eye strain is a genuine health concern. Dark interfaces reduce blue light exposure and save battery life on OLED screens.` },
-      { type: 'paragraph', text: `From a branding perspective, dark mode exudes a premium, modern, and high-tech vibe. It allows vibrant accent colors—like neons, gradients, and metallics—to pop in ways they simply can't on a white background. We are seeing a "Dark Mode First" philosophy take over in SaaS, fintech, entertainment, and luxury e-commerce. If your website is blindingly white in 2025, you might be driving users away simply because looking at your site is physically uncomfortable.` },
+      { type: 'paragraph', text: `From a branding perspective, dark mode exudes a premium, modern, and high-tech vibe. It allows vibrant accent colors (neons, gradients, and metallics) to pop in ways they simply cannot on a white background. For this reason, your [logo and brand colours](/services/logo-design) need to be designed with dark mode in mind from the start. We are seeing a "Dark Mode First" philosophy take over in SaaS, fintech, entertainment, and luxury e-commerce. If your website is blindingly white in 2026, you are likely driving users away simply because looking at your site is physically uncomfortable.` },
       { type: 'heading', text: '4. Mobile-First is Now Mobile-Only' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764866319/wb4_kqoe5s.webp'), alt: 'Mobile-first navigation bar design optimized for the thumb zone on smartphones' },
-      { type: 'paragraph', text: `Google has been preaching "Mobile-First" indexing for years, but the reality has shifted even further. For many B2C businesses, desktop traffic is negligible. We are designing for a "Mobile-Only" mindset. This changes everything about the layout, making a [responsive mobile-first website](/services/website-packages) absolute table stakes for business survival in 2025.` },
+      { type: 'paragraph', text: `Google has been preaching "Mobile-First" indexing for years, but the reality has shifted even further. For many B2C businesses, desktop traffic is negligible. We are designing for a "Mobile-Only" mindset. This changes everything about the layout, making a [responsive mobile-first website](/services/website-packages) absolute table stakes for business survival in 2026.` },
       { type: 'paragraph', text: `The "Thumb Zone" is the new golden ratio. Navigation bars are moving to the bottom of the screen (similar to apps) because phones are too large to reach the top comfortably with one hand. We are seeing the death of the "hamburger menu" in favor of swipe gestures and bottom tab bars. Content must be vertically stackable, legible without zooming, and buttons must be large enough to tap without error. If a user has to pinch-to-zoom, you have already lost the sale.` },
       { type: 'heading', text: '5. Immersive 3D and WebGL Experiences' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764866316/wb5_o90mek.webp'), alt: 'Immersive 3D WebGL product showcase allowing 360 degree view on a laptop screen' },
       { type: 'paragraph', text: `With internet speeds increasing (thanks to 5G and fiber everywhere) and browser capabilities improving, web designers are pushing the boundaries of dimension. Flat design is being replaced by immersive 3D experiences powered by WebGL and Three.js.` },
       { type: 'paragraph', text: `This doesn't mean your whole site needs to be a video game. It means incorporating 3D elements to showcase products. Instead of a static photo of a shoe, users can rotate a 3D model, zoom in on the texture, and see it from every angle. Real estate sites offer 3D walkthroughs directly in the browser. Service businesses use 3D abstract art to convey complexity and innovation. These experiences stop the scroll. They demand attention and interaction, creating a memorable brand experience that flat 2D images cannot compete with. For explainer videos, consider our [Video Animation services](/services/video-animation) to bring these concepts to life.` },
       { type: 'quote', text: 'Design is not just what it looks like and feels like. Design is how it works. - Steve Jobs' },
-      { type: 'paragraph', text: `The web of 2025 is an exciting, interactive, and intelligent place. It requires a blend of technical prowess and artistic vision. At Designing Dose, we don't just follow these trends; we implement them strategically to ensure your business isn't just keeping up, but leading the pack.` }
+      { type: 'paragraph', text: `The web of 2026 demands both technical precision and creative vision. At Designing Dose, we do not just follow these trends; we build with them. Our [website packages](/services/website-packages) start from €199 and cover everything from mobile-first responsive layouts to dark mode design and motion UI. Book a free discovery call and we will show you exactly what your site should look like this year.` }
     ]
   },
   {
     id: 'dropshipping-blueprint-2025',
-    title: 'Is Dropshipping Dead? The Reality of 2025 Markets',
+    title: 'Is Dropshipping Dead? The Reality of 2026 Markets',
     excerpt: 'Many claim dropshipping is oversaturated. We debunk the myths and share the blueprint for building a profitable, automated e-commerce empire today.',
     category: 'Dropshipping',
     author: 'Michael O\'Connor',
@@ -98,15 +98,15 @@ export const blogPosts: BlogPost[] = [
     serviceLink: '/services/dropshipping',
     content: [
       { type: 'paragraph', text: `It is a question we hear almost daily: "Is dropshipping dead?" You have probably seen the YouTube thumbnails claiming "The End of Dropshipping" or read forum posts from frustrated beginners who lost money on Facebook ads. It is easy to look at the landscape and assume the ship has sailed.` },
-      { type: 'paragraph', text: `But here is the reality: Dropshipping is not a business model; it is a fulfillment method. As long as people buy goods online, and as long as suppliers are willing to ship those goods directly to customers, dropshipping will exist. What IS dead, however, is the lazy, low-effort approach that worked in 2016. The days of throwing up a generic [e-commerce website](/services/website-packages) with pixelated images from AliExpress and running cheap ads are over. The market has matured, and to succeed in 2025, you must mature with it.` },
+      { type: 'paragraph', text: `But here is the reality: Dropshipping is not a business model; it is a fulfillment method. As long as people buy goods online, and as long as suppliers are willing to ship those goods directly to customers, dropshipping will exist. What IS dead, however, is the lazy, low-effort approach that worked in 2016. The days of throwing up a generic [e-commerce website](/services/website-packages) with pixelated images from AliExpress and running cheap ads are over. The market has matured, and to succeed in 2026, you must mature with it.` },
       { type: 'heading', text: 'The Evolution: From General Store to Micro-Brand' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764715980/dp1_avxqjx.webp'), alt: 'Comparison between a generic dropshipping store and a niche micro-brand store' },
-      { type: 'paragraph', text: `The biggest shift in the last few years has been the death of the "General Store." Customers are savvy. They trust specialists, not generalists. If you sell dog toys, kitchen knives, and phone cases on the same website, you look like a flea market, not a brand. The winning strategy for 2025 is building a "Micro-Brand" around a specific niche.` },
+      { type: 'paragraph', text: `The biggest shift in the last few years has been the death of the "General Store." Customers are savvy. They trust specialists, not generalists. If you sell dog toys, kitchen knives, and phone cases on the same website, you look like a flea market, not a brand. The winning strategy for 2026 is building a "Micro-Brand" around a specific niche.` },
       { type: 'paragraph', text: `This means finding a specific problem for a specific group of people. Instead of "Fitness Gear," drill down to "Post-Partum Recovery Equipment for New Moms." Instead of "Pet Supplies," focus on "Orthopedic Beds for Senior Dogs." When you speak directly to a narrow audience, your marketing becomes cheaper and more effective because your message resonates deeply.` },
       { type: 'heading', text: 'The Logistics of Trust: Shipping Times Matter' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764716212/dp2_xxg2h1.webp'), alt: 'Logistics map illustrating fast shipping from local warehouses to customers' },
-      { type: 'paragraph', text: `The Achilles heel of dropshipping has always been shipping times. In the age of Amazon Prime, customers expect 2-day delivery. Waiting 30 days for a package from China is a guaranteed way to get chargebacks and bad reviews. To survive in 2025, you cannot rely on standard ePacket shipping.` },
-      { type: 'paragraph', text: `Successful dropshippers are now using private agents and 3PL (Third Party Logistics) centers. Once a product is validated, they move inventory to local warehouses in the US or Europe to cut shipping times down to 3-5 days. While this requires a bit more upfront investment, the increase in customer lifetime value (LTV) and the reduction in refunds make it the only viable long-term strategy.` },
+      { type: 'paragraph', text: `The Achilles heel of dropshipping has always been shipping times. In the age of Amazon Prime, customers expect 2-day delivery. Waiting 30 days for a package from China is a guaranteed way to get chargebacks and bad reviews. To survive in 2026, you cannot rely on standard ePacket shipping.` },
+      { type: 'paragraph', text: `Successful dropshippers are now using private agents and 3PL (Third Party Logistics) centers. Once a product is validated, they move inventory to local warehouses in the US or Europe to cut shipping times down to 3-5 days. This is exactly the supplier infrastructure we integrate when building your [dropshipping store](/services/dropshipping), so you are not setting this up from scratch on day one.` },
       { type: 'heading', text: 'Content is the New Ad Spend' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764717857/dp4_e3curb.webp'), alt: 'Content marketing strategy showing organic viral video reach' },
       { type: 'paragraph', text: `Ad costs on Facebook and Google have risen year over year. If you rely 100% on paid ads with thin margins, one bad day can wipe out your profits. The solution? Organic content. TikTok and Instagram Reels have democratized marketing. You can generate millions of views for free if your content is engaging.` },
@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: 'The Automation Advantage' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764717857/dp5_avgrhj.webp'), alt: 'Automated business systems linking inventory, chatbot support, and email marketing' },
       { type: 'paragraph', text: `One of the greatest benefits of the modern dropshipping ecosystem is the software stack. You can now automate almost every aspect of the business. Apps can automatically sync inventory levels so you never sell a product that is out of stock. AI chatbots can handle 80% of customer service queries like "Where is my order?" instantly. Email flows can automatically recover abandoned carts and upsell customers post-purchase. This allows a single person to run a business that generates 6-7 figures in revenue.` },
-      { type: 'paragraph', text: `Dropshipping is far from dead; it has just shed its amateur skin. It is now a serious business model for serious entrepreneurs. At Designing Dose, we build stores that adhere to these 2025 standards—branded, niche-focused, and automated for success. Ready to launch your store? Explore our [dropshipping packages](/services/dropshipping) starting from €999 — fully built, branded, and automated from day one.` }
+      { type: 'paragraph', text: `Dropshipping is far from dead. It has simply shed its amateur skin and become a serious business model for serious entrepreneurs. At Designing Dose, we build Shopify stores that meet 2026 standards: branded, niche-focused, supplier-integrated, and automated from day one. Our [dropshipping packages](/services/dropshipping) start from €999. Book a free call and we will tell you exactly which niche to go after and what it will take to compete in it.` }
     ]
   },
   {
@@ -133,13 +133,13 @@ export const blogPosts: BlogPost[] = [
     category: 'Social Media',
     author: 'Sarah Jenkins',
     role: 'Social Media Lead',
-    date: 'February 03, 2025',
+    date: 'February 03, 2026',
     readTime: '10 min read',
     image: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764770379/new_sm_nur00k.webp'), 
     serviceLink: '/services/social-media',
     content: [
       { type: 'paragraph', text: `Social media marketing is often misunderstood as a technical challenge. Brands obsess over hashtags, posting times, and algorithm updates. While those factors matter, they are secondary to the core truth: Social media is about people. It is about human behavior, emotion, and connection.` },
-      { type: 'paragraph', text: `To truly succeed in the noisy digital space of 2025, you need to stop thinking like a marketer and start thinking like a psychologist. Every like, share, and comment is a result of a psychological trigger. Understanding these triggers allows you to craft content that doesn\'t just get seen, but felt.` },
+      { type: 'paragraph', text: `To truly succeed in the noisy digital space of 2026, you need to stop thinking like a marketer and start thinking like a psychologist. Every like, share, and comment is a result of a psychological trigger. Understanding these triggers allows you to craft content that doesn\'t just get seen, but felt.` },
       { type: 'heading', text: '1. The Dopamine Loop and Variable Rewards' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764770379/sm1_jpsl5j.webp'), alt: 'Diagram of the dopamine loop and variable rewards in social media engagement' },
       { type: 'paragraph', text: `Social media platforms are engineered to be addictive, utilizing the same "variable reward" systems found in slot machines. When a user pulls down to refresh their feed, they don\'t know what they are going to get—a funny video, a shocking news story, or a message from a friend. That anticipation releases dopamine.` },
@@ -160,8 +160,8 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: '5. Reciprocity' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764770378/sm5_ogkap2.webp'), alt: 'Concept of reciprocity in community management and engaging with followers' },
       { type: 'paragraph', text: `The principle of reciprocity states that if you do something for me, I feel compelled to do something for you. In social media terms, this means you cannot just take; you must give. Brands that only broadcast ads fail.` },
-      { type: 'paragraph', text: `Brands that reply to comments, answer DMs, and engage with their followers\' content create a debt of reciprocity. When you take the time to acknowledge a follower, they feel seen and valued. They are then far more likely to support you, buy from you, and defend you. Community management is not an administrative task; it is a relationship-building strategy.` },
-      { type: 'paragraph', text: `At Designing Dose, our social media strategies are built on these psychological pillars. We don\'t just post content; we engineer engagement. If you are ready to turn psychology into profit, view our [social media marketing packages](/services/social-media) and book a free strategy session.` }
+      { type: 'paragraph', text: `Brands that reply to comments, answer DMs, and engage with their followers' content create a debt of reciprocity. When you take the time to acknowledge a follower, they feel seen and valued. They are then far more likely to support you, buy from you, and defend you. Community management is not an administrative task; it is a relationship-building strategy. Our [social media packages](/services/social-media) include dedicated community management from the Basic plan upward.` },
+      { type: 'paragraph', text: `At Designing Dose, our social media strategies are built on these psychological pillars. We do not post and hope. We engineer engagement based on what actually makes people stop, click, share, and buy. Our [social media packages](/services/social-media) start from €399 per month and include content creation, scheduling, community management, and paid campaigns. Book a free strategy session and we will audit your current social presence for free.` }
     ]
   },
   {
@@ -177,7 +177,7 @@ export const blogPosts: BlogPost[] = [
     serviceLink: '/services/mobile-app-development',
     content: [
       { type: 'paragraph', text: `When you decide to build a mobile app, you are immediately faced with a critical technical decision: Native or Cross-Platform? This choice will dictate your budget, your timeline, your app’s performance, and your long-term maintenance strategy. Make the wrong choice, and you could burn through your runway building two separate apps when one would have sufficed. Or conversely, you could build a sluggish app that frustrates users because you tried to cut corners.` },
-      { type: 'paragraph', text: `To make an informed decision, we need to look beyond the buzzwords and understand the architectural differences between these approaches in the context of the 2025 mobile landscape.` },
+      { type: 'paragraph', text: `To make an informed decision, we need to look beyond the buzzwords and understand the architectural differences between these approaches in the context of the 2026 mobile landscape.` },
       { type: 'heading', text: 'Option 1: Native Development (Swift & Kotlin)' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764867077/app1_yzcwij.webp'), alt: 'Swift and Kotlin logos representing native mobile app development' },
       { type: 'paragraph', text: `Native development involves building the app specifically for the operating system using its official language—Swift for iOS (Apple) and Kotlin for Android (Google). This is the traditional way apps were built.` },
@@ -200,8 +200,8 @@ export const blogPosts: BlogPost[] = [
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764867075/app4_jqiz66.webp'), alt: 'Decision tree for choosing the right mobile app technology stack' },
       { type: 'paragraph', text: `So, which path is right for your startup or business?` },
       { type: 'paragraph', text: `CHOOSE NATIVE IF: You are building a high-performance 3D game, an app that relies heavily on Augmented Reality (AR), or an app that needs to do heavy background processing or video editing. If milliseconds of latency matter, Native is the only way.` },
-      { type: 'paragraph', text: `CHOOSE CROSS-PLATFORM IF: You are building an e-commerce store, a social network, a delivery app, a booking system, or an internal business tool. For these "CRUD" (Create, Read, Update, Delete) style apps, Flutter or React Native is the superior choice. You get to market faster, save money, and users will never know the difference.` },
-      { type: 'paragraph', text: `At Designing Dose, we specialize in high-performance [Cross-Platform development](/services/mobile-app-development) using Flutter. We believe it offers the best balance of speed, beauty, and cost-efficiency for modern businesses. Why pay for two apps when you can have one that rules them all?` }
+      { type: 'paragraph', text: `CHOOSE CROSS-PLATFORM IF: You are building an e-commerce store, a social network, a delivery app, a booking system, or an internal business tool. For these "CRUD" (Create, Read, Update, Delete) style apps, Flutter or React Native is the superior choice. You get to market faster, save money, and users will never notice the difference. Our [MVP Launch package starting from €6,499](/services/mobile-app-development) is the fastest path from idea to App Store.` },
+      { type: 'paragraph', text: `At Designing Dose, we build in Flutter because it gives modern businesses the best balance of speed, design quality, and cost-efficiency. Our [app development packages](/services/mobile-app-development) start from €6,499 for a fully functional MVP deployed to both iOS and Android on day one. Book a free scoping call and we will map out exactly what your app needs to launch successfully.` }
     ]
   },
   {
@@ -233,24 +233,24 @@ export const blogPosts: BlogPost[] = [
       { type: 'paragraph', text: `Wendy\'s Twitter account is famous because they adopted a snarky, roasting voice that cut through the noise. Mailchimp uses a friendly, slightly quirky voice to make boring email marketing feel fun. Determining your voice ensures that whether a customer is reading a tweet, an email, or a 404 error page, it sounds like YOU.` },
       { type: 'heading', text: 'The Strategic Pillar: Your "Why"' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764771666/logo3_itbuxz.webp'), alt: 'Strategic brand mission statement and core values' },
-      { type: 'paragraph', text: `Simon Sinek famously said, "People don\'t buy what you do; they buy why you do it." Your brand needs a mission beyond making money. Are you empowering creators? Saving the planet? Simplifying complex tasks? This mission rallies customers to your cause. It turns them from passive buyers into active advocates.` },
+      { type: 'paragraph', text: `Simon Sinek famously said, "People do not buy what you do; they buy why you do it." Your brand needs a mission beyond making money. Are you empowering creators? Saving the planet? Simplifying complex tasks? This mission needs to be reflected in everything from your [logo design](/services/logo-design) to your brand voice. It turns customers from passive buyers into active advocates.` },
       { type: 'quote', text: 'Your brand is what other people say about you when you’re not in the room. - Jeff Bezos' },
-      { type: 'paragraph', text: `Building a brand identity is an investment in your company\'s future equity. A strong brand allows you to charge premium prices because customers are paying for the trust and the feeling you provide, not just the widget. At Designing Dose, our [branding packages](/services/logo-design) go deep. We don\'t just draw shapes; we define your soul.` }
+      { type: 'paragraph', text: `Building a brand identity is an investment in your company's long-term equity. A strong brand lets you charge premium prices because customers are paying for the trust and the feeling, not just the product. At Designing Dose, our [branding and logo packages](/services/logo-design) start from €49 and cover your logo, colour palette, typography, and full brand guidelines. Book a free brand review and we will show you what consistency across every touchpoint could do for your business.` }
     ]
   },
   {
     id: 'seo-landscape-ai-overviews',
-    title: 'SEO in the Age of AI: How to Rank in 2025',
+    title: 'SEO in the Age of AI: How to Rank in 2026',
     excerpt: 'With Google\'s AI Overviews (SGE), the SEO game has changed. Here is how to rank when AI gives the answers directly.',
     category: 'SEO',
     author: 'Marcus Thorne',
     role: 'SEO Specialist',
-    date: 'January 25, 2025',
+    date: 'January 25, 2026',
     readTime: '14 min read',
     image: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764779512/NEW_seo_sjzpik.webp'),
     serviceLink: '/services/search-engine-marketing-sem',
     content: [
-      { type: 'paragraph', text: `For the past two decades, the contract between Google and websites was simple: You create content, Google indexes it, and sends you traffic. In 2025, that contract has been rewritten. The introduction of AI Overviews (formerly Search Generative Experience or SGE) means that Google now answers user queries directly on the results page, often pushing organic links way down the fold.` },
+      { type: 'paragraph', text: `For the past two decades, the contract between Google and websites was simple: You create content, Google indexes it, and sends you traffic. In 2026, that contract has been rewritten. The introduction of AI Overviews (formerly Search Generative Experience or SGE) means that Google now answers user queries directly on the results page, often pushing organic links way down the fold.` },
       { type: 'paragraph', text: `Is SEO dead? Absolutely not. But "Old SEO"—keyword stuffing, buying cheap backlinks, and writing generic 500-word articles—is definitely dead. To survive in the Age of AI, we need to adapt to a new set of rules.` },
       { type: 'heading', text: 'Optimizing for the "Zero-Click" World' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764779499/seo1_raqbw3.webp'), alt: 'Zero-click search results page with AI overview answer' },
@@ -269,11 +269,11 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: 'Topic Clusters over Keywords' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764779499/seo3_sofir3.webp'), alt: 'Topic clustering strategy showing pillar pages and internal linking structure' },
       { type: 'paragraph', text: `Google no longer looks at individual keywords in isolation; it looks at "Topical Authority." You cannot just write one lucky post about "Vegan Recipes" and rank. You need to cover the entire entity of "Vegan Cooking"—breakfasts, protein sources, shopping lists, meal prep.` },
-      { type: 'paragraph', text: `This strategy is called "Topic Clustering." You create a central "Pillar Page" that covers a broad topic, and then link out to dozens of supporting "Cluster Pages" that cover specific sub-topics. This internal linking structure signals to Google\'s AI that you are a comprehensive resource on the subject, increasing the likelihood that your content is cited in the AI Overview.` },
+      { type: 'paragraph', text: `This strategy is called "Topic Clustering." You create a central "Pillar Page" that covers a broad topic, and then link out to dozens of supporting "Cluster Pages" that cover specific sub-topics. This internal linking structure signals to Google's AI that you are a comprehensive resource on the subject. Our [SEO packages](/services/search-engine-marketing-sem?tab=seo-services) include full topic cluster strategy and content execution as part of the monthly scope.` },
       { type: 'heading', text: 'Technical SEO is the Foundation' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764779499/seo4_gqmywt.webp'), alt: 'Technical SEO schema markup code snippet for structured data' },
       { type: 'paragraph', text: `With AI crawlers working overtime, your site\'s technical health is paramount. Core Web Vitals (speed, stability, responsiveness) must be green. Schema Markup (structured data) is now non-negotiable. Schema is the code that helps machines understand your content (e.g., telling Google "this is a recipe," "this is a review," "this is a video"). If you don\'t speak the robot\'s language via Schema, the robot won\'t feature you in the AI snapshot. (Need help with technical optimization? See our [Web Development packages](/services/website-packages)).` },
-      { type: 'paragraph', text: `SEO in 2025 is harder, but the rewards are higher for those who do it right. It is a shift from quantity to quality, from robots to humans. At Designing Dose, our [SEO strategies](/services/search-engine-marketing-sem) are built for this new reality. Our [SEO packages](/services/search-engine-marketing-sem) starting from €299 per month are built specifically for this AI-first search environment — schema markup, topic clustering, and E-E-A-T signals included.` }
+      { type: 'paragraph', text: `SEO in 2026 is harder, but the rewards are higher for those who do it right. The shift is from volume to depth, from generic content to genuine expertise. At Designing Dose, our [SEO packages](/services/search-engine-marketing-sem?tab=seo-services) start from €299 per month and are built for the AI-first search environment: schema markup, topic clustering, E-E-A-T signal building, and monthly performance reporting. Get in touch and we will audit your site for free before you commit to anything.` }
     ]
   },
   {
@@ -297,13 +297,13 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: 'Pacing and The Page Turn' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764781101/cb2_yrrtyj.webp'), alt: 'Storyboard sketch showing pacing and page turn dramatic reveal' },
       { type: 'paragraph', text: `A picture book is a piece of theatre directed by the page turn. The illustrator controls the flow of time. A series of small vignette illustrations on one page can speed up time or show a sequence of actions. A full double-page spread (bleeding off the edges) stops time, asking the reader to pause and soak in a big moment.` },
-      { type: 'paragraph', text: `The "Page Turn" is a dramatic tool. The text might say, "And then he saw..."—and the child has to physically turn the page to reveal the surprise illustration. Good illustration works hand-in-hand with the text to build this suspense and release.` },
+      { type: 'paragraph', text: `The "Page Turn" is a dramatic tool. The text might say, "And then he saw..." and the child has to physically turn the page to reveal the surprise illustration. Good illustration works hand-in-hand with the text to build this suspense and release. It is this depth of craft that separates our [children's book illustrators](/services/illustration?tab=children-book-illustration) from template-based services.` },
       { type: 'heading', text: 'World Building in the Background' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764781101/cb3_l6ilys.webp'), alt: 'Richly detailed background illustration for a children\'s fantasy story' },
       { type: 'paragraph', text: `The text of a picture book is sparse, often under 500 words. This leaves a massive gap for the illustrator to fill with "World Building." The text might simply say "Use your imagination," but the illustration can show a castle made of candy, a dragon flying a kite, and a river of lemonade.` },
       { type: 'paragraph', text: `These background details add "Re-readability." Parents know the pain of reading the same book 100 times. Rich, detailed illustrations give the child something new to spot on the 50th read—a ladybug hiding on every page, or a subplot happening with a squirrel in the background. This depth makes a book a favorite.` },
       { type: 'paragraph', text: `Bring your story to life with our [children's book illustration packages](/services/illustration) starting from €1,699 — full colour, print-ready, and KDP-formatted.` },
-      { type: 'paragraph', text: `At Designing Dose, we don\'t just draw pretty pictures. We are visual directors. We help authors translate their words into a visual language that captivates young minds and stands out on the bookshelf. Check out our [Illustration Packages](/services/illustration?tab=children-book-illustration) to see how we can bring your story to life.` }
+      { type: 'paragraph', text: `At Designing Dose, we are visual directors, not just illustrators. We help authors translate their words into a visual language that captivates young minds and stands out on every bookshelf and Amazon thumbnail. Our [children's book illustration packages](/services/illustration?tab=children-book-illustration) start from €1,699 for a fully illustrated Standard Story, print-ready and KDP-formatted. Share your manuscript with us and we will send back a sample spread so you can see the quality before you commit to anything.` }
     ]
   },
   {
@@ -334,9 +334,9 @@ export const blogPosts: BlogPost[] = [
       { type: 'paragraph', text: `Google measures how long a user stays on your site. If they bounce instantly, your rank drops. If they stop to watch a 2-minute video, your dwell time skyrockets, signaling to Google that your page provides value. Furthermore, videos often appear in the "Video Pack" carousel at the top of search results, giving you a chance to leapfrog text-based competitors. This is a core part of modern [SEO strategy](/services/search-engine-marketing-sem).` },
       { type: 'heading', text: '4. Social Media Dominance' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764858379/vk4_g3een3.webp'), alt: 'Social media video engagement metrics graph showing high reach' },
-      { type: 'paragraph', text: `Social algorithms explicitly favor video. Instagram has openly stated they are no longer a photo-sharing app. LinkedIn posts with video get 5x more engagement. Facebook ads with video have significantly lower Cost Per Click (CPC) than static image ads. If you want reach on social media in 2025, you have no choice but to embrace video.` },
-      { type: 'paragraph', text: `You don\'t need a Hollywood budget. Authenticity beats production value. But you do need a strategy. Whether it's a polished 2D animation or a raw user-generated clip, video is the language of the modern internet. Designing Dose helps you speak it fluently.` },
-      { type: 'paragraph', text: `Our [video animation packages](/services/video-animation) start at €399 for a branded intro and scale to full cinematic productions — every video includes commercial usage rights.` }
+      { type: 'paragraph', text: `Social algorithms explicitly favor video. Instagram has openly stated they are no longer a photo-sharing app. LinkedIn posts with video get 5x more engagement. Facebook ads with video have significantly lower Cost Per Click (CPC) than static image ads. If you want reach on social media in 2026, you have no choice but to embrace video.` },
+      { type: 'paragraph', text: `You do not need a Hollywood budget. Authenticity beats production value. But you do need a strategy. Whether it is a polished 2D animation or a raw user-generated clip, video is the language of the modern internet. And once you have a video that performs organically, running [paid ads](/services/search-engine-marketing-sem?tab=ppc-management) behind it is the fastest way to scale the results.` },
+      { type: 'paragraph', text: `At Designing Dose, we help brands stop the scroll. Our [video animation packages](/services/video-animation) start from €399 for a branded intro and scale to full cinematic productions. Every video includes commercial usage rights so you can use it in paid campaigns from day one. Book a free call and we will show you a sample reel from your industry.` }
     ]
   },
   {
@@ -346,13 +346,13 @@ export const blogPosts: BlogPost[] = [
     category: 'Web Development',
     author: 'James Carter',
     role: 'Senior UI/UX Designer',
-    date: 'February 10, 2025',
+    date: 'February 10, 2026',
     readTime: '10 min read',
     image: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764863286/new_web_u9g3rz.webp'),
     serviceLink: '/services/website-packages',
     content: [
       { type: 'paragraph', text: `We encounter it all the time. An excellent local plumber, a talented hair stylist, or a reliable mechanic who says: "I don't need a website. I have been in business for 20 years on word-of-mouth alone." And for a long time, they were right. But the world has changed.` },
-      { type: 'paragraph', text: `Relying solely on word-of-mouth in 2025 is a fragile strategy. It leaves you vulnerable to competitors, limits your growth, and puts your reputation in the hands of others. Being offline has a hidden cost—the "Opportunity Cost" of all the customers who looked for you, couldn\'t find you, and went to the competitor who had a website.` },
+      { type: 'paragraph', text: `Relying solely on word-of-mouth in 2026 is a fragile strategy. It leaves you vulnerable to competitors, limits your growth, and puts your reputation in the hands of others. Being offline has a hidden cost—the "Opportunity Cost" of all the customers who looked for you, couldn\'t find you, and went to the competitor who had a website.` },
       { type: 'heading', text: 'The Modern Consumer Journey' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764863286/web1_wcrofb.webp'), alt: 'Customer journey map showing search engine validation of local businesses' },
       { type: 'paragraph', text: `Even if a friend recommends you, the first thing a modern consumer does is Google your name. They want to validate the recommendation. They are looking for "Social Proof." ` },
@@ -367,8 +367,8 @@ export const blogPosts: BlogPost[] = [
       { type: 'paragraph', text: `Your website is your digital property. You own the content, the traffic, and the data. It is the central hub of your marketing ecosystem. [Social media](/services/social-media) should drive traffic TO your website, not be the destination itself.` },
       { type: 'heading', text: 'Local SEO: The Goldmine' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764863286/web3_porilk.webp'), alt: 'Local SEO map pack results on mobile for service searches' },
-      { type: 'paragraph', text: `Google searches for "near me" (e.g., "roofers near me") have exploded. To appear in these local searches, you need a website optimized for Local SEO. You need content that mentions your city, your service area, and your specific services. A Facebook page rarely ranks well for these commercial intent keywords. A properly built website puts you in front of people exactly at the moment they are ready to buy.` },
-      { type: 'paragraph', text: `In 2025, a website is not a luxury; it is a utility. It is as essential as a phone number or a bank account. Designing Dose specializes in getting local businesses online quickly and affordably, turning your digital presence into your best employee. Getting online does not have to be complicated. Our [website packages](/services/website-packages) start from €199 — built, deployed, and SEO-ready within 2 weeks.` }
+      { type: 'paragraph', text: `Google searches for "near me" have exploded. To appear in these local searches, you need a website optimised for Local SEO: content that mentions your city, your services, and your service area. If you are based in Dublin or serving the Irish market, our [Dublin digital agency page](/digital-agency-dublin) explains exactly how local SEO works for businesses in your area. A properly built website puts you in front of customers at exactly the moment they are ready to buy.` },
+      { type: 'paragraph', text: `In 2026, a website is not a luxury. It is a utility as essential as a phone number. At Designing Dose, we get local businesses online quickly and affordably. Our [website packages](/services/website-packages) start from €199, fully built and SEO-ready within 2 weeks. If you are based in Dublin or anywhere across Ireland, we are your local agency with a track record of ranking businesses in Google Maps and the search results that matter. Book a free consultation and we will scope your project on the spot.` }
     ]
   },
   {
@@ -378,7 +378,7 @@ export const blogPosts: BlogPost[] = [
     category: 'E-Books',
     author: 'Emma Vance',
     role: 'Art Director',
-    date: 'January 08, 2025',
+    date: 'January 08, 2026',
     readTime: '11 min read',
     image: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764863936/new_ebook_yssdeq.webp'),
     serviceLink: '/services/illustration?tab=ebook-illustration',
@@ -396,11 +396,11 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: '3. The Launch Team' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764863912/ebook3_jd8jeu.webp'), alt: 'Book launch marketing timeline and launch team strategy' },
       { type: 'paragraph', text: `The Amazon algorithm loves velocity. It wants to see sales and reviews happening quickly. If you launch to crickets, Amazon will bury your book. You need a "Launch Team."` },
-      { type: 'paragraph', text: `Weeks before you publish, gather a group of 20-50 people (friends, family, email subscribers, social media followers). Give them a free advanced copy (ARC) of the ebook. In exchange, ask them to leave an honest review on Day 1 of the launch. Ten reviews on launch day are worth 100 reviews a year later. This social proof tells the algorithm "this book is hot," and Amazon will start showing it to strangers.` },
+      { type: 'paragraph', text: `Weeks before you publish, gather a group of 20-50 people (friends, family, email subscribers, social media followers). Give them a free advanced copy (ARC) of the ebook. In exchange, ask them to leave an honest review on Day 1 of the launch. Ten reviews on launch day are worth 100 reviews a year later. This social proof tells Amazon's algorithm your book is worth showing to strangers. Building this audience ahead of launch is also where a strong [social media presence](/services/social-media) pays real dividends.` },
       { type: 'heading', text: '4. A+ Content' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764863912/ebook4_jjagyv.webp'), alt: 'Amazon A+ content example showing rich graphics and book details' },
       { type: 'paragraph', text: `Amazon allows you to add "A+ Content"—graphics and text that appear in the "From the Publisher" section. This is your landing page. Use it to show interior spreads, author bio graphics, and comparison charts. It looks professional and keeps the reader on your page longer, increasing conversion rates.` },
-      { type: 'paragraph', text: `Self-publishing is a business. Treat your book like a product, and your writing career like a startup. Designing Dose helps authors with the visual side of this business—covers, illustrations, and marketing assets that sell. Our [e-book cover design packages](/services/illustration) start from €99 and our [full illustration packages](/services/illustration) can take your book from manuscript to publish-ready.` }
+      { type: 'paragraph', text: `Self-publishing is a business. Treat your book like a product and your writing career like a startup. Designing Dose handles the visual side of that business: covers, interior illustrations, and marketing assets that sell on sight. Our [ebook illustration packages](/services/illustration?tab=ebook-illustration) start from €149, and cover design starts from €99. Get in touch with your manuscript and we will show you what the finished book could look like.` }
     ]
   },
   {
@@ -410,7 +410,7 @@ export const blogPosts: BlogPost[] = [
     category: 'E-commerce',
     author: 'Michael O\'Connor',
     role: 'E-commerce Strategist',
-    date: 'February 15, 2025',
+    date: 'February 15, 2026',
     readTime: '13 min read',
     image: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764864998/new_sales_qoie6b.webp'),
     serviceLink: '/services/website-packages?tab=e-commerce',
@@ -430,6 +430,7 @@ export const blogPosts: BlogPost[] = [
         'Contact Info: Have a visible email address and physical address. A store with no way to contact support screams "scam."',
         'Policies: Clear Shipping and Refund policies must be linked in the footer.'
       ]},
+      { type: 'paragraph', text: `Getting these trust signals in place costs almost nothing. But the bigger win is having them baked into your store's design from day one. Our [e-commerce packages](/services/website-packages?tab=e-commerce) include trust-optimised product pages, checkout flows, and policy pages as standard.` },
       { type: 'heading', text: '3. Checkout Friction' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764864623/sales2_kfa1hp.webp'), alt: 'Frictionless guest checkout process user interface' },
       { type: 'paragraph', text: `The checkout process should be a slippery slope. Once they click "Add to Cart," nothing should stop them. The biggest sin? Forced Account Creation. Do not make people register an account to buy a $20 item. Offer "Guest Checkout."` },
@@ -437,7 +438,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: '4. Poor Mobile Experience' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764864624/sales1_iyw5qm.webp'), alt: 'Mobile responsive e-commerce shopping cart and product page' },
       { type: 'paragraph', text: `Over 70% of e-commerce traffic is mobile. Yet many store owners build their site on a desktop and never check it on a phone. Buttons that are too small, pop-ups that cover the whole screen and can\'t be closed, text that is too small—these mobile UI failures kill conversions. Design for mobile first. (We specialize in [mobile-first e-commerce development](/services/website-packages?tab=e-commerce)).` },
-      { type: 'paragraph', text: `Fixing these friction points isn't just about design; it's about empathy. Walk through your own store as a stranger. Where do you get stuck? Where do you get annoyed? Fix that, and the sales will follow. Designing Dose builds high-converting stores that prioritize user experience above all else. We build high-converting e-commerce stores that address every friction point from day one. See our [e-commerce packages](/services/website-packages) starting from €349.` }
+      { type: 'paragraph', text: `Fixing these friction points is about empathy. Walk through your own store as a stranger and notice where you hesitate, where you get annoyed, and where you almost leave. Then fix those things. At Designing Dose, we build e-commerce stores that have all of this handled before launch. Our [e-commerce packages](/services/website-packages?tab=e-commerce) start from €349 and cover speed, trust signals, mobile UX, and checkout flow as standard. Book a free audit and we will tell you exactly what is costing you conversions right now.` }
     ]
   },
   {
@@ -465,10 +466,10 @@ export const blogPosts: BlogPost[] = [
       { type: 'heading', text: 'The Algorithm: Discovery vs. Following' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865527/ti3_aswq3j.webp'), alt: 'Algorithm reach comparison between TikTok and Instagram Reels' },
       { type: 'paragraph', text: `TikTok is a "Discovery Engine." The For You Page (FYP) shows you content based on your interests, not just who you follow. You can have 0 followers and get 1 million views on your first video. It offers the highest potential for viral growth for new accounts.` },
-      { type: 'paragraph', text: `Instagram is a "Social Graph." While Reels has improved reach to non-followers, it still heavily prioritizes content from accounts people already follow. It is better for nurturing an existing community than for exploding overnight from scratch.` },
+      { type: 'paragraph', text: `Instagram is a "Social Graph." While Reels has improved reach to non-followers, it still heavily prioritises content from accounts people already follow. It is better for nurturing an existing community than for exploding overnight from scratch. This is why pairing organic Reels with [paid social advertising](/services/social-media) tends to work so well on Instagram: you amplify what is already working rather than spending blind.` },
       { type: 'heading', text: 'The Verdict' },
       { type: 'image', src: optimizeImage('https://res.cloudinary.com/dmaqptknc/image/upload/v1764865496/ti4_i65q7w.webp'), alt: 'Final summary and platform selection guidance' },
-      { type: 'paragraph', text: `You don't necessarily have to choose one. You can repost content across both (just make sure to remove the watermarks!). But you should have a "Primary Platform" where you engage with comments and build community. Start where your customers are, not where you want to be. Designing Dose can help you craft a vertical video strategy that works for either platform. Need a team to manage your content strategy across both platforms? Our [social media packages](/services/social-media) start from €399 per month and include platform-specific content creation and ad management.` }
+      { type: 'paragraph', text: `You do not necessarily have to choose one. You can repurpose content across both platforms (just remove the TikTok watermark before posting to Reels). But you should have one primary platform where you engage with comments, reply to DMs, and build community. Start where your customers already are. At Designing Dose, our [social media packages](/services/social-media) start from €399 per month and include platform-specific content creation, vertical video scripts, and ad management for both TikTok and Instagram. Book a call and we will tell you exactly where your audience is and what content is working in your niche right now.` }
     ]
   }
 ];

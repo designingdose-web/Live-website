@@ -124,6 +124,7 @@ const Header: React.FC = () => {
                 </button>
               </div>
               <NavItem to="/blog">Blog</NavItem>
+              <NavItem to="/faq">FAQ</NavItem>
               <NavItem to="/contact">Contact Us</NavItem>
             </div>
             <div className="md:hidden">
@@ -157,6 +158,7 @@ const Header: React.FC = () => {
                 </NavLink>
               ))}
               <NavItem to="/blog" onClick={closeMenu}>Blog</NavItem>
+              <NavItem to="/faq" onClick={closeMenu}>FAQ</NavItem>
               <NavItem to="/contact" onClick={closeMenu}>Contact Us</NavItem>
             </div>
           )}

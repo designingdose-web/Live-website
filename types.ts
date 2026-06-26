@@ -17,6 +17,7 @@ export interface ServiceTab {
 export interface FAQ {
   question: string;
   answer: string;
+  link?: { text: string; href: string };
 }
 
 export interface ServiceCategory {

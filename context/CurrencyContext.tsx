@@ -83,7 +83,7 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         } finally {
           setIsLoading(false);
         }
-      }, 2000);
+      }, 0);
 
       return () => clearTimeout(delayTimer);
     };

@@ -10,7 +10,7 @@ interface StatProps {
 }
 
 const StatCounter: React.FC<StatProps> = ({ end, label, suffix = '', duration = 2000, decimals = 0 }) => {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(end);
     const [hasViewed, setHasViewed] = useState(false);
     const elementRef = useRef<HTMLDivElement>(null);
 
