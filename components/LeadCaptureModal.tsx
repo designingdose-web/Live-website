@@ -167,7 +167,7 @@ const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({ isOpen, onClose }) 
                     type="tel"
                     name="phone"
                     placeholder="Your number"
-                    className="w-full bg-brand-secondary/40 border border-white/10 rounded-r-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end h-[50px] placeholder-gray-400 backdrop-blur-sm transition-colors focus:bg-brand-secondary/60"
+                    className="w-full bg-brand-secondary/40 border border-white/10 rounded-r-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end h-[50px] placeholder-gray-400 backdrop-blur-sm transition-colors focus:bg-brand-secondary/60 flex-1 min-w-0"
                     required
                 />
                </div>

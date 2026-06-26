@@ -101,7 +101,7 @@ const ContactForm: React.FC = () => {
                 id="phone" 
                 name="phone"
                 placeholder="Your number"
-                className="w-full bg-brand-primary/50 border border-gray-600 rounded-r-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end h-[46px] backdrop-blur-sm" />
+                className="w-full bg-brand-primary/50 border border-gray-600 rounded-r-lg py-2.5 px-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-accent-end h-[46px] backdrop-blur-sm flex-1 min-w-0" />
            </div>
         </div>
         <div>

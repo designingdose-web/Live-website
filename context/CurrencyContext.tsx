@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Simplified types to support the new universal strategy
-type CurrencySymbol = '$' | '£' | '€';
+type CurrencySymbol = '$' | '£' | '€' | '';
 
 interface CurrencyContextType {
   symbol: CurrencySymbol;
@@ -20,7 +20,7 @@ const EUROZONE_COUNTRIES = [
 ];
 
 export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [symbol, setSymbol] = useState<CurrencySymbol>('$');
+  const [symbol, setSymbol] = useState<CurrencySymbol>('');
   const [countryCode, setCountryCode] = useState<string>('US');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -96,10 +96,7 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
    * Now simplified for clean $, £, or € symbols.
    */
   const formatPrice = (priceStr: string): string => {
-    if (!priceStr) return '';
-    // This regex looks for common currency symbols (Euro, Dollar, Pound) 
-    // and swaps them for our current 'symbol' state
-    return priceStr.replace(/[€$£]/g, symbol);
+    return (priceStr && symbol) ? priceStr.replace(/[€$£]/g, symbol) : priceStr || '';
   };
 
   return (

@@ -60,7 +60,7 @@ const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, countr
   }
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative flex-none w-[90px]" ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -69,7 +69,7 @@ const CountryCodeDropdown: React.FC<CountryCodeDropdownProps> = ({ value, countr
         aria-expanded={isOpen}
         aria-label="Select country code"
       >
-        <span className="truncate">{selectedCountry?.flag} {selectedCountry?.dial_code}</span>
+        <span className="truncate whitespace-nowrap">{selectedCountry?.flag} {selectedCountry?.dial_code}</span>
         <svg className={`w-4 h-4 ml-2 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
       </button>
 
